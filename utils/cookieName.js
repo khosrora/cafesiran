@@ -1,0 +1,1 @@
+export const CookieName = 'CafesIran__TOKEN'
