@@ -23,6 +23,7 @@ const ReservesCafe = ({ setReserveForm }) => {
     }, [page])
 
     if (load) return <Stable />
+    console.log(reserve);
     return (
         <>
             {
@@ -73,11 +74,14 @@ const ReservesCafe = ({ setReserveForm }) => {
                                                             i.state === "P" ? <p className='text-red-600'>خوانده نشده</p> : <p className='text-green-600'>تایید شده</p>
                                                     }
                                                 </td>
-                                                <td className="flex justify-start items-center py-4 px-6">
-                                                    <div className="flex-shrink-0">
-                                                        <button className="text-white bg-green-700 px-2 rounded-md py-1" onClick={() => setReserveForm(i)}>مشاهده</button>
-                                                    </div>
-                                                </td>
+                                                {
+                                                    i.is_owner === "O" ?
+                                                        <td className="flex justify-start items-center py-4 px-6">
+                                                            <div className="flex-shrink-0">
+                                                                <button className="text-white bg-green-700 px-2 rounded-md py-1" onClick={() => setReserveForm(i)}>مشاهده</button>
+                                                            </div>
+                                                        </td> : <td></td>
+                                                }
                                             </tr>
                                         )
                                     }
