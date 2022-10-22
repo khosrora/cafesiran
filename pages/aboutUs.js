@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import AboutUsPage from '../components/public/AboutUsPage';
 import Layout from '../components/public/layout';
 import { API } from '../utils/baseApi';
@@ -6,9 +7,14 @@ import { API } from '../utils/baseApi';
 
 const AboutUs = ({ data }) => {
     return (
-        <Layout>
-            <AboutUsPage data={data} />
-        </Layout>
+        <>
+            <Head>
+                <title> منو دیجیتال | menu Digital | درباره ما </title>
+            </Head>
+            <Layout>
+                <AboutUsPage data={data} />
+            </Layout>
+        </>
     );
 }
 

@@ -1,14 +1,21 @@
+import Head from 'next/head';
 import Layout from "../../components/public/layout";
 import SingleCafe from "../../components/public/SingleCafe";
 import { wrapper } from "../../redux/store";
 import { API } from "../../utils/baseApi";
 
 const CafeId = ({ items, categories }) => {
-
+    console.log(items);
     return (
-        <Layout>
-            <SingleCafe items={items} categories={categories} />
-        </Layout>
+        <>
+            <Head>
+                <title>کافه ایران | menu Digital | منو دیجیتال کافه ها و رستوران ها</title>
+                <meta name="description" content="کافه ایران ارائه دهنده سرویس منو دیجیتال به کافه ها و رستوران ها و آبمیوه بستنی ها و هتل ها |‌کافه ایران" />
+            </Head>
+            <Layout>
+                <SingleCafe items={items} categories={categories} />
+            </Layout>
+        </>
     );
 }
 
