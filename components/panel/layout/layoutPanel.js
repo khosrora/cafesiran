@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { CookieName } from '../../../utils/cookieName';
 import HeaderPanel from "./headerPanel";
@@ -22,6 +23,9 @@ const LayoutPanel = ({ children }) => {
 
     return (
         <>
+            <Head>
+                <title> داشبورد مدیریتی کافه ایران </title>
+            </Head>
             <HeaderPanel setMenu={setMenu} />
             <div className="grid grid-cols-5 gap-5 h-screen">
                 <SideBarPanel />
