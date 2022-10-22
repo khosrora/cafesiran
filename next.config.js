@@ -9,9 +9,4 @@ module.exports = withPWA({
     disable: process.env.NODE_ENV === 'development',
     skipWaiting: true,
   },
-<<<<<<< HEAD
 });
-
-=======
-});
->>>>>>> 855e31e013fb62a90ec2339796528f664e231799
