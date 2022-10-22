@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
   return (
-    <ThemeProvider enableSystem={true} attribute="class">
+    <ThemeProvider enableSystem={true}>
       <NextNProgress color="#FF7129" />
       <Component {...pageProps} />
       <Toaster
@@ -30,5 +30,4 @@ function MyApp({ Component, pageProps }) {
     </ThemeProvider>
   )
 }
-
 export default wrapper.withRedux(MyApp);
