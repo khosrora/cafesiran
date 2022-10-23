@@ -114,7 +114,7 @@ const CafesPage = ({ provinceId, province }) => {
                                 :
                                 <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
                                     {
-                                        cafe.map(i => <CardCafes cafe={i} />)
+                                        cafe.map((i , index) => <CardCafes key={index} cafe={i} />)
                                     }
                                 </div>
                     }
