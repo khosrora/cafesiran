@@ -1,19 +1,22 @@
-import { AdjustmentsIcon, HomeIcon } from '@heroicons/react/outline';
+import { ArrowLeftIcon, HomeIcon } from '@heroicons/react/outline';
 import Link from 'next/link';
+import Router from 'next/router';
 
 
 
-const HeaderMap = ({ setFilters }) => {
+const HeaderMap = () => {
     return (
         <>
             <div className="fixed top-2 right-5 flex flex-col gap-y-4 z-[997]">
                 <Link href="/">
-                    <div className="flex justify-center items-center p-4 rounded-full bg-gray-50 shadow-lg cursor-pointer">
-                        <HomeIcon className='w-6 h-6 text-amber-600' />
+                    <div className="flex justify-start items-center p-2 rounded-full bg-gray-50 shadow-lg cursor-pointer text-zinc-900 text-xs">
+                        <HomeIcon className='w-4 h-4 ml-2' />
+                        <p>بازگشت به خانه</p>
                     </div>
                 </Link>
-                <div onClick={() => setFilters(true)} className="flex justify-center items-center p-4 rounded-full bg-gray-50 shadow-lg cursor-pointer">
-                    <AdjustmentsIcon className='w-6 h-6 text-amber-600' />
+                <div onClick={() => Router.back()} className="flex justify-start items-center p-2 rounded-full bg-gray-50 shadow-lg cursor-pointer text-zinc-900 text-xs">
+                    <ArrowLeftIcon className='w-4 h-4 ml-2' />
+                    <p>بازگشت به لیست</p>
                 </div>
             </div>
         </>

@@ -6,7 +6,8 @@ const initialStore = {
     load: false,
     cafe: null,
     categories: [],
-    menuList: []
+    menuList: [],
+    cafesList: []
 };
 
 
@@ -31,6 +32,11 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 categories: action.payload.data
+            }
+        case globalActionsType.GET_CAFES:
+            return {
+                ...state,
+                cafesList: action.payload.data
             }
         default:
             return state;

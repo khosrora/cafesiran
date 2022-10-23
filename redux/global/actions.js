@@ -6,7 +6,8 @@ export const globalActionsType = {
     LOAD_GLOBAL: "LOAD_GLOBAL",
     GET_DETAIL_CAFE: "GET_DETAIL_CAFE",
     GET_CATEGORIES: "GET_CATEGORIES",
-    GET_MENUELIST: "GET_MENUELIST"
+    GET_MENUELIST: "GET_MENUELIST",
+    GET_CAFES: "GET_CAFES"
 }
 
 export const getMenuList = id => async dispatch => {
@@ -72,10 +73,10 @@ export const sendContactUs = data => async dispatch => {
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await postDataAPI(`siteinfo/contact_us/`, data, token);
-        console.log(res);
         if (res.status === 201) successMessage("پیام شما ارسال شد.");
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     }
 }
@@ -86,5 +87,21 @@ export const searchCafe = async code => {
         return res.data.id;
     } catch (error) {
         errorMessage(error.response.data.message)
+    }
+}
+
+export const getCafes = (slug, cityId) => async dispatch => {
+    try {
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
+        const res = await getDataAPI(`cafe/province_cafes/${slug}/?city=${cityId}`);
+        console.log(res);
+        if (res.status === 200) {
+            dispatch({ type: globalActionsType.GET_CAFES, payload: { data: res.data } });
+        } else if (res.status === 204) {
+            dispatch({ type: globalActionsType.GET_CAFES, payload: { data: [] } });
+        }
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    } catch (error) {
+
     }
 }

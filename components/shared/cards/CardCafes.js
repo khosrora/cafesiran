@@ -1,36 +1,36 @@
 import Link from "next/link";
 import MyImage from "../utilities/imageCardCafes";
 import { HeartIcon } from '@heroicons/react/outline'
+import Cafes from "../../../pages/cafes";
 
 
 
 
-const CardCafes = ({ img }) => {
+const CardCafes = ({ cafe }) => {
+
     return (
         <div className="wrapper  antialiased text-gray-900">
             <div>
-                <MyImage img={img} alt="عکس کافه" />
+                <MyImage img={cafe.image_url ? cafe.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"} alt="عکس کافه" />
                 <div className="relative px-4 -mt-16">
                     <div className="bg-white p-6 rounded-lg shadow-lg dark:bg-zinc-800 dark:text-zinc-200">
                         <div className="flex items-baseline">
                             <span className="bg-amber-600 text-white  py-1 px-4 inline-block rounded-full text-xs">
-                                کافه
+                                {cafe.type === "C" ? "کافه" : null }
+                                {cafe.type === "R" ? "رستوران" : null }
+                                {cafe.type === "CR" ? "کافه رستوران" : null }
+                                {cafe.type === "IC" ? "آبمیوه بستنی" : null }
                             </span>
                             <div className="mr-4 text-gray-600  text-[9px] font-semibold tracking-wider dark:text-zinc-200">
-                                25 بازدید  &bull; khosrora@
+                                {cafe.view_count} بازدید  &bull;   {cafe.instagram_id ? `instagram : @${cafe.instagram_id}` : null}
                             </div>
                         </div>
 
-                        <h4 className="mt-4 text-xl font-semibold leading-tight truncate">کافه فرانسه</h4>
-
-                        <div className="mt-2 flex justify-start items-center">
-                            <span className="text-gray-600 text-xs ml-2 dark:text-zinc-200"> تاریخ تاسیس :</span>
-                            <span className="text-xs">1/4/1400</span>
-                        </div>
+                        <h4 className="mt-4 text-xl font-semibold leading-tight truncate">{cafe.persian_title}</h4>
                         <div className="mt-4 flex justify-between items-center">
-                            <Link href={`/cafes/${"کافه-فرانسه"}`}>
+                            <Link href={`/cafes/${cafe.id}`}>
                                 <a className="">
-                                    <span className="text-amber-600 text-md font- cursor-pointer">مشاهده منو </span>
+                                    <span className="text-amber-600 text-md font- cursor-pointer">مشاهده منو {cafe.persian_title}</span>
                                 </a>
                             </Link>
                             <div className="">

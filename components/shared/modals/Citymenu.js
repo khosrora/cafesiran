@@ -4,7 +4,9 @@ import { XIcon } from '@heroicons/react/outline';
 
 
 
-const Citymenu = ({ setCity, citiesData }) => {
+const Citymenu = ({ setCity, citiesData, province, }) => {
+
+
     return (
         <>
             <div className="fixed top-0 right-0 left-0 bottom-0 bg-slate-900 opacity-75 cursor-pointer z-50"></div>
@@ -18,11 +20,10 @@ const Citymenu = ({ setCity, citiesData }) => {
                     </div>
                     <div className="px-8 pb-8 mt-8">
                         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
-                            {/* #TODO add url */}
                             {
                                 citiesData.map(i =>
-                                    <Link key={i.id} href={`cafes?province=تست`}>
-                                        <p className="bg-slate-100 p-2 rounded text-md text-sm cursor-pointer dark:bg-zinc-800">{i.name}</p>
+                                    <Link key={i.pk} href={`cafes?province=${province}&id=${i.fields.province_id}&city=${i.pk}`}>
+                                        <a className="bg-slate-100 p-2 rounded text-md text-sm cursor-pointer dark:bg-zinc-800">{i.fields.name}</a>
                                     </Link>
                                 )
                             }

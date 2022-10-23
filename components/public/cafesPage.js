@@ -1,29 +1,38 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
 import CardCafes from "../shared/cards/CardCafes";
 import Links from '../shared/other/Links';
 import { cities } from './../shared/utilities/constance/cities';
-import { SearchIcon, ChevronDownIcon } from '@heroicons/react/outline';
+import { SearchIcon, ChevronDownIcon, MapIcon } from '@heroicons/react/outline';
+import SImagesGallery from '../skillton/sImagesGallery';
 
 const Citymenu = dynamic(() => import("../shared/modals/Citymenu"))
 
 
-const CafesPage = ({ cityId }) => {
+const CafesPage = ({ provinceId, province }) => {
+
+    const { global } = useSelector(state => state);
+    const cafe = global.cafesList;
+    const load = global.load;
 
     const [city, setCity] = useState(false)
-    let citiesData = [];
-    for (const i of cities) {
-        if (i.province_id == cityId) {
-            citiesData.push(i)
+
+    const [citiesData, setCitiesData] = useState(null)
+
+    useEffect(() => {
+        if (provinceId) {
+            const cityFilter = cities.filter(item => item.fields.province_id == provinceId);
+            setCitiesData(cityFilter)
         }
-    }
+    }, [provinceId])
 
 
     return (
         <>
             <div className="px-8 mb-8 lg:flex lg:justify-between lg:items-start m-auto">
-                <div className="lg:w-3/12 ">
+                <div className="lg:w-3/12">
                     <div className="text-xs mb-4">
                         <span className="ml-2">خانه</span>
                         /
@@ -50,18 +59,30 @@ const CafesPage = ({ cityId }) => {
                             <span>انتخاب شهر</span>
                         </div>
                         <div className="flex flex-col dark:text-zinc-200">
-                            <div className="flex justify-center items-center">
+                            <div className="flex justify-start items-center">
                                 <ChevronDownIcon className="h-6 w-6 ml-2" />
                                 <span>انتخاب مکان مورد نظر</span>
                             </div>
-                            <div className="p-4 w-full flex justify-around items-center mt-4">
+                            <div className="p-4 w-full flex flex-wrap gap-x-8 justify-start items-center mt-4">
                                 <div className="">
-                                    <input type="radio" name="cafe" checked className="ml-2" />
-                                    کافه
+                                    <input type="radio" name="type" checked id='null' className="ml-2" />
+                                    <label htmlFor="null">همه</label>
                                 </div>
-                                <div className="mr-4">
-                                    <input type="radio" name="cafe" className="ml-2" />
-                                    رستوران
+                                <div className="">
+                                    <input type="radio" name="type" id='C' className="ml-2" />
+                                    <label htmlFor="C">کافه</label>
+                                </div>
+                                <div className="">
+                                    <input type="radio" name="type" id='R' className="ml-2" />
+                                    <label htmlFor="R">رستوران</label>
+                                </div>
+                                <div className="">
+                                    <input type="radio" name="type" id='CR' className="ml-2" />
+                                    <label htmlFor="CR">کافه رستوران</label>
+                                </div>
+                                <div className="">
+                                    <input type="radio" name="type" id='IC' className="ml-2" />
+                                    <label htmlFor="IC">آبمیوه و بستنی</label>
                                 </div>
                             </div>
                         </div>
@@ -69,24 +90,38 @@ const CafesPage = ({ cityId }) => {
                     <Links />
                 </div>
                 <div className="flex flex-col mt-12 md:mr-2 lg:w-9/12 lg:mt-0 dark:text-zinc-200">
-                    <div className="flex justify-between items-center">
-                        <h1 className="text-lg md:text-xs">کافه و رستوران</h1>
-                        <p className="text-xs">مرتب سازی بر اساس بیشترین بازدید</p>
-                    </div>
-                    <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
-                        <CardCafes img="https://bunnaethiopia.net/images/interior2.jpg" />
-                        <CardCafes img="https://thisis.sg/wp-content/uploads/2022/05/1652565327_80_Cafe-Natsu-%E2%80%93-New-Japanese-Inspired-Brunch-Cafe.jpg" />
-                        <CardCafes img="https://dailycoffeenews.com/wp-content/uploads/2020/12/Crimson-Coffee-Columbus-4.jpg" />
-                        <CardCafes img="https://c8.alamy.com/comp/2HB8FFJ/ardabil-iran-april-10-2018-people-eat-dizi-abgoosht-traditional-iranian-stew-in-a-local-restaurant-in-ardabil-iran-2HB8FFJ.jpg" />
-                        <CardCafes img="https://images.squarespace-cdn.com/content/v1/5307d892e4b023a01adef0d0/1541427413524-0JAGK2I4QCU9OO8HYGNB/4LW_Photo_JudeGoergen8250.jpg" />
-                        <CardCafes img="https://iranforall.com/wp-content/uploads/2020/06/Viuna-Cafe-Tehran.jpg" />
-                        <CardCafes img="https://perfectdailygrind.com/wp-content/uploads/2022/03/2B759B3-1-1024x683.jpg" />
-                        <CardCafes img="https://media-cdn.tripadvisor.com/media/photo-s/12/57/ff/b1/photo0jpg.jpg" />
-                    </div>
+                    {
+                        cafe.length === 0 ? null :
+                            <div className="flex justify-between items-center text-zinc-200">
+                                <Link href="/cafesMap">
+                                    <a className='bg-amber-600 p-2 px-4 text-center rounded-md flex justify-center items-center text-xs'>
+                                        <MapIcon className='w-4 h-4 ml-2' />
+                                        <p>مشاهده روی نقشه</p>
+                                    </a>
+                                </Link>
+                            </div>
+                    }
+                    {
+                        load ?
+                            <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
+                                <SImagesGallery />
+                            </div>
+                            :
+                            cafe.length === 0 ?
+                                <div className="bg-slate-200 rounded-md text-xs text-center p-2 py-4 dark:bg-zinc-900 w-full">
+                                    <p>متاسفانه هنوز مجموعه ای در این شهر یا استان ثبت نشده است</p>
+                                </div>
+                                :
+                                <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
+                                    {
+                                        cafe.map(i => <CardCafes cafe={i} />)
+                                    }
+                                </div>
+                    }
                 </div>
             </div>
             {
-                city ? <Citymenu setCity={setCity} citiesData={citiesData} /> : null
+                city ? <Citymenu setCity={setCity} citiesData={citiesData} province={province} /> : null
             }
         </>
     );

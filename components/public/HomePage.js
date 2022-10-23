@@ -6,8 +6,8 @@ import { errorMessage } from '../../utils/toast';
 import { searchCafe } from '../../redux/global/actions';
 
 // !
-// import dynamic from 'next/dynamic';
-// const ProvinceMenu = dynamic(() => import("../shared/modals/ProvinceMenu"))
+import dynamic from 'next/dynamic';
+const ProvinceMenu = dynamic(() => import("../shared/modals/ProvinceMenu"))
 
 
 const HomePage = () => {
@@ -16,12 +16,11 @@ const HomePage = () => {
     const [searchBtn, setSearchBtn] = useState(0);
     const [provinceMenu, SetProvinceMenu] = useState(false);
     const [load, setLoad] = useState(false);
-    // const lengthSearch = searchBtn.length;
-    const lengthSearch = 6;
+    const lengthSearch = searchBtn.length;
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Enter') handleSearchCafe();           
-      }
+        if (event.key === 'Enter') handleSearchCafe();
+    }
 
     const handleSearchCafe = async () => {
         setLoad(true);
@@ -57,7 +56,7 @@ const HomePage = () => {
                     <input onChange={(e) => setSearchBtn(e.target.value)} onKeyDown={handleKeyDown} type="text" className="border-2 border-slate-600 rounded-md p-2 px-7 dark:border-none dark:outline-none w-full" placeholder="جست وجو بر اساس کد کافه" />
                 </div>
                 {
-                    lengthSearch == 6 ?
+                    lengthSearch == 5 ?
                         load ?
                             <div className="border-2 bg-slate-900 text-white rounded-md p-2 px-7 flex justify-between items-center mr-0 md:mr-2 dark:bg-amber-600 dark:border-none">
                                 <p>لطفا منتظر بمانید</p>
@@ -83,9 +82,9 @@ const HomePage = () => {
                     </div>
                 </Link>
             </div>
-            {/* {
+            {
                 provinceMenu ? <ProvinceMenu SetProvinceMenu={SetProvinceMenu} /> : null
-            } */}
+            }
         </div>
     );
 }
