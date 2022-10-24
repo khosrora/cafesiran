@@ -35,12 +35,12 @@ const PhoneSideBar = ({ setMenu }) => {
                                 <Link href="/">
                                     <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/" ? 'text-amber-600' : 'text-zinc-900 dark:text-white'}`}>
                                         <HomeIcon className="w-6 h-6" />
-                                        <p>بازگشت به خانه</p>
+                                        <p>خانه</p>
                                     </a>
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/">
+                                <Link href="/dashboard">
                                     <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard" ? 'text-amber-600' : 'text-zinc-900 dark:text-white'}`}>
                                         <UserCircleIcon className="w-6 h-6" />
                                         <p>پروفایل</p>

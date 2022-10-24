@@ -58,7 +58,7 @@ const CafesPage = ({ provinceId, province }) => {
                             <ChevronDownIcon className="h-6 w-6 ml-2" />
                             <span>انتخاب شهر</span>
                         </div>
-                        <div className="flex flex-col dark:text-zinc-200">
+                        {/* <div className="flex flex-col dark:text-zinc-200">
                             <div className="flex justify-start items-center">
                                 <ChevronDownIcon className="h-6 w-6 ml-2" />
                                 <span>انتخاب مکان مورد نظر</span>
@@ -85,7 +85,7 @@ const CafesPage = ({ provinceId, province }) => {
                                     <label htmlFor="IC">آبمیوه و بستنی</label>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                     <Links />
                 </div>
@@ -114,7 +114,7 @@ const CafesPage = ({ provinceId, province }) => {
                                 :
                                 <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
                                     {
-                                        cafe.map((i , index) => <CardCafes key={index} cafe={i} />)
+                                        cafe.map((i, index) => <CardCafes key={index} cafe={i} />)
                                     }
                                 </div>
                     }

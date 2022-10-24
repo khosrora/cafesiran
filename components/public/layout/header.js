@@ -9,6 +9,7 @@ import { show_Modal_Login } from "../../../redux/auth/actions";
 const Header = () => {
 
     const { auth, cartDetails } = useSelector(state => state);
+    const load = auth.load;
     const login = auth.login;
     const order = cartDetails.orderList;
     const dispatch = useDispatch();
@@ -82,18 +83,23 @@ const Header = () => {
                     <p className="flex  md:hidden">کافه <span className="mr-2 text-amber-600">ایران</span></p>
                 </Link>
                 {
-                    login ?
-                        <Link href="/dashboard">
-                            <div className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
-                                <UserIcon className='w-6 h-6 ml-4' />
-                                پنل کاربری
-                            </div>
-                        </Link>
-                        :
-                        <div onClick={() => { dispatch(show_Modal_Login(true)) }} className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
+                    load ?
+                        <div className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
                             <UserIcon className='w-6 h-6 ml-4' />
-                            ورود
-                        </div>
+                            در حال دریافت اطلاعات
+                        </div> :
+                        login ?
+                            <Link href="/dashboard">
+                                <div className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
+                                    <UserIcon className='w-6 h-6 ml-4' />
+                                    پنل کاربری
+                                </div>
+                            </Link>
+                            :
+                            <div onClick={() => { dispatch(show_Modal_Login(true)) }} className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
+                                <UserIcon className='w-6 h-6 ml-4' />
+                                ورود
+                            </div>
                 }
             </div>
         </nav>

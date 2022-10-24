@@ -12,7 +12,7 @@ const SideBarPanel = () => {
     const { asPath } = useRouter();
 
     return (
-        <div className="hidden lg:flex lg:col-span-1 w-full h-full bg-zinc-100 py-4 border-l-2 dark:bg-zinc-900 dark:border-zinc-800">
+        <div className="hidden lg:flex lg:col-span-1 w-full h-full bg-zinc-100 py-4 border-l-2 text-sm  dark:bg-zinc-900 dark:border-zinc-800">
             <div className="px-8 text-md w-full">
                 <div className="mt-4">
                     <ul className="flex flex-col gap-y-4">
@@ -20,7 +20,7 @@ const SideBarPanel = () => {
                             <Link href="/">
                                 <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/" ? 'text-amber-600' : 'text-zinc-900 dark:text-white'}`}>
                                     <HomeIcon className="h-6 w-6" />
-                                    <p>بازگشت به خانه</p>
+                                    <p>خانه</p>
                                 </a>
                             </Link>
                         </li>
@@ -28,7 +28,7 @@ const SideBarPanel = () => {
                             <Link href="/dashboard">
                                 <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard" ? 'text-amber-600' : 'text-zinc-900 dark:text-white'}`}>
                                     <UserCircleIcon className="h-6 w-6" />
-                                    <p>پروفایل کاربری</p>
+                                    <p>پروفایل</p>
                                 </a>
                             </Link>
                         </li>

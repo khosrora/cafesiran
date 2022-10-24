@@ -10,24 +10,30 @@ const Navigation = () => {
     const { asPath } = useRouter();
     const dispatch = useDispatch();
     const { auth, cartDetails } = useSelector(state => state);
+    const load = auth.load;
     const order = cartDetails.orderList;
     const login = auth.login;
 
     return (
         <div className="fixed bottom-0 w-full flex flex-row-reverse justify-around items-center py-3 bg-gray-50 border-t-2 md:hidden dark:bg-zinc-800 dark:border-black">
             {
-                login ?
-                    <Link href="/dashboard">
-                        <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/dashboard" ? "text-orange-600" : null}`} >
-                            <UserIcon className={`h-4 w-4 ${asPath === "/dashboard" ? "text-orange-600" : "dark:text-white"}`} />
-                            <p className="text-xs mt-1">پنل کاربری</p>
-                        </div>
-                    </Link>
-                    :
+                load ?
                     <div onClick={() => dispatch(show_Modal_Login(true))} className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
                         <UserIcon className="h-4 w-4 dark:text-white" />
-                        <p className="text-xs mt-1">ورود</p>
-                    </div>
+                        <p className="text-xs mt-1">منتظر بمانید</p>
+                    </div> :
+                    login ?
+                        <Link href="/dashboard">
+                            <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/dashboard" ? "text-orange-600" : null}`} >
+                                <UserIcon className={`h-4 w-4 ${asPath === "/dashboard" ? "text-orange-600" : "dark:text-white"}`} />
+                                <p className="text-xs mt-1">پنل کاربری</p>
+                            </div>
+                        </Link>
+                        :
+                        <div onClick={() => dispatch(show_Modal_Login(true))} className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
+                            <UserIcon className="h-4 w-4 dark:text-white" />
+                            <p className="text-xs mt-1">ورود</p>
+                        </div>
             }
             {/* <Link href='/blogs'>
                 <div className="flex flex-col justify-center items-center w-1/4 cursor-pointer">

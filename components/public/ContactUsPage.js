@@ -49,7 +49,7 @@ const ContactUsPage = () => {
                             </div>
                             <div className="my-2 p-4 flex flex-col justify-center items-center rounded-md lg:px-16 ">
                                 <LocationMarkerIcon className="h-8 w-8 text-amber-600" />
-                                <p className="text-sm mt-8">زاهدان زیباشهر نصر 11</p>
+                                <p className="text-sm mt-8">زاهدان پارک علم و فناوری</p>
                             </div>
                         </div>
                         <div className="flex flex-col justify-center items-start my-4 bg-zinc-50 py-4 px-4 gap-y-8 dark:bg-zinc-900">
