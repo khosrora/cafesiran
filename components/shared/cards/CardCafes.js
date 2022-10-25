@@ -30,7 +30,7 @@ const CardCafes = ({ cafe }) => {
                         <div className="mt-4 flex justify-between items-center">
                             <Link href={`/cafes/${cafe.id}`}>
                                 <a className="">
-                                    <span className="text-amber-600 text-md font- cursor-pointer">مشاهده منو {cafe.persian_title}</span>
+                                    <span className="text-amber-600 text-sm font- cursor-pointer">مشاهده منو {cafe.persian_title}</span>
                                 </a>
                             </Link>
                             <div className="">

@@ -45,7 +45,7 @@ const CreateItemCafe = () => {
                 }}
             >
                 {({ errors, touched }) => (
-                    <Form className="mt-8 flex flex-col gap-y-8 m-auto lg:w-3/4" action="">
+                    <Form className="mt-8 flex flex-col gap-y-8 m-auto lg:w-3/4 text-sm" action="">
                         <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between dark:text-white">
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6">
                                 <label className="" htmlFor="per-name">نام محصول</label>

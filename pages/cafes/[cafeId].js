@@ -5,7 +5,7 @@ import { wrapper } from "../../redux/store";
 import { API } from "../../utils/baseApi";
 
 const CafeId = ({ items, categories }) => {
-    console.log(items);
+
     return (
         <>
             <Head>

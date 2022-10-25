@@ -27,6 +27,7 @@ const Request = () => {
     const [provinceSelect, setProvince] = useState();
     const router = useRouter()
     const load = userDetails.load;
+    console.log(load);
 
     return (
         <>
@@ -37,7 +38,7 @@ const Request = () => {
                     english_title: '',
                     phone: '',
                     street: '',
-                    desc: 'this is for test',
+                    desc: '',
                     type: '',
                     province: '',
                     city: '',
@@ -69,7 +70,7 @@ const Request = () => {
                         <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between dark:text-white">
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6">
                                 <label className="" htmlFor="mobile">شماره تماس</label>
-                                <Field name="phone" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="mobile" type="text" placeholder="نام کافه خود را به انگلیسی وارد کنید" />
+                                <Field name="phone" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="mobile" type="text" placeholder="شماره تماس مجموعه را وارد کنید" />
                                 {errors.phone && touched.phone ? (<span className='text-red-600'>{errors.phone}</span>) : null}
                             </div>
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
@@ -103,7 +104,7 @@ const Request = () => {
                             <div className="flex flex-col justify-start items-start gap-y-2  lg:w-3/6 lg:mr-4">
                                 <label htmlFor="city">شهر</label>
                                 <Field name="city" as="select" id="city" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
-                                object                                    {
+                                    object                                    {
                                         cities.map(i => <option key={i.pk} value={i.pk}>{i.fields.name}</option>)
                                     }
                                 </Field>

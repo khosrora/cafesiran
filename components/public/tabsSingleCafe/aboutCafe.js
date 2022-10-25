@@ -14,13 +14,14 @@ const AboutCafe = ({ cafeId }) => {
         dispatch(getPublicDetailsCafe(cafeId))
     }, [])
 
-
+    
     if (!cafe) return <SAboutCafe />
+    console.log(cafe);
     return (
         <div className="max-w-7xl m-auto my-8">
             <div className="flex flex-col lg:flex-row lg:justify-start">
                 <div className="lg:w-2/4">
-                    <img className="rounded-md" src={cafe?.image_url} alt={cafe?.persian_title} />
+                    <img className="rounded-md" src={cafe?.image_url ? cafe?.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"} alt={cafe?.persian_title} />
                 </div>
                 <div className="my-8 flex flex-col gap-y-4 text-xs lg:mr-4 dark:text-zinc-200">
                     {
@@ -52,7 +53,7 @@ const AboutCafe = ({ cafeId }) => {
                     {cafe?.desc}
                 </p>
             </div>
-{/* 
+            {/* 
             <div className="dark:bg-zinc-800 rounded-md py-2">
                 <div className="shadow-md rounded-md p-2">
                     <div className="text-center">

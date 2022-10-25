@@ -36,10 +36,11 @@ const IndexDashboard = () => {
                     user?.cafe === null ?
                         <div className="">user</div>
                         :
-                        <div className="">
-                            <h1 className="mb-2">پنل مجموعه</h1>
-                            <CafeProfile cafe={cafe} dispatch={dispatch} />
-                        </div>
+                        cafe.state !== "C" ? null :
+                            <div className="">
+                                <h1 className="mb-2">پنل مجموعه</h1>
+                                <CafeProfile cafe={cafe} dispatch={dispatch} />
+                            </div>
                 }
             </div>
         </LayoutPanel>

@@ -33,7 +33,7 @@ const AllItemsMenu = () => {
     return (
         <div>
             <h1 className="text-xl mt-4  dark:text-white">آیتم های ثبت شده کافه</h1>
-            <div className=" text-right mt-8">
+            <div className=" text-right mt-8 ">
                 <table className="w-full bg-zinc-100 text-gray-500 dark:bg-zinc-900 dark:text-white ">
                     <thead className="text-xs lg:text-sm ">
                         <tr>

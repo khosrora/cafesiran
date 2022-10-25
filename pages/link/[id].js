@@ -7,7 +7,7 @@ import { API } from "../../utils/baseApi";
 
 
 const id = ({ data }) => {
-    console.log(data);
+    
     return (
         <Layout>
             <div className="p-2 my-6 max-w-lg m-auto">

@@ -31,7 +31,7 @@ const EditRequestCafe = () => {
     const load = userDetails.load;
     const user = userDetails?.user;
     const cafe = cafeDetails?.cafe;
-    console.log(cafe);
+    
     useEffect(() => {
         if (user) dispatch(getDetailsCafe(user?.cafe?.id))
     }, [user]);
@@ -66,8 +66,8 @@ const EditRequestCafe = () => {
                 }}
             >
                 {({ errors, touched, initialValues, values, setFieldValue }) => (
-                    <Form className="mt-8 flex flex-col gap-y-8 m-auto lg:w-3/4" action="">
-
+                    <Form className="mt-8 flex flex-col gap-y-8 m-auto lg:w-3/4 text-sm" action="">
+                        <p>کد کافه :‌ {cafe.code}</p>
                         <div className="flex flex-col justify-start items-start gap-y-2">
                             <label className="" htmlFor="per-name">لینک عکس <span className='text-xs text-red-600'>(لینک را از گالری کپی کنید)</span></label>
                             <Field initialValues={values.image_url} name="image_url" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="per-name" type="text" placeholder="نام مجموعه خود را به فارسی وارد کنید" />

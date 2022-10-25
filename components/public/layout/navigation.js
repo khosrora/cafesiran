@@ -18,7 +18,7 @@ const Navigation = () => {
         <div className="fixed bottom-0 w-full flex flex-row-reverse justify-around items-center py-3 bg-gray-50 border-t-2 md:hidden dark:bg-zinc-800 dark:border-black">
             {
                 load ?
-                    <div onClick={() => dispatch(show_Modal_Login(true))} className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
+                    <div className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
                         <UserIcon className="h-4 w-4 dark:text-white" />
                         <p className="text-xs mt-1">منتظر بمانید</p>
                     </div> :

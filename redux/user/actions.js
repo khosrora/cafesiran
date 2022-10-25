@@ -15,17 +15,17 @@ export const USERACTIONSYPES = {
 export const getDetailsUser = () => async dispatch => {
     try {
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: true } });
-        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { data: true } })
+        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: true } })
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI("account/me/", token);
         dispatch({ type: USERACTIONSYPES.GET_USER, payload: { data: res.data } });
         dispatch({ type: AUTHTACTIONSYPES.LOGIN, payload: { data: true } })
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
-        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { data: false } })
+        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } })
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور پیش آمده است")
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
-        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { data: false } })
+        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } })
     }
 }
 
