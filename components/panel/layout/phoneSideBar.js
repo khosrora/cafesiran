@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useDispatch } from 'react-redux';
 import { useRouter } from "next/router";
-import { HomeIcon, TemplateIcon, UserGroupIcon , ShoppingCartIcon, ChartSquareBarIcon, PhotographIcon, UserCircleIcon, CakeIcon, ClipboardListIcon, ChatAltIcon, AcademicCapIcon, MapIcon } from '@heroicons/react/outline'
+import { HomeIcon, TemplateIcon, UserGroupIcon, ShoppingCartIcon, ChartSquareBarIcon, PhotographIcon, UserCircleIcon, CakeIcon, ClipboardListIcon, ChatAltIcon, AcademicCapIcon, MapIcon } from '@heroicons/react/outline'
 import { logOutUser } from "../../../redux/auth/actions";
 import { useSelector } from 'react-redux';
 import { StateType } from "../../shared/utilities/constance/type";
@@ -169,9 +169,15 @@ const PhoneSideBar = ({ setMenu }) => {
                             user?.cafe === null ?
                                 <Link href="/dashboard/requestCafe">
                                     <div className="justify-between items-center ml-8 w-full">
-                                        <button className="bg-amber-600 px-4 py-2 rounded-md text-white w-full">درخواست ثبت کافه</button>
+                                        <button className="bg-amber-600 px-4 py-2 rounded-md text-white w-full">درخواست ثبت مجموعه</button>
                                     </div>
-                                </Link> : null
+                                </Link>
+                                :
+                                <Link href="/dashboard/editRequestCafe">
+                                    <div className="justify-between items-center ml-8 w-full">
+                                        <button className="bg-amber-600 px-4 py-2 rounded-md text-white w-full">ویرایش مجموعه</button>
+                                    </div>
+                                </Link>
                         }
                         <div className="justify-between items-center ml-8 w-full mt-2" onClick={() => {
                             dispatch(logOutUser());

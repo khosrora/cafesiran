@@ -7,6 +7,8 @@ import CafeProfile from "../../components/panel/profile/cafeProfile";
 import UserProfile from "../../components/panel/profile/userProfile";
 
 
+import { ViewListIcon } from '@heroicons/react/outline';
+import Link from "next/link";
 
 
 const IndexDashboard = () => {
@@ -34,7 +36,7 @@ const IndexDashboard = () => {
                 <UserProfile user={user} dispatch={dispatch} />
                 {
                     user?.cafe === null ?
-                        <div className="">user</div>
+                        <div className=""></div>
                         :
                         cafe.state !== "C" ? null :
                             <div className="">

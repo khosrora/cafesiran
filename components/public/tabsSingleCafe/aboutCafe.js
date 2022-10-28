@@ -13,10 +13,8 @@ const AboutCafe = ({ cafeId }) => {
     useEffect(() => {
         dispatch(getPublicDetailsCafe(cafeId))
     }, [])
-
     
     if (!cafe) return <SAboutCafe />
-    console.log(cafe);
     return (
         <div className="max-w-7xl m-auto my-8">
             <div className="flex flex-col lg:flex-row lg:justify-start">

@@ -27,7 +27,6 @@ const Request = () => {
     const [provinceSelect, setProvince] = useState();
     const router = useRouter()
     const load = userDetails.load;
-    console.log(load);
 
     return (
         <>

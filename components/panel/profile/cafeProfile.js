@@ -17,7 +17,6 @@ const CafeProfile = ({ cafe, dispatch }) => {
         setOpen(!open)
     }
 
-    console.log(cafe);
 
     return (
         <>

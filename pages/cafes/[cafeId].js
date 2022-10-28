@@ -1,10 +1,23 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Layout from "../../components/public/layout";
 import SingleCafe from "../../components/public/SingleCafe";
 import { wrapper } from "../../redux/store";
-import { API } from "../../utils/baseApi";
+import { categoryList, getMenuList } from '../../redux/global/actions';
 
-const CafeId = ({ items, categories }) => {
+const CafeId = ({ cafeId }) => {
+
+    const dispatch = useDispatch();
+    const { global } = useSelector(state => state);
+    const items = global.menuList;
+    const categories = global.categories;
+
+    useEffect(() => {
+        dispatch(categoryList());
+        dispatch(getMenuList(cafeId));
+    }, [cafeId])
+
 
     return (
         <>
@@ -25,14 +38,10 @@ export const getServerSideProps = wrapper.getServerSideProps(
     (store) => async (ctx) => {
         try {
             const cafeId = ctx.query.cafeId;
-            const resCategories = await fetch(`${API}cafe/category_list`)
-            const resMenuList = await fetch(`${API}cafe/menuitem_list/${cafeId}/`)
-            const categories = await resCategories.json()
-            const items = await resMenuList.json()
+
             return {
                 props: {
-                    categories,
-                    items
+                    cafeId
                 }
             }
         } catch (error) {

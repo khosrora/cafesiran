@@ -23,7 +23,6 @@ const ReservesCafe = ({ setReserveForm }) => {
     }, [page])
 
     if (load) return <Stable />
-    console.log(reserve);
     return (
         <>
             {

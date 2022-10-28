@@ -17,7 +17,6 @@ const SingleCafe = ({ items, categories }) => {
     const { query } = useRouter();
     const cafeId = query.cafeId;
 
-    
     const [tabs, setTabs] = useState("Items");
 
     const handleTab = (tab) => {

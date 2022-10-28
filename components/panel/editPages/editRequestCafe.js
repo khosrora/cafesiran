@@ -59,7 +59,6 @@ const EditRequestCafe = () => {
                 onSubmit={values => {
                     values.province = parseInt(values.province);
                     values.city = parseInt(values.city);
-                    console.log(values);
                     values.slug = convertToSlug(values.english_title);
                     dispatch(editRequestForCafe(cafe.id, values));
                     router.push("/dashboard");

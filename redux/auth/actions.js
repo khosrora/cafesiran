@@ -81,6 +81,6 @@ export const logOutUser = () => async dispatch => {
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     } catch (error) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
-        console.log(error);
+        dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     }
 }

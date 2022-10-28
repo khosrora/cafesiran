@@ -19,6 +19,7 @@ const Footer = () => {
                 <div className="mb-4 md:w-1/6">
                     <h4>دسترسی ها</h4>
                     <ul className=' mt-2'>
+                        <li className='mt-2'><Link href="/cafes/8"><a>نمونه منو مجموعه</a></Link></li>
                         <li className='mt-2'><Link href="/"><a>خانه</a></Link></li>
                         <li className='mt-2'><Link href="/aboutUs"><a>درباره ما</a></Link></li>
                         <li className='mt-2'><Link href="/contactUs"><a>تماس با ما</a></Link></li>

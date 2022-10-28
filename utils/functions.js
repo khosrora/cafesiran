@@ -20,7 +20,6 @@ export const EditData = (data, id, bool) => {
 }
 
 export const EditDataReceptor = (data, id, bool) => {
-    console.log(data, id, bool);
     const newData = data.map(item =>
         (item.id === id ? { ...item, is_active: bool } : { ...item })
     )

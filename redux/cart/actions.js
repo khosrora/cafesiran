@@ -9,6 +9,15 @@ export const CARTActionsType = {
     CLEAR: "CLEAR"
 }
 
+
+export const clearCart = () => async dispatch => {
+    try {
+        dispatch({ type: CARTActionsType.CLEAR , payload: { data: [] } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CARTActionsType.LOAD, payload: { load: false } });
+    }
+}
 export const addToCart = (data) => async dispatch => {
     try {
         dispatch({ type: CARTActionsType.LOAD, payload: { load: true } });

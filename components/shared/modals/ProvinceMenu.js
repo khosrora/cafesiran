@@ -5,7 +5,6 @@ import {XIcon} from '@heroicons/react/outline';
 
 
 const ProvinceMenu = ({ SetProvinceMenu }) => {
-    console.log(province);
     return (
         <>
             <div onClick={() => SetProvinceMenu(false)} className="fixed bg-slate-900 opacity-50 top-0 right-0 left-0 bottom-0 z-50"></div>

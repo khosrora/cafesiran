@@ -199,7 +199,6 @@ export const getSuggestCafe = (page) => async dispatch => {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/suggestions/?page=${page}`, token);
-        console.log(res);
         dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
         dispatch({ type: CAFEACTIONSYPES.GET_CAFES_SUGGEST, payload: { data: res.data.results } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
@@ -244,7 +243,6 @@ export const getDetailsOrder = (id) => async dispatch => {
         if (res.status === 200) dispatch({ type: CAFEACTIONSYPES.DETAILS_ORDER, payload: { data: res.data } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        console.log(err);
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }

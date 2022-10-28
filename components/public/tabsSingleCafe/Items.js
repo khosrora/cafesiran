@@ -2,20 +2,21 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import CardItem from "../../shared/cards/CardItem";
+import SCartItem from '../../skillton/SCartItem';
 
 const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
 
 
 
-const Items = ({ items,  categories }) => {
+const Items = ({ items, categories }) => {
 
     const [menuItems, setMenuItems] = useState(items);
     const [menu, setMenu] = useState(false);
     const [categoriesBg, setCategoriesBg] = useState(0);
-    const { cartDetails } = useSelector(state => state);
+    const { cartDetails, global } = useSelector(state => state);
     const order = cartDetails.orderList;
-
-
+    const loadCategories = global.loadCate;
+    const loadItem = global.loadItem;
     const checkItemInCart = (itemId) => {
         const filter = order.some(item => item.id === itemId);
         return filter;
@@ -44,34 +45,55 @@ const Items = ({ items,  categories }) => {
                                     </div>
                                 </div>
                                 {
-                                    categories.map(i =>
-                                        <div key={i.id} className="flex justify-between items-center cursor-pointer" onClick={() => handleItemMenu(i.id)}>
-                                            <div className={`${i.id === categoriesBg ? "bg-amber-600 text-white" : "bg-zinc-100 dark:bg-zinc-800"}  flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1  dark:text-zinc-200`}>
-                                                <img className="w-12 h-12" src={i.image} alt={i.title} />
-                                                <span className="text-xs mt-2">{i.title}</span>
+                                    loadCategories ?
+                                        [1, 2, 3, 4, 5, 6].map(i =>
+                                            <div key={i} className="flex justify-between items-center cursor-pointer bg-zinc-100 animate-pulse mr-2 rounded-sm dark:bg-zinc-900">
+                                                <div className="flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1">
+                                                    <div className="bg-zinc-200 p-8 rounded-md dark:bg-zinc-800"></div>
+                                                    <span className="text-xs mt-2 bg-zinc-200 p-2 rounded-md w-full dark:bg-zinc-800"></span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    )
+                                        )
+                                        :
+                                        categories.map(i =>
+                                            <div key={i.id} className="flex justify-between items-center cursor-pointer" onClick={() => handleItemMenu(i.id)}>
+                                                <div className={`${i.id === categoriesBg ? "bg-amber-600 text-white" : "bg-zinc-100 dark:bg-zinc-800"}  flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1  dark:text-zinc-200`}>
+                                                    <img className="w-12 h-12" src={i.image} alt={i.title} />
+                                                    <span className="text-xs mt-2">{i.title}</span>
+                                                </div>
+                                            </div>
+                                        )
                                 }
                             </div>
                         </div>
                         {
                             menuItems.length === 0 ?
-                                <div className="w-full text-center my-36 text-xs">
-                                    <p>در حال حاضر آیتمی برای این دسته ثبت نشده است</p>
-                                </div>
+                                loadItem ?
+                                    <div className="grid gap-y-5 gap-x-2 my-5 md:grid-cols-2 max-w-7xl m-auto">
+                                        <SCartItem />
+                                    </div>
+                                    :
+                                    <div className="w-full text-center my-36 text-xs">
+                                        <p>در حال حاضر آیتمی برای این دسته ثبت نشده است</p>
+                                    </div>
                                 :
                                 <div className="grid gap-y-5 gap-x-2 my-5 md:grid-cols-2 max-w-7xl m-auto">
                                     {
-                                        menuItems.map(item => <CardItem key={item.id} item={item} setMenu={setMenu} checkItemInCart={checkItemInCart} />)
+                                        loadItem ? <SCartItem /> :
+                                            menuItems.map(item => <CardItem key={item.id} item={item} setMenu={setMenu} checkItemInCart={checkItemInCart} />)
                                     }
                                 </div>
                         }
                     </>
                     :
-                    <div className="text-xs w-full bg-zinc-100 text-center my-52 py-6 rounded-md dark:bg-zinc-800">
-                        <p>در حال حاضر هیج آیتمی ثبت نشده است</p>
-                    </div>
+                    loadItem ?
+                        <div className="grid gap-y-5 gap-x-2 my-5 md:grid-cols-2 max-w-7xl m-auto">
+                            <SCartItem />
+                        </div>
+                        :
+                        <div className="text-xs w-full bg-zinc-100 text-center my-52 py-6 rounded-md dark:bg-zinc-800">
+                            <p>در حال حاضر هیج آیتمی ثبت نشده است</p>
+                        </div>
             }
             {
                 menu ?

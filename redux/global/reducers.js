@@ -4,6 +4,8 @@ import { globalActionsType } from "./actions";
 
 const initialStore = {
     load: false,
+    loadCate: true,
+    loadItem: true,
     cafe: null,
     categories: [],
     menuList: [],
@@ -37,6 +39,16 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 cafesList: action.payload.data
+            }
+        case globalActionsType.LOAD_CATEGORIES:
+            return {
+                ...state,
+                loadCate: action.payload.load
+            }
+        case globalActionsType.LOAD_ITEM:
+            return {
+                ...state,
+                loadItem: action.payload.load
             }
         default:
             return state;

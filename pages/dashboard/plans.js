@@ -13,7 +13,6 @@ const Plans = () => {
     const { cafeDetails } = useSelector(state => state);
     const data = cafeDetails.plans;
     const load = cafeDetails.load;
-    console.log(data);
 
     useEffect(() => {
         dispatch(getPlans())
