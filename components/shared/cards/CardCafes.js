@@ -1,25 +1,29 @@
 import Link from "next/link";
 import MyImage from "../utilities/imageCardCafes";
 import { HeartIcon } from '@heroicons/react/outline'
-import Cafes from "../../../pages/cafes";
+import { errorMessage } from "../../../utils/toast";
 
 
 
 
 const CardCafes = ({ cafe }) => {
 
+    const handleAddToFav = id => {
+        errorMessage("به زودی این ویژگی فعال میشود")
+    }
+
     return (
         <div className="wrapper  antialiased text-gray-900">
             <div>
-                <MyImage img={cafe.image_url ? cafe.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"} alt="عکس کافه" />
+                <MyImage img={cafe.image_url ? cafe.image_url : "/images/placeholder.png"} alt={cafe.persian_title} />
                 <div className="relative px-4 -mt-16">
                     <div className="bg-white p-6 rounded-lg shadow-lg dark:bg-zinc-800 dark:text-zinc-200">
                         <div className="flex items-baseline">
                             <span className="bg-amber-600 text-white  py-1 px-4 inline-block rounded-full text-xs">
-                                {cafe.type === "C" ? "کافه" : null }
-                                {cafe.type === "R" ? "رستوران" : null }
-                                {cafe.type === "CR" ? "کافه رستوران" : null }
-                                {cafe.type === "IC" ? "آبمیوه بستنی" : null }
+                                {cafe.type === "C" ? "کافه" : null}
+                                {cafe.type === "R" ? "رستوران" : null}
+                                {cafe.type === "CR" ? "کافه رستوران" : null}
+                                {cafe.type === "IC" ? "آبمیوه بستنی" : null}
                             </span>
                             <div className="mr-4 text-gray-600  text-[9px] font-semibold tracking-wider dark:text-zinc-200">
                                 {cafe.view_count} بازدید  &bull;   {cafe.instagram_id ? `instagram : @${cafe.instagram_id}` : null}
@@ -30,10 +34,10 @@ const CardCafes = ({ cafe }) => {
                         <div className="mt-4 flex justify-between items-center">
                             <Link href={`/cafes/${cafe.id}`}>
                                 <a className="">
-                                    <span className="text-amber-600 text-sm font- cursor-pointer">مشاهده منو {cafe.persian_title}</span>
+                                    <span className="text-amber-600 text-xs font- cursor-pointer truncate">مشاهده منو {cafe.persian_title}</span>
                                 </a>
                             </Link>
-                            <div className="">
+                            <div className="" onClick={() => handleAddToFav(cafe.id)}>
                                 <HeartIcon className="h-6 w-6" />
                             </div>
                         </div>

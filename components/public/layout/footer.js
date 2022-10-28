@@ -23,7 +23,7 @@ const Footer = () => {
                         <li className='mt-2'><Link href="/"><a>خانه</a></Link></li>
                         <li className='mt-2'><Link href="/aboutUs"><a>درباره ما</a></Link></li>
                         <li className='mt-2'><Link href="/contactUs"><a>تماس با ما</a></Link></li>
-                        <li className='mt-2'><Link href="/features"><a>امکانات</a></Link></li>
+                        <li className='mt-2'><Link href="/features"><a>امکانات کافه ایران</a></Link></li>
                     </ul>
                 </div>
                 <div className="mb-4 md:w-1/6">

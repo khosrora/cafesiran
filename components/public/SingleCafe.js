@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
 
 
@@ -12,11 +11,7 @@ const Suggest = dynamic(() => import("./tabsSingleCafe/suggest"))
 
 
 
-const SingleCafe = ({ items, categories }) => {
-
-    const { query } = useRouter();
-    const cafeId = query.cafeId;
-
+const SingleCafe = ({ items, categories, cafeId }) => {
     const [tabs, setTabs] = useState("Items");
 
     const handleTab = (tab) => {
@@ -26,7 +21,7 @@ const SingleCafe = ({ items, categories }) => {
     function MenuItem({ tabs }) {
         switch (tabs) {
             case "Items":
-                return <Items categories={categories} items={items}  />;
+                return <Items categories={categories} items={items} />;
             case "Reserve":
                 return <Reserve cafeId={cafeId} />;
             case "About":

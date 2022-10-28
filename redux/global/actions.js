@@ -96,6 +96,7 @@ export const getCafes = (slug, cityId) => async dispatch => {
     try {
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
         const res = await getDataAPI(`cafe/province_cafes/${slug}/?city=${cityId}`);
+        console.log(res);
         if (res.status === 200) {
             dispatch({ type: globalActionsType.GET_CAFES, payload: { data: res.data } });
         } else if (res.status === 204) {
@@ -103,6 +104,7 @@ export const getCafes = (slug, cityId) => async dispatch => {
         }
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     } catch (error) {
-
+        dispatch({ type: globalActionsType.GET_CAFES, payload: { data: [] } });
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     }
 }

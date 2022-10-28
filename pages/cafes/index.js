@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import CafesPage from "../../components/public/cafesPage";
 import Layout from "../../components/public/layout";
@@ -7,7 +7,10 @@ import { getCafes } from '../../redux/global/actions';
 
 
 
-const Cafes = ({ province, provinceId, city }) => {
+const Cafes = (props) => {
+    const province = props.props.province;
+    const provinceId = props.props.provinceId;
+    const city = props.props.city;
 
     const dispatch = useDispatch();
 
@@ -30,16 +33,23 @@ const Cafes = ({ province, provinceId, city }) => {
     );
 }
 
-export default Cafes;
+Cafes.getInitialProps = async (ctx) => {
+    try {
+        // ! get token
+        const { province, id, city } = ctx.query;
 
-export async function getServerSideProps(context) {
-    const { province, id, city } = context.query;
-
-    return {
-        props: {
-            province: JSON.parse(JSON.stringify(province)),
-            provinceId: JSON.parse(JSON.stringify(id)),
-            city: city ? JSON.parse(JSON.stringify(city)) : null,
+        return {
+            props: {
+                province: JSON.parse(JSON.stringify(province)),
+                provinceId: JSON.parse(JSON.stringify(id)),
+                city: city ? JSON.parse(JSON.stringify(city)) : null,
+            },
+        }
+    } catch (error) {
+        return {
+            notFound: true
         }
     }
-} 
+}
+
+export default Cafes;

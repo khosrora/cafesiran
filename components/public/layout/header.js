@@ -65,7 +65,7 @@ const Header = () => {
                                 <Link href="/blogs"><a className={`${asPath === "/blogs" ? 'text-amber-600' : null}`}>بلاگ ها</a></Link>
                             </li> */}
                             <li className='mr-8'>
-                                <Link href="/features"><a className={`${asPath === "/features" ? 'text-amber-600' : null}`}>امکانات</a></Link>
+                                <Link href="/features"><a className={`${asPath === "/features" ? 'text-amber-600' : null}`}>امکانات کافه ایران</a></Link>
                             </li>
                             {
                                 login ?

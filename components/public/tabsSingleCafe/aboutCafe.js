@@ -1,25 +1,19 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPublicDetailsCafe } from '../../../redux/global/actions';
+import { useSelector } from 'react-redux';
 import SAboutCafe from '../../skillton/SAboutCafe';
 
 
-const AboutCafe = ({ cafeId }) => {
+const AboutCafe = () => {
 
-    const dispatch = useDispatch();
     const { global } = useSelector(state => state);
     const cafe = global.cafe;
+    const load = global.load;
 
-    useEffect(() => {
-        dispatch(getPublicDetailsCafe(cafeId))
-    }, [])
-    
-    if (!cafe) return <SAboutCafe />
+    if (load) return <SAboutCafe />
     return (
         <div className="max-w-7xl m-auto my-8">
             <div className="flex flex-col lg:flex-row lg:justify-start">
                 <div className="lg:w-2/4">
-                    <img className="rounded-md" src={cafe?.image_url ? cafe?.image_url : "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png"} alt={cafe?.persian_title} />
+                    <img className="rounded-md" src={cafe?.image_url ? cafe?.image_url : "/images/placeholder.png"} alt={cafe?.persian_title} />
                 </div>
                 <div className="my-8 flex flex-col gap-y-4 text-xs lg:mr-4 dark:text-zinc-200">
                     {

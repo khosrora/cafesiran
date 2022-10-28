@@ -28,7 +28,6 @@ const CafesPage = ({ provinceId, province }) => {
         }
     }, [provinceId])
 
-
     return (
         <>
             <div className="px-8 mb-8 lg:flex lg:justify-between lg:items-start m-auto">
@@ -37,10 +36,8 @@ const CafesPage = ({ provinceId, province }) => {
                         <span className="ml-2">خانه</span>
                         /
                         <span className="mx-2 text-blue-400">
-                            سیستان و بلوچستان
+                            {province}
                         </span>
-                        /
-                        <span className="mr-2 text-blue-400">زاهدان</span>
                     </div>
                     <div className="flex flex-col justify-start items-start border-2 border-slate-200 p-4 rounded-md text-sm text-slate-500 dark:bg-zinc-800 dark:border-zinc-700">
                         <div className="w-full mt-8 relative mb-8 cursor-pointer">
