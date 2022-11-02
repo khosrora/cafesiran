@@ -5,7 +5,7 @@ import Link from "next/link";
 const Footer = () => {
     return (
         <footer>
-            <div className="bg-slate-900 p-4 pb-16 flex flex-col justify-start px-8 items-start text-white md:flex-row md:justify-between md:py-16 dark:bg-zinc-900">
+            <div className="bg-slate-900 text-xs p-4 pb-16 flex flex-col justify-start px-8 items-start text-white md:flex-row md:justify-between md:py-16 dark:bg-zinc-900">
                 <div className="mb-4 md:w-3/6">
                     <div className="flex justify-start items-center">
                         <img width="45" height="45" className="hidden lg:flex" src="/logo_dark.svg" alt="" />

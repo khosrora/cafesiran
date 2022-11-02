@@ -42,7 +42,7 @@ const HomePage = () => {
         <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
             <h1 className="text-6xl font-bold">کافه <span className="text-amber-600">ایران</span></h1>
             <div className="mt-8 font-bold">منو دیجیتال برای کافه و رستوران و ... شما</div>
-            <div className="px-4 mt-8  flex flex-col justify-start items-start">
+            <div className="px-4 mt-8 text-[10px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
                 <div className="flex justify-start items-center">
                     <CheckIcon className='w-4 h-4 ml-2' />
                     <span className="">تعامل پویا با مشتری برای رستوران شما </span>
@@ -60,7 +60,7 @@ const HomePage = () => {
                 </div>
                 <div className="flex justify-start items-center">
                     <CheckIcon className='w-4 h-4 ml-2' />
-                    <span className=""> نمایش گزارشات گرافیکی </span>
+                    <span className=""> نمایش گزارشات گرافیکی از سفارشات ثبت شده</span>
                     <br />
                 </div>
                 <div className="flex justify-start items-center">
