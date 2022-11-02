@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { SearchIcon } from '@heroicons/react/outline'
+import { SearchIcon, CheckIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link';
 import { errorMessage } from '../../utils/toast';
 import { searchCafe } from '../../redux/global/actions';
@@ -41,15 +41,40 @@ const HomePage = () => {
     return (
         <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
             <h1 className="text-6xl font-bold">کافه <span className="text-amber-600">ایران</span></h1>
-            <div className="mt-8 font-bold">کافه ایران وب سایتی به وسعت ایران</div>
-            <div className="px-4 mt-8 text-center">
-                <span className="text-slate-400">از هر جا ایران که باشید با انتخاب شهر خود کافه های شهر خود را بیابید </span>
-                <br />
-                <span className="text-slate-400">ثبت سفارش و ارسال به درب محل کار یا خانه</span>
-                <br />
-                <span className="text-slate-400">جست و جو راحت با استفاده از کد کافه</span>
-                <br />
-                <span className="text-slate-400">خرید راحت و آسان در کمترین بازه زمانی</span>
+            <div className="mt-8 font-bold">منو دیجیتال برای کافه و رستوران و ... شما</div>
+            <div className="px-4 mt-8  flex flex-col justify-start items-start">
+                <div className="flex justify-start items-center">
+                    <CheckIcon className='w-4 h-4 ml-2' />
+                    <span className="">تعامل پویا با مشتری برای رستوران شما </span>
+                    <br />
+                </div>
+                <div className="flex justify-start items-center">
+                    <CheckIcon className='w-4 h-4 ml-2' />
+                    <span className="">دسترسی سریع مشتریان به منو ( کد کافه و qrcode و نقشه و ... )</span>
+                    <br />
+                </div>
+                <div className="flex justify-start items-center">
+                    <CheckIcon className='w-4 h-4 ml-2' />
+                    <span className=""> قابلیت ایجاد سطح دسترسی برای سالن داران </span>
+                    <br />
+                </div>
+                <div className="flex justify-start items-center">
+                    <CheckIcon className='w-4 h-4 ml-2' />
+                    <span className=""> نمایش گزارشات گرافیکی </span>
+                    <br />
+                </div>
+                <div className="flex justify-start items-center">
+                    <CheckIcon className='w-4 h-4 ml-2' />
+                    <span className=""> ثبت مجموعه در کمتر از 3 دقیقه </span>
+                    <br />
+                </div>
+                <Link href="/features">
+                    <a className="flex justify-start items-center">
+                        <ArrowLeftIcon className='w-4 h-4 ml-2' />
+                        <span className=""> مشاهده توضیحات بیشتر ... </span>
+                        <br />
+                    </a>
+                </Link>
             </div>
             <div className="flex flex-col gap-y-2 lg:flex lg:flex-row mt-4">
                 <div className="mb-4 md:mb-0 relative">
