@@ -45,7 +45,7 @@ const HomePage = () => {
             <div className="px-4 mt-8 text-[10px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
                 <div className="flex justify-start items-center">
                     <CheckIcon className='w-4 h-4 ml-2' />
-                    <span className="">تعامل پویا با مشتری برای رستوران شما </span>
+                    <span className="">تعامل پویا با مشتری برای کسب و کار شما </span>
                     <br />
                 </div>
                 <div className="flex justify-start items-center">
@@ -65,7 +65,7 @@ const HomePage = () => {
                 </div>
                 <div className="flex justify-start items-center">
                     <CheckIcon className='w-4 h-4 ml-2' />
-                    <span className=""> ثبت مجموعه در کمتر از 3 دقیقه </span>
+                    <span className=""> ثبت مجموعه شما در کمتر از 3 دقیقه </span>
                     <br />
                 </div>
                 <Link href="/features">

@@ -32,7 +32,7 @@ const AboutUsPage = () => {
                             <p>
                                 ما معتقدیم که کار تیمی کار رویایی است.
                             </p>
-                        </div>پیچیده
+                        </div>
                     </div>
                     <div className="text-center mt-8">
                         <div className="">
