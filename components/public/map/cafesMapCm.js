@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { MapContainer, TileLayer, Popup, Marker } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css';
-import Link from 'next/link';
 import Router from 'next/router';
 
-const CafesMapCm = () => {
+const CafesMapCm = ({ setShowCafe }) => {
 
     const { global } = useSelector(state => state);
     const list = global.cafesList;
@@ -36,12 +35,7 @@ const CafesMapCm = () => {
                     list.filter(cafe => cafe.latitude != null).map((i, index) => (
                         <Marker key={index} draggable={false} position={[i.latitude, i.longitude]} icon={i.type === "C" ? markerIconCafe : markerIconResturant}>
                             <Popup>
-                                <Link href={`/cafes/${i.id}`} className='text-[7px] font-[vazir] lg:text-sm'>
-                                    <a>
-                                        برو به منو {i.persian_title}
-                                    </a>
-                                </Link>
-                                {/* <p className='cursor-pointer font-[vazir]' onClick={() => console.log("object")}>مشاهده اطلاعات</p> */}
+                                <p className='cursor-pointer font-[vazir]' onClick={() => setShowCafe(i)}>مشاهده اطلاعات</p>
                             </Popup>
                         </Marker>
                     ))
