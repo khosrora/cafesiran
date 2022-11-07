@@ -23,7 +23,7 @@ const Features = () => {
                 <ItemFeatures
                     dir="ltr"
                     bg="bg-zinc-100"
-                    title="نمابش روی نقشه"
+                    title="نمایش روی نقشه"
                     text="نقشه کافه ایران به شما کمک میکند اطلاعات مجموعه و همچنین آدرس دقیق را به کاربران خود نمایش دهید"
                     img="/images/features/Group 537.png"
                 />

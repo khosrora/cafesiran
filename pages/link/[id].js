@@ -37,7 +37,7 @@ const id = (props) => {
                     }
                     <div className="flex justify-between items-center w-full gap-x-4 px-4">
                         <Link href={`/cafes/${data.id}`}>
-                            <a className="bg-amber-600 p-2 rounded-md text-white w-1/4 text-center">
+                            <a className="bg-amber-600 p-2 rounded-md text-white w-1/4 text-center text-[10px]">
                                 مشاهده منو
                             </a>
                         </Link>
