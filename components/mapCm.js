@@ -44,6 +44,7 @@ const MapCm = () => {
     });
 
     if (!userDetails.user) return <p>در حال دریافت اطلاعات</p>
+    
     return (
         <>
             <MapContainer className='h-4/6' center={[35.7000, 51.4167]} zoom={7} scrollWheelZoom={true}>

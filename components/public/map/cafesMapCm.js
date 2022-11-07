@@ -12,7 +12,7 @@ const CafesMapCm = () => {
     const list = global.cafesList;
 
     useEffect(() => {
-        if(list.length == 0 ) Router.back()
+        if (list.length == 0) Router.back()
     })
 
     var markerIconCafe = L.icon({
@@ -41,6 +41,7 @@ const CafesMapCm = () => {
                                         برو به منو {i.persian_title}
                                     </a>
                                 </Link>
+                                {/* <p className='cursor-pointer font-[vazir]' onClick={() => console.log("object")}>مشاهده اطلاعات</p> */}
                             </Popup>
                         </Marker>
                     ))
