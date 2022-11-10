@@ -30,7 +30,7 @@ const CafesPage = ({ provinceId, province }) => {
 
     return (
         <>
-            <div className="px-8 mb-8 lg:flex lg:justify-between lg:items-start m-auto">
+            <div className="px-8 mb-36 max-w-[1800px] lg:flex lg:justify-between lg:items-start m-auto">
                 <div className="lg:w-3/12">
                     <div className="text-xs mb-4">
                         <span className="ml-2">خانه</span>
