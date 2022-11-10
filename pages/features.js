@@ -10,7 +10,7 @@ const Features = () => {
     return (
         <>
             <Head>
-                <title> منو دیجیتال | menu Digital | امکانات و ویژگی ها </title>
+                <title> منو دیجیتال | menu Digital | امکانات و ویژگی ها کافه ایران</title>
             </Head>
             <Layout>
                 <ItemFeatures
@@ -54,7 +54,7 @@ const Features = () => {
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-16 mt-12 gap-y-10">
                             <TagFeatures
                                 svg={Svg.speed}
-                                bgColor="bg-[#FF7129]"
+                                bgColor="bg-zinc-100"
                                 title="دسترسی سریع واسان"
                                 text="دسترسی در کمترین زمان ممکن"
                             />

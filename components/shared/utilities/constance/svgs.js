@@ -4,8 +4,8 @@
 
 export const Svg = {
     speed: <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M11.5741 16.96H13.8941V22.36C13.8941 23.16 14.8807 23.5333 15.4141 22.9333L21.0941 16.48C21.5874 15.92 21.1874 15.04 20.4407 15.04H18.1207V9.63999C18.1207 8.83999 17.1341 8.46666 16.6007 9.06666L10.9207 15.52C10.4274 16.08 10.8274 16.96 11.5741 16.96Z" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M15.9622 29.3334C23.326 29.3334 29.2956 23.3638 29.2956 16C29.2956 8.63622 23.326 2.66669 15.9622 2.66669C8.59844 2.66669 2.62891 8.63622 2.62891 16C2.62891 23.3638 8.59844 29.3334 15.9622 29.3334Z" stroke="white" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M11.5741 16.96H13.8941V22.36C13.8941 23.16 14.8807 23.5333 15.4141 22.9333L21.0941 16.48C21.5874 15.92 21.1874 15.04 20.4407 15.04H18.1207V9.63999C18.1207 8.83999 17.1341 8.46666 16.6007 9.06666L10.9207 15.52C10.4274 16.08 10.8274 16.96 11.5741 16.96Z" stroke="#FF7129" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M15.9622 29.3334C23.326 29.3334 29.2956 23.3638 29.2956 16C29.2956 8.63622 23.326 2.66669 15.9622 2.66669C8.59844 2.66669 2.62891 8.63622 2.62891 16C2.62891 23.3638 8.59844 29.3334 15.9622 29.3334Z" stroke="#2E2F2A" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
     </svg>,
     pwa: <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M13.3327 22.6H8.27935C3.78602 22.6 2.66602 21.48 2.66602 16.9867V8.98666C2.66602 4.49332 3.78602 3.37332 8.27935 3.37332H22.3193C26.8127 3.37332 27.9327 4.49332 27.9327 8.98666" stroke="#2E2F2A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />

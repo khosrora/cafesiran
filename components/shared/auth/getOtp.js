@@ -79,7 +79,7 @@ const GetOtp = () => {
                         </svg>
                     </div>
                     <div className="py-8 text-center">
-                        <p className="text-4xl">کافه <span className="text-amber-600">ایران</span></p>
+                        <p className="text-4xl">کافه <span className="text-[#FF7129]">ایران</span></p>
                     </div>
                     {
                         sendCode ?

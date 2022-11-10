@@ -6,11 +6,11 @@ const Footer = () => {
     return (
         <footer>
             <div className="bg-zinc-100  dark:bg-zinc-900">
-                <div className="max-w-[1800px] text-xs p-4 pb-16 flex flex-col justify-start px-8 items-start md:flex-row md:justify-between md:py-16 m-auto">
+                <div className="max-w-[1800px] text-xs p-4 pb-16 flex flex-col justify-start px-8 items-start md:flex-row md:justify-between  md:py-16 m-auto">
                     <div className="mb-4 md:w-3/6">
                         <div className="flex justify-start items-center">
                             <img width="45" height="45" className="hidden lg:flex" src="/logo_dark.svg" alt="" />
-                            <h4 className='text-4xl font-bold'>کافه <span className='text-amber-600'>ایران</span></h4>
+                            <h4 className='text-4xl font-bold'>کافه <span className='text-[#FF7129]'>ایران</span></h4>
                         </div>
                         <p className='mt-2 text-xs  md:mt-4 md:w-3/4 leading-9'>
                             یک پنل مدیریت کامل برای کسب و کار خودتون دریافت کنید و منو های دیجیتال با قابلیت دسترسی سریع برای مشتریان کافه و رستوران و یا هتل ایجاد کنید. رزروهای آنلاین و یا انتقادات پیشنهادات را آنلاین دریافت کنید.

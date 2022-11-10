@@ -24,7 +24,7 @@ const SuggestCafe = ({ setSuggestModal, page, setPage }) => {
                     :
                     <>
                         <div className="flex justify-between items-center w-full">
-                            <div className="flex justify-center items-center hover:text-amber-600">
+                            <div className="flex justify-center items-center hover:text-[#FF7129]">
                                 <Link href="/dashboard/allBlogs">
                                     <a className="mr-2">پیشنهادات</a>
                                 </Link>

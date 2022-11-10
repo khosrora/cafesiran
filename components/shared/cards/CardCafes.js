@@ -34,7 +34,7 @@ const CardCafes = ({ cafe }) => {
                         <div className="mt-4 flex justify-between items-center">
                             <Link href={`/cafes/${cafe.id}`}>
                                 <a className="">
-                                    <span className="text-amber-600 text-xs font- cursor-pointer truncate">مشاهده منو {cafe.persian_title}</span>
+                                    <span className="text-[#FF7129] text-xs font- cursor-pointer truncate">مشاهده منو {cafe.persian_title}</span>
                                 </a>
                             </Link>
                             <div className="" onClick={() => handleAddToFav(cafe.id)}>

@@ -66,7 +66,7 @@ const id = (props) => {
                 </div>
                 <div className="text-center">
                     <Link href='/'>
-                        <a className="text-xs text-amber-600 font-thin">ساخته شده توسط کافه ایران</a>
+                        <a className="text-xs text-[#FF7129] font-thin">ساخته شده توسط کافه ایران</a>
                     </Link>
                 </div>
             </div>

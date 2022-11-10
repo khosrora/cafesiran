@@ -17,7 +17,7 @@ const AboutUsPage = () => {
                     <div className="text-center mt-8">
                         <div className="">
                             <p className="text-lg mb-2">
-                                ما مشتری <span className="text-amber-600">محور</span> هستیم.
+                                ما مشتری <span className="text-[#FF7129]">محور</span> هستیم.
                             </p>
                             <p>
                                 ما معتقدیم که موفقیت شریکمان موفقیت خود ماست.
@@ -27,7 +27,7 @@ const AboutUsPage = () => {
                     <div className="text-center mt-8">
                         <div className="">
                             <p className="text-lg mb-2">
-                                ما بازیکنان <span className="text-amber-600" >یک تیم</span> هستیم
+                                ما بازیکنان <span className="text-[#FF7129]" >یک تیم</span> هستیم
                             </p>
                             <p>
                                 ما معتقدیم که کار تیمی کار رویایی است.
@@ -37,7 +37,7 @@ const AboutUsPage = () => {
                     <div className="text-center mt-8">
                         <div className="">
                             <p className="text-lg mb-2">
-                                ما یک دسته <span className="text-amber-600">پرشور</span> هستیم.
+                                ما یک دسته <span className="text-[#FF7129]">پرشور</span> هستیم.
                             </p>
                             <p>
                                 ما کاری را که انجام می دهیم دوست داریم و آن را با عشق انجام می دهیم.
@@ -47,7 +47,7 @@ const AboutUsPage = () => {
                     <div className="text-center mt-8">
                         <div className="">
                             <p className="text-lg mb-2">
-                                ما قابل <span className="text-amber-600">اعتماد</span> هستیم
+                                ما قابل <span className="text-[#FF7129]">اعتماد</span> هستیم
                             </p>
                             <p>
                                 ما معتقدیم مشتریان ما همیشه سزاوار صداقت هستند.
@@ -57,7 +57,7 @@ const AboutUsPage = () => {
                     <div className="text-center mt-8">
                         <div className="">
                             <p className="text-lg mb-2">
-                                ما <span className="text-amber-600">پاسخگو</span> هستیم
+                                ما <span className="text-[#FF7129]">پاسخگو</span> هستیم
                             </p>
                             <p>
                                 ما مالکیت کاری را که به ما محول شده است به عهده می گیریم.

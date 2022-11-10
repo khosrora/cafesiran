@@ -26,7 +26,7 @@ const Gallery = () => {
         <div className="">
             <form className="flex flex-col justify-between items-center mt-4">
                 <div className="flex justify-between items-center w-full">
-                    <div className="flex justify-center items-center hover:text-amber-600">
+                    <div className="flex justify-center items-center hover:text-[#FF7129]">
                         <p className="mr-2">گالری تصاویر</p>
                     </div>
                 </div>

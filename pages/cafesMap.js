@@ -52,7 +52,7 @@ const CafesMap = () => {
                                     <br />
                                     <p>{showCafe.street}</p>
                                 </div>
-                                <div className="bg-zinc-200 w-full rounded-md text-center text-amber-600 py-2 cursor-pointer mb-2">
+                                <div className="bg-zinc-200 w-full rounded-md text-center text-[#FF7129] py-2 cursor-pointer mb-2">
                                     <Link href={`/cafes/${showCafe.id}`} >
                                         <p>مشاهده منو</p>
                                     </Link>

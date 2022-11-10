@@ -40,15 +40,15 @@ const ContactUsPage = () => {
                         </div>
                         <div className="my-4 lg:flex justify-between">
                             <div className="my-2 p-4 flex flex-col justify-center items-center  rounded-md lg:px-16 ">
-                                <PhoneIcon className="h-8 w-8 text-amber-600" />
+                                <PhoneIcon className="h-8 w-8 text-[#FF7129]" />
                                 <p className="text-sm mt-8">09332829823</p>
                             </div>
                             <div className="my-2 p-4 flex flex-col justify-center items-center bg-zinc-50 rounded-md lg:px-16 dark:bg-zinc-800">
-                                <MailIcon className="h-8 w-8 text-amber-600" />
+                                <MailIcon className="h-8 w-8 text-[#FF7129]" />
                                 <p className="text-sm mt-8">khosrora153333@gmail.com</p>
                             </div>
                             <div className="my-2 p-4 flex flex-col justify-center items-center rounded-md lg:px-16 ">
-                                <LocationMarkerIcon className="h-8 w-8 text-amber-600" />
+                                <LocationMarkerIcon className="h-8 w-8 text-[#FF7129]" />
                                 <p className="text-sm mt-8">زاهدان پارک علم و فناوری</p>
                             </div>
                         </div>

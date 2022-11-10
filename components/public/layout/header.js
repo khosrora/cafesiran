@@ -30,7 +30,7 @@ const Header = () => {
         if (currentTheme === "dark") {
             return (
                 <div onClick={() => setTheme('light')}>
-                    <LightBulbIcon className="h-6 w-6 text-amber-600 cursor-pointer" />
+                    <LightBulbIcon className="h-6 w-6 text-[#FF7129] cursor-pointer" />
                 </div>
             )
         }
@@ -50,25 +50,25 @@ const Header = () => {
                     <ul className='flex justify-center items-center'>
                         <div className="hidden md:flex ">
                             <li>
-                                <Link href="/"><a className={`${asPath === "/" ? 'text-amber-600' : null}`}>خانه</a></Link>
+                                <Link href="/"><a className={`${asPath === "/" ? 'text-[#FF7129]' : null}`}>خانه</a></Link>
                             </li>
                             <li className="mr-8">
-                                <Link href="/aboutUs"><a className={`${asPath === "/aboutUs" ? 'text-amber-600' : null}`}>درباره ما</a></Link>
+                                <Link href="/aboutUs"><a className={`${asPath === "/aboutUs" ? 'text-[#FF7129]' : null}`}>درباره ما</a></Link>
                             </li>
                             <li className='mr-8'>
-                                <Link href="/contactUs"><a className={`${asPath === "/contactUs" ? 'text-amber-600' : null}`}>تماس با ما</a></Link>
+                                <Link href="/contactUs"><a className={`${asPath === "/contactUs" ? 'text-[#FF7129]' : null}`}>تماس با ما</a></Link>
                             </li>
                             {/* <li className='mr-8'>
-                                <Link href="/blogs"><a className={`${asPath === "/blogs" ? 'text-amber-600' : null}`}>بلاگ ها</a></Link>
+                                <Link href="/blogs"><a className={`${asPath === "/blogs" ? 'text-[#FF7129]' : null}`}>بلاگ ها</a></Link>
                             </li> */}
                             <li className='mr-8'>
-                                <Link href="/features"><a className={`${asPath === "/features" ? 'text-amber-600' : null}`}>امکانات کافه ایران</a></Link>
+                                <Link href="/features"><a className={`${asPath === "/features" ? 'text-[#FF7129]' : null}`}>امکانات کافه ایران</a></Link>
                             </li>
                             {
                                 login ?
                                     order.length === 0 ? "" :
                                         <li className='mr-8 relative'>
-                                            <Link href="/cafes/payment"><a className={`${asPath === "/cafes/payment" ? 'text-amber-600' : null}`}>سبد سفارش</a></Link>
+                                            <Link href="/cafes/payment"><a className={`${asPath === "/cafes/payment" ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></Link>
                                             <div className="absolute flex justify-center items-center top-0 -left-4 text-red-600 rounded-full text-xs">{order.length}</div>
                                         </li>
                                     : null
@@ -80,7 +80,7 @@ const Header = () => {
                     </ul>
                 </div>
                 <Link href="/">
-                    <p className="flex  md:hidden">کافه <span className="mr-2 text-amber-600">ایران</span></p>
+                    <p className="flex  md:hidden">کافه <span className="mr-2 text-[#FF7129]">ایران</span></p>
                 </Link>
                 {
                     load ?

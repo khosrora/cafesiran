@@ -33,7 +33,7 @@ const ReservesCafe = ({ setReserveForm }) => {
                     :
                     <>
                         <div className="flex justify-between items-center w-full">
-                            <div className=" hover:text-amber-600">
+                            <div className=" hover:text-[#FF7129]">
                                 <Link href="/dashboard/allBlogs">
                                     <a className="mr-2">رزرو شده ها</a>
                                 </Link>
