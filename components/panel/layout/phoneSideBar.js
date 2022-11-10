@@ -169,13 +169,13 @@ const PhoneSideBar = ({ setMenu }) => {
                             user?.cafe === null ?
                                 <Link href="/dashboard/requestCafe">
                                     <div className="justify-between items-center ml-8 w-full">
-                                        <button className="bg-amber-600 px-4 py-2 rounded-md text-white w-full">درخواست ثبت مجموعه</button>
+                                        <button className="bg-[#FF7129] px-4 py-2 rounded-md text-white w-full">درخواست ثبت مجموعه</button>
                                     </div>
                                 </Link>
                                 :
                                 <Link href="/dashboard/editRequestCafe">
                                     <div className="justify-between items-center ml-8 w-full">
-                                        <button className="bg-amber-600 px-4 py-2 rounded-md text-white w-full">ویرایش مجموعه</button>
+                                        <button className="bg-[#FF7129] px-4 py-2 rounded-md text-white w-full">ویرایش مجموعه</button>
                                     </div>
                                 </Link>
                         }
@@ -183,7 +183,7 @@ const PhoneSideBar = ({ setMenu }) => {
                             dispatch(logOutUser());
                             router.push("/");
                         }}>
-                            <button className="bg-amber-600 px-4 py-2 rounded-md text-white w-full">خروج</button>
+                            <button className="bg-[#FF7129] px-4 py-2 rounded-md text-white w-full">خروج</button>
                         </div>
                     </div>
                 </div>

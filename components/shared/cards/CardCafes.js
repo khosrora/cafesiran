@@ -19,7 +19,7 @@ const CardCafes = ({ cafe }) => {
                 <div className="relative px-4 -mt-16">
                     <div className="bg-white p-6 rounded-lg shadow-lg dark:bg-zinc-800 dark:text-zinc-200">
                         <div className="flex items-baseline">
-                            <span className="bg-amber-600 text-white  py-1 px-4 inline-block rounded-full text-xs">
+                            <span className="bg-[#FF7129] text-white  py-1 px-4 inline-block rounded-full text-xs">
                                 {cafe.type === "C" ? "کافه" : null}
                                 {cafe.type === "R" ? "رستوران" : null}
                                 {cafe.type === "CR" ? "کافه رستوران" : null}

@@ -18,7 +18,7 @@ const CardBlog = ({ img }) => {
                 <div className="text-xs mt-4 text-neutral-600 dark:text-white">1401/05/01</div>
             </div>
             <Link href={`/blogs/چگونه-قهوه-درست-کنیم`}>
-                <a className="text-center block rounded-md text-white py-2 bg-amber-600 font-medium text-sm mt-3 lg:py-2">مشاهده بیشتر</a>
+                <a className="text-center block rounded-md text-white py-2 bg-[#FF7129] font-medium text-sm mt-3 lg:py-2">مشاهده بیشتر</a>
             </Link>
         </div>
     );

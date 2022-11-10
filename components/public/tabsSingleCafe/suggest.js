@@ -49,7 +49,7 @@ const Suggest = ({ cafeId }) => {
                                 {errors.message && touched.message ? <span className='text-xs text-red-600'>{errors.message}</span> : null}
                             </div>
 
-                            <button type='submit' className="bg-amber-600 w-full text-white rounded-md py-2" disabled={load}>
+                            <button type='submit' className="bg-[#FF7129] w-full text-white rounded-md py-2" disabled={load}>
                                 {
                                     load ? "لطفا منتظر بمانید" : "ارسال نظر"
                                 }

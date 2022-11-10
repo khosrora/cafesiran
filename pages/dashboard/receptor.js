@@ -44,11 +44,11 @@ const Receptor = () => {
                                 </div>
                                 {
                                     load ?
-                                        <button className="bg-amber-600 text-center w-full rounded-md py-2 md:w-3/4">
+                                        <button className="bg-[#FF7129] text-center w-full rounded-md py-2 md:w-3/4">
                                             لطفا منتظر بمانید
                                         </button>
                                         :
-                                        <button type='submit' className="bg-amber-600 text-center w-full rounded-md py-2 md:w-3/4">
+                                        <button type='submit' className="bg-[#FF7129] text-center w-full rounded-md py-2 md:w-3/4">
                                             ثبت
                                         </button>
                                 }

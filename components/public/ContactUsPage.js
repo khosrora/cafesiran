@@ -20,7 +20,7 @@ const ContactUsPage = () => {
     const load = global.load;
 
     return (
-        <div className="my-16 px-8 w-full lg:my-24">
+        <div className="my-16 px-8 w-full lg:my-16">
             <Formik
                 initialValues={{
                     full_name: '',
@@ -72,9 +72,9 @@ const ContactUsPage = () => {
                             </div>
                             {
                                 load ? 
-                                <button type='submit' className="bg-amber-600 w-full text-white py-2 rounded-md" disabled>در حال ارسال پیام</button>
+                                <button type='submit' className="bg-[#FF7129] w-full text-white py-2 rounded-md" disabled>در حال ارسال پیام</button>
                                 :
-                                <button type='submit' className="bg-amber-600 w-full text-white py-2 rounded-md">ارسال پیام</button>
+                                <button type='submit' className="bg-[#FF7129] w-full text-white py-2 rounded-md">ارسال پیام</button>
                             }
                         </div>
                     </Form>

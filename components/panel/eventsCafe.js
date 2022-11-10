@@ -17,7 +17,7 @@ const EventsCafe = ({ setCreateForm }) => {
                         <a className="mr-2">رویداد ها</a>
                     </Link>
                 </div>
-                <button  className="bg-amber-600 w-28 px-4 py-2 rounded-md text-white" onClick={() => setCreateForm(true)}>ثبت رویداد</button>
+                <button  className="bg-[#FF7129] w-28 px-4 py-2 rounded-md text-white" onClick={() => setCreateForm(true)}>ثبت رویداد</button>
             </div>
             <div className=" text-right mt-8 overflow-x-auto">
                 <table className="w-full bg-zinc-100 text-gray-500 dark:bg-zinc-900 dark:text-white">

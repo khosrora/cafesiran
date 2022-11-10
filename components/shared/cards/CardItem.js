@@ -51,11 +51,11 @@ const CardItem = ({ item, setMenu, checkItemInCart }) => {
                     <p className="text-xs mt-2 text-slate-500 lg:text-lg dark:text-zinc-200"><span className="font-bold text-zinc-900 dark:text-zinc-200">{new Intl.NumberFormat().format(item.price)}</span> تومان</p>
                     {
                         setMenu !== "" ?
-                            <div className="bg-amber-600 p-2 rounded-full text-white cursor-pointer dark:text-zinc-200" onClick={() => handleAddToCart(item)}>
+                            <div className="bg-[#FF7129] p-2 rounded-full text-white cursor-pointer dark:text-zinc-200" onClick={() => handleAddToCart(item)}>
                                 <PlusIcon className="h-5 w-5 lg:h-6 lg:w-6" />
                             </div>
                             :
-                            <div className="bg-amber-600 p-2 px-2 rounded-full text-white cursor-pointer dark:text-zinc-200" onClick={() => handleAddToCart(item)}>
+                            <div className="bg-[#FF7129] p-2 px-2 rounded-full text-white cursor-pointer dark:text-zinc-200" onClick={() => handleAddToCart(item)}>
                                 {item?.count} عدد
                             </div>
                     }

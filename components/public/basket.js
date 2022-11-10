@@ -69,7 +69,7 @@ const Basket = ({ items }) => {
                                 <p>{new Intl.NumberFormat().format(total)} تومان</p>
                             </div>
                             <div className="mt-4">
-                                <button className="bg-amber-600 py-2 w-full text-white rounded-md" onClick={() => setModal(true)}>ثبت سفارش</button>
+                                <button className="bg-[#FF7129] py-2 w-full text-white rounded-md" onClick={() => setModal(true)}>ثبت سفارش</button>
                             </div>
                         </div>
                         :
@@ -86,9 +86,9 @@ const Basket = ({ items }) => {
                                 </div>
                                 {
                                     load ?
-                                        <button className="bg-amber-600 py-2 w-full text-white rounded-md">لطفا منتظر بمانید</button>
+                                        <button className="bg-[#FF7129] py-2 w-full text-white rounded-md">لطفا منتظر بمانید</button>
                                         :
-                                        <button className="bg-amber-600 py-2 w-full text-white rounded-md dark:outline-none" onClick={e => handleConfirmBasket(total, order)}>تایید و ارسال سفارش</button>
+                                        <button className="bg-[#FF7129] py-2 w-full text-white rounded-md dark:outline-none" onClick={e => handleConfirmBasket(total, order)}>تایید و ارسال سفارش</button>
                                 }
                             </div>
                         </div>

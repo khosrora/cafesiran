@@ -81,7 +81,7 @@ const Plans = () => {
                                 </li>
                             </ul>
                             <div className="flex justify-between items-center mt-4">
-                                <button className="bg-amber-600 py-2 text-white rounded-md w-1/2">خرید</button>
+                                <button className="bg-[#FF7129] py-2 text-white rounded-md w-1/2">خرید</button>
                                 <div className="text-sm font-bold text-zinc-600 flex justify-center items-center w-1/2">
                                     <span className="ml-2 dark:text-zinc-200">{new Intl.NumberFormat().format(i.price)}</span>
                                     <span className="dark:text-zinc-200">تومان</span>

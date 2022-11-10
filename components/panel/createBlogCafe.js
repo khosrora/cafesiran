@@ -21,7 +21,7 @@ const CreateBlogCafe = () => {
                             <a className="mr-2">همه بلاگ ها</a>
                         </Link>
                     </div>
-                    <button type="submit" className="bg-amber-600 w-28 px-4 py-2 rounded-md text-white">ثبت بلاگ</button>
+                    <button type="submit" className="bg-[#FF7129] w-28 px-4 py-2 rounded-md text-white">ثبت بلاگ</button>
                 </div>
 
                 <div className="flex-col justify-center items-center w-full mt-8">

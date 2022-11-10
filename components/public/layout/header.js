@@ -44,7 +44,7 @@ const Header = () => {
     };
 
     return (
-        <nav className="w-full p-2 m-auto">
+        <nav className="max-w-[1800px] p-2 m-auto">
             <div className="m-auto max-w-8xl p-6 flex flex-row-reverse justify-between items-center md:flex-row">
                 <div className="">
                     <ul className='flex justify-center items-center'>
@@ -57,9 +57,6 @@ const Header = () => {
                             </li>
                             <li className='mr-8'>
                                 <Link href="/contactUs"><a className={`${asPath === "/contactUs" ? 'text-amber-600' : null}`}>تماس با ما</a></Link>
-                            </li>
-                            <li className='mr-8'>
-                                <Link href="/cafes/8"><a className={`${asPath === "/cafes/8" ? 'text-amber-600' : null}`}>مشاهده نمونه</a></Link>
                             </li>
                             {/* <li className='mr-8'>
                                 <Link href="/blogs"><a className={`${asPath === "/blogs" ? 'text-amber-600' : null}`}>بلاگ ها</a></Link>
@@ -87,19 +84,19 @@ const Header = () => {
                 </Link>
                 {
                     load ?
-                        <div className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
+                        <div className="hidden bg-[#FF7129] px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
                             <UserIcon className='w-6 h-6 ml-4' />
                             در حال دریافت اطلاعات
                         </div> :
                         login ?
                             <Link href="/dashboard">
-                                <div className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
+                                <div className="hidden bg-[#FF7129] px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
                                     <UserIcon className='w-6 h-6 ml-4' />
                                     پنل کاربری
                                 </div>
                             </Link>
                             :
-                            <div onClick={() => { dispatch(show_Modal_Login(true)) }} className="hidden bg-amber-600 px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
+                            <div onClick={() => { dispatch(show_Modal_Login(true)) }} className="hidden bg-[#FF7129] px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
                                 <UserIcon className='w-6 h-6 ml-4' />
                                 ورود
                             </div>

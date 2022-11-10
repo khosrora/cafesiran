@@ -59,7 +59,7 @@ const MapCm = () => {
                 <MapEvents />
             </MapContainer>
             <div className="bg-zinc-100 p-2 rounded-md mt-4 dark:bg-zinc-800">
-                <div className="cursor-pointer bg-amber-600 text-center rounded py-1 max-w-xs m-auto text-xs" onClick={async () => {
+                <div className="cursor-pointer bg-[#FF7129] text-center rounded py-1 max-w-xs m-auto text-xs" onClick={async () => {
                     const res = await axios.get(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lng}`);
                     setAddress(res.data)
                 }}>
@@ -79,10 +79,10 @@ const MapCm = () => {
                             </p>
                             {
                                 load ?
-                                    <div className="cursor-pointer bg-amber-600 text-center rounded py-1 max-w-xs m-auto mt-2">
+                                    <div className="cursor-pointer bg-[#FF7129] text-center rounded py-1 max-w-xs m-auto mt-2">
                                         <p className='text-xs'>در حال ثبت اطلاعات</p>
                                     </div> :
-                                    <div className="cursor-pointer bg-amber-600 text-center rounded py-1 max-w-xs m-auto mt-2" onClick={() => handlePatchAddress()}>
+                                    <div className="cursor-pointer bg-[#FF7129] text-center rounded py-1 max-w-xs m-auto mt-2" onClick={() => handlePatchAddress()}>
                                         <p className='text-xs'>ثبت آدرس</p>
                                     </div>
                             }

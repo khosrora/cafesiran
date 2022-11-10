@@ -53,7 +53,7 @@ function QrCode() {
                             </div>
                             <div className="output-box w-1/2">
                                 <a href={qrCode} download="QRCode" rel='noreferrer' target="_blank">
-                                    <button className='bg-amber-600 py-4 w-full text-white rounded-md my-2' disabled={qrCode === "" ? true : false} type="button">
+                                    <button className='bg-[#FF7129] py-4 w-full text-white rounded-md my-2' disabled={qrCode === "" ? true : false} type="button">
                                         {
                                             qrCode === "" ? "لطفا آدرس را وارد کنید" : "ذخیره کردن QR CODE"
                                         }

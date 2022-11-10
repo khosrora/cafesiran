@@ -119,7 +119,7 @@ const Order = () => {
                                 {
                                     data.is_owner ?
                                         <Link href={`/dashboard/order/print?id=${data.id}`}>
-                                            <a target="_blank" className='bg-amber-600 w-full py-2 rounded-md text-white text-center'>
+                                            <a target="_blank" className='bg-[#FF7129] w-full py-2 rounded-md text-white text-center'>
                                                 پرینت جزئیات سفارش
                                             </a>
                                         </Link>

@@ -54,7 +54,7 @@ const AboutCafe = () => {
                         </p>
                     </div>
                     <div className="text-center mt-4">
-                        <button className="bg-amber-600 text-white w-1/2 m-auto rounded-md py-2 lg:w-1/4">اضافه کردن به علاقه مندی ها</button>
+                        <button className="bg-[#FF7129] text-white w-1/2 m-auto rounded-md py-2 lg:w-1/4">اضافه کردن به علاقه مندی ها</button>
                     </div>
                 </div>
             </div> */}

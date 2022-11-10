@@ -15,7 +15,7 @@ const ServerError = () => {
                         احتمالا مشکل از سمت سرور است. لطفا بعدا امتحان کنید
                     </p>
                     <Link href="/">
-                        <div className="mt-4 border-2 bg-slate-900 text-white rounded-md p-2 px-7 flex justify-center cursor-pointer mr-0 md:mr-2 dark:bg-amber-600">
+                        <div className="mt-4 border-2 bg-slate-900 text-white rounded-md p-2 px-7 flex justify-center cursor-pointer mr-0 md:mr-2 dark:bg-[#FF7129]">
                             <p>بازگشت به صفحه اول</p>
                         </div>
                     </Link>

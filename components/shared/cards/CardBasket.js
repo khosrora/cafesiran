@@ -24,14 +24,14 @@ const CardBasket = ({ item, setCallback, callback }) => {
                     </div>
                 </div>
                 <div className="text-xs mt-1 text-slate-500 flex justify-between items-center w-1/2 lg:w-1/4 lg:mt-0">
-                    <div className="bg-amber-600 p-1 rounded-full text-white cursor-pointer lg:p-2" onClick={() => {
+                    <div className="bg-[#FF7129] p-1 rounded-full text-white cursor-pointer lg:p-2" onClick={() => {
                         setCallback(!callback);
                         dispatch(plusCountItem(item.id, 1));
                     }}>
                         <PlusIcon className="h-4 w-4" />
                     </div>
                     <p className="dark:text-white lg:text-xl">{item.count}</p>
-                    <div className="bg-amber-600 p-1 rounded-full text-white cursor-pointer lg:p-2" onClick={() => {
+                    <div className="bg-[#FF7129] p-1 rounded-full text-white cursor-pointer lg:p-2" onClick={() => {
                         setCallback(!callback);
                         dispatch(minusCountItem(item.id, 1));
                     }}>

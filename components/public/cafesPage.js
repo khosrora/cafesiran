@@ -91,7 +91,7 @@ const CafesPage = ({ provinceId, province }) => {
                         cafe.length === 0 ? null :
                             <div className="flex justify-between items-center text-zinc-200">
                                 <Link href="/cafesMap">
-                                    <a className='bg-amber-600 p-2 px-4 text-center rounded-md flex justify-center items-center text-xs'>
+                                    <a className='bg-[#FF7129] p-2 px-4 text-center rounded-md flex justify-center items-center text-xs'>
                                         <MapIcon className='w-4 h-4 ml-2' />
                                         <p>مشاهده روی نقشه</p>
                                     </a>

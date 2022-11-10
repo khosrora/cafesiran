@@ -114,7 +114,7 @@ const Reserve = ({ cafeId }) => {
                             <Field component="textarea" className="w-full border  mt-2 p-2 rounded-md " placeholder="پیام خود را اینجا بنویسید" name="message" id="" cols="30" rows="10"></Field>
                             {errors.message && touched.message ? (<span className="text-xs text-red-600">{errors.message}</span>) : null}
                         </div>
-                        <button type='submit' className="bg-amber-600 w-full text-white py-2 rounded-md lg:w-1/2 lg:m-auto" disabled={load}>
+                        <button type='submit' className="bg-[#FF7129] w-full text-white py-2 rounded-md lg:w-1/2 lg:m-auto" disabled={load}>
                             {
                                 load ? "لطفا منتظر بمانید" : "ارسال درخواست رزرو"
                             }

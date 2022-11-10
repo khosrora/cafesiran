@@ -26,7 +26,7 @@ const CafesMap = () => {
                                     <img className='rounded-md' src={showCafe?.image_url ? showCafe?.image_url : "/images/placeholder.png"} alt="" />
                                 </div>
                                 <div className="flex justify-between items-center">
-                                    <div className="bg-amber-600 text-white py-2 px-4 rounded-md">
+                                    <div className="bg-[#FF7129] text-white py-2 px-4 rounded-md">
                                         <p>
                                             {showCafe.type === "C" ? "کافه" : null}
                                             {showCafe.type === "R" ? "رستوران" : null}

@@ -118,7 +118,7 @@ const Request = () => {
                             </div>
                         </div>
                         <div className="flex justify-between items-center">
-                            <button type="submit" className="bg-amber-600 w-48 px-4 py-2 rounded-md text-white">
+                            <button type="submit" className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">
                                 {
                                     load ? "لطفا منتظر بمانید" : "ثبت درخواست"
                                 }

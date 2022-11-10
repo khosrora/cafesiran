@@ -28,7 +28,7 @@ const UserProfile = ({ user, dispatch }) => {
                     }} />
                     {
                         changeIcon ?
-                            <div onClick={handleChangeName} className="absolute left-2 top-1/4 text-xs bg-amber-600 text-center rounded-md p-2 cursor-pointer">تغییر نام</div>
+                            <div onClick={handleChangeName} className="absolute left-2 top-1/4 text-xs bg-[#FF7129] text-center rounded-md p-2 cursor-pointer">تغییر نام</div>
                             :
                             <PencilIcon className="w-6 h-6 text-sky-400 absolute left-2 top-1/4 cursor-pointer" />
                     }

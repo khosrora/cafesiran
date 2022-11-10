@@ -26,13 +26,13 @@ const HeaderPanel = ({ setMenu }) => {
                             user?.cafe === null ?
                                 <Link href="/dashboard/requestCafe">
                                     <div className="hidden lg:flex justify-between items-center ml-8">
-                                        <button className="bg-amber-600 w-48 px-4 py-2 rounded-md text-white">درخواست ثبت مجموعه</button>
+                                        <button className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">درخواست ثبت مجموعه</button>
                                     </div>
                                 </Link>
                                 :
                                 <Link href="/dashboard/editRequestCafe">
                                     <div className="hidden lg:flex justify-between items-center ml-8">
-                                        <button className="bg-amber-600 w-48 px-4 py-2 rounded-md text-white">ویرایش مجموعه</button>
+                                        <button className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">ویرایش مجموعه</button>
                                     </div>
                                 </Link>
                         }

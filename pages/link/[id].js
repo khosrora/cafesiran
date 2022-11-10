@@ -21,7 +21,7 @@ const id = (props) => {
                         <p className="font-bold dark:text-zinc-400">
                             {data.persian_title}
                         </p>
-                        <span className="bg-amber-600 text-white  py-1 px-2 inline-block rounded-full text-[10px]">
+                        <span className="bg-[#FF7129] text-white  py-1 px-2 inline-block rounded-full text-[10px]">
                             {data.type === "C" ? "کافه" : null}
                             {data.type === "R" ? "رستوران" : null}
                             {data.type === "CR" ? "کافه رستوران" : null}
@@ -37,7 +37,7 @@ const id = (props) => {
                     }
                     <div className="flex justify-between items-center w-full gap-x-4 px-4">
                         <Link href={`/cafes/${data.id}`}>
-                            <a className="bg-amber-600 p-2 rounded-md text-white w-1/4 text-center text-[10px]">
+                            <a className="bg-[#FF7129] p-2 rounded-md text-white w-1/4 text-center text-[10px]">
                                 مشاهده منو
                             </a>
                         </Link>

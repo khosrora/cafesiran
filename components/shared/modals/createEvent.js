@@ -20,7 +20,7 @@ const CreateEvent = ({ setCreateForm }) => {
                             <label htmlFor="">توضیحات رویداد</label>
                             <textarea className="rounded-md p-1 focus:outline-none dark:bg-zinc-800" name="" id="" cols="30" rows="5"></textarea>
                         </div>
-                        <button className="w-full text-white bg-amber-600 rounded-md py-2 text-xs">ایجاد رویداد</button>
+                        <button className="w-full text-white bg-[#FF7129] rounded-md py-2 text-xs">ایجاد رویداد</button>
                     </form>
                 </div>
             </div>
