@@ -2,8 +2,8 @@ import { Html, Head, Main, NextScript } from 'next/document'
 
 export default function Document() {
     return (
-        <Html>
-            <Head lang='fa'>
+        <Html lang='fa'>
+            <Head>
 
                 <link rel="shortcut icon" href="/logo_dark.ico" />
 
@@ -11,7 +11,6 @@ export default function Document() {
                 <meta name='apple-mobile-web-app-capable' content='yes' />
                 <meta name='apple-mobile-web-app-status-bar-style' content='default' />
                 <meta name='apple-mobile-web-app-title' content='کافه ایران' />
-                <meta name='description' content='کافه ایران |‌ منو دیجیتال کافه و رستوزان ' />
                 <meta name='format-detection' content='telephone=no' />
                 <meta name='mobile-web-app-capable' content='yes' />
                 <meta name='msapplication-TileColor' content='#fdfdfd' />
@@ -26,7 +25,7 @@ export default function Document() {
 
                 <meta property='og:type' content='website' />
                 <meta property='og:title' content='کافه ایران' />
-                <meta property='og:description' content='کافه ایران |‌ منو دیجیتال کافه و رستوزان ' />
+                <meta property='og:description' content='کافه ایران |‌ منو دیجیتال کافه و رستوران ' />
                 <meta property='og:site_name' content='cafesiran' />
                 <meta property='og:url' content='https://cafesiran.ir/' />
                 {/* <meta property='og:image' content='https://yourdomain.com/static/icons/apple-touch-icon.png' /> */}
