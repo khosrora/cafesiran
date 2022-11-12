@@ -12,7 +12,7 @@ const id = (props) => {
     if(!data) return <p>در حال دریافت اطلاعات</p>
     return (    
         <Layout>
-            <div className="p-2 my-6 max-w-lg m-auto">
+            <div className="p-2 mb-6 mt-2 max-w-lg m-auto">
                 <div className="">
                     <img src={data?.image_url ? data?.image_url : "/images/placeholder.png"} className="rounded-md" alt="" />
                 </div>

@@ -7,7 +7,7 @@ const SideBarPhone = ({ asPath, setSidebar }) => {
     return (
         <>
             <div onClick={() => setSidebar(false)} className="fixed bg-slate-900 opacity-50 top-0 right-0 left-0 bottom-0 z-40"></div>
-            <div className="bg-slate-100 fixed right-0 bottom-0 top-0 w-9/12 md:w-5/12 z-50 rounded-tl-2xl rounded-bl-2xl dark:bg-zinc-800">
+            <div className="bg-slate-100 fixed right-0 bottom-0 top-0 w-9/12 md:w-5/12 z-50 rounded-tl-2xl rounded-bl-2xl dark:bg-zinc-900">
                 <div className="p-4">
                     <div className="flex justify-between items-center">
                         <p className="text-lg font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>

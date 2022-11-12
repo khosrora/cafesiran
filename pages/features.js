@@ -10,7 +10,7 @@ const Features = () => {
     return (
         <>
             <Head>
-                <title> منو دیجیتال | menu Digital | امکانات و ویژگی ها کافه ایران</title>
+                <title> منو دیجیتال | menu Digital | امکانات و ویژگی های کافه ایران</title>
             </Head>
             <Layout>
                 <ItemFeatures
@@ -48,7 +48,7 @@ const Features = () => {
                     text="در کافه ایران هم برای مشتریان و هم برای صاحبین کسب و کار پنل های مدیریت جداگانه ای در نظر گرفته شده است که هر کدام دارای قابلیت ها و امکانات مجزا از هم میباشند"
                     img="/images/features/Group519.png"
                 />
-                <div className="px-4 max-w-7xl my-4 m-auto lg:my-12">
+                <div className="px-4 max-w-7xl m-auto lg:mb-16 lg:mt-4">
                     <div className="flex flex-col justify-center items-center">
                         <h1 className="text-2xl font-bold">ویژگی های کافه ایران</h1>
                         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 lg:gap-x-16 mt-12 gap-y-10">

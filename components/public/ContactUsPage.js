@@ -20,7 +20,7 @@ const ContactUsPage = () => {
     const load = global.load;
 
     return (
-        <div className="my-16 px-8 w-full lg:my-16">
+        <div className="mb-16 px-8 w-full lg:mb-16 lg:mt-4">
             <Formik
                 initialValues={{
                     full_name: '',

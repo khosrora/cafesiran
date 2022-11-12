@@ -6,7 +6,6 @@ import { useTheme } from 'next-themes'
 const Footer = () => {
 
     const { resolvedTheme } = useTheme()
-    console.log(resolvedTheme);
 
     return (
         <footer>
