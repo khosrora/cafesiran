@@ -40,7 +40,7 @@ const HomePage = () => {
 
     return (
         <>
-            <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:hidden">
+            <div className="w-full mt-6 mb-40 flex flex-col justify-center items-center lg:hidden">
                 <p className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
                 <div className="mt-8 font-bold">
                     <h1>منو دیجیتال برای کافه و رستوران و هتل و ... شما</h1>

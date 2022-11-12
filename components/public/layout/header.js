@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTheme } from "next-themes";
-import { LightBulbIcon, MoonIcon, UserIcon } from '@heroicons/react/outline'
+import { LightBulbIcon, MoonIcon, UserIcon, MenuAlt3Icon } from '@heroicons/react/outline'
 import { show_Modal_Login } from "../../../redux/auth/actions";
+import SideBarPhone from "./sideBarPhone";
 
 const Header = () => {
 
@@ -14,6 +15,7 @@ const Header = () => {
     const order = cartDetails.orderList;
     const dispatch = useDispatch();
     const [mounted, setMounted] = useState(false);
+    const [sidebar, setSidebar] = useState(false);
     const { asPath } = useRouter();
 
     useEffect(() => {
@@ -82,9 +84,9 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <Link href="/">
-                    <a title="کافه ایران" className="flex  md:hidden">کافه <span className="mr-2 text-[#FF7129]">ایران</span></a>
-                </Link>
+                <div onClick={() => setSidebar(true)} className="md:hidden">
+                    <MenuAlt3Icon className="w-6 h-6" />
+                </div>
                 {
                     load ?
                         <div className="hidden bg-[#FF7129] px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">
@@ -105,6 +107,9 @@ const Header = () => {
                             </div>
                 }
             </div>
+            {
+                sidebar ? <SideBarPhone asPath={asPath} setSidebar={setSidebar} /> : null
+            }
         </nav>
     );
 }
