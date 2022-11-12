@@ -9,7 +9,7 @@ const Footer = () => {
                 <div className="max-w-[1800px] text-xs p-4 pb-16 flex flex-col justify-start px-8 items-start md:flex-row md:justify-between  md:py-16 m-auto">
                     <div className="mb-4 md:w-3/6">
                         <div className="flex justify-start items-center">
-                            <img width="45" height="45" className="hidden lg:flex" src="/logo_dark.svg" alt="" />
+                            <img width="45" height="45" className="hidden lg:flex" src="/logo_dark.svg" alt="لوگو کافه ایران" />
                             <h4 className='text-4xl font-bold'>کافه <span className='text-[#FF7129]'>ایران</span></h4>
                         </div>
                         <p className='mt-2 text-xs  md:mt-4 md:w-3/4 leading-9'>
@@ -19,11 +19,11 @@ const Footer = () => {
                     <div className="mb-4 md:w-1/6">
                         <h4>دسترسی ها</h4>
                         <ul className=' mt-2'>
-                            <li className='mt-2'><Link href="/cafes/8"><a>مشاهده نمونه</a></Link></li>
-                            <li className='mt-2'><Link href="/"><a>خانه</a></Link></li>
-                            <li className='mt-2'><Link href="/aboutUs"><a>درباره ما</a></Link></li>
-                            <li className='mt-2'><Link href="/contactUs"><a>تماس با ما</a></Link></li>
-                            <li className='mt-2'><Link href="/features"><a>امکانات کافه ایران</a></Link></li>
+                            <li className='mt-2'><Link href="/cafes/8"><a title='مشاهده نمونه'>مشاهده نمونه</a></Link></li>
+                            <li className='mt-2'><Link href="/"><a title='خانه'>خانه</a></Link></li>
+                            <li className='mt-2'><Link href="/aboutUs"><a title='درباره ما'>درباره ما</a></Link></li>
+                            <li className='mt-2'><Link href="/contactUs"><a title='تماس با ما'>تماس با ما</a></Link></li>
+                            <li className='mt-2'><Link href="/features"><a title='امکانات کافه ایران'>امکانات کافه ایران</a></Link></li>
                         </ul>
                     </div>
                     <div className="mb-4 md:w-1/6">

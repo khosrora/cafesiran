@@ -41,8 +41,10 @@ const HomePage = () => {
     return (
         <>
             <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:hidden">
-                <h1 className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></h1>
-                <div className="mt-8 font-bold">منو دیجیتال برای کافه و رستوران و ... شما</div>
+                <p className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
+                <div className="mt-8 font-bold">
+                    <h1>منو دیجیتال برای کافه و رستوران و هتل و ... شما</h1>
+                </div>
                 <div className="px-4 mt-8 text-[10px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
                     <div className="flex justify-start items-center">
                         <CheckIcon className='w-4 h-4 ml-2' />
@@ -113,8 +115,10 @@ const HomePage = () => {
                 <div className="w-full max-w-7xl m-auto">
                     <div className="bg-zinc-100 flex rounded-lg justify-between items-center py-8 dark:bg-zinc-900">
                         <div className="w-1/2 h-full px-8">
-                            <h1 className="text-4xl font-extrabold">کافه <span className="text-[#FF7129]">ایران</span></h1>
-                            <div className="mt-8 font-bold text-sm">منو دیجیتال برای کافه و رستوران و ... شما</div>
+                            <p className="text-4xl font-extrabold">کافه <span className="text-[#FF7129]">ایران</span></p>
+                            <div className="mt-8 font-bold text-sm">
+                                <p>منو دیجیتال برای کافه و رستوران و ... شما</p>
+                            </div>
                             <div className="mt-8 text-[10px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
                                 <div className="flex justify-start items-center">
                                     <CheckIcon className='w-4 h-4 ml-2' />
@@ -173,7 +177,7 @@ const HomePage = () => {
                             </div>
                             <div className="w-1/4 py-4 rounded-md cursor-pointer">
                                 <Link href="/cafes/8">
-                                    <a className='bg-[#FF7129] w-full block text-center rounded-md text-white py-4 text-sm'>مشاهده نمونه منو</a>
+                                    <a title='مشاهده نمونه منو' className='bg-[#FF7129] w-full block text-center rounded-md text-white py-4 text-sm'>مشاهده نمونه منو</a>
                                 </Link>
                             </div>
                         </div>

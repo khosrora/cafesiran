@@ -3,7 +3,7 @@ import { Html, Head, Main, NextScript } from 'next/document'
 export default function Document() {
     return (
         <Html>
-            <Head>
+            <Head lang='fa'>
 
                 <link rel="shortcut icon" href="/logo_dark.ico" />
 
@@ -28,7 +28,7 @@ export default function Document() {
                 <meta property='og:title' content='کافه ایران' />
                 <meta property='og:description' content='کافه ایران |‌ منو دیجیتال کافه و رستوزان ' />
                 <meta property='og:site_name' content='cafesiran' />
-                {/* <meta property='og:url' content='https://yourdomain.com' /> */}
+                <meta property='og:url' content='https://cafesiran.ir/' />
                 {/* <meta property='og:image' content='https://yourdomain.com/static/icons/apple-touch-icon.png' /> */}
             </Head>
             <body>
