@@ -64,6 +64,9 @@ const Header = () => {
                             <li className='mr-8'>
                                 <Link href="/features"><a title="امکانات کافه ایران" className={`${asPath === "/features" ? 'text-[#FF7129]' : null}`}>امکانات کافه ایران</a></Link>
                             </li>
+                            <li className='mr-8'>
+                                <Link href="/packages"><a title="تعرفه های منو دیجیتال" className={`${asPath === "/packages" ? 'text-[#FF7129]' : null}`}>تعرفه ها</a></Link>
+                            </li>
                             {
                                 login ?
                                     order.length === 0 ? "" :

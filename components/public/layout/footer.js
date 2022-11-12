@@ -1,15 +1,25 @@
 import { PhoneIcon, MailIcon } from '@heroicons/react/outline';
 import Link from "next/link";
+import { useTheme } from 'next-themes'
 
 
 const Footer = () => {
+
+    const { resolvedTheme } = useTheme()
+    console.log(resolvedTheme);
+
     return (
         <footer>
             <div className="bg-zinc-100  dark:bg-zinc-900">
                 <div className="max-w-[1800px] text-xs p-4 pb-16 flex flex-col justify-start px-8 items-start md:flex-row md:justify-between  md:py-16 m-auto">
                     <div className="mb-4 md:w-3/6">
                         <div className="flex justify-start items-center">
-                            <img width="45" height="45" className="hidden lg:flex" src="/logo_dark.svg" alt="لوگو کافه ایران" />
+                            {
+                                resolvedTheme === "dark" ?
+                                    <img width="45" height="45" className="hidden lg:flex" src="/logo_dark.svg" alt="لوگو کافه ایران" />
+                                    :
+                                    <img width="45" height="45" className="hidden lg:flex" src="/logo_light.svg" alt="لوگو کافه ایران" />
+                            }
                             <h4 className='text-4xl font-bold'>کافه <span className='text-[#FF7129]'>ایران</span></h4>
                         </div>
                         <p className='mt-2 text-xs  md:mt-4 md:w-3/4 leading-9'>
@@ -20,6 +30,7 @@ const Footer = () => {
                         <h4>دسترسی ها</h4>
                         <ul className=' mt-2'>
                             <li className='mt-2'><Link href="/cafes/8"><a title='مشاهده نمونه'>مشاهده نمونه</a></Link></li>
+                            <li className='mt-2'><Link href="/packages"><a title='تعرفه های منو دیجیتال'>تعرفه ها</a></Link></li>
                             <li className='mt-2'><Link href="/"><a title='خانه'>خانه</a></Link></li>
                             <li className='mt-2'><Link href="/aboutUs"><a title='درباره ما'>درباره ما</a></Link></li>
                             <li className='mt-2'><Link href="/contactUs"><a title='تماس با ما'>تماس با ما</a></Link></li>

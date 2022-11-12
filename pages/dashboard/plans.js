@@ -28,7 +28,6 @@ const Plans = () => {
                         <div key={index} className="bg-zinc-100 rounded p-4 w-full dark:bg-zinc-800">
                             <div className="m-auto flex flex-col justify-center items-center gap-y-4">
                                 <h1 className="font-black">{i.title}</h1>
-                                <img src={i.image} alt="" />
                             </div>
                             <ul className="mt-4 text-zinc-600 text-sm flex flex-col gap-y-4 dark:text-zinc-200">
                                 <li className="flex justify-start items-center">
