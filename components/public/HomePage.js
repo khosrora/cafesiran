@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { SearchIcon, CheckIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link';
@@ -155,7 +155,7 @@ const HomePage = () => {
                             </div>
                         </div>
                         <div className="w-1/2 flex justify-end items-center">
-                            <img className='w-96' src="/images/features/Group527.png" alt="DigitalMenuImage" />
+                            <img className='w-96' src="/images/features/Group527.png" alt="منو دیجیتال" />
                         </div>
                     </div>
                     <div className="w-10/12 bg-white border rounded-md m-auto -mt-10 dark:bg-zinc-800 dark:border-none">

@@ -18,14 +18,11 @@ const Cafes = (props) => {
         if (province) dispatch(getCafes(province, city))
     }, [province, city]);
 
-    const title = `کافه و رستوران های ${province} | منو دیجیتال |‌ menu digital`
-    const desc = `منو دیجیتال کافه ها و رستوران های ${province}`
 
     return (
         <>
-            <title>{title}</title>
-            <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-            <meta name="description" content={desc} />
+            <title>{`کافه و رستوران های ${province} | منو دیجیتال |‌ menu digital`}</title>
+            <meta name="description" content={`منو کافه ها و رستوران های ${province} در وب سایت کافه ایران`} />
             <Layout>
                 <CafesPage provinceId={provinceId} province={province} />
             </Layout>
