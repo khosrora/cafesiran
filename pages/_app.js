@@ -19,7 +19,6 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     if (token) dispatch(getDetailsUser())
   }, [])
-  // only test git
   return (
     <>
       {/* Google tag (gtag.js)  */}
