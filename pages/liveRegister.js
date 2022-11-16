@@ -4,15 +4,17 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { getCities } from './../utils/functions';
+import { convertToSlug, getCities } from './../utils/functions';
 import { province } from "../components/shared/utilities/constance/province";
 import { cities } from "../components/shared/utilities/constance/cities";
+import { liveRegisterAction } from "../redux/global/actions";
 
 
 const RequestValidationSchema = Yup.object().shape({
     persian_title: Yup.string().min(2, 'نام کافه بیش از حد کوتاه است').max(50, 'نام کافه بیش از حد بزرگ است').required('وارد کردن نام کافه الزامی است'),
     english_title: Yup.string().min(2, 'نام کافه بیش از حد کوتاه است').max(50, 'نام کافه بیش از حد بزرگ است').required('وارد کردن نام کافه الزامی است'),
     phone: Yup.string().matches(/^09[0-9]{9}$/, "شماره تماس وارد شده معتبر نیست").required('وارد کردن شماره تماس کافه الزامی است'),
+    phoneRegister: Yup.string().matches(/^09[0-9]{9}$/, "شماره تماس وارد شده معتبر نیست").required('وارد کردن شماره تماس کافه الزامی است'),
     street: Yup.string().min(5, 'آدرس کافه بیش از حد کوتاه است').max(100, 'آدرس کافه بیش از حد بزرگ است').required('وارد کردن آدرس کافه الزامی است'),
     type: Yup.string().required('وارد کردن دسته الزامی است'),
     province: Yup.string().required('وارد کردن استان  کافه الزامی است'),
@@ -37,6 +39,7 @@ const LiveRegister = () => {
                         persian_title: '',
                         english_title: '',
                         phone: '',
+                        phoneRegister: '',
                         street: '',
                         desc: '',
                         type: '',
@@ -46,15 +49,37 @@ const LiveRegister = () => {
                     }}
                     validationSchema={RequestValidationSchema}
                     onSubmit={values => {
-                        console.log(values);
-                        // values.province = parseInt(values.province);
-                        // values.city = parseInt(values.city);
-                        // values.slug = convertToSlug(values.english_title);
-
+                        values.province = parseInt(values.province);
+                        values.city = parseInt(values.city);
+                        values.slug = convertToSlug(values.english_title);
+                        dispatch(liveRegisterAction(values))
                     }}
                 >
                     {({ errors, touched, setFieldValue }) => (
                         <Form className="mt-8 flex flex-col gap-y-8 m-auto lg:w-3/4" action="">
+                            <div className="flex flex-col justify-between gap-y-8 gap-x-2 text-slate-600 lg:flex-row lg:justify-between dark:text-white">
+                                <div className="flex flex-col justify-start items-start gap-y-2 lg:w-2/6">
+                                    <label className="" htmlFor="mobile">شماره تماس مجموعه <span className="text-xs text-red-600">(این شماره به مخاطبین نمایش داده میشود)</span></label>
+                                    <Field name="phone" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="mobile" type="text" placeholder="شماره تماس مجموعه را وارد کنید" />
+                                    {errors.phone && touched.phone ? (<span className='text-red-600'>{errors.phone}</span>) : null}
+                                </div>
+                                <div className="flex flex-col justify-start items-start gap-y-2 lg:w-2/6">
+                                    <label className="" htmlFor="mobile">شماره تماس <span className="text-xs text-red-600">(این شماره برای ورود و به عنوان مدیر شناخته میشود)</span></label>
+                                    <Field name="phoneRegister" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="mobile" type="text" placeholder="شماره تماس مدیر را وارد کنید" />
+                                    {errors.phoneRegister && touched.phoneRegister ? (<span className='text-red-600'>{errors.phoneRegister}</span>) : null}
+                                </div>
+                                <div className="flex flex-col justify-start items-start gap-y-2 lg:w-2/6">
+                                    <label htmlFor="type">نوع</label>
+                                    <Field name='type' as="select" id="type" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
+                                        <option selected>نوع پنل کاربری خود را انتخاب کنید</option>
+                                        <option value="R">رستوران</option>
+                                        <option value="C">کافه</option>
+                                        <option value="CR">کافه رستوران</option>
+                                        <option value="IC">آبمیوه و بستنی</option>
+                                    </Field>
+                                    {errors.type && touched.type ? (<span className='text-red-600'>{errors.type}</span>) : null}
+                                </div>
+                            </div>
                             <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between dark:text-white">
                                 <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6">
                                     <label className="" htmlFor="per-name">نام مجموعه به فارسی</label>
@@ -65,24 +90,6 @@ const LiveRegister = () => {
                                     <label className="" htmlFor="en-name">نام مجموعه به انگلیسی</label>
                                     <Field name="english_title" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="en-name" type="text" placeholder="نام مجموعه خود را به انگلیسی وارد کنید" />
                                     {errors.english_title && touched.english_title ? (<span className='text-red-600'>{errors.english_title}</span>) : null}
-                                </div>
-                            </div>
-                            <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between dark:text-white">
-                                <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6">
-                                    <label className="" htmlFor="mobile">شماره تماس مجموعه</label>
-                                    <Field name="phone" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="mobile" type="text" placeholder="شماره تماس مجموعه را وارد کنید" />
-                                    {errors.phone && touched.phone ? (<span className='text-red-600'>{errors.phone}</span>) : null}
-                                </div>
-                                <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
-                                    <label htmlFor="type">نوع</label>
-                                    <Field name='type' as="select" id="type" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
-                                        <option selected>نوع پنل کاربری خود را انتخاب کنید</option>
-                                        <option value="R">رستوران</option>
-                                        <option value="C">کافه</option>
-                                        <option value="CR">کافه رستوران</option>
-                                        <option value="IC">آبمیوه و بستنی</option>
-                                    </Field>
-                                    {errors.type && touched.type ? (<span className='text-red-600'>{errors.type}</span>) : null}
                                 </div>
                             </div>
                             <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between dark:text-white">

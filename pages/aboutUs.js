@@ -9,6 +9,7 @@ const AboutUs = () => {
         <>
             <Head>
                 <title> منو دیجیتال | menu Digital | درباره ما </title>
+                <meta name="description" content=" درباره ما بیشتر بدانید و بخوانیم منو دیجیتال چیست؟" />
             </Head>
             <Layout>
                 <AboutUsPage />

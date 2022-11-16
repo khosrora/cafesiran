@@ -53,7 +53,7 @@ const CreateItemCafe = () => {
                                 {errors.title && touched.title ? (<span className='text-red-600'>{errors.title}</span>) : null}
                             </div>
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
-                                <label className="" htmlFor="en-name">قیمت</label>
+                                <label className="" htmlFor="en-name">قیمت <span className='text-green-600 text-xs'>(تومان)</span></label>
                                 <Field name="price" className="w-full p-2 rounded-md border focus:outline-none dark:border-none dark:bg-zinc-700" id="en-name" type="text" placeholder="قیمت خود را به انگلیسی وارد کنید" />
                                 {errors.price && touched.price ? (<span className='text-red-600'>{errors.price}</span>) : null}
                             </div>

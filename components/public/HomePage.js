@@ -68,7 +68,7 @@ const HomePage = () => {
                     </div>
                     <div className="flex justify-start items-center">
                         <CheckIcon className='w-4 h-4 ml-2' />
-                        <span className=""> ثبت مجموعه شما در کمتر از 3 دقیقه </span>
+                        <span className=""> ثبت مجموعه شما در کمتر از 2 دقیقه </span>
                         <br />
                     </div>
                     <Link href="/features">
@@ -142,7 +142,7 @@ const HomePage = () => {
                                 </div>
                                 <div className="flex justify-start items-center">
                                     <CheckIcon className='w-4 h-4 ml-2' />
-                                    <span className=""> ثبت مجموعه شما در کمتر از 3 دقیقه </span>
+                                    <span className=""> ثبت مجموعه شما در کمتر از 2 دقیقه </span>
                                     <br />
                                 </div>
                                 <Link href="/features">

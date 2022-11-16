@@ -108,3 +108,19 @@ export const getCafes = (slug, cityId) => async dispatch => {
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     }
 }
+
+
+export const liveRegisterAction = (data) => async dispatch => {
+    try {
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
+        const res = await postDataAPI("account/auth/login_or_register/", { phone: data.phoneRegister }, null);
+        if (res.status === 200) {
+            console.log('registered');
+        }
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    } catch (error) {
+        dispatch({ type: globalActionsType.GET_CAFES, payload: { data: [] } });
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    }
+}
+

@@ -54,10 +54,7 @@ const Navigation = () => {
             }
             {
                 asPath.includes("/cafes/") ?
-                    <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
-                        <MapIcon className={`h-4 w-4 ${asPath === "/features" ? "text-orange-600" : "dark:text-white"}`} />
-                        <p className="text-xs mt-1">نقشه</p>
-                    </div>
+                    null
                     :
                     <Link href='/features'>
                         <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
