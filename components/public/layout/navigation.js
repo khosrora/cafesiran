@@ -1,9 +1,8 @@
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserIcon, PencilIcon, ShoppingCartIcon, HomeIcon } from '@heroicons/react/outline';
+import { UserIcon, PencilIcon, ShoppingCartIcon, HomeIcon, MapIcon } from '@heroicons/react/outline';
 import { show_Modal_Login } from "../../../redux/auth/actions";
-
 
 const Navigation = () => {
 
@@ -13,6 +12,7 @@ const Navigation = () => {
     const load = auth.load;
     const order = cartDetails.orderList;
     const login = auth.login;
+
 
     return (
         <div className="fixed bottom-0 w-full flex flex-row-reverse justify-around items-center py-3 bg-gray-50 border-t-2 md:hidden dark:bg-zinc-800 dark:border-black">
@@ -52,12 +52,20 @@ const Navigation = () => {
                             </div>
                         </Link> : null
             }
-            <Link href='/features'>
-                <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
-                    <PencilIcon className={`h-4 w-4 ${asPath === "/features" ? "text-orange-600" : "dark:text-white"}`} />
-                    <p className="text-xs mt-1">ویژگی ها</p>
-                </div>
-            </Link>
+            {
+                asPath.includes("/cafes/") ?
+                    <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
+                        <MapIcon className={`h-4 w-4 ${asPath === "/features" ? "text-orange-600" : "dark:text-white"}`} />
+                        <p className="text-xs mt-1">نقشه</p>
+                    </div>
+                    :
+                    <Link href='/features'>
+                        <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
+                            <PencilIcon className={`h-4 w-4 ${asPath === "/features" ? "text-orange-600" : "dark:text-white"}`} />
+                            <p className="text-xs mt-1">ویژگی ها</p>
+                        </div>
+                    </Link>
+            }
             <Link href='/'>
                 <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
                     <HomeIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />

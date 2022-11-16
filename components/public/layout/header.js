@@ -9,7 +9,8 @@ import SideBarPhone from "./sideBarPhone";
 
 const Header = () => {
 
-    const { auth, cartDetails } = useSelector(state => state);
+
+    const { auth, cartDetails, global } = useSelector(state => state);
     const load = auth.load;
     const login = auth.login;
     const order = cartDetails.orderList;
@@ -17,6 +18,8 @@ const Header = () => {
     const [mounted, setMounted] = useState(false);
     const [sidebar, setSidebar] = useState(false);
     const { asPath } = useRouter();
+
+    const nameCafe = global?.cafe?.persian_title;
 
     useEffect(() => {
         setMounted(true);
@@ -54,21 +57,30 @@ const Header = () => {
                             <li>
                                 <Link href="/"><a title="خانه" className={`${asPath === "/" ? 'text-[#FF7129]' : null}`}>خانه</a></Link>
                             </li>
-                            <li className="mr-8">
-                                <Link href="/aboutUs"><a title="درباره ما" className={`${asPath === "/aboutUs" ? 'text-[#FF7129]' : null}`}>درباره ما</a></Link>
-                            </li>
-                            <li className='mr-8'>
-                                <Link href="/contactUs"><a title="تماس با ما" className={`${asPath === "/contactUs" ? 'text-[#FF7129]' : null}`}>تماس با ما</a></Link>
-                            </li>
-                            {/* <li className='mr-8'>
-                                <Link href="/blogs"><a title="بلاگ ها" className={`${asPath === "/blogs" ? 'text-[#FF7129]' : null}`}>بلاگ ها</a></Link>
-                            </li> */}
-                            <li className='mr-8'>
-                                <Link href="/features"><a title="امکانات کافه ایران" className={`${asPath === "/features" ? 'text-[#FF7129]' : null}`}>امکانات کافه ایران</a></Link>
-                            </li>
-                            <li className='mr-8'>
-                                <Link href="/packages"><a title="تعرفه های منو دیجیتال" className={`${asPath === "/packages" ? 'text-[#FF7129]' : null}`}>تعرفه ها</a></Link>
-                            </li>
+                            {
+                                asPath.includes("/cafes/") ?
+                                    <li>
+                                        <p className={`${asPath.includes("/cafes/") ? 'text-[#FF7129]' : null} mr-8`}>منو {`${nameCafe}`}</p>
+                                    </li> :
+                                    <>
+                                        <li className="mr-8">
+                                            <Link href="/aboutUs"><a title="درباره ما" className={`${asPath === "/aboutUs" ? 'text-[#FF7129]' : null}`}>درباره ما</a></Link>
+                                        </li>
+                                        <li className='mr-8'>
+                                            <Link href="/contactUs"><a title="تماس با ما" className={`${asPath === "/contactUs" ? 'text-[#FF7129]' : null}`}>تماس با ما</a></Link>
+                                        </li>
+                                        {/* <li className='mr-8'>
+                                            <Link href="/blogs"><a title="بلاگ ها" className={`${asPath === "/blogs" ? 'text-[#FF7129]' : null}`}>بلاگ ها</a></Link>
+                                        </li> */}
+                                        <li className='mr-8'>
+                                            <Link href="/features"><a title="امکانات کافه ایران" className={`${asPath === "/features" ? 'text-[#FF7129]' : null}`}>امکانات کافه ایران</a></Link>
+                                        </li>
+                                        <li className='mr-8'>
+                                            <Link href="/packages"><a title="تعرفه های منو دیجیتال" className={`${asPath === "/packages" ? 'text-[#FF7129]' : null}`}>تعرفه ها</a></Link>
+                                        </li>
+                                    </>
+                            }
+
                             {
                                 login ?
                                     order.length === 0 ? "" :
@@ -84,9 +96,13 @@ const Header = () => {
                         </li>
                     </ul>
                 </div>
-                <div onClick={() => setSidebar(true)} className="md:hidden">
-                    <MenuAlt3Icon className="w-6 h-6" />
-                </div>
+                {
+                    asPath.includes("/cafes/") ? <p className="text-sm md:hidden">منو {`${nameCafe}`}</p>
+                        :
+                        <div onClick={() => setSidebar(true)} className="md:hidden">
+                            <MenuAlt3Icon className="w-6 h-6" />
+                        </div>
+                }
                 {
                     load ?
                         <div className="hidden bg-[#FF7129] px-8 py-2 text-white rounded-md md:flex justify-center items-center cursor-pointer">

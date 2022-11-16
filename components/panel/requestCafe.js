@@ -103,7 +103,7 @@ const Request = () => {
                             <div className="flex flex-col justify-start items-start gap-y-2  lg:w-3/6 lg:mr-4">
                                 <label htmlFor="city">شهر</label>
                                 <Field name="city" as="select" id="city" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
-                                    object                                    {
+                                    {
                                         cities.map(i => <option key={i.pk} value={i.pk}>{i.fields.name}</option>)
                                     }
                                 </Field>

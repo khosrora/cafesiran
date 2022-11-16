@@ -26,10 +26,9 @@ const Home = () => {
 
 export default Home;
 
-Home.getInitialProps = wrapper.getInitialPageProps((store) => async () => {
-  try {
-
-  } catch (error) {
-    console.log(error);
+export async function getServerSideProps() {
+  return {
+    props: {
+    }
   }
-});
+} 

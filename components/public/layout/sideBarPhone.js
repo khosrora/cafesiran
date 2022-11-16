@@ -11,7 +11,7 @@ const SideBarPhone = ({ asPath, setSidebar }) => {
                 <div className="p-4">
                     <div className="flex justify-between items-center">
                         <p className="text-lg font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
-                        <XIcon className='w-6 h-6' />
+                        <XIcon className='w-6 h-6' onClick={() => setSidebar(false)}/>
                     </div>
                     <div className="w-full py-4  mt-4">
                         <ul className='flex flex-col gap-y-8'>

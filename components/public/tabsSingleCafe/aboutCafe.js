@@ -1,5 +1,8 @@
+import dynamic from "next/dynamic"
 import { useSelector } from 'react-redux';
 import SAboutCafe from '../../skillton/SAboutCafe';
+
+const MapAboutCafe = dynamic(() => import("../map/mapAboutCafe"), { ssr: false })
 
 
 const AboutCafe = () => {
@@ -12,8 +15,8 @@ const AboutCafe = () => {
     return (
         <div className="max-w-7xl m-auto my-8">
             <div className="flex flex-col lg:flex-row lg:justify-start">
-                <div className="lg:w-2/4">
-                    <img className="rounded-md" src={cafe?.image_url ? cafe?.image_url : "/images/placeholder.png"} alt={cafe?.persian_title} />
+                <div className="h-96 lg:w-2/4">
+                    <MapAboutCafe />
                 </div>
                 <div className="my-8 flex flex-col gap-y-4 text-xs lg:mr-4 dark:text-zinc-200">
                     {

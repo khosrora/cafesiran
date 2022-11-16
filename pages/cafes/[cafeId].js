@@ -24,7 +24,7 @@ const CafeId = (props) => {
 
     useEffect(() => {
         if (cafeId) dispatch(getPublicDetailsCafe(cafeId));
-    }, [])
+    }, [cafeId])
 
         
     return (
