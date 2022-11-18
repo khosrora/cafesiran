@@ -11,7 +11,6 @@ import { StateType } from "../../shared/utilities/constance/type";
 
 const PhoneSideBar = ({ setMenu }) => {
 
-
     const { userDetails } = useSelector(state => state);
     const user = userDetails.user;
     const dispatch = useDispatch();
@@ -73,15 +72,7 @@ const PhoneSideBar = ({ setMenu }) => {
                             </li>
                             {
                                 user?.cafe?.state === StateType.Confirmed ?
-                                    <>
-                                        {/* <li>
-                                            <Link href="/dashboard/plans">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/plans" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <ChartBarIcon className="w-6 h-6" />
-                                                    <p>تعرفه ها</p>
-                                                </a>
-                                            </Link>
-                                        </li> */}
+                                    <>                   
                                         <li>
                                             <Link href="/dashboard/receptor">
                                                 <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
@@ -151,6 +142,14 @@ const PhoneSideBar = ({ setMenu }) => {
                                                 <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/map" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                                                     <MapIcon className="h-6 w-6" />
                                                     <p>ثبت موقعیت</p>
+                                                </a>
+                                            </Link>
+                                        </li>
+                                        <li>
+                                            <Link href="/dashboard/plans">
+                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/plans" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                                                    <ChartBarIcon className="w-6 h-6" />
+                                                    <p>تعرفه ها</p>
                                                 </a>
                                             </Link>
                                         </li>

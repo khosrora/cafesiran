@@ -22,7 +22,12 @@ const Orders = () => {
     }
     return (
         <div className=''>
-            <h1 className="text-xl mt-4  dark:text-white">سفارشات من</h1>
+            <div className="flex justify-between items-center mt-4">
+                <h1 className="text-xs md:text-xl dark:text-white">سفارشات من</h1>
+                <Link href="/dashboard/order/search">
+                    <button className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">جست و جو پیشرفته</button>
+                </Link>
+            </div>
             <div className=" text-right mt-8">
                 <table className="w-full bg-zinc-100 text-gray-500 dark:bg-zinc-900 dark:text-white">
                     <thead className="text-xs lg:text-sm ">

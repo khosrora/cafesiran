@@ -6,7 +6,7 @@ import { errorMessage } from '../../../utils/toast';
 
 
 
-const CardItem = ({ item, setMenu, checkItemInCart }) => {
+const CardItem = ({ item, setMenu, checkItemInCart, orderCount }) => {
 
     const { auth } = useSelector(state => state);
     const login = auth.login;
@@ -56,7 +56,7 @@ const CardItem = ({ item, setMenu, checkItemInCart }) => {
                             </div>
                             :
                             <div className="bg-[#FF7129] p-2 px-2 rounded-full text-white cursor-pointer dark:text-zinc-200" onClick={() => handleAddToCart(item)}>
-                                {item?.count} عدد
+                                {orderCount ? orderCount : item?.count} عدد
                             </div>
                     }
                 </div>

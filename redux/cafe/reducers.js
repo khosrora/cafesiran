@@ -14,7 +14,8 @@ const initialStore = {
     orders: [],
     detailsOrder: null,
     plans: [],
-    next: null
+    next: null,
+    searchData: {}
 };
 
 
@@ -116,6 +117,11 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 next: action.payload.data
+            }
+        case CAFEACTIONSYPES.GET_SEARCH_DATA:
+            return {
+                ...state,
+                searchData: action.payload.data
             }
         default:
             return state;

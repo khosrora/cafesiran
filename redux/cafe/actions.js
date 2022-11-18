@@ -21,8 +21,9 @@ export const CAFEACTIONSYPES = {
     DELETE_RESERVE: "DELETE_RESERVE",
     CHANGE_STATE_RESERV: "CHANGE_STATE_RESERV",
     GET_PLANS: "GET_PLANS",
-    GET_NEXT: "GET_NEXT" , 
-    DELETE_SUGGEST : "DELETE_SUGGEST"
+    GET_NEXT: "GET_NEXT",
+    DELETE_SUGGEST: "DELETE_SUGGEST",
+    GET_SEARCH_DATA: "GET_SEARCH_DATA"
 }
 
 
@@ -332,6 +333,21 @@ export const addAddress = (id, data) => async dispatch => {
         const res = await patchDataAPI(`cafe/cafes/${id}/`, data, token);
         if (res.status === 200) {
             successMessage("موقعیت مجموعه شما به روز شد")
+        }
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+export const getOrdersSearch = (data) => async dispatch => {
+    try {
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN");
+        const res = await getDataAPI(`queries/order/?start_date=${data.start_date}&end_date=${data.end_date}`, token);
+        if (res.status === 200) {
+            dispatch({ type: CAFEACTIONSYPES.GET_SEARCH_DATA, payload: { data: res.data } });
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {

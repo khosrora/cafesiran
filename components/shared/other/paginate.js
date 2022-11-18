@@ -12,7 +12,7 @@ const Paginate = ({ next, page, setPage }) => {
                     </div>
             }
             <div className="">
-                صفحه {page} 
+                صفحه {page}
             </div>
             {
                 next === null ? null :
