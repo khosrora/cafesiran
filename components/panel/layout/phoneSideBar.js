@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useDispatch } from 'react-redux';
 import { useRouter } from "next/router";
-import { HomeIcon, TemplateIcon, UserGroupIcon, ShoppingCartIcon, ChartSquareBarIcon, PhotographIcon, UserCircleIcon, CakeIcon, ClipboardListIcon, ChatAltIcon, AcademicCapIcon, MapIcon } from '@heroicons/react/outline'
+import { HomeIcon, TemplateIcon, UserGroupIcon, ShoppingCartIcon, ChartSquareBarIcon, PhotographIcon, UserCircleIcon, CakeIcon, ClipboardListIcon, ChatAltIcon, AcademicCapIcon, MapIcon, ChartBarIcon } from '@heroicons/react/outline'
 import { logOutUser } from "../../../redux/auth/actions";
 import { useSelector } from 'react-redux';
 import { StateType } from "../../shared/utilities/constance/type";
