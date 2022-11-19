@@ -1,45 +1,39 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getPlans } from '../redux/cafe/actions';
-
+import Head from 'next/head';
 import Layout from "../components/public/layout";
-import Stable from '../components/skillton/Stable';
 import PackagesPanel from '../components/shared/other/packagesPanel';
+import { getDataAPI } from '../utils/fetchData';
 
 
 
 
-const Packages = () => {
-
-    const dispatch = useDispatch();
-    const { cafeDetails } = useSelector(state => state);
-    const data = cafeDetails.plans;
-    const load = cafeDetails.load;
-
-    useEffect(() => {
-        dispatch(getPlans())
-    }, [dispatch])
-
+const Packages = ({ data }) => {
     return (
-        <Layout>
-            {
-                load ?
-                    <div className="max-w-7xl m-auto lg:my-16">
-                        <Stable />
+        <>
+            <Head>
+                <title>منو ارزان |‌ منو دیجیتال کافه ایران</title>
+                <meta name="description" content=" ارائه دهنده سرویس منو دیجیتال با بالاترین کیفیت و خدمات و کمترین هزینه |‌ منو دیجیتال ارزان" />
+            </Head>
+            <Layout>
+                <div className="max-w-7xl m-auto lg:my-16">
+                    <div className="grid grid-cols-1 px-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 mb-2">
+                        {
+                            data &&
+                            data.map((i, index) => <PackagesPanel data={i} key={index} />)
+                        }
                     </div>
-                    :
-                    <div className="max-w-7xl m-auto lg:my-16">
-                        <div className="grid grid-cols-1 px-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 mb-2">
-                            {
-                                data &&
-                                data.map((i, index) => <PackagesPanel data={i} key={index} />)
-                            }
-                        </div>
-                    </div>
-            }
-
-        </Layout>
+                </div>
+            </Layout>
+        </>
     );
 }
 
 export default Packages;
+
+export async function getServerSideProps() {
+    const res = await getDataAPI(`plan/plans/`, null);
+    return {
+        props: {
+            data: res.data
+        }
+    }
+} 

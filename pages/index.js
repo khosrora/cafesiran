@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import Layout from '../components/public/layout';
 import HomePage from "../components/public/HomePage";
-import { wrapper } from "./../redux/store";
 
 
 const Home = () => {
