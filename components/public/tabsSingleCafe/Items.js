@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import CardItem from "../../shared/cards/CardItem";
+import CommentModal from '../../shared/modals/CommentModal';
 import SCartItem from '../../skillton/SCartItem';
 
 const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
@@ -12,11 +13,15 @@ const Items = ({ items, categories }) => {
 
     const [menuItems, setMenuItems] = useState(items);
     const [menu, setMenu] = useState(false);
+    const [commentModal, setCommentModal] = useState(false);
     const [categoriesBg, setCategoriesBg] = useState(0);
-    const { cartDetails, global } = useSelector(state => state);
+
+
+    const { auth, cartDetails, global } = useSelector(state => state);
     const order = cartDetails.orderList;
     const loadCategories = global.loadCate;
     const loadItem = global.loadItem;
+
     const checkItemInCart = (itemId) => {
         const filter = order.some(item => item.id === itemId);
         return filter;
@@ -29,6 +34,11 @@ const Items = ({ items, categories }) => {
         if (id === 0) return setMenuItems(categories)
         const newItems = categories.filter(i => i.category_id === id);
         setMenuItems(newItems)
+    }
+
+    const handleCommentModal = (id) => {
+        console.log(id);
+        setCommentModal(id);
     }
 
     return (
@@ -80,7 +90,7 @@ const Items = ({ items, categories }) => {
                                 <div className="grid gap-y-5 gap-x-2 my-5 md:grid-cols-2 max-w-7xl m-auto">
                                     {
                                         loadItem ? <SCartItem /> :
-                                            menuItems.map(item => <CardItem key={item.id} item={item} setMenu={setMenu} checkItemInCart={checkItemInCart} />)
+                                            menuItems.map(item => <CardItem key={item.id} item={item} setMenu={setMenu} checkItemInCart={checkItemInCart} handleCommentModal={handleCommentModal} />)
                                     }
                                 </div>
                         }
@@ -99,6 +109,13 @@ const Items = ({ items, categories }) => {
                 menu ?
                     <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
                         <CafeItem menu={menu} setMenu={setMenu} />
+                    </div>
+                    : null
+            }
+            {
+                commentModal !== false ?
+                    <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
+                            <CommentModal commentModal={commentModal} setCommentModal={setCommentModal} />
                     </div>
                     : null
             }
