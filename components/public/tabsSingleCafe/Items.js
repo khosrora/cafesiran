@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { errorMessage } from '../../../utils/toast';
 import CardItem from "../../shared/cards/CardItem";
 import CommentModal from '../../shared/modals/CommentModal';
 import SCartItem from '../../skillton/SCartItem';
@@ -37,8 +38,9 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        console.log(id);
-        setCommentModal(id);
+        errorMessage("به زودی این بخش اضافه خواهد شد")
+        // console.log(id);
+        // setCommentModal(id);
     }
 
     return (
