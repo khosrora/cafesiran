@@ -113,12 +113,14 @@ export const getCafes = (slug, cityId) => async dispatch => {
 export const liveRegisterAction = (data) => async dispatch => {
     try {
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
-        const res = await postDataAPI("account/auth/login_or_register/", { phone: data.phoneRegister }, null);
-        if (res.status === 200) {
-            console.log('registered');
+        const res = await postDataAPI("cafe/fast_register/", data, null);
+        if (res.status === 201) {
+            successMessage("با شماره ثبت شده میتوانید وارد وب سایت شوید")
+            successMessage("عملیات با موفقیت به اتمام رسید.")
         }
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     } catch (error) {
+        errorMessage("مجموعه شما قبلا ثبت شده است")
         dispatch({ type: globalActionsType.GET_CAFES, payload: { data: [] } });
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     }

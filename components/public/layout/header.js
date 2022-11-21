@@ -60,7 +60,7 @@ const Header = () => {
                             {
                                 asPath.includes("/cafes/") ?
                                     <li>
-                                        <p className={`${asPath.includes("/cafes/") ? 'text-[#FF7129]' : null} mr-8`}>منو {`${nameCafe === undefined ? "" : nameCafe }`}</p>
+                                        <h1 className={`${asPath.includes("/cafes/") ? 'text-[#FF7129]' : null} mr-8 text-xs`}>منو {`${nameCafe === undefined ? "" : nameCafe }`}</h1>
                                     </li> :
                                     <>
                                         <li className="mr-8">

@@ -29,6 +29,7 @@ const Footer = () => {
                         <h4>دسترسی ها</h4>
                         <ul className=' mt-2'>
                             <li className='mt-2'><Link href="/cafes/8"><a title='مشاهده نمونه'>مشاهده نمونه</a></Link></li>
+                            <li className='mt-2'><Link href="/features"><a title='دریافت منو دیجیتال کمتر از 1 دقیقه'>ثبت سریع کافه</a></Link></li>
                             <li className='mt-2'><Link href="/packages"><a title='تعرفه های منو دیجیتال'>تعرفه ها</a></Link></li>
                             <li className='mt-2'><Link href="/"><a title='خانه'>خانه</a></Link></li>
                             <li className='mt-2'><Link href="/aboutUs"><a title='درباره ما'>درباره ما</a></Link></li>

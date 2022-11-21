@@ -10,14 +10,22 @@ const AboutCafe = () => {
     const { global } = useSelector(state => state);
     const cafe = global.cafe;
     const load = global.load;
+    const lat = cafe.latitude
 
     if (load) return <SAboutCafe />
     return (
         <div className="max-w-7xl m-auto my-8">
             <div className="flex flex-col lg:flex-row lg:justify-start">
-                <div className="h-96 lg:w-2/4">
-                    <MapAboutCafe />
-                </div>
+                {
+                    lat != null ?
+                        <div className="h-96 overflow-hidden lg:w-2/4">
+                            <MapAboutCafe />
+                        </div>
+                        :
+                        <div className="lg:w-2/4">
+                            <img className="rounded-md" src="/images/placeholder.png" alt={cafe?.persian_title} />
+                        </div>
+                }
                 <div className="my-8 flex flex-col gap-y-4 text-xs lg:mr-4 dark:text-zinc-200">
                     {
                         cafe?.is_open !== true ?
