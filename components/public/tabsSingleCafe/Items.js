@@ -38,9 +38,8 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        errorMessage("به زودی این بخش اضافه خواهد شد")
-        // console.log(id);
-        // setCommentModal(id);
+        // errorMessage("به زودی این بخش اضافه خواهد شد")
+        setCommentModal(id);
     }
 
     return (

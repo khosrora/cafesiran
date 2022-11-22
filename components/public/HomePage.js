@@ -66,7 +66,7 @@ const HomePage = () => {
                         <span className=""> نمایش گزارشات گرافیکی از سفارشات ثبت شده</span>
                         <br />
                     </div>
-                    <Link href="/features">
+                    <Link href="/liveRegister">
                         <a className="flex justify-start items-center text-blue-400" title='دریافت سریع منو دیجیتال'>
                             <ArrowLeftIcon className='w-4 h-4 ml-2' />
                             <span className=""> ثبت مجموعه شما در کمتر از 1 دقیقه </span>
