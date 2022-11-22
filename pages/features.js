@@ -18,35 +18,40 @@ const Features = () => {
                     bg=""
                     title="وب اپلیکیشن کافه ایران"
                     text="دسترسی سریع و آسان مشتریان شما به آیتم های منو در تمام سیستم عامل های تلفن های همراه و تبلت ها"
-                    img="/images/features/Group527.png"
+                    img="/images/features/menuDigitalItems.webp"
+                    alt="اپلیکیشن منو دیجیتال"
                 />
                 <ItemFeatures
                     dir="ltr"
                     bg="bg-zinc-100"
                     title="نمایش روی نقشه"
                     text="نقشه کافه ایران به شما کمک میکند اطلاعات مجموعه و همچنین آدرس دقیق را به کاربران خود نمایش دهید"
-                    img="/images/features/Group 537.png"
+                    img="/images/features/cafesMap.webp"
+                    alt="نقشه منو دیجیتال"
                 />
                 <ItemFeatures
                     dir="rtl"
                     bg=""
                     title="ساخت  qr code اختصاصی"
                     text="شما به راحتی و به صورت نامحدود در کمترین زمان  میتوانید برای مجموعه خود بارکد اختصاصی بسازید . دانلود کنید و چاپ کنید"
-                    img="/images/features/Rectangle.png"
+                    img="/images/features/qrCodeMenuDigital.webp"
+                    alt="بارکد منو و کافه"
                 />
                 <ItemFeatures
                     dir="ltr"
                     bg="bg-zinc-100"
                     title="مدیریت ثبت سفارشات وثبت رزرو"
                     text="شما در کافه ایران میتوانید در هر زمان گزارش های سفارشات ثبت شده مجموعه را برای مدت زمانی دلخواه خود دریافت کنید"
-                    img="/images/features/Group537.png"
+                    img="/images/features/reserveTableCafe.webp"
+                    alt="گزارش منو دیجیتال"
                 />
                 <ItemFeatures
                     dir="rtl"
                     bg=""
                     title="دارای پنل کاربری اختصاصی"
                     text="در کافه ایران هم برای مشتریان و هم برای صاحبین کسب و کار پنل های مدیریت جداگانه ای در نظر گرفته شده است که هر کدام دارای قابلیت ها و امکانات مجزا از هم میباشند"
-                    img="/images/features/Group519.png"
+                    img="/images/features/menuDigitalDashboard.webp"
+                    alt="پنل مدیریت کافه و رستوران"
                 />
                 <div className="px-4 max-w-7xl m-auto lg:mb-16 lg:mt-4">
                     <div className="flex flex-col justify-center items-center">

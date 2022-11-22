@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { SearchIcon, CheckIcon, ArrowLeftIcon } from '@heroicons/react/outline'
+import { SearchIcon, ArrowLeftIcon } from '@heroicons/react/outline'
 import Link from 'next/link';
 import { errorMessage } from '../../utils/toast';
 import { searchCafe } from '../../redux/global/actions';
 
 // !
 import dynamic from 'next/dynamic';
+import ListHomePage from '../shared/other/listHomePage';
 const ProvinceMenu = dynamic(() => import("../shared/modals/ProvinceMenu"))
 
 
@@ -41,46 +42,7 @@ const HomePage = () => {
     return (
         <>
             <div className="w-full mt-6 mb-40 flex flex-col justify-center items-center lg:hidden">
-                <p className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
-                <div className="mt-8 font-bold">
-                    <h1>منو دیجیتال برای کافه و رستوران و هتل و ... شما</h1>
-                </div>
-                <div className="px-4 mt-8 text-[10px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
-                    <div className="flex justify-start items-center">
-                        <CheckIcon className='w-4 h-4 ml-2' />
-                        <span className="">تعامل پویا با مشتری برای کسب و کار شما </span>
-                        <br />
-                    </div>
-                    <div className="flex justify-start items-center">
-                        <CheckIcon className='w-4 h-4 ml-2' />
-                        <span className="">دسترسی سریع مشتریان به منو ( کد کافه و qrcode و نقشه و ... )</span>
-                        <br />
-                    </div>
-                    <div className="flex justify-start items-center">
-                        <CheckIcon className='w-4 h-4 ml-2' />
-                        <span className=""> قابلیت ایجاد سطح دسترسی برای سالن داران </span>
-                        <br />
-                    </div>
-                    <div className="flex justify-start items-center">
-                        <CheckIcon className='w-4 h-4 ml-2' />
-                        <span className=""> نمایش گزارشات گرافیکی از سفارشات ثبت شده</span>
-                        <br />
-                    </div>
-                    <Link href="/liveRegister">
-                        <a className="flex justify-start items-center text-blue-400" title='دریافت سریع منو دیجیتال'>
-                            <ArrowLeftIcon className='w-4 h-4 ml-2' />
-                            <span className=""> ثبت مجموعه شما در کمتر از 1 دقیقه </span>
-                            <br />
-                        </a>
-                    </Link>
-                    <Link href="/features">
-                        <a className="flex justify-start items-center text-blue-400" title='امکانات و ویژگی های کافه ایران'>
-                            <ArrowLeftIcon className='w-4 h-4 ml-2' />
-                            <span className=""> مشاهده توضیحات بیشتر ... </span>
-                            <br />
-                        </a>
-                    </Link>
-                </div>
+                <ListHomePage />
                 <div className="flex flex-col gap-y-2 lg:flex lg:flex-row mt-4">
                     <div className="mb-4 md:mb-0 relative">
                         <input onChange={(e) => setSearchBtn(e.target.value)} onKeyDown={handleKeyDown} type="text" className="border-2 border-slate-600 rounded-md p-2 px-7 dark:border-none dark:outline-none w-full" placeholder="جست وجو بر اساس کد کافه" />
@@ -117,49 +79,10 @@ const HomePage = () => {
                 <div className="w-full max-w-7xl m-auto">
                     <div className="bg-zinc-100 flex rounded-lg justify-between items-center py-8 dark:bg-zinc-900">
                         <div className="w-1/2 h-full px-8">
-                            <p className="text-4xl font-extrabold">کافه <span className="text-[#FF7129]">ایران</span></p>
-                            <div className="mt-8 font-bold text-sm">
-                                <p>منو دیجیتال برای کافه و رستوران و ... شما</p>
-                            </div>
-                            <div className="mt-8 text-[10px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
-                                <div className="flex justify-start items-center">
-                                    <CheckIcon className='w-4 h-4 ml-2' />
-                                    <span className="">تعامل پویا با مشتری برای کسب و کار شما </span>
-                                    <br />
-                                </div>
-                                <div className="flex justify-start items-center">
-                                    <CheckIcon className='w-4 h-4 ml-2' />
-                                    <span className="">دسترسی سریع مشتریان به منو ( کد کافه و qrcode و نقشه و ... )</span>
-                                    <br />
-                                </div>
-                                <div className="flex justify-start items-center">
-                                    <CheckIcon className='w-4 h-4 ml-2' />
-                                    <span className=""> قابلیت ایجاد سطح دسترسی برای سالن داران </span>
-                                    <br />
-                                </div>
-                                <div className="flex justify-start items-center">
-                                    <CheckIcon className='w-4 h-4 ml-2' />
-                                    <span className=""> نمایش گزارشات گرافیکی از سفارشات ثبت شده</span>
-                                    <br />
-                                </div>
-                                <Link href="/liveRegister">
-                                    <a className="flex justify-start items-center text-blue-400" title='ایجاد سریع منو دیجیتال'>
-                                        <ArrowLeftIcon className='w-4 h-4 ml-2 ' />
-                                        <span className="cursor-pointer"> ثبت مجموعه شما در کمتر از 1 دقیقه </span>
-                                        <br />
-                                    </a>
-                                </Link>
-                                <Link href="/features">
-                                    <a className="flex justify-start items-center text-blue-400" title='امکانات و ویژگی های منو دیجیتال'>
-                                        <ArrowLeftIcon className='w-4 h-4 ml-2' />
-                                        <span className=""> مشاهده توضیحات بیشتر ... </span>
-                                        <br />
-                                    </a>
-                                </Link>
-                            </div>
+                            <ListHomePage />
                         </div>
                         <div className="w-1/2 flex justify-end items-center">
-                            <img className='w-96' src="/images/features/Group527.png" alt="منو دیجیتال" />
+                            <img className='w-96' src="/images/features/menuDigitalItems.webp" alt="منو دیجیتال" />
                         </div>
                     </div>
                     <div className="w-10/12 bg-white border rounded-md m-auto -mt-10 dark:bg-zinc-800 dark:border-none">

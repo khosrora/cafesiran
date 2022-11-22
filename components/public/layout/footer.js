@@ -21,20 +21,20 @@ const Footer = () => {
                             }
                             <h4 className='text-4xl font-bold'>کافه <span className='text-[#FF7129]'>ایران</span></h4>
                         </div>
-                        <p className='mt-2 text-xs  md:mt-4 md:w-3/4 leading-9'>
+                        <p className='mt-2 text-sm  md:mt-4 md:w-3/4 leading-9'>
                             یک پنل مدیریت کامل برای کسب و کار خودتون دریافت کنید و منو های دیجیتال با قابلیت دسترسی سریع برای مشتریان کافه و رستوران و یا هتل ایجاد کنید. رزروهای آنلاین و یا انتقادات پیشنهادات را آنلاین دریافت کنید.
                         </p>
                     </div>
                     <div className="mb-4 md:w-1/6">
                         <h4>دسترسی ها</h4>
-                        <ul className=' mt-2'>
-                            <li className='mt-2'><Link href="/cafes/8"><a title='مشاهده نمونه'>مشاهده نمونه</a></Link></li>
-                            <li className='mt-2'><Link href="/features"><a title='دریافت منو دیجیتال کمتر از 1 دقیقه'>ثبت سریع کافه</a></Link></li>
-                            <li className='mt-2'><Link href="/packages"><a title='تعرفه های منو دیجیتال'>تعرفه ها</a></Link></li>
-                            <li className='mt-2'><Link href="/"><a title='خانه'>خانه</a></Link></li>
-                            <li className='mt-2'><Link href="/aboutUs"><a title='درباره ما'>درباره ما</a></Link></li>
-                            <li className='mt-2'><Link href="/contactUs"><a title='تماس با ما'>تماس با ما</a></Link></li>
-                            <li className='mt-2'><Link href="/features"><a title='امکانات کافه ایران'>امکانات کافه ایران</a></Link></li>
+                        <ul className='mt-4 flex flex-col gap-y-4 text-zinc-700 dark:text-white'>
+                            <li><Link href="/cafes/8"><a title='مشاهده نمونه منو دیجیتال'>مشاهده نمونه</a></Link></li>
+                            <li><Link href="/liveRegister"><a title='دریافت منو دیجیتال کمتر از 1 دقیقه'>ثبت سریع کافه</a></Link></li>
+                            <li><Link href="/packages"><a title='تعرفه های منو دیجیتال'>تعرفه ها</a></Link></li>
+                            <li><Link href="/"><a title='صفحه اصلی'>خانه</a></Link></li>
+                            <li><Link href="/aboutUs"><a title='درباره ما بیشتر بدانید'>درباره ما</a></Link></li>
+                            <li><Link href="/contactUs"><a title='با ما تماس بگیرید'>تماس با ما</a></Link></li>
+                            <li><Link href="/features"><a title='ویژگی های منو دیجیتال'>امکانات کافه ایران</a></Link></li>
                         </ul>
                     </div>
                     <div className="mb-4 md:w-1/6">
