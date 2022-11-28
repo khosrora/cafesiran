@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { errorMessage } from '../../../utils/toast';
 import CardItem from "../../shared/cards/CardItem";
-import CommentModal from '../../shared/modals/CommentModal';
+import CommentModal from '../../shared/modals/comment/CommentModal';
 import SCartItem from '../../skillton/SCartItem';
 
 const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
@@ -22,6 +22,7 @@ const Items = ({ items, categories }) => {
     const order = cartDetails.orderList;
     const loadCategories = global.loadCate;
     const loadItem = global.loadItem;
+    const login = auth.login;
 
     const checkItemInCart = (itemId) => {
         const filter = order.some(item => item.id === itemId);
@@ -38,10 +39,10 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        errorMessage("به زودی این بخش اضافه خواهد شد")
+        errorMessage("به زودی")
+        // if(!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
         // setCommentModal(id);
     }
-
     return (
         <>
             {

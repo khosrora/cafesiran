@@ -8,7 +8,8 @@ export const CAFEFETURESTYPE = {
     GET_ALL_RECEPTOR: "GET_ALL_RECEPTOR",
     CREATE_RECEPTOR: "CREATE_RECEPTOR",
     DELETE_RECEPTOR: "DELETE_RECEPTOR",
-    CHANGE_ACTIVE_RECEPTOR: "CHANGE_ACTIVE_RECEPTOR"
+    CHANGE_ACTIVE_RECEPTOR: "CHANGE_ACTIVE_RECEPTOR",
+    COMMENT_ADD: "COMMENT_ADD"
 }
 
 export const getListPrint = (id) => async dispatch => {
@@ -86,3 +87,36 @@ export const changeActiveReceptor = (id, bool) => async dispatch => {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }
+
+
+export const getAllComments = commentId => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI(`comment/item_comments/${commentId}`,  token)
+        console.log(res);
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        console.log(error);
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+
+export const addComment = (data) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await postDataAPI(`comment/create/`, data, token)
+        console.log(res);
+        if (res.status === 201) {
+            successMessage("دیدگاه ارسال شد")
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
