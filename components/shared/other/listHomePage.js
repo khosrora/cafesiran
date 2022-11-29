@@ -7,10 +7,6 @@ import Link from "next/link";
 const ListHomePage = () => {
     return (
         <>
-            <p className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
-            <div className="mt-8 font-bold text-sm lg:font-bold lg:text-xl">
-                <h1>منو دیجیتال برای کافه و رستوران و ... شما</h1>
-            </div>
             <div className="mt-8 text-[12px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
                 <div className="flex justify-start items-center">
                     <CheckIcon className='w-4 h-4 ml-2' />

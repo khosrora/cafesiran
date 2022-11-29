@@ -1,8 +1,13 @@
+import { useEffect } from "react";
+import { useDispatch } from 'react-redux';
+import { getAllComments } from "../../../../redux/cafeFeatures/actions";
 
 
 
 
-const AllComments = () => {
+const AllComments = ({ commentModal }) => {
+    console.log(commentModal);
+    // const dispatch = useDispatch()
 
     // useEffect(() => {
     //     dispatch(getAllComments(commentModal))

@@ -42,6 +42,10 @@ const HomePage = () => {
     return (
         <>
             <div className="w-full mt-6 mb-40 flex flex-col justify-center items-center lg:hidden">
+                <p className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
+                <div className="mt-8 font-bold text-sm lg:font-bold lg:text-xl">
+                    <p>منو دیجیتال برای کافه و رستوران و ... شما</p>
+                </div>
                 <ListHomePage />
                 <div className="flex flex-col gap-y-2 lg:flex lg:flex-row mt-4">
                     <div className="mb-4 md:mb-0 relative">
@@ -79,6 +83,10 @@ const HomePage = () => {
                 <div className="w-full max-w-7xl m-auto">
                     <div className="bg-zinc-100 flex rounded-lg justify-between items-center py-8 dark:bg-zinc-900">
                         <div className="w-1/2 h-full px-8">
+                            <p className="text-6xl font-bold">کافه <span className="text-[#FF7129]">ایران</span></p>
+                            <div className="mt-8 font-bold text-sm lg:font-bold lg:text-xl">
+                                <h1>منو دیجیتال برای کافه و رستوران و ... شما</h1>
+                            </div>
                             <ListHomePage />
                         </div>
                         <div className="w-1/2 flex justify-end items-center">

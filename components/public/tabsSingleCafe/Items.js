@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { errorMessage } from '../../../utils/toast';
 import CardItem from "../../shared/cards/CardItem";
-import CommentModal from '../../shared/modals/comment/CommentModal';
+import CommentCmModal from '../../shared/modals/comment/CommentCmModal';
 import SCartItem from '../../skillton/SCartItem';
 
 const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
@@ -39,8 +39,8 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        errorMessage("به زودی این بخش اضافه خواهد شد")
-        // if(!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
+        return errorMessage("به زودی این بخش اضافه میشود")
+        // if (!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
         // setCommentModal(id);
     }
     return (
@@ -117,7 +117,7 @@ const Items = ({ items, categories }) => {
             {
                 commentModal !== false ?
                     <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
-                            <CommentModal commentModal={commentModal} setCommentModal={setCommentModal} />
+                        <CommentCmModal commentModal={commentModal} setCommentModal={setCommentModal} />
                     </div>
                     : null
             }

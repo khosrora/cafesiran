@@ -7,9 +7,9 @@ import CreateComment from './createComment';
 
 
 
-const CommentModal = ({ commentModal, setCommentModal }) => {
+const CommentCmModal = ({ commentModal, setCommentModal }) => {
 
-    const [comment, setComment] = useState(false);
+    // const [comment, setComment] = useState(false);
 
     return (
         <>
@@ -28,7 +28,7 @@ const CommentModal = ({ commentModal, setCommentModal }) => {
                     </div>
                     {
                         !comment ?
-                            <AllComments />
+                            <AllComments commentModal={commentModal} />
                             :
                             <CreateComment commentModal={commentModal} />
                     }
@@ -38,4 +38,4 @@ const CommentModal = ({ commentModal, setCommentModal }) => {
     );
 }
 
-export default CommentModal;
+export default CommentCmModal;
