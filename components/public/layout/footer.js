@@ -28,7 +28,7 @@ const Footer = () => {
                     <div className="mb-4 md:w-1/6">
                         <h4>دسترسی ها</h4>
                         <ul className='mt-4 flex flex-col gap-y-4 text-zinc-700 dark:text-white'>
-                            <li><Link href="/cafes/8"><a title='مشاهده نمونه منو دیجیتال'>مشاهده نمونه</a></Link></li>
+                            <li><Link href="/cafes/2"><a title='مشاهده نمونه منو دیجیتال'>مشاهده نمونه</a></Link></li>
                             <li><Link href="/liveRegister"><a title='دریافت منو دیجیتال کمتر از 1 دقیقه'>ثبت سریع کافه</a></Link></li>
                             <li><Link href="/packages"><a title='تعرفه های منو دیجیتال'>تعرفه ها</a></Link></li>
                             <li><Link href="/"><a title='صفحه اصلی'>خانه</a></Link></li>

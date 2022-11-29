@@ -17,7 +17,7 @@ const CardGallery = ({ data }) => {
     return (
         <div className="p-2 bg-zinc-100 rounded-md dark:bg-zinc-900">
             <div className="flex flex-col justify-center items-center">
-                <img className='w-full rounded-md h-60' src={data.image} alt="" />
+                <img className='w-full rounded-md h-60 object-cover' src={data.image} alt="" />
                 <div className="flex justify-between items-center mt-4 w-full">
                     <div className="flex justify-start items-center cursor-pointer" onClick={() => {
                         { navigator.clipboard.writeText(data.image) }

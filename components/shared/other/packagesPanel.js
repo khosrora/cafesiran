@@ -37,15 +37,15 @@ const PackagesPanel = ({ data }) => {
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
+                    <p>امکان گزارش گیری</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <CheckCircleIcon className="w-5 h-5 ml-2" />
                     <p>ثبت گالری</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
                     <p>دارای اپلیکیشن ( android , ios )</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>امکان گزارش گیری (به زودی)</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />

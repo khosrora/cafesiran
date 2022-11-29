@@ -63,7 +63,7 @@ const CreateItemCafe = () => {
                                 <label className="" htmlFor="mobile">آدرس تصویر</label>
                                 <Field name="image_url" className="w-full p-2 rounded-md border focus:outline-none dark:border-none dark:bg-zinc-700" id="mobile" type="text" placeholder="لینک عکس" />
                                 {errors.image_url && touched.image_url ? (<span className='text-red-600'>{errors.image_url}</span>) : null}
-                                <span className="text-xs text-zinc-500">
+                                <span className="text-xs text-red-600">
                                     آدرس تصویر مورد نظر خود را از صفحه گالری کپی کرده و ان را در باکس بالا جایگذاری کنید
                                 </span>
                             </div>

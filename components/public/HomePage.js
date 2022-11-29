@@ -103,7 +103,7 @@ const HomePage = () => {
                                 </div>
                             </div>
                             <div className="w-1/4 py-4 rounded-md cursor-pointer">
-                                <Link href="/cafes/8">
+                                <Link href="/cafes/2">
                                     <a title='مشاهده نمونه منو' className='bg-[#FF7129] w-full block text-center rounded-md text-white py-4 text-sm'>مشاهده نمونه منو</a>
                                 </Link>
                             </div>

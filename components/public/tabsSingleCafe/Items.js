@@ -39,7 +39,7 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        errorMessage("به زودی")
+        errorMessage("به زودی این بخش اضافه خواهد شد")
         // if(!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
         // setCommentModal(id);
     }

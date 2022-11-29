@@ -23,9 +23,9 @@ const SideBarPhone = ({ asPath, setSidebar }) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/cafes/8">
+                                <Link href="/cafes/2">
                                     <a title='مشاهده نمونه منو' className='block py-2 ' href="">
-                                        <span className={`${asPath === "/cafes/8" ? 'border-b border-amber-600 text-amber-600' : ''}`}>مشاهده نمونه منو</span>
+                                        <span className={`${asPath === "/cafes/2" ? 'border-b border-amber-600 text-amber-600' : ''}`}>مشاهده نمونه منو</span>
                                     </a>
                                 </Link>
                             </li>

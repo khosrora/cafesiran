@@ -23,7 +23,7 @@ export const getDetailsUser = () => async dispatch => {
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } })
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور پیش آمده است")
+        // errorMessage("متاسفانه مشکلی از سمت سرور پیش آمده است")
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } })
     }
