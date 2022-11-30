@@ -48,7 +48,7 @@ const Receptor = () => {
                                             لطفا منتظر بمانید
                                         </button>
                                         :
-                                        <button type='submit' className="bg-[#FF7129] text-center w-full rounded-md py-2 md:w-3/4">
+                                        <button type='submit' className="bg-[#FF7129] text-center w-full rounded-md py-2 text-white md:w-3/4">
                                             ثبت
                                         </button>
                                 }

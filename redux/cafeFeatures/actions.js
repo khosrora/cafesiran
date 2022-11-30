@@ -9,7 +9,9 @@ export const CAFEFETURESTYPE = {
     CREATE_RECEPTOR: "CREATE_RECEPTOR",
     DELETE_RECEPTOR: "DELETE_RECEPTOR",
     CHANGE_ACTIVE_RECEPTOR: "CHANGE_ACTIVE_RECEPTOR",
-    COMMENT_ADD: "COMMENT_ADD"
+    COMMENT_MODAL: "COMMENT_MODAL",
+    COMMENT_ADD: "COMMENT_ADD",
+    GET_COMMENTS: "GET_COMMENTS"
 }
 
 export const getListPrint = (id) => async dispatch => {
@@ -93,29 +95,46 @@ export const getAllComments = commentId => async dispatch => {
     try {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
-        const res = await getDataAPI(`comment/item_comments/${commentId}`,  token)
-        console.log(res);
+        const res = await getDataAPI(`comment/item_comments/${commentId}`, token)
+        if (res.status === 200) {
+            dispatch({ type: CAFEFETURESTYPE.GET_COMMENTS, payload: { data: res.data.data } });
+        }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        console.log(error);
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        // errorMessage(error.response.data.message)
+        dispatch({ type: CAFEFETURESTYPE.GET_COMMENTS, payload: { data: [] } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }
 
+export const openModalComment = (id) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: CAFEFETURESTYPE.COMMENT_MODAL, payload: { data: id } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
 
 export const addComment = (data) => async dispatch => {
     try {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await postDataAPI(`comment/create/`, data, token)
-        console.log(res);
         if (res.status === 201) {
+            let newComment = res.data;
+            newComment.response = null;
+            const formatYmd = date => date.toISOString().slice(0, 10);
+            newComment.date = formatYmd(new Date())
+            newComment.name = ''
+            dispatch({ type: CAFEFETURESTYPE.COMMENT_ADD, payload: { data: newComment } });
             successMessage("دیدگاه ارسال شد")
         }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        errorMessage(error.response.data.non_field_errors[0])
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { getAllComments, openModalComment } from '../../../redux/cafeFeatures/actions';
 import { errorMessage } from '../../../utils/toast';
 import CardItem from "../../shared/cards/CardItem";
 import CommentCmModal from '../../shared/modals/comment/CommentCmModal';
@@ -12,17 +13,21 @@ const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
 
 const Items = ({ items, categories }) => {
 
+    const dispatch = useDispatch();
+
     const [menuItems, setMenuItems] = useState(items);
     const [menu, setMenu] = useState(false);
-    const [commentModal, setCommentModal] = useState(false);
     const [categoriesBg, setCategoriesBg] = useState(0);
 
 
-    const { auth, cartDetails, global } = useSelector(state => state);
+    const { auth, cartDetails, global, cafeFaetures } = useSelector(state => state);
     const order = cartDetails.orderList;
     const loadCategories = global.loadCate;
     const loadItem = global.loadItem;
     const login = auth.login;
+    const commentModal = cafeFaetures.commentModal;
+    const comments = cafeFaetures.comments;
+    const load = cafeFaetures.load;
 
     const checkItemInCart = (itemId) => {
         const filter = order.some(item => item.id === itemId);
@@ -39,14 +44,17 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        return errorMessage("به زودی این بخش اضافه میشود")
-        // if (!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
-        // setCommentModal(id);
+        // return errorMessage("به زودی این بخش اضافه میشود")
+        if (!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
+        dispatch(openModalComment(id))
+        dispatch(getAllComments(id))
     }
+
+
     return (
         <>
             {
-                menuItems[0] !== null ?
+               menuItems[0] !== null ?
                     <>
                         <div className="mt-8 overflow-x-auto">
                             <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
@@ -117,7 +125,7 @@ const Items = ({ items, categories }) => {
             {
                 commentModal !== false ?
                     <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
-                        <CommentCmModal commentModal={commentModal} setCommentModal={setCommentModal} />
+                        <CommentCmModal commentModal={commentModal}  openModalComment={openModalComment} comments={comments} load={load} />
                     </div>
                     : null
             }

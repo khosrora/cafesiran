@@ -6,7 +6,9 @@ import { CAFEFETURESTYPE } from "./actions";
 const initialStore = {
     load: false,
     printList: null,
-    allReciptor: []
+    allReciptor: [],
+    commentModal: false,
+    comments: []
 };
 
 
@@ -36,9 +38,23 @@ export default function reducer(state = initialStore, action) {
                 allReciptor: DeleteData(state.allReciptor, action.payload.id)
             }
         case CAFEFETURESTYPE.CHANGE_ACTIVE_RECEPTOR:
-            
             return {
                 allReciptor: EditDataReceptor(state.allReciptor, action.payload.id, action.payload.data)
+            }
+        case CAFEFETURESTYPE.COMMENT_MODAL:
+            return {
+                ...state,
+                commentModal: action.payload.data
+            }
+        case CAFEFETURESTYPE.GET_COMMENTS:
+            return {
+                ...state,
+                comments: action.payload.data.reverse()
+            }
+        case CAFEFETURESTYPE.COMMENT_ADD:
+            return {
+                ...state,
+                comments: [action.payload.data, ...state.comments]
             }
         default:
             return state;
