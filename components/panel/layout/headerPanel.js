@@ -17,7 +17,7 @@ const HeaderPanel = ({ setMenu }) => {
             <div className="px-4 w-full bg-zinc-100 py-4 dark:bg-zinc-900">
                 <div className="flex justify-between items-center w-full">
                     <div className="flex justify-start items-center cursor-pointer">
-                        <svg onClick={() => setMenu(true)} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 md:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                        <svg onClick={() => setMenu(true)} xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 lg:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                         </svg>
                     </div>

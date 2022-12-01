@@ -38,7 +38,7 @@ const CommentCmModal = ({ commentModal, openModalComment, comments, load }) => {
         <>
             <div className="fixed top-0 right-0 left-0 bottom-0 bg-slate-900 opacity-75 z-40 " onClick={() => dispatch(openModalComment(false))}></div>
             <div className="fixed w-full h-[90%] bottom-0 py-2 bg-zinc-100 z-50 mt-8 rounded-t-2xl overflow-auto md:w-2/4 lg:w-1/4 dark:bg-zinc-800">
-                <div className="px-2 w-full h-full p-2 lg:px-4">
+                <div className="px-4 w-full h-full p-2 lg:px-4">
                     <div className="flex flex-col justify-start gap-y-4">
                         <div className="flex justify-between items-center">
                             <p className='font-bold'>نظرات</p>

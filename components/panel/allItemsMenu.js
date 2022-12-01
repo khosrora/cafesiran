@@ -58,9 +58,9 @@ const AllItemsMenu = () => {
                                     <td className="py-4 px-6">
                                         {
                                             i.is_active ?
-                                                <p onClick={(e) => handleActiveItem(e, i.id, false)} className="cursor-pointer text-green-600">فعال است</p>
+                                                <p onClick={(e) => handleActiveItem(e, i.id, false)} className="cursor-pointer text-green-600">موجود است</p>
                                                 :
-                                                <p onClick={(e) => handleActiveItem(e, i.id, true)} className="cursor-pointer text-red-600">فعال نیست</p>
+                                                <p onClick={(e) => handleActiveItem(e, i.id, true)} className="cursor-pointer text-red-600">موجود نیست</p>
                                         }
                                     </td>
                                     <td className="py-4 px-6 flex justify-start items-center">

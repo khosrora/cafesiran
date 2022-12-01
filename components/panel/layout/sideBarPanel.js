@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { HomeIcon, TemplateIcon, ChartBarIcon, ChartSquareBarIcon, ShoppingCartIcon, ChatAltIcon, PencilIcon, PhotographIcon, CakeIcon, UserCircleIcon, ClipboardListIcon, AcademicCapIcon, MapIcon, UserGroupIcon } from '@heroicons/react/outline'
+import { HomeIcon, TemplateIcon, ChartBarIcon, ChartSquareBarIcon, ShoppingCartIcon, ChatAltIcon, PencilIcon, PhotographIcon, CakeIcon, UserCircleIcon, ClipboardListIcon, AcademicCapIcon, MapIcon, UserGroupIcon, ChatAlt2Icon } from '@heroicons/react/outline'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux';
 import { StateType } from "../../shared/utilities/constance/type";
@@ -59,6 +59,14 @@ const SideBarPanel = () => {
                         {
                             user?.cafe?.state === StateType.Confirmed ?
                                 <>
+                                    <li>
+                                        <Link href="/dashboard/comments">
+                                            <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                                                <ChatAlt2Icon className="h-6 w-6" />
+                                                <p>دیدگاه ها</p>
+                                            </a>
+                                        </Link>
+                                    </li>
                                     <li>
                                         <Link href="/dashboard/receptor">
                                             <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>

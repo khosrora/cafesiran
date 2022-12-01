@@ -19,6 +19,14 @@ export const EditData = (data, id, bool) => {
     return newData;
 }
 
+export const EditDataComment = (data, id) => {
+    const newData = data.map(item =>
+        (item.id === id ? item = { ...item, response: true } : { ...item })
+    )
+    console.log(newData);
+    return newData;
+}
+
 export const EditDataReceptor = (data, id, bool) => {
     const newData = data.map(item =>
         (item.id === id ? { ...item, is_active: bool } : { ...item })

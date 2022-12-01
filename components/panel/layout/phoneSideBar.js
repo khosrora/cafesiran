@@ -74,6 +74,14 @@ const PhoneSideBar = ({ setMenu }) => {
                                 user?.cafe?.state === StateType.Confirmed ?
                                     <>                   
                                         <li>
+                                            <Link href="/dashboard/comments">
+                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                                                    <UserGroupIcon className="w-6 h-6" />
+                                                    <p>دیدگاه ها</p>
+                                                </a>
+                                            </Link>
+                                        </li>
+                                        <li>
                                             <Link href="/dashboard/receptor">
                                                 <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                                                     <UserGroupIcon className="w-6 h-6" />

@@ -14,12 +14,15 @@ export const CAFEACTIONSYPES = {
     DELETE_IMAGE: "DELETE_IMAGE",
     GET_CAFES_SUGGEST: "GET_CAFES_SUGGEST",
     GET_CAFES_RESERVE: "GET_CAFES_RESERVE",
+    GET_CAFES_COMMENTS: "GET_CAFES_COMMENTS",
     GET_ORDERS: "GET_ORDERS",
     EDIT_ITEM_MENU_STATUS: "EDIT_ITEM_MENU_STATUS",
     CHANGE_ORDER_STATE: "CHANGE_ORDER_STATE",
     DETAILS_ORDER: "DETAILS_ORDER",
     DELETE_RESERVE: "DELETE_RESERVE",
     CHANGE_STATE_RESERV: "CHANGE_STATE_RESERV",
+    TEST: "TEST",
+    DELETE_COMMENT: "DELETE_COMMENT",
     GET_PLANS: "GET_PLANS",
     GET_NEXT: "GET_NEXT",
     DELETE_SUGGEST: "DELETE_SUGGEST",
@@ -223,6 +226,21 @@ export const getReserveCafe = (page) => async dispatch => {
     }
 }
 
+export const getCommentsCafe = (page) => async dispatch => {
+    try {
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI(`comment/cafes_comments?page=${page}`, token);
+        dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
+        dispatch({ type: CAFEACTIONSYPES.GET_CAFES_COMMENTS, payload: { data: res.data.results } });
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+
 export const getOrder = () => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
@@ -352,6 +370,37 @@ export const getOrdersSearch = (data) => async dispatch => {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+export const addResponseCafe = data => async dispatch => {
+    try {
+        console.log(data);
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN");
+        const res = await postDataAPI(`comment/response_comment`, data, token);
+        if (res.status === 201) {
+            dispatch({ type: CAFEACTIONSYPES.TEST, payload: { id: data.id } });
+            successMessage("پاسخ دیدگاه ارسال شد");
+        }
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+export const deleteComment = (id) => async dispatch => {
+    try {
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN");
+        const res = await deleteDataAPI(`comment/comment/${id}`, token);
+        if (res.status === 200) {
+            successMessage("دیدگاه با موفقیت خذف شد")
+            dispatch({ type: CAFEACTIONSYPES.DELETE_COMMENT, payload: { id } });
+        }
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
