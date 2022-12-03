@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic"
 import { useSelector } from 'react-redux';
+import { errorMessage } from "../../../utils/toast";
 import SAboutCafe from '../../skillton/SAboutCafe';
 
 const MapAboutCafe = dynamic(() => import("../map/mapAboutCafe"), { ssr: false })
@@ -75,7 +76,8 @@ const AboutCafe = ({ customerClubModal , SetCustomerClubModal}) => {
                         <div className="text-center mt-4">
                             <button className="bg-[#FF7129] text-xs text-white w-full m-auto rounded-md py-2 md:w-2/4 lg:w-1/4" onClick={e => {
                                 e.preventDefault();
-                                SetCustomerClubModal(true);
+                                errorMessage("به زودی این بخش اضافه خواهد شد")
+                                // SetCustomerClubModal(true);
                             }}>اضافه کردن به علاقه مندی ها</button>
                         </div>
                     </div>
