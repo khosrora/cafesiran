@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic';
 
 // ! Tabs
 import Items from './tabsSingleCafe/Items';
+import VipModal from '../shared/modals/vipModal';
 const AboutCafe = dynamic(() => import("./tabsSingleCafe/aboutCafe"))
 const Reserve = dynamic(() => import("./tabsSingleCafe/reserve"))
 const Suggest = dynamic(() => import("./tabsSingleCafe/suggest"))
@@ -13,6 +14,7 @@ const Suggest = dynamic(() => import("./tabsSingleCafe/suggest"))
 
 const SingleCafe = ({ items, categories, cafeId }) => {
     const [tabs, setTabs] = useState("Items");
+    const [customerClubModal, SetCustomerClubModal] = useState(false);
 
     const handleTab = (tab) => {
         setTabs(tab)
@@ -25,7 +27,7 @@ const SingleCafe = ({ items, categories, cafeId }) => {
             case "Reserve":
                 return <Reserve cafeId={cafeId} />;
             case "About":
-                return <AboutCafe cafeId={cafeId} />;
+                return <AboutCafe cafeId={cafeId} customerClubModal={customerClubModal} SetCustomerClubModal={SetCustomerClubModal} />;
             case "Suggest":
                 return <Suggest cafeId={cafeId} />;
             default:
@@ -44,6 +46,9 @@ const SingleCafe = ({ items, categories, cafeId }) => {
                 </div>
                 <MenuItem tabs={tabs} />
             </div>
+            {
+                customerClubModal ? <VipModal SetCustomerClubModal={SetCustomerClubModal} /> : null
+            }
         </>
     );
 }

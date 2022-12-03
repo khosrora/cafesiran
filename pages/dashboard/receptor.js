@@ -44,7 +44,7 @@ const Receptor = () => {
                                 </div>
                                 {
                                     load ?
-                                        <button className="bg-[#FF7129] text-center w-full rounded-md py-2 md:w-3/4">
+                                        <button className="bg-[#FF7129] text-center text-white w-full rounded-md py-2 md:w-3/4">
                                             لطفا منتظر بمانید
                                         </button>
                                         :

@@ -98,7 +98,7 @@ const GetOtp = () => {
                                         <p className="">اعتبار سنجی صحت شماره همراه</p>
                                         <div className="flex flex-col gap-y-4 w-full">
                                             <label htmlFor="">کد 6 رقمی</label>
-                                            <Field type="password" name='password' id="" className="border-2 border-zinc-900 p-2  rounded-md bg-slate-100 dark:bg-zinc-800 dark:outline-none" placeholder="لطفا کد پیامک شده را وارد کنید" />
+                                            <Field type="text" name='password' id="" className="border-2 text-center border-zinc-900 p-2  rounded-md bg-slate-100 dark:bg-zinc-800 dark:outline-none" placeholder="لطفا کد پیامک شده را وارد کنید" />
                                             {errors.password && touched.password ? <span className='text-xs text-red-600'>{errors.password}</span> : null}
                                         </div>
                                         <button type="submit" className="w-full rounded-md bg-zinc-900 py-2 text-white dark:bg-[#FF7129]" disabled={load}>

@@ -22,8 +22,8 @@ export const show_Modal_Login = data => async dispatch => {
 export const getOtp = phone => async dispatch => {
     try {
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: true } });
-        const res = await postDataAPI("account/auth/login_or_register/", phone, null);
-        if (res.status === 200) {
+        const res = await postDataAPI("account/login_or_register/", phone, null);
+        if (res.status === 201) {
             dispatch({ type: AUTHTACTIONSYPES.GET_OTP, payload: { data: true } })
             successMessage("کد اعتبار سنجی برای شما ارسال شد")
         }
@@ -72,14 +72,18 @@ export const CheckOtp = data => async dispatch => {
 export const logOutUser = () => async dispatch => {
     try {
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: true } });
-        const res = await postDataAPI("account/auth/logout/",);
-        Cookies.remove("CafesIran__TOKEN");
-        dispatch({ type: AUTHTACTIONSYPES.LOGIN, payload: { data: false } });
-        dispatch({ type: USERACTIONSYPES.GET_USER, payload: { data: null } });
-        dispatch({ type: AUTHTACTIONSYPES.GET_OTP, payload: { data: false } })
-        successMessage(res.data)
+        const token = Cookies.get("CafesIran__TOKEN");
+        const res = await getDataAPI("account/logout/", token);
+        if (res.status === 200) {
+            Cookies.remove("CafesIran__TOKEN");
+            dispatch({ type: AUTHTACTIONSYPES.LOGIN, payload: { data: false } });
+            dispatch({ type: USERACTIONSYPES.GET_USER, payload: { data: null } });
+            dispatch({ type: AUTHTACTIONSYPES.GET_OTP, payload: { data: false } })
+            successMessage(res.data.detail)
+        }
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     } catch (error) {
+        console.log(error);
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     }
