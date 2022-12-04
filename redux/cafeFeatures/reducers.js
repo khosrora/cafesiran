@@ -8,7 +8,9 @@ const initialStore = {
     printList: null,
     allReciptor: [],
     commentModal: false,
-    comments: []
+    comments: [],
+    vipUsers: [],
+    next: null
 };
 
 
@@ -55,6 +57,16 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 comments: [action.payload.data, ...state.comments]
+            }
+        case CAFEFETURESTYPE.GET_VIP_USERS:
+            return {
+                ...state,
+                vipUsers: action.payload.data
+            }
+        case CAFEFETURESTYPE.GET_NEXT_FE:
+            return {
+                ...state,
+                next: action.payload.data
             }
         default:
             return state;

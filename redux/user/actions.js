@@ -9,7 +9,8 @@ export const USERACTIONSYPES = {
     GET_USER: "GET_USER",
     REQUEST_CAFE: "REQUEST_CAFE",
     IS_SEND_REQUEST: "IS_SEND_REQUEST",
-    CHANGE_NAME: "CHANGE_NAME"
+    CHANGE_NAME: "CHANGE_NAME",
+    ADD_VIP: "ADD_VIP"
 }
 
 export const getDetailsUser = () => async dispatch => {
@@ -73,6 +74,22 @@ export const changeName = (name) => async dispatch => {
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور پیش آمده است")
+        dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+export const requestVip = (data) => async dispatch => {
+    try {
+        dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await postDataAPI("cafe/customer/", data, token);
+        if(res.status === 201) {
+            successMessage("عضویت شما در این مجموعه ثبت شد")
+        }
+        dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
+        console.log(err);
+        errorMessage(err.response.data.message)
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     }
 }

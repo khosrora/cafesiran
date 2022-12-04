@@ -11,7 +11,9 @@ export const CAFEFETURESTYPE = {
     CHANGE_ACTIVE_RECEPTOR: "CHANGE_ACTIVE_RECEPTOR",
     COMMENT_MODAL: "COMMENT_MODAL",
     COMMENT_ADD: "COMMENT_ADD",
-    GET_COMMENTS: "GET_COMMENTS"
+    GET_COMMENTS: "GET_COMMENTS",
+    GET_VIP_USERS: 'GET_VIP_USERS' , 
+    GET_NEXT_FE : "GET_NEXT_FE"
 }
 
 export const getListPrint = (id) => async dispatch => {
@@ -139,3 +141,20 @@ export const addComment = (data) => async dispatch => {
     }
 }
 
+
+export const getVipUsers = (page) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI(`cafe/customer/`, token)
+        if (res.status === 200) {
+            dispatch({ type: CAFEFETURESTYPE.GET_NEXT_FE, payload: { data: res.data.next } });
+            dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS , payload: { data: res.data.results } });
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        console.log(error);
+        dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS , payload: { data: [] } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}

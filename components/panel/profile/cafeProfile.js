@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { changeIsOpenAction } from '../../../redux/cafe/actions';
-
+import { UsersIcon } from '@heroicons/react/outline';
 
 const CafeProfile = ({ cafe, dispatch }) => {
 
@@ -49,6 +49,14 @@ const CafeProfile = ({ cafe, dispatch }) => {
                         </a>
                     </Link>
                 </div>
+            </div>
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
+                <Link href="/dashboard/vipUsers">
+                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
+                        <UsersIcon className='w-10 h-10' />
+                        <p>کاربران عضو</p>
+                    </div>
+                </Link>
             </div>
         </>
     );

@@ -61,7 +61,7 @@ const SideBarPanel = () => {
                                 <>
                                     <li>
                                         <Link href="/dashboard/comments">
-                                            <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                                            <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/comments" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                                                 <ChatAlt2Icon className="h-6 w-6" />
                                                 <p>دیدگاه ها</p>
                                             </a>

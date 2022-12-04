@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { XIcon } from '@heroicons/react/outline';
 
 import DatePicker from "react-multi-date-picker"
@@ -10,6 +10,7 @@ import "react-multi-date-picker/styles/layouts/mobile.css"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { errorMessage } from '../../../utils/toast';
+import { requestVip } from '../../../redux/user/actions';
 
 
 const customerSchema = Yup.object().shape({
@@ -18,11 +19,17 @@ const customerSchema = Yup.object().shape({
 });
 
 
-const VipModal = ({ SetCustomerClubModal }) => {
+const VipModal = ({ customerClubModal, SetCustomerClubModal }) => {
 
-    const { auth } = useSelector(state => state);
+    const dispatch = useDispatch();
+
+    const { auth, userDetails } = useSelector(state => state);
     const login = auth.login;
+    const load = userDetails.load;
+    console.log(load);
     const [date, setDate] = useState();
+
+
 
     return (
         <>
@@ -42,10 +49,10 @@ const VipModal = ({ SetCustomerClubModal }) => {
                         onSubmit={values => {
                             if (!login) return errorMessage("لطفا ابتدا وارد شوید");
                             if (!date) return errorMessage("لطفا تاریخ تولد را مشخص کنید");
-                            values.date = date?.toDate().toLocaleDateString('zh-Hans-CN').replaceAll("/", "-");
+                            values.birthdate = date?.toDate().toLocaleDateString('zh-Hans-CN').replaceAll("/", "-");
+                            values.cafe = customerClubModal;
                             console.log(values);
-                            // values.cafe = cafeId;
-                            // dispatch(sendReserve(values))
+                            dispatch(requestVip(values))
                         }}
                     >
                         {({ errors, touched }) => (
@@ -81,9 +88,16 @@ const VipModal = ({ SetCustomerClubModal }) => {
                                     placeholder="مثال :‌ 1 / 2 / 1400"
                                     className="rmdp-mobile"
                                 />
-                                <button type='submit' className="bg-[#FF7129] w-full text-white py-3 rounded-md lg:w-1/2 lg:m-auto">
-                                    عضویت
-                                </button>
+                                {
+                                    load ?
+                                    <button type='submit' className="bg-[#FF7129] w-full text-white py-3 rounded-md lg:w-1/2 lg:m-auto">
+                                        در حال ارسال اطلاعات
+                                    </button>
+                                    :
+                                        <button type='submit' className="bg-[#FF7129] w-full text-white py-3 rounded-md lg:w-1/2 lg:m-auto">
+                                            عضویت
+                                        </button>
+                                }
                             </Form>
                         )}
                     </Formik>

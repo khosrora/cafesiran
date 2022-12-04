@@ -47,7 +47,7 @@ const SingleCafe = ({ items, categories, cafeId }) => {
                 <MenuItem tabs={tabs} />
             </div>
             {
-                customerClubModal ? <VipModal SetCustomerClubModal={SetCustomerClubModal} /> : null
+                customerClubModal ? <VipModal customerClubModal={customerClubModal} SetCustomerClubModal={SetCustomerClubModal} /> : null
             }
         </>
     );
