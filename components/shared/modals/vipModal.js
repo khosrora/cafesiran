@@ -26,7 +26,6 @@ const VipModal = ({ customerClubModal, SetCustomerClubModal }) => {
     const { auth, userDetails } = useSelector(state => state);
     const login = auth.login;
     const load = userDetails.load;
-    console.log(load);
     const [date, setDate] = useState();
 
 
@@ -67,7 +66,7 @@ const VipModal = ({ customerClubModal, SetCustomerClubModal }) => {
                                     <Field type="text" name="lastName" className='w-full py-3 border rounded-md px-2' placeholder='نام خانوادگی خود را وارد کنید' />
                                     {errors.lastName && touched.lastName ? (<span className="text-xs text-red-600">{errors.lastName}</span>) : null}
                                 </div>
-                                <label htmlFor="">تاریخ <span className='text-red-600 text-xs'>(ضروری)</span></label>
+                                <label htmlFor="">تاریخ تولد<span className='text-red-600 text-xs'>(ضروری)</span></label>
                                 <DatePicker
                                     value={date}
                                     onChange={setDate}
