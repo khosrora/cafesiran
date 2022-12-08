@@ -30,6 +30,13 @@ const SideBarPhone = ({ asPath, setSidebar }) => {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="/blogs">
+                                    <a title='مقالات وب سایت' className='block py-2 ' href="">
+                                        <span className={`${asPath === "/blogs" ? 'border-b border-amber-600 text-amber-600' : ''}`}>مقالات</span>
+                                    </a>
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/aboutUs">
                                     <a title='درباره ما' className='block py-2 ' href="">
                                         <span className={`${asPath === "/aboutUs" ? 'border-b border-amber-600 text-amber-600' : ''}`}>درباره ما</span>

@@ -34,6 +34,7 @@ const Footer = () => {
                             <li><Link href="/"><a title='صفحه اصلی'>خانه</a></Link></li>
                             <li><Link href="/aboutUs"><a title='درباره ما بیشتر بدانید'>درباره ما</a></Link></li>
                             <li><Link href="/contactUs"><a title='با ما تماس بگیرید'>تماس با ما</a></Link></li>
+                            <li><Link href="/blogs"><a title='مقالات وب سایت کافه ایران'>مقالات</a></Link></li>
                             <li><Link href="/features"><a title='ویژگی های منو دیجیتال'>امکانات کافه ایران</a></Link></li>
                         </ul>
                     </div>

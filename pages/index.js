@@ -14,6 +14,7 @@ const Home = () => {
         <meta property="og:locale" content="fa_IR" />
         <meta property="og:site_name" content="کافه ایران" />
         <meta name="description" content=" ارائه دهنده سرویس منو دیجیتال به کافه ها و رستوران ها و هتل ها |‌کافه ایران" />
+        <meta name="robots" content="index, follow" />
       </Head>
       <Layout>
         <HomePage />
