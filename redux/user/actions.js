@@ -10,7 +10,8 @@ export const USERACTIONSYPES = {
     REQUEST_CAFE: "REQUEST_CAFE",
     IS_SEND_REQUEST: "IS_SEND_REQUEST",
     CHANGE_NAME: "CHANGE_NAME",
-    ADD_VIP: "ADD_VIP"
+    ADD_VIP: "ADD_VIP",
+    GET_FAV: "GET_FAV"
 }
 
 export const getDetailsUser = () => async dispatch => {
@@ -83,13 +84,28 @@ export const requestVip = (data) => async dispatch => {
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await postDataAPI("cafe/customer/", data, token);
-        if(res.status === 201) {
+        if (res.status === 201) {
             successMessage("عضویت شما در این مجموعه ثبت شد")
         }
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
         console.log(err);
         errorMessage(err.response.data.message)
+        dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+export const getMyFavCafes = () => async dispatch => {
+    try {
+        dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI("cafe/user_clubs/", token);
+        if (res.status === 200) {
+            dispatch({ type: USERACTIONSYPES.GET_FAV, payload: { data: res.data.results } });
+        }
+        dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
+        console.log(err);
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     }
 }

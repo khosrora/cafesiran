@@ -5,7 +5,8 @@ import { USERACTIONSYPES } from "./actions";
 const initialStore = {
     load: false,
     user: null,
-    isRequest: false
+    isRequest: false,
+    fav: null
 };
 
 
@@ -27,7 +28,13 @@ export default function reducer(state = initialStore, action) {
                 isRequest: action.payload.data
             }
         }
-        
+        case USERACTIONSYPES.GET_FAV: {
+            return {
+                ...state,
+                fav : action.payload.data
+            }
+        }
+
         default:
             return state;
     }
