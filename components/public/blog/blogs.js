@@ -20,25 +20,34 @@ const Blogs = () => {
     }, [])
 
     if (load) return <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 m-auto my-4 gap-x-4 max-w-6xl'> <SImagesGallery /> </div>
+
+
     return (
-        <div className="my-4 flex flex-col max-w-7xl m-auto px-8">
-            <div className="flex flex-col justify-start items-start gap-y-4 text-xs mb-4">
-                <div className="">
-                    <span className="ml-2">خانه</span>
-                    /
-                    <span className="mx-2 text-blue-400">
-                        بلاگ ها
-                    </span>
-                </div>
-            </div>
-            <div className="justify-center grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4 ">
-                {
-                    blogs.map((i , index) =>
-                        <CardBlog key={index} item={i} />
-                    )
-                }
-            </div>
-        </div>
+        <>
+            {
+                blogs.length === 0 ?
+                    <div className="w-full max-w-7xl m-auto text-center my-48 bg-slate-100 rounded-md py-2 dark:bg-zinc-800"> <p>در حال حاضر هیج مقاله ای ثبت نشده است</p> </div>
+                    :
+                    <div className="my-4 flex flex-col max-w-7xl m-auto px-8">
+                        <div className="flex flex-col justify-start items-start gap-y-4 text-xs mb-4">
+                            <div className="">
+                                <span className="ml-2">خانه</span>
+                                /
+                                <span className="mx-2 text-blue-400">
+                                    بلاگ ها
+                                </span>
+                            </div>
+                        </div>
+                        <div className="justify-center grid grid-cols-1 gap-2 md:grid-cols-3 lg:grid-cols-4 ">
+                            {
+                                blogs.map((i, index) =>
+                                    <CardBlog key={index} item={i} />
+                                )
+                            }
+                        </div>
+                    </div>
+            }
+        </>
     );
 }
 
