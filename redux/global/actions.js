@@ -9,7 +9,9 @@ export const globalActionsType = {
     GET_DETAIL_CAFE: "GET_DETAIL_CAFE",
     GET_CATEGORIES: "GET_CATEGORIES",
     GET_MENUELIST: "GET_MENUELIST",
-    GET_CAFES: "GET_CAFES"
+    GET_CAFES: "GET_CAFES",
+    GET_BLOGS: "GET_BLOGS",
+    GET_BLOG: "GET_BLOG"
 }
 
 export const getMenuList = id => async dispatch => {
@@ -122,6 +124,34 @@ export const liveRegisterAction = (data) => async dispatch => {
     } catch (error) {
         errorMessage("مجموعه شما قبلا ثبت شده است")
         dispatch({ type: globalActionsType.GET_CAFES, payload: { data: [] } });
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    }
+}
+
+export const getBlogs = (data) => async dispatch => {
+    try {
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
+        const res = await getDataAPI("blog/iran-cafe/", data, null);
+        if (res.status === 200) {
+            dispatch({ type: globalActionsType.GET_BLOGS, payload: { data: res.data.results } });
+        }
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    } catch (error) {
+        dispatch({ type: globalActionsType.GET_CAFES, payload: { data: [] } });
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    }
+}
+
+export const getSingleBlog = (slug) => async dispatch => {
+    try {
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: true } });
+        const res = await getDataAPI(`blog/${slug}/`);
+        if (res.status === 200) {
+            dispatch({ type: globalActionsType.GET_BLOG, payload: { data: res.data } });
+        }
+        dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
+    } catch (error) {
+        dispatch({ type: globalActionsType.GET_CAFES, payload: { data: null } });
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     }
 }

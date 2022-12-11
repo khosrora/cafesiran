@@ -9,7 +9,9 @@ const initialStore = {
     cafe: null,
     categories: [],
     menuList: [],
-    cafesList: []
+    cafesList: [],
+    blogs: [],
+    blog: null
 };
 
 
@@ -49,6 +51,16 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 loadItem: action.payload.load
+            }
+        case globalActionsType.GET_BLOGS:
+            return {
+                ...state,
+                blogs: action.payload.data
+            }
+        case globalActionsType.GET_BLOG:
+            return {
+                ...state,
+                blog: action.payload.data
             }
         default:
             return state;
