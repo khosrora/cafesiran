@@ -1,6 +1,8 @@
 import Cookies from "js-cookie";
 import { deleteDataAPI, getDataAPI, patchDataAPI, postDataAPI, putDataAPI } from "../../utils/fetchData";
 import { errorMessage, successMessage } from "../../utils/toast";
+import { UTILITIES } from './../utilities/actions';
+
 
 export const CAFEACTIONSYPES = {
     LOAD: "LOAD",
@@ -33,12 +35,13 @@ export const CAFEACTIONSYPES = {
 export const getDetailsCafe = id => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/cafes/${id}/`, token);
         dispatch({ type: CAFEACTIONSYPES.GET_DATA, payload: { data: res.data } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -74,14 +77,14 @@ export const createItemMenu = (data) => async dispatch => {
 export const getAllItemCafe = (page) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/menuitems/?page=${page}`, token);
-
         dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } })
         dispatch({ type: CAFEACTIONSYPES.ITEMS_MENU, payload: { data: res.data.results } })
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -89,12 +92,13 @@ export const getAllItemCafe = (page) => async dispatch => {
 export const getOneItemMenu = (id) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/menuitems/${id}`, token);
         dispatch({ type: CAFEACTIONSYPES.ITEM_MENU, payload: { data: res.data } })
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -154,6 +158,7 @@ export const deleteMenuItems = (id) => async dispatch => {
 export const getGalleriesCafe = () => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/galleries/`, token);
         if (res.status === 200) {
@@ -161,7 +166,7 @@ export const getGalleriesCafe = () => async dispatch => {
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -201,13 +206,14 @@ export const deleteImageGallery = (id) => async dispatch => {
 export const getSuggestCafe = (page) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/suggestions/?page=${page}`, token);
         dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
         dispatch({ type: CAFEACTIONSYPES.GET_CAFES_SUGGEST, payload: { data: res.data.results } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -215,13 +221,14 @@ export const getSuggestCafe = (page) => async dispatch => {
 export const getReserveCafe = (page) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/reservations/?page=${page}`, token);
         dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
         dispatch({ type: CAFEACTIONSYPES.GET_CAFES_RESERVE, payload: { data: res.data.results } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -229,13 +236,14 @@ export const getReserveCafe = (page) => async dispatch => {
 export const getCommentsCafe = (page) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`comment/cafes_comments?page=${page}`, token);
         dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
         dispatch({ type: CAFEACTIONSYPES.GET_CAFES_COMMENTS, payload: { data: res.data.results } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -244,12 +252,13 @@ export const getCommentsCafe = (page) => async dispatch => {
 export const getOrder = () => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/order/`, token);
         dispatch({ type: CAFEACTIONSYPES.GET_ORDERS, payload: { data: res.data } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -257,12 +266,13 @@ export const getOrder = () => async dispatch => {
 export const getDetailsOrder = (id) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/order/${id}/`, token);
         if (res.status === 200) dispatch({ type: CAFEACTIONSYPES.DETAILS_ORDER, payload: { data: res.data } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -332,6 +342,7 @@ export const changeIsOpenAction = (bool, id) => async dispatch => {
 export const getPlans = () => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN");
         const res = await getDataAPI(`plan/plans/`, token);
         if (res.status === 200) {
@@ -339,7 +350,7 @@ export const getPlans = () => async dispatch => {
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -362,6 +373,7 @@ export const addAddress = (id, data) => async dispatch => {
 export const getOrdersSearch = (data) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN");
         const res = await getDataAPI(`queries/order/?start_date=${data.start_date}&end_date=${data.end_date}`, token);
         if (res.status === 200) {
@@ -369,14 +381,13 @@ export const getOrdersSearch = (data) => async dispatch => {
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
 
 export const addResponseCafe = data => async dispatch => {
     try {
-        console.log(data);
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN");
         const res = await postDataAPI(`comment/response_comment`, data, token);
@@ -386,6 +397,7 @@ export const addResponseCafe = data => async dispatch => {
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }
@@ -401,6 +413,7 @@ export const deleteComment = (id) => async dispatch => {
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
 }

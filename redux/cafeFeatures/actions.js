@@ -1,6 +1,7 @@
 import Cookies from "js-cookie";
 import { deleteDataAPI, getDataAPI, patchDataAPI, postDataAPI } from "../../utils/fetchData";
 import { errorMessage, successMessage } from "../../utils/toast";
+import { UTILITIES } from './../utilities/actions';
 
 export const CAFEFETURESTYPE = {
     LOAD: "LOAD",
@@ -12,19 +13,20 @@ export const CAFEFETURESTYPE = {
     COMMENT_MODAL: "COMMENT_MODAL",
     COMMENT_ADD: "COMMENT_ADD",
     GET_COMMENTS: "GET_COMMENTS",
-    GET_VIP_USERS: 'GET_VIP_USERS' , 
-    GET_NEXT_FE : "GET_NEXT_FE"
+    GET_VIP_USERS: 'GET_VIP_USERS',
+    GET_NEXT_FE: "GET_NEXT_FE"
 }
 
 export const getListPrint = (id) => async dispatch => {
     try {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/order/${id}/`, token);
         dispatch({ type: CAFEFETURESTYPE.GET_LIST_PRINT, payload: { data: res.data } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }
@@ -33,12 +35,13 @@ export const getListPrint = (id) => async dispatch => {
 export const getAllReceptor = () => async dispatch => {
     try {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/bartender/`, token)
         dispatch({ type: CAFEFETURESTYPE.GET_ALL_RECEPTOR, payload: { data: res.data.results } })
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }
@@ -96,6 +99,7 @@ export const changeActiveReceptor = (id, bool) => async dispatch => {
 export const getAllComments = commentId => async dispatch => {
     try {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`comment/item_comments/${commentId}`, token)
         if (res.status === 200) {
@@ -103,7 +107,7 @@ export const getAllComments = commentId => async dispatch => {
         }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        // errorMessage(error.response.data.message)
+        errorMessage(error.response.data.message);
         dispatch({ type: CAFEFETURESTYPE.GET_COMMENTS, payload: { data: [] } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
@@ -145,16 +149,17 @@ export const addComment = (data) => async dispatch => {
 export const getVipUsers = (page) => async dispatch => {
     try {
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/customer/`, token)
         if (res.status === 200) {
             dispatch({ type: CAFEFETURESTYPE.GET_NEXT_FE, payload: { data: res.data.next } });
-            dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS , payload: { data: res.data.results } });
+            dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS, payload: { data: res.data.results } });
         }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        console.log(error);
-        dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS , payload: { data: [] } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS, payload: { data: [] } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }

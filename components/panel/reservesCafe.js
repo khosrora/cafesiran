@@ -13,14 +13,15 @@ const ReservesCafe = ({ setReserveForm }) => {
 
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
-    const { cafeDetails } = useSelector(state => state);
+    const { cafeDetails, utilities } = useSelector(state => state);
     const reserve = cafeDetails.reserve;
     const load = cafeDetails.load;
     const next = cafeDetails.next;
+    const connection = utilities.connection;
 
     useEffect(() => {
-        dispatch(getReserveCafe(page))
-    }, [page])
+       if(connection) dispatch(getReserveCafe(page))
+    }, [page , connection])
 
     if (load) return <Stable />
     return (

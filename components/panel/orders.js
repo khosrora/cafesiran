@@ -7,6 +7,7 @@ import { CheckIcon, ClockIcon, ExclamationIcon } from '@heroicons/react/outline'
 import Stable from './../skillton/Stable';
 import MomentDate from '../shared/utilities/moment';
 import Paginate from '../shared/other/paginate';
+import NoConnection from '../shared/utilities/noConnection';
 
 const Orders = () => {
 
@@ -14,6 +15,7 @@ const Orders = () => {
 
     const { data, error } = useSWR(`${API}cafe/order/?page=${page}`, fetcher);
 
+    if (error) return <NoConnection />
     if (!data) return <Stable />
     if (data.count === 0) {
         return <div className="w-full text-center my-36">

@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getOrdersSearch } from '../../../redux/cafe/actions';
 
-import Paginate from '../../shared/other/paginate';
+// import Paginate from '../../shared/other/paginate';
 import MomentDate from '../../shared/utilities/moment';
 import Link from 'next/link';
 import { CheckIcon, ClockIcon, ExclamationIcon } from '@heroicons/react/outline';
@@ -26,7 +26,7 @@ const SearchOrder = () => {
     const totalPrice = cafeDetails.searchData.total_prices;
     const mostPurchesd = cafeDetails.searchData.most_purchesd;
     const load = cafeDetails.load;
-    console.log(ordresDataSearch);
+    
 
     const dispatch = useDispatch()
 

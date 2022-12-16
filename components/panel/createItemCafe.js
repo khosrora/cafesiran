@@ -18,13 +18,14 @@ const createItemMenuSchema = Yup.object().shape({
 const CreateItemCafe = () => {
 
     const dispatch = useDispatch();
-    const { categoryDetails } = useSelector(state => state);
+    const { categoryDetails, utilities } = useSelector(state => state);
     const categories = categoryDetails.categories;
     const load = categoryDetails.load;
+    const connection = utilities.connection;
 
     useEffect(() => {
-        dispatch(getCategories());
-    }, [])
+        if (connection) dispatch(getCategories());
+    }, [connection])
 
     return (
         <>

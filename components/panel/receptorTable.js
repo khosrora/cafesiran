@@ -7,13 +7,15 @@ import SReceptor from '../skillton/SReceotor';
 
 const ReceptorTable = ({ dispatch }) => {
 
-    const { cafeFaetures } = useSelector(state => state);
+    const { cafeFaetures, utilities } = useSelector(state => state);
+
+    const connection = utilities.connection;
     const lists = cafeFaetures?.allReciptor;
     const load = cafeFaetures?.load;
 
     useEffect(() => {
-        dispatch(getAllReceptor())
-    }, []);
+        if (connection) dispatch(getAllReceptor())
+    }, [connection]);
 
     const handleChangeIsReceptor = (id, data) => {
         dispatch(changeActiveReceptor(id, data))

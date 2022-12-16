@@ -11,7 +11,7 @@ const initialStore = {
     menuList: [],
     cafesList: [],
     blogs: [],
-    blog: null
+    blog: null,
 };
 
 

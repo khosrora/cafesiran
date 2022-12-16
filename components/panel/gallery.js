@@ -12,14 +12,16 @@ import SImagesGallery from '../skillton/sImagesGallery';
 
 const Gallery = () => {
 
-    const { cafeDetails } = useSelector(state => state);
-    const galleries = cafeDetails.gallery;
-    const load = cafeDetails.load;
+    const { cafeDetails , utilities } = useSelector(state => state);
     const dispatch = useDispatch();
 
+    const galleries = cafeDetails.gallery;
+    const load = cafeDetails.load;
+    const connection = utilities.connection;
+
     useEffect(() => {
-        dispatch(getGalleriesCafe())
-    }, []);
+       if(connection)  dispatch(getGalleriesCafe())
+    }, [connection]);
 
     if (!galleries) return <p>در حال دریافت اطلاعات</p>
     return (

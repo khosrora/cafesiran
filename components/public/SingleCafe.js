@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import dynamic from 'next/dynamic';
 
 
@@ -6,6 +7,7 @@ import dynamic from 'next/dynamic';
 // ! Tabs
 import Items from './tabsSingleCafe/Items';
 import VipModal from '../shared/modals/vipModal';
+import NoConnection from '../shared/utilities/noConnection';
 const AboutCafe = dynamic(() => import("./tabsSingleCafe/aboutCafe"))
 const Reserve = dynamic(() => import("./tabsSingleCafe/reserve"))
 const Suggest = dynamic(() => import("./tabsSingleCafe/suggest"))
@@ -13,8 +15,11 @@ const Suggest = dynamic(() => import("./tabsSingleCafe/suggest"))
 
 
 const SingleCafe = ({ items, categories, cafeId }) => {
+
+    const { utilities } = useSelector(state => state);
     const [tabs, setTabs] = useState("Items");
     const [customerClubModal, SetCustomerClubModal] = useState(false);
+    const connection = utilities.connection;
 
     const handleTab = (tab) => {
         setTabs(tab)
@@ -44,7 +49,12 @@ const SingleCafe = ({ items, categories, cafeId }) => {
                     <p className={`cursor-pointer text-xs md:text-base dark:text-zinc-200 ${tabs === "Suggest" ? "text-[#FF7129] dark:text-[#FF7129]" : ""}`} onClick={() => handleTab("Suggest")}>پیشنهادات</p>
                     <p className={`cursor-pointer text-xs md:text-base dark:text-zinc-200 ${tabs === "About" ? "text-[#FF7129] dark:text-[#FF7129]" : ""}`} onClick={() => handleTab("About")}>درباره مجموعه</p>
                 </div>
-                <MenuItem tabs={tabs} />
+                {
+                    connection ?
+                        <MenuItem tabs={tabs} />
+                        :
+                        <NoConnection />
+                }
             </div>
             {
                 customerClubModal ? <VipModal customerClubModal={customerClubModal} SetCustomerClubModal={SetCustomerClubModal} /> : null

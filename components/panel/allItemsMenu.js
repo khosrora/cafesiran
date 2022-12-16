@@ -11,14 +11,15 @@ const AllItemsMenu = () => {
 
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
-    const { cafeDetails } = useSelector(state => state);
+    const { cafeDetails , utilities } = useSelector(state => state);
     const items = cafeDetails.items;
     const load = cafeDetails.load;
     const next = cafeDetails.next;
+    const connection = utilities.connection;
 
     useEffect(() => {
-        dispatch(getAllItemCafe(page))
-    }, [page]);
+        if(connection) dispatch(getAllItemCafe(page))
+    }, [page , connection]);
 
     const handleActiveItem = (e, id, data) => {
         e.preventDefault();

@@ -1,22 +1,25 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import CafesPage from "../../components/public/cafesPage";
 import Layout from "../../components/public/layout";
+import NoConnection from '../../components/shared/utilities/noConnection';
 import { getCafes } from '../../redux/global/actions';
 
 
 
 
 const Cafes = (props) => {
+
+    const { utilities } = useSelector(state => state);
     const province = props.props.province;
     const provinceId = props.props.provinceId;
     const city = props.props.city;
-
+    const connection = utilities.connection;
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if (province) dispatch(getCafes(province, city))
-    }, [province, city]);
+        if (province && connection) dispatch(getCafes(province, city))
+    }, [province, city, connection]);
 
 
     return (
@@ -24,7 +27,12 @@ const Cafes = (props) => {
             <title>{`کافه و رستوران های ${province} | منو دیجیتال |‌ menu digital`}</title>
             <meta name="description" content={`منو کافه ها و رستوران های ${province} در وب سایت کافه ایران`} />
             <Layout>
-                <CafesPage provinceId={provinceId} province={province} />
+                {
+                    connection ?
+                        <CafesPage provinceId={provinceId} province={province} />
+                        :
+                        <NoConnection />
+                }
             </Layout>
         </>
     );

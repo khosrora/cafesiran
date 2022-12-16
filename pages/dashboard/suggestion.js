@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import LayoutPanel from "../../components/panel/layout/layoutPanel";
 import SuggestCafe from "../../components/panel/suggestCafe";
 import { getSuggestCafe } from '../../redux/cafe/actions';
@@ -15,9 +15,11 @@ const Suggestion = () => {
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
 
+    const { utilities } = useSelector(state => state);
+    const connection = utilities.connection;
     useEffect(() => {
-        dispatch(getSuggestCafe(page))
-    }, [page])
+        if (connection) dispatch(getSuggestCafe(page))
+    }, [page, connection])
 
     return (
         <>

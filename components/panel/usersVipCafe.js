@@ -13,15 +13,17 @@ import Paginate from '../shared/other/paginate';
 
 const UsersVipCafe = () => {
 
-    const { cafeFaetures } = useSelector(state => state);
+    const { cafeFaetures, utilities } = useSelector(state => state);
+
+    const connection = utilities.connection;
     const users = cafeFaetures.vipUsers;
     const next = cafeFaetures.next;
     const dispatch = useDispatch();
     const [page, setPage] = useState(1);
 
     useEffect(() => {
-        dispatch(getVipUsers(page))
-    }, [page])
+        if (connection) dispatch(getVipUsers(page))
+    }, [page, connection])
 
 
     if (!users) return <Stable />

@@ -44,7 +44,6 @@ const Items = ({ items, categories }) => {
     }
 
     const handleCommentModal = (id) => {
-        // return errorMessage("به زودی این بخش اضافه میشود")
         if (!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
         dispatch(openModalComment(id))
         dispatch(getAllComments(id))
@@ -54,7 +53,7 @@ const Items = ({ items, categories }) => {
     return (
         <>
             {
-               menuItems[0] !== null ?
+                menuItems[0] !== null ?
                     <>
                         <div className="mt-8 overflow-x-auto">
                             <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
@@ -125,7 +124,7 @@ const Items = ({ items, categories }) => {
             {
                 commentModal !== false ?
                     <div className="w-full mt-20 mb-40 flex flex-col justify-center items-center lg:mt-44">
-                        <CommentCmModal commentModal={commentModal}  openModalComment={openModalComment} comments={comments} load={load} />
+                        <CommentCmModal commentModal={commentModal} openModalComment={openModalComment} comments={comments} load={load} />
                     </div>
                     : null
             }

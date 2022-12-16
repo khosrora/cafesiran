@@ -1,4 +1,5 @@
 import { CheckCircleIcon } from '@heroicons/react/outline';
+import Link from 'next/link';
 import ImagesPanels from './imagesPanels';
 
 
@@ -13,15 +14,15 @@ const PackagesPanel = ({ data }) => {
             <ul className="mt-4 text-zinc-600 text-sm flex flex-col gap-y-4 dark:text-zinc-200">
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p> دارای قابلیت ثبت سفارش </p>
+                    <p> دارای قابلیت ثبت سفارش توسط مشتریان</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>مشاهده مجموعه روی نقشه</p>
+                    <p>مشاهده اطلاعات مجموعه روی نقشه</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p className="">ایجاد qr code مخصوص مجموعه (بی نهایت)</p>
+                    <p className="">امکان ایجاد qr code مخصوص مجموعه (بی نهایت)</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
@@ -29,19 +30,15 @@ const PackagesPanel = ({ data }) => {
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>دارای قابلیت رزرو میز</p>
+                    <p>امکان رزرو میز توسط مشتریان مجموعه</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>جست و جوی پیشرفته</p>
+                    <p>جست و جوی پیشرفته در بین کاربران عضو شده</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>امکان گزارش گیری</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>ثبت گالری</p>
+                    <p>امکان گزارش گیری از سفارشات ثبت شده</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
@@ -49,11 +46,15 @@ const PackagesPanel = ({ data }) => {
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>باشگاه مشتریان (به زودی)</p>
+                    <p>برگزاری رویداد</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
-                    <p>برگزاری رویداد (به زودی)</p>
+                    <p>باشگاه مشتریان</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <CheckCircleIcon className="w-5 h-5 ml-2" />
+                    <p>دریافت اطلاعات سفارشات (بیشترین و پر فروش ترین)</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2" />
@@ -61,10 +62,15 @@ const PackagesPanel = ({ data }) => {
                 </li>
             </ul>
             <div className="flex justify-between items-center mt-4">
-                <button className="bg-[#FF7129] py-2 text-white rounded-md w-1/2">فعلا رایگان !!!!</button>
+                <Link href="/liveRegister">
+                    <a href="" className="bg-[#FF7129] py-2 text-white rounded-md text-center w-1/2">
+                        ثبت مجموعه
+                    </a>
+                </Link>
                 <div className="text-sm font-bold text-zinc-600 flex justify-center items-center w-1/2">
-                    <span className="ml-2 dark:text-zinc-200">{data.period} روز {new Intl.NumberFormat().format(data.price)}</span>
-                    <span className="dark:text-zinc-200">تومان</span>
+                    {/* <span className="ml-2 dark:text-zinc-200">{data.period} روز {new Intl.NumberFormat().format(data.price)}</span> */}
+                    <span className="ml-2 dark:text-zinc-200">رایگان !!!</span>
+                    {/* <span className="dark:text-zinc-200">تومان</span> */}
                 </div>
             </div>
         </div>

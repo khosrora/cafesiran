@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import Script from 'next/script'
 import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import Layout from "../../components/public/layout";
@@ -9,24 +8,25 @@ import { categoryList, getMenuList, getPublicDetailsCafe } from '../../redux/glo
 const CafeId = (props) => {
 
     const dispatch = useDispatch();
-    const { global } = useSelector(state => state);
+    const { global, utilities } = useSelector(state => state);
     const items = global.menuList;
     const categories = global.categories;
     const cafeId = props.props.cafeId
+    const connection = utilities.connection;
 
     useEffect(() => {
-        dispatch(categoryList());
-    }, [])
+        if(connection) dispatch(categoryList());
+    }, [connection])
 
     useEffect(() => {
-        if (cafeId) dispatch(getMenuList(cafeId));
-    }, [cafeId])
+        if (cafeId && connection) dispatch(getMenuList(cafeId));
+    }, [cafeId , connection])
 
     useEffect(() => {
-        if (cafeId) dispatch(getPublicDetailsCafe(cafeId));
-    }, [cafeId])
+        if (cafeId && connection) dispatch(getPublicDetailsCafe(cafeId));
+    }, [cafeId , connection])
 
-        
+
     return (
         <>
             <Head>

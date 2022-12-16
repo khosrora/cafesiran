@@ -12,14 +12,17 @@ const Order = () => {
 
     const router = useRouter();
     const id = router.query.id;
+
     const dispatch = useDispatch();
-    const { cafeDetails } = useSelector(state => state);
+    const { cafeDetails, utilities } = useSelector(state => state);
+
+    const connection = utilities.connection;
     const data = cafeDetails.detailsOrder;
     const load = cafeDetails.load;
 
     useEffect(() => {
-        if (id) dispatch(getDetailsOrder(id));
-    }, [id]);
+        if (id && connection) dispatch(getDetailsOrder(id));
+    }, [id, connection]);
 
     const handleStatusOrder = (state, id) => {
         dispatch(changeStateOrder(state, id))
