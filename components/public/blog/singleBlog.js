@@ -26,7 +26,7 @@ const SingleBlog = ({ blog, latestBlog }) => {
                         <img className="rounded w-full object-cover" src={blog.image} alt="" />
                     </div>
                     <div className="bg-zinc-100 p-2 rounded flex flex-col gap-y-2 dark:bg-zinc-800">
-                        <h1 className="text-xl">تست بلاگ</h1>
+                        <h1 className="text-xl py-2">{blog.title}</h1>
                         <hr />
                         <p className="text-sm">خلاصه مطلب : </p>
                         <p className="text-xs text-justify leading-6">

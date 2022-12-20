@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBlogs } from '../../../redux/global/actions';
@@ -31,7 +32,9 @@ const Blogs = () => {
                     <div className="my-4 flex flex-col max-w-7xl m-auto px-8">
                         <div className="flex flex-col justify-start items-start gap-y-4 text-xs mb-4">
                             <div className="">
-                                <span className="ml-2">خانه</span>
+                                <Link href="/">
+                                    <a title='صفحه اصلی' className="ml-2">خانه</a>
+                                </Link>
                                 /
                                 <span className="mx-2 text-blue-400">
                                     بلاگ ها

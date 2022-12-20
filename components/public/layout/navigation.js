@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { UserIcon, PencilIcon, ShoppingCartIcon, HomeIcon, MapIcon } from '@heroicons/react/outline';
+import { UserIcon, PencilIcon, ShoppingCartIcon, HomeIcon, UserGroupIcon } from '@heroicons/react/outline';
 import { show_Modal_Login } from "../../../redux/auth/actions";
 
 const Navigation = () => {
 
-    const { asPath } = useRouter();
+    const { asPath, query } = useRouter();
+    const cafeId = query.cafeId;
     const dispatch = useDispatch();
     const { auth, cartDetails } = useSelector(state => state);
     const load = auth.load;
@@ -54,6 +55,12 @@ const Navigation = () => {
             }
             {
                 asPath.includes("/cafes/") ?
+                    // <Link href={`/cafes/events/${cafeId}`}>
+                    //     <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
+                    //         <UserGroupIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
+                    //         <p className="text-xs mt-1">رویداد ها</p>
+                    //     </div>
+                    // </Link>
                     null
                     :
                     <Link href='/features'>

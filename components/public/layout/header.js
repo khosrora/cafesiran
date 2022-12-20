@@ -60,7 +60,10 @@ const Header = () => {
                             {
                                 asPath.includes("/cafes/") ?
                                     <li>
-                                        <h1 className={`${asPath.includes("/cafes/") ? 'text-[#FF7129]' : null} mr-8`}>منو {`${nameCafe === undefined ? "" : nameCafe }`}</h1>
+                                        {
+                                            nameCafe === undefined ? "" :
+                                                <h1 className={`${asPath.includes("/cafes/") ? 'text-[#FF7129]' : null} mr-8`}>منو {`${nameCafe === undefined ? "" : nameCafe}`}</h1>
+                                        }
                                     </li> :
                                     <>
                                         <li className="mr-8">
@@ -97,7 +100,9 @@ const Header = () => {
                     </ul>
                 </div>
                 {
-                    asPath.includes("/cafes/") ? <p className="text-sm md:hidden">منو {`${nameCafe}`}</p>
+                    asPath.includes("/cafes/") ?
+                        nameCafe === undefined ? "" :
+                            <p className="text-sm md:hidden">منو {`${nameCafe}`}</p>
                         :
                         <div onClick={() => setSidebar(true)} className="md:hidden">
                             <MenuAlt3Icon className="w-6 h-6" />
@@ -122,11 +127,11 @@ const Header = () => {
                                 ورود
                             </div>
                 }
-            </div>
+            </div >
             {
                 sidebar ? <SideBarPhone asPath={asPath} setSidebar={setSidebar} /> : null
             }
-        </nav>
+        </nav >
     );
 }
 

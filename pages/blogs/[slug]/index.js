@@ -10,12 +10,13 @@ const IndexBlog = (props) => {
 
     const blog = props.data;
     const latestBlog = props.latestBlog;
-
     return (
         <>
             <Script rel="preload" src="/js/yektanet.js" strategy="afterInteractive" />
             <Head>
+                <title>{blog.title} | منو دیجیتال کافه ایران</title>
                 <meta name="robots" content="index, follow" />
+                <meta name="description" content={blog.short_desc}/>
             </Head>
             <Layout>
                 <SingleBlog blog={blog} latestBlog={latestBlog} />
