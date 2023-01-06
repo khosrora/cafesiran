@@ -144,7 +144,7 @@ export const deleteMenuItems = (id) => async dispatch => {
         const res = await deleteDataAPI(`cafe/menuitems/${id}/`, token);
         if (res.status === 204) {
             dispatch({ type: CAFEACTIONSYPES.DELETE_ITEM_MENU, payload: { data: id } });
-            errorMessage("آیتم منو با حذف شد");
+            errorMessage("آیتم منو با موفقیت حذف شد");
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
