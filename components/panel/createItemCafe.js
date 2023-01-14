@@ -28,8 +28,7 @@ const CreateItemCafe = ({ setGallery , imageUrl  }) => {
     useEffect(() => {
         if (connection) dispatch(getCategories());
     }, [connection])
-
-    console.log(imageUrl);
+    
 
     return (
         <>

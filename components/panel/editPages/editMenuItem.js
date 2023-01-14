@@ -7,13 +7,12 @@ import { editItemMenu, getOneItemMenu } from '../../../redux/cafe/actions';
 import { getCategories } from '../../../redux/category/actions';
 import Sform from '../../skillton/Sform';
 import Link from 'next/link';
-import { ArrowRightIcon } from '@heroicons/react/outline';
+import { ArrowRightIcon, UploadIcon, CheckIcon } from '@heroicons/react/outline';
 
 
 
 const createItemMenuSchema = Yup.object().shape({
     title: Yup.string().min(2, 'نام آیتم منو بیش از حد کوتاه است').max(50, 'نام آیتم منو بیش از حد بزرگ است').required('وارد کردن نام آیتم منو الزامی است'),
-    image_url: Yup.string().required('وارد کردن نام آیتم منو الزامی است'),
     price: Yup.number().typeError("قیمت باید به صورت عددی وارد شود").required('وارد کردن قیمت آیتم منو الزامی است'),
     desc: Yup.string().min(20, 'توضیحات آیتم منو بیش از حد کوتاه است').max(1000, 'توضیحات آیتم منو بیش از حد بزرگ است').required('وارد کردن توضیحات آیتم منو الزامی است'),
     category: Yup.string().required("انتخاب دسته بندی الزامی است")
@@ -21,7 +20,7 @@ const createItemMenuSchema = Yup.object().shape({
 
 
 
-const EditMenuItem = () => {
+const EditMenuItem = ({ setGallery, imageUrl }) => {
     const router = useRouter();
     const id = router.query.id;
     const dispatch = useDispatch();
@@ -49,7 +48,6 @@ const EditMenuItem = () => {
             <Formik
                 initialValues={{
                     title: item?.title,
-                    image_url: item?.image_url,
                     price: item?.price,
                     desc: item?.desc,
                     is_active: item?.is_active,
@@ -57,6 +55,8 @@ const EditMenuItem = () => {
                 }}
                 validationSchema={createItemMenuSchema}
                 onSubmit={(values) => {
+                    values.image_url = imageUrl;
+                    if (values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
                     dispatch(editItemMenu(id, values))
                 }}
             >
@@ -77,11 +77,20 @@ const EditMenuItem = () => {
                         <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between dark:text-white">
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6">
                                 <label className="" htmlFor="mobile">آدرس تصویر</label>
-                                <Field name="image_url" className="w-full p-2 rounded-md border focus:outline-none dark:border-none dark:bg-zinc-700" id="mobile" type="text" placeholder="لینک عکس" />
-                                {errors.image_url && touched.image_url ? (<span className='text-red-600'>{errors.image_url}</span>) : null}
-                                <span className="text-xs text-zinc-500">
-                                    آدرس تصویر مورد نظر خود را از صفحه گالری کپی کرده و ان را در باکس بالا جایگذاری کنید
-                                </span>
+                                <div onClick={() => setGallery(true)} className="flex items-center gap-x-2 w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">
+                                    {
+                                        imageUrl === null ?
+                                            <UploadIcon className='w-6 h-6' />
+                                            :
+                                            <CheckIcon className='w-6 h-6 text-green-600' />
+                                    }
+                                    {
+                                        imageUrl === null ?
+                                            <span>انتخاب عکس</span>
+                                            :
+                                            <span>عکس انتخاب شد</span>
+                                    }
+                                </div>
                             </div>
 
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
