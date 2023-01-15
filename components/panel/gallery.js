@@ -1,27 +1,30 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { CloudUploadIcon } from '@heroicons/react/outline'
+import { CloudUploadIcon, PlusIcon } from '@heroicons/react/outline'
 import { addImageGalley, getGalleriesCafe } from '../../redux/cafe/actions';
 import CardGallery from '../shared/cards/CardGallery';
 import Link from 'next/link';
 import { errorMessage } from '../../utils/toast';
 import SImagesGallery from '../skillton/sImagesGallery';
+import Paginate from '../shared/other/paginate';
 
 
 
 
 const Gallery = () => {
 
-    const { cafeDetails , utilities } = useSelector(state => state);
+    const [page, setPage] = useState(1)
+    const { cafeDetails, utilities } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const galleries = cafeDetails.gallery;
+    const next = cafeDetails.next;
     const load = cafeDetails.load;
     const connection = utilities.connection;
 
     useEffect(() => {
-       if(connection)  dispatch(getGalleriesCafe())
-    }, [connection]);
+        if (connection) dispatch(getGalleriesCafe(page))
+    }, [connection, page]);
 
     if (!galleries) return <p>در حال دریافت اطلاعات</p>
     return (
@@ -54,7 +57,7 @@ const Gallery = () => {
                 </div>
                 <div className="w-full">
                     <Link href="https://tinypng.com/">
-                        <a target="_blank" className='text-sky-600 text-xs'>کاهش دهتده سایز عکس</a>
+                        <a target="_blank" className='text-sky-600 text-xs'>کاهش دهنده سایز عکس</a>
                     </Link>
                 </div>
                 {
@@ -63,14 +66,21 @@ const Gallery = () => {
                             <SImagesGallery />
                         </div>
                         :
-                        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-4  mt-8">
+                        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-6  mt-8">
                             {
                                 galleries.map(i =>
                                     <CardGallery key={i.id} data={i} />
                                 )
                             }
+                            {/* <div className="p-2 bg-zinc-100 rounded-md dark:bg-zinc-900 cursor-pointer" onClick={() => setPage(page + 1)}>
+                                <div className="flex flex-col justify-center items-center  h-full w-full">
+                                    <PlusIcon className='w-10 h-10' />
+                                    <span>مشاهده موارد بیشتر</span>
+                                </div>
+                            </div> */}
                         </div>
                 }
+                <Paginate next={next} page={page} setPage={setPage} />
             </form>
         </div>
     );

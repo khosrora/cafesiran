@@ -9,6 +9,8 @@ import { editRequestForCafe, getDetailsCafe } from '../../../redux/cafe/actions'
 import { StateType } from '../../shared/utilities/constance/type';
 import Alert from '../../shared/other/alert';
 import Sform from '../../skillton/Sform';
+import { ArrowRightIcon, UploadIcon, CheckIcon } from '@heroicons/react/outline';
+
 
 const SignupSchema = Yup.object().shape({
     persian_title: Yup.string().min(2, 'نام کافه بیش از حد کوتاه است').max(50, 'نام کافه بیش از حد بزرگ است').required('وارد کردن نام کافه الزامی است'),
@@ -21,7 +23,7 @@ const SignupSchema = Yup.object().shape({
     city: Yup.string().required('وارد کردن شهر  کافه الزامی است'),
 });
 
-const EditRequestCafe = () => {
+const EditRequestCafe = ({ setGallery, imageUrl }) => {
 
     const { userDetails, cafeDetails } = useSelector(state => state);
     const dispatch = useDispatch();
@@ -31,7 +33,7 @@ const EditRequestCafe = () => {
     const load = userDetails.load;
     const user = userDetails?.user;
     const cafe = cafeDetails?.cafe;
-    
+
     useEffect(() => {
         if (user) dispatch(getDetailsCafe(user?.cafe?.id))
     }, [user]);
@@ -57,6 +59,7 @@ const EditRequestCafe = () => {
                 }}
                 validationSchema={SignupSchema}
                 onSubmit={values => {
+                    values.image_url = imageUrl;
                     values.province = parseInt(values.province);
                     values.city = parseInt(values.city);
                     values.slug = convertToSlug(values.english_title);
@@ -64,13 +67,31 @@ const EditRequestCafe = () => {
                     router.push("/dashboard");
                 }}
             >
-                {({ errors, touched, initialValues, values, setFieldValue }) => (
+                {({ errors, touched, values, setFieldValue }) => (
                     <Form className="mt-8 flex flex-col gap-y-8 m-auto lg:w-3/4 text-sm" action="">
                         <p>کد کافه :‌ {cafe.code}</p>
-                        <div className="flex flex-col justify-start items-start gap-y-2">
+                        {/* <div className="flex flex-col justify-start items-start gap-y-2">
                             <label className="" htmlFor="per-name">لینک عکس <span className='text-xs text-red-600'>(لینک را از گالری کپی کنید)</span></label>
                             <Field initialValues={values.image_url} name="image_url" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="per-name" type="text" placeholder="نام مجموعه خود را به فارسی وارد کنید" />
                             {errors.image_url && touched.image_url ? (<span className='text-red-600'>{errors.image_url}</span>) : null}
+                        </div> */}
+
+                        <div className="flex flex-col justify-start items-start gap-y-2">
+                            <label className="" htmlFor="mobile">آدرس تصویر</label>
+                            <div onClick={() => setGallery(true)} className="flex items-center gap-x-2 w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">
+                                {
+                                    imageUrl === null ?
+                                        <UploadIcon className='w-6 h-6' />
+                                        :
+                                        <CheckIcon className='w-6 h-6 text-green-600' />
+                                }
+                                {
+                                    imageUrl === null ?
+                                        <span>انتخاب عکس</span>
+                                        :
+                                        <span>عکس انتخاب شد</span>
+                                }
+                            </div>
                         </div>
 
                         <div className="flex flex-col justify-between gap-y-8 text-slate-600 lg:flex-row lg:justify-between lg:gap-x-2 dark:text-white">

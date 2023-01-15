@@ -45,10 +45,6 @@ const id = (props) => {
                             <p className="text-xl tracking-widest text-center">{data.code}</p>
                         </div>
                     </div>
-                    <p className="text-center text-zinc-700 text-xs dark:text-zinc-400">
-                        با استفاده از کد کافه به راحتی به صفحه کافه
-                        رفته وثبت سفارش و رزرو کنید
-                    </p>
                     <p className="text-center text-zinc-700 text-sm dark:text-zinc-400">
                         آدرس :‌ {data.street}
                     </p> 

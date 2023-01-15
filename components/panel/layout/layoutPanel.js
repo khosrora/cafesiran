@@ -16,7 +16,6 @@ const LayoutPanel = ({ children }) => {
 
     const { utilities } = useSelector(state => state);
     const connection = utilities.connection;
-    console.log(connection);
     const token = Cookies.get(CookieName);
     const router = useRouter()
 

@@ -80,7 +80,7 @@ export const getAllItemCafe = (page) => async dispatch => {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/menuitems/?page=${page}`, token);
-        dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } })
+        
         dispatch({ type: CAFEACTIONSYPES.ITEMS_MENU, payload: { data: res.data.results } })
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
@@ -155,13 +155,14 @@ export const deleteMenuItems = (id) => async dispatch => {
 
 
 
-export const getGalleriesCafe = () => async dispatch => {
+export const getGalleriesCafe = (page) => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
-        const res = await getDataAPI(`cafe/galleries/`, token);
+        const res = await getDataAPI(`cafe/galleries/?page=${page}`, token);
         if (res.status === 200) {
+            dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } })
             dispatch({ type: CAFEACTIONSYPES.GET_GALLERY, payload: { data: res.data.results } });
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { changeIsOpenAction } from '../../../redux/cafe/actions';
 import { UsersIcon } from '@heroicons/react/outline';
+import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
 
@@ -17,7 +18,7 @@ const CafeProfile = ({ cafe, dispatch }) => {
         setOpen(!open)
     }
 
-
+    console.log(cafe);
     return (
         <>
             <div className="w-full bg-zinc-100 flex justify-between items-center rounded-md py-4 px-4 dark:bg-zinc-800">
@@ -40,7 +41,7 @@ const CafeProfile = ({ cafe, dispatch }) => {
             <div className="mt-2">
                 <p>اطلاعات مجموعه :</p>
             </div>
-            <div className="mt-2 w-full bg-zinc-100 rounded-md py-4 px-4 dark:bg-zinc-800">
+            <div className="mt-2 w-full bg-zinc-100 rounded-md  py-4 px-4 dark:bg-zinc-800">
                 <div className="grid grid-cols-2 mt-2 gap-y-4 text-xs lg:text-sm">
                     <p> کد مجموعه :‌ <span>{cafe.code}</span> </p>
                     <Link href={`https://cafesiran.ir/link/${cafe.id}`}>
@@ -48,6 +49,10 @@ const CafeProfile = ({ cafe, dispatch }) => {
                             لینک کوتاه مجموعه
                         </a>
                     </Link>
+                    <div className="flex gap-x-2">
+                        <p> اعتبار پنل تا تاریخ : </p>
+                        <MomentDate time={cafe.charge_expired_date} />
+                    </div>
                 </div>
             </div>
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">

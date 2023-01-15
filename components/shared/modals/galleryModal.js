@@ -1,22 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGalleriesCafe } from '../../../redux/cafe/actions';
 import { successMessage } from '../../../utils/toast';
 import SImagesGallery from '../../skillton/sImagesGallery';
+import Paginate from '../other/paginate';
 
 
 const GalleryModal = ({ setGallery, setImageUrl }) => {
 
+    const [page, setPage] = useState(1)
     const { cafeDetails, utilities } = useSelector(state => state);
     const dispatch = useDispatch();
 
     const galleries = cafeDetails.gallery;
+    const next = cafeDetails.next;
     const load = cafeDetails.load;
     const connection = utilities.connection;
 
     useEffect(() => {
-        if (connection) dispatch(getGalleriesCafe())
-    }, [connection]);
+        if (connection) dispatch(getGalleriesCafe(page))
+    }, [connection, page]);
 
     return (
         <>
@@ -42,6 +45,7 @@ const GalleryModal = ({ setGallery, setImageUrl }) => {
                             )
                     }
                 </div>
+                <Paginate next={next} page={page} setPage={setPage} />
             </div>
         </>
     );
