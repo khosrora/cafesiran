@@ -66,18 +66,12 @@ const Gallery = () => {
                             <SImagesGallery />
                         </div>
                         :
-                        <div className="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-6  mt-8">
+                        <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-6  mt-8">
                             {
                                 galleries.map(i =>
                                     <CardGallery key={i.id} data={i} />
                                 )
                             }
-                            {/* <div className="p-2 bg-zinc-100 rounded-md dark:bg-zinc-900 cursor-pointer" onClick={() => setPage(page + 1)}>
-                                <div className="flex flex-col justify-center items-center  h-full w-full">
-                                    <PlusIcon className='w-10 h-10' />
-                                    <span>مشاهده موارد بیشتر</span>
-                                </div>
-                            </div> */}
                         </div>
                 }
                 <Paginate next={next} page={page} setPage={setPage} />
