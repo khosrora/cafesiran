@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { changeIsOpenAction } from '../../../redux/cafe/actions';
-import { UsersIcon } from '@heroicons/react/outline';
+import { UsersIcon, ChatAltIcon, MapIcon, ShoppingCartIcon } from '@heroicons/react/outline';
 import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
@@ -18,7 +18,6 @@ const CafeProfile = ({ cafe, dispatch }) => {
         setOpen(!open)
     }
 
-    console.log(cafe);
     return (
         <>
             <div className="w-full bg-zinc-100 flex justify-between items-center rounded-md py-4 px-4 dark:bg-zinc-800">
@@ -55,11 +54,29 @@ const CafeProfile = ({ cafe, dispatch }) => {
                     </div>
                 </div>
             </div>
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 mt-4">
+            <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mt-4">
+                <Link href="/dashboard/map">
+                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
+                        <MapIcon className='w-10 h-10' />
+                        <p>آدرس مجموعه</p>
+                    </div>
+                </Link>
+                <Link href="/dashboard/myOrders">
+                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
+                        <ShoppingCartIcon className='w-10 h-10' />
+                        <p>سفارشات</p>
+                    </div>
+                </Link>
                 <Link href="/dashboard/vipUsers">
                     <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <UsersIcon className='w-10 h-10' />
                         <p>کاربران عضو</p>
+                    </div>
+                </Link>
+                <Link href="/dashboard/suggestion">
+                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
+                        <ChatAltIcon className='w-10 h-10' />
+                        <p>پیشنهادات</p>
                     </div>
                 </Link>
             </div>

@@ -23,6 +23,7 @@ const IndexDashboard = () => {
     }, [user, connection])
 
     if (!user) return <p>در حال دریافت اطلاعات</p>
+    console.log(cafe);
     return (
         <LayoutPanel>
             {

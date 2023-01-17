@@ -120,7 +120,7 @@ const Order = () => {
                                 </div>
 
                                 {
-                                    data.is_owner ?
+                                    data.is_owner === "O" ?
                                         <Link href={`/dashboard/order/print?id=${data.id}`}>
                                             <a target="_blank" className='bg-[#FF7129] w-full py-2 rounded-md text-white text-center'>
                                                 پرینت جزئیات سفارش
