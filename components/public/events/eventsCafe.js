@@ -73,7 +73,7 @@ const EventsCafeCm = ({ data, load, loadMore, loadMoreData, showBtnLoadMore, caf
                                                     <div className='text-[8px] lg:text-xs flex justify-start items-center gap-x-2 bg-red-600 p-2 rounded-xl text-white'>
                                                         <span>تاریخ شروع رویداد:‌</span> <MomentComment time={i.date} />
                                                     </div>
-                                                    <div className='text-xs flex justify-start items-center gap-x-2 bg-red-600 p-2 rounded-xl text-white'>
+                                                    <div className='text-[8px] lg:text-xs text-xs flex justify-start items-center gap-x-2 bg-red-600 p-2 rounded-xl text-white'>
                                                         <span>ساعت شروع رویداد:‌</span> <span>{i.time}</span>
                                                     </div>
                                                 </div>
