@@ -5,9 +5,11 @@ import CreateEvent from '../../components/shared/modals/createEvent';
 
 
 
+
 const Events = () => {
 
     const [createForm, setCreateForm] = useState(false);
+    
 
     return (
         <>

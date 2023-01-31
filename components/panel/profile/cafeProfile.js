@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { changeIsOpenAction } from '../../../redux/cafe/actions';
-import { UsersIcon, ChatAltIcon, MapIcon, ShoppingCartIcon } from '@heroicons/react/outline';
+import { UsersIcon, ChatAltIcon, MapIcon, ShoppingCartIcon, CalendarIcon } from '@heroicons/react/outline';
 import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
@@ -55,6 +55,13 @@ const CafeProfile = ({ cafe, dispatch }) => {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mt-4">
+                <Link href="/dashboard/events">
+                    <div className="relative flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
+                        <span className='absolute top-0 right-0 p-2 bg-amber-400 text-white'>جدید</span>
+                        <CalendarIcon className='w-10 h-10' />
+                        <p>ایجاد رویداد</p>
+                    </div>
+                </Link>
                 <Link href="/dashboard/map">
                     <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <MapIcon className='w-10 h-10' />

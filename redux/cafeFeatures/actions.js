@@ -14,7 +14,10 @@ export const CAFEFETURESTYPE = {
     COMMENT_ADD: "COMMENT_ADD",
     GET_COMMENTS: "GET_COMMENTS",
     GET_VIP_USERS: 'GET_VIP_USERS',
-    GET_NEXT_FE: "GET_NEXT_FE"
+    GET_NEXT_FE: "GET_NEXT_FE",
+    ADD_EVENT: "ADD_EVENT",
+    GET_EVENNT: "GET_EVENNT",
+    DELETE_EVENT: "DELETE_EVENT"
 }
 
 export const getListPrint = (id) => async dispatch => {
@@ -160,6 +163,61 @@ export const getVipUsers = (page) => async dispatch => {
     } catch (error) {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS, payload: { data: [] } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const getEvents = (page) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
+        const token = Cookies.get("CafesIran__TOKEN");
+        const res = await getDataAPI(`cafe/events/?page=${page}`, token);
+        
+        if (res.status === 200) {
+            dispatch({ type: CAFEFETURESTYPE.GET_NEXT_FE, payload: { data: res.data.links.next } });
+            dispatch({ type: CAFEFETURESTYPE.GET_EVENNT, payload: { events: res.data.results } });
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const addEvent = (data) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await postDataAPI(`cafe/events/`, data, token)
+        if (res.status === 201) {
+            successMessage("رویداد شما با موفقیت ثبت شد")
+            dispatch({ type: CAFEFETURESTYPE.ADD_EVENT, payload: { events: res.data } });
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        console.log(error);
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const deleteEvent = (id) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await deleteDataAPI(`cafe/events/${id}`, token)
+        console.log(res);
+        if (res.status === 204) {
+            errorMessage("رویداد با موفقیت حذف شد")
+            dispatch({ type: CAFEFETURESTYPE.DELETE_EVENT, payload: { id } });
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
+        console.log(error);
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
 }

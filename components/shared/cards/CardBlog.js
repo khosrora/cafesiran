@@ -13,8 +13,8 @@ const CardBlog = ({ item }) => {
             <div className="flex justify-between items-center">
                 <h3 className="flex-auto mt-4 text-sm md:text-lg">
                     {
-                        item.title.length > 40 ?
-                            `${item.title.substring(0, 40)}...` : item.title
+                        item.title.length > 30 ?
+                            `${item.title.substring(0, 30)}...` : item.title
                     }
                 </h3>
             </div>

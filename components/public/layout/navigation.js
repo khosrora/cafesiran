@@ -55,13 +55,12 @@ const Navigation = () => {
             }
             {
                 asPath.includes("/cafes/") ?
-                    // <Link href={`/cafes/events/${cafeId}`}>
-                    //     <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
-                    //         <UserGroupIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
-                    //         <p className="text-xs mt-1">رویداد ها</p>
-                    //     </div>
-                    // </Link>
-                    null
+                    <Link href={`/cafes/events/${cafeId}`}>
+                        <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
+                            <UserGroupIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
+                            <p className="text-xs mt-1">رویداد ها</p>
+                        </div>
+                    </Link>
                     :
                     <Link href='/features'>
                         <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>

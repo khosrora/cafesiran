@@ -15,16 +15,16 @@ const CafeId = (props) => {
     const connection = utilities.connection;
 
     useEffect(() => {
-        if(connection) dispatch(categoryList());
+        if (connection) dispatch(categoryList());
     }, [connection])
 
     useEffect(() => {
         if (cafeId && connection) dispatch(getMenuList(cafeId));
-    }, [cafeId , connection])
+    }, [cafeId, connection])
 
     useEffect(() => {
         if (cafeId && connection) dispatch(getPublicDetailsCafe(cafeId));
-    }, [cafeId , connection])
+    }, [cafeId, connection])
 
 
     return (

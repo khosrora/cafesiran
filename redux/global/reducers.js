@@ -4,6 +4,8 @@ import { globalActionsType } from "./actions";
 
 const initialStore = {
     load: false,
+    loadMore: false,
+    isShowLoad: true,
     loadCate: true,
     loadItem: true,
     cafe: null,
@@ -12,6 +14,7 @@ const initialStore = {
     cafesList: [],
     blogs: [],
     blog: null,
+    eventsCafe: []
 };
 
 
@@ -21,6 +24,16 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 load: action.payload.load
+            }
+        case globalActionsType.LOAD_MORE:
+            return {
+                ...state,
+                loadMore: action.payload.load
+            }
+        case globalActionsType.is_SHOW_LOAD_MORE:
+            return {
+                ...state,
+                isShowLoad: action.payload.data
             }
         case globalActionsType.GET_DETAIL_CAFE:
             return {
@@ -61,6 +74,16 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 blog: action.payload.data
+            }
+        case globalActionsType.GET_EVENTS:
+            return {
+                ...state,
+                eventsCafe: action.payload.data
+            }
+        case globalActionsType.GET_EVENTS_LOAD_MORE:
+            return {
+                ...state,
+                eventsCafe: state.eventsCafe.concat(action.payload.data)
             }
         default:
             return state;

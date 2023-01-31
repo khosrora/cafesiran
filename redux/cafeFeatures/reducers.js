@@ -10,6 +10,7 @@ const initialStore = {
     commentModal: false,
     comments: [],
     vipUsers: [],
+    events: [],
     next: null
 };
 
@@ -67,6 +68,21 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 next: action.payload.data
+            }
+        case CAFEFETURESTYPE.GET_EVENNT:
+            return {
+                ...state,
+                events: action.payload.events
+            }
+        case CAFEFETURESTYPE.ADD_EVENT:
+            return {
+                ...state,
+                events: [action.payload.events, ...state.events]
+            }
+        case CAFEFETURESTYPE.DELETE_EVENT:
+            return {
+                ...state,
+                events: DeleteData(state.events, action.payload.id)
             }
         default:
             return state;
