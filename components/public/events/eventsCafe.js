@@ -26,7 +26,7 @@ const EventsCafeCm = ({ data, load, loadMore, loadMoreData, showBtnLoadMore, caf
                                         <p>بازگشت به منو</p>
                                     </div>
                                 </Link>
-                                <div className="w-full text-center text-xs bg-zinc-800 py-4">
+                                <div className="bg-zinc-100 w-full text-center text-xs dark:bg-zinc-800 py-4">
                                     <p>در حال حاضر هیج رویدادی ثبت نشده است</p>
                                 </div>
                             </div>
@@ -70,7 +70,7 @@ const EventsCafeCm = ({ data, load, loadMore, loadMoreData, showBtnLoadMore, caf
                                                     {i.content}
                                                 </p>
                                                 <div className="flex justify-start items-center gap-x-4">
-                                                    <div className='text-xs flex justify-start items-center gap-x-2 bg-red-600 p-2 rounded-xl text-white'>
+                                                    <div className='text-[8px] lg:text-xs flex justify-start items-center gap-x-2 bg-red-600 p-2 rounded-xl text-white'>
                                                         <span>تاریخ شروع رویداد:‌</span> <MomentComment time={i.date} />
                                                     </div>
                                                     <div className='text-xs flex justify-start items-center gap-x-2 bg-red-600 p-2 rounded-xl text-white'>
