@@ -28,13 +28,16 @@
 
 /** @type {import('next').NextConfig} */
 
+const runtimeCaching = require("next-pwa/cache");
 const withPWA = require('next-pwa')({
   dest: 'public',
+  runtimeCaching , 
+  skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
   register: true,
 });
 
-const nextConfig = withPWA({
+module.exports = nextConfig = withPWA({
   reactStrictMode: true,
   compress: false,
   poweredByHeader: false,
@@ -43,5 +46,3 @@ const nextConfig = withPWA({
     removeConsole: process.env.NODE_ENV !== 'development',
   },
 });
-
-module.exports = nextConfig;
