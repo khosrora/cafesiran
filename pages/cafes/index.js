@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import CafesPage from "../../components/public/cafesPage";
@@ -24,8 +25,10 @@ const Cafes = (props) => {
 
     return (
         <>
-            <title>{`کافه و رستوران های ${province} | منو دیجیتال |‌ menu digital`}</title>
-            <meta name="description" content={`منو کافه ها و رستوران های ${province} در وب سایت کافه ایران`} />
+            <Head>
+                <title>{`کافه و رستوران های ${province} | منو دیجیتال |‌ menu digital`}</title>
+                <meta name="description" content={`منو کافه ها و رستوران های ${province} در وب سایت کافه ایران`} />
+            </Head>
             <Layout>
                 {
                     connection ?
