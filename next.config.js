@@ -26,18 +26,29 @@
 // });
 // module.exports = nextConfig;
 
+// /** @type {import('next').NextConfig} */
+
+// const runtimeCaching = require("next-pwa/cache");
+// const withPWA = require('next-pwa')({
+//   dest: 'public',
+//   runtimeCaching , 
+//   skipWaiting: true,
+//   disable: process.env.NODE_ENV === 'development',
+//   register: true,
+// });
+
+// module.exports = nextConfig = withPWA({
+//   reactStrictMode: true,
+//   compress: false,
+//   poweredByHeader: false,
+//   swcMinify: true,
+//   compiler: {
+//     removeConsole: process.env.NODE_ENV !== 'development',
+//   },
+// });
+
 /** @type {import('next').NextConfig} */
-
-const runtimeCaching = require("next-pwa/cache");
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  runtimeCaching , 
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development',
-  register: true,
-});
-
-module.exports = nextConfig = withPWA({
+const nextConfig = {
   reactStrictMode: true,
   compress: false,
   poweredByHeader: false,
@@ -45,4 +56,12 @@ module.exports = nextConfig = withPWA({
   compiler: {
     removeConsole: process.env.NODE_ENV !== 'development',
   },
+};
+
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
 });
+
+module.exports = withPWA(nextConfig);
