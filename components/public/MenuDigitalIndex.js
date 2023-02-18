@@ -17,12 +17,16 @@ const MenuDigitalIndex = () => {
                             className="mx-auto w-full md:relative md:top-8 lg:top-16 sm:w-full md:w-10/12 xl:w-10/12" />
                     </div>
                     <div className="self-center">
-                        <h3 className="font-semibold text-xl lg:text-2xl xl:text-3xl">منو دیجیتال</h3>
-                        <p className="text-sm mt-3 lg:mt-6 leading-6 xl:text-lg lg:leading-8 xl:leading-9">
-                            منو دیجیتال خودت رو به صورت رایگان ایجاد کنید
-                            <br />
-                            جایگزین مناسب منوهای کاغذی
-                        </p>
+                        <h1 className="font-semibold text-xl lg:text-2xl xl:text-3xl">
+                            منو دیجیتال برای کافه و رستوران و ... شما
+                        </h1>
+                        <div className="mt-8 text-[12px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
+                            <div className="flex justify-start items-center">
+                                <span className="">
+                                    یک پنل مدیریت کامل برای کسب و کار خودتون دریافت کنید و منو های دیجیتال با قابلیت دسترسی سریع برای مشتریان کافه و رستوران و یا هتل ایجاد کنید. رزروهای آنلاین و یا انتقادات پیشنهادات را آنلاین دریافت کنید.
+                                </span>
+                            </div>
+                        </div>
                         <div className="mt-4 lg:mt-6">
                             <Link href="/liveRegister">
                                 <a
