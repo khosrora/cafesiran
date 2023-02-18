@@ -21,9 +21,7 @@ const MenuDigitalIndex = () => {
                         <p className="text-sm mt-3 lg:mt-6 leading-6 xl:text-lg lg:leading-8 xl:leading-9">
                             منو دیجیتال خودت رو به صورت رایگان ایجاد کنید
                             <br />
-                            منو دیجیتال کافه ایران جایگزینی مناسب به جای منو
-                            کاغذی کافه رستوران شما
-                            منو دیجیتال حضوری نداری
+                            جایگزین مناسب منوهای کاغذی
                         </p>
                         <div className="mt-4 lg:mt-6">
                             <Link href="/liveRegister">
