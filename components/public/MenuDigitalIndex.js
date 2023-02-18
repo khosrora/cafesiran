@@ -9,7 +9,11 @@ const MenuDigitalIndex = () => {
             <section className="mx-auto sm:max-w-7xl px-4 lg:px-6 xl:px-2 my-6">
                 <div className="bg-[#f8f8f8] rounded-lg p-4 grid sm:grid-cols-2 md:min-h-min md:max-h-96 lg:min-h-[460px] xl:max-h-[480px] sm:gap-x-8  lg:py-6 lg:px-8 dark:bg-zinc-800">
                     <div className="sm:order-last">
-                        <img src="/images/features/menudigitalcafe.webp"
+                        <img
+                            width="500"
+                            height="500"
+                            alt="نمونه عکس منو دیجیتال"
+                            src="/images/features/menudigitalcafe.webp"
                             className="mx-auto w-full md:relative md:top-8 lg:top-16 sm:w-full md:w-10/12 xl:w-10/12" />
                     </div>
                     <div className="self-center">
@@ -24,6 +28,7 @@ const MenuDigitalIndex = () => {
                         <div className="mt-4 lg:mt-6">
                             <Link href="/liveRegister">
                                 <a
+                                    title="ثبت سریع مجموعه"
                                     target="_blank"
                                     className="inline-block rounded-md w-full bg-[#FF7129] text-white text-sm p-4 cursor-pointer md:inline">منو
                                     دیجیتال خود را رایگان بسازید
@@ -31,6 +36,7 @@ const MenuDigitalIndex = () => {
                             </Link>
                             <Link href="/cafes/2">
                                 <a
+                                    title="نمونه منو"
                                     target="_blank"
                                     className="rounded-md inline-block w-full border border-1 text-sm border-gray-700  mt-4 lg:mt-0 lg:mr-4 p-4 cursor-pointer dark:bg-zinc-700 md:inline">
                                     مشاهده نمونه منو دیجیتال
@@ -43,7 +49,12 @@ const MenuDigitalIndex = () => {
                     کافه ایران راهی برای کسب درآمد بیشتر</h3>
                 <div className="grid sm:grid-cols-2 mb-12">
                     <div>
-                        <img src="/images/features/itemsMenu.webp" className="w-9/12 mx-auto" />
+                        <img
+                            width="500"
+                            height="500"
+                            title="منو سفارشی"
+                            src="/images/features/itemsMenu.webp"
+                            className="w-9/12 mx-auto" />
                     </div>
                     <div className="self-center px-4 sm:mr-4 md:mr-8 mt-4 sm:mt-0">
                         <h3 className="font-bold text-lg lg:text-2xl">
@@ -59,7 +70,10 @@ const MenuDigitalIndex = () => {
                 </div>
                 <div className="grid sm:grid-cols-2 mb-12">
                     <div className="sm:order-last">
-                        <img src="/images/features/menuDigital-address.webp" className="w-9/12 mx-auto" />
+                        <img
+                            title="به روزرسانی سریع با منو دیجیتال"
+                            src="/images/features/menuDigital-address.webp"
+                            className="w-9/12 mx-auto" />
                     </div>
                     <div className="self-center px-4 sm:mr-4 md:mr-8 mt-4 sm:mt-0">
                         <h3 className="font-bold text-lg lg:text-2xl">
@@ -74,7 +88,12 @@ const MenuDigitalIndex = () => {
                 </div>
                 <div className="grid sm:grid-cols-2">
                     <div>
-                        <img src="/images/features/menuDigitalEvents.webp" className="w-9/12 mx-auto" />
+                        <img
+                            width="500"
+                            height="500"
+                            title="با منو دیجیتال کافه ایران با مشتریان خود در تعامل باشید"
+                            src="/images/features/menuDigitalEvents.webp"
+                            className="w-9/12 mx-auto" />
                     </div>
                     <div className="self-center px-4 sm:ml-4 md:ml-8 mt-4 sm:mt-0">
                         <h3 className="font-bold text-lg lg:text-2xl">
@@ -99,7 +118,7 @@ const MenuDigitalIndex = () => {
                             قابلیت تغییر در هر زمان
                         </span>
                         <span className="bg-[#2E2F2A] rounded-md text-white text-sm text-center block py-5 dark:bg-zinc-700">
-                            جذب مشتری و افزایش در امد
+                            جذب مشتری و افزایش در آمد
                         </span>
                         <span className="bg-[#f8f8f8] rounded-md text-sm text-center block py-5 dark:bg-zinc-800">
                             صرفه جویی در زمان
@@ -197,7 +216,13 @@ const MenuDigitalIndex = () => {
                             </div>
                         </div>
                         <div>
-                            <img src="/images/features/menuDigitalDashboard.webp" className="order-first lg:order-last w-10/12 sm:w-9/12 md:w-7/12 lg:w-9/12 mx-auto" />
+                            <img
+                                width="500"
+                                height="500"
+                                title="چرا منو کافه ایران"
+                                src="/images/features/menuDigitalDashboard.webp"
+                                className="order-first lg:order-last w-10/12 sm:w-9/12 md:w-7/12 lg:w-9/12 mx-auto"
+                            />
                         </div>
                     </div>
                 </div>
