@@ -36,10 +36,14 @@ const Verify = () => {
                                 "پرداخت ناموفق بود"
                         }
                     </p>
-                    <div className="w-full flex justify-between items-center">
-                        <p>شماره سفارش :‌</p>
-                        <span>{query.RefID}</span>
-                    </div>
+                    {
+                        query.status === "OK" ?
+                            <div className="w-full flex justify-between items-center">
+                                <p>شماره سفارش :‌</p>
+                                <span>{query.RefID}</span>
+                            </div> : null
+                    }
+
                     <Link href="/dashboard">
                         <a className='bg-[#FF7129] text-white w-full py-2 rounded'>برو به داشبورد</a>
                     </Link>

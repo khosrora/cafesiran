@@ -38,8 +38,8 @@ const LiveRegister = () => {
     return (
         <>
             <Head>
-            <title>منو دیجیتال ارزان |‌ ثبت سریع |‌ کافه ایران</title>
-            <meta name="description" content="دریافت منو دیجیتال برای کافی شاپ و کافه و رستوران و هتل و ... در کمتر از 1 دقیقه" />
+                <title>منو دیجیتال ارزان |‌ ثبت سریع |‌ کافه ایران</title>
+                <meta name="description" content="دریافت منو دیجیتال برای کافی شاپ و کافه و رستوران و هتل و ... در کمتر از 1 دقیقه" />
             </Head>
             <Layout>
                 <div className="px-8 max-w-[1800px] m-auto mb-8">
@@ -58,7 +58,7 @@ const LiveRegister = () => {
                         }}
                         validationSchema={RequestValidationSchema}
                         onSubmit={values => {
-                            if (isCafeUser) return errorMessage("کافه شما ثبت شده است")
+                            if (isCafeUser) return errorMessage("مجموعه شما ثبت شده است")
                             values.province = parseInt(values.province);
                             values.city = parseInt(values.city);
                             values.slug = convertToSlug(values.english_title);
@@ -104,6 +104,7 @@ const LiveRegister = () => {
                                             const res = getCities(e.target.value);
                                             setFieldValue("province", e.target.value)
                                             setProvince(e.target.value);
+                                            setFieldValue("city", res[0].pk)
                                             setCities(res)
                                         }} id="state" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
                                             <option selected>استان خود را انتخاب کنید</option>
