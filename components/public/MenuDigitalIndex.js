@@ -233,6 +233,8 @@ const MenuDigitalIndex = () => {
 
         </>
     );
+
 }
+
 
 export default MenuDigitalIndex;

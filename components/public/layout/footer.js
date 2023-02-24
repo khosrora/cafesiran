@@ -24,8 +24,8 @@ const Footer = () => {
                         <p className='mt-2 text-sm  md:mt-4 md:w-3/4 leading-9'>
                             یک پنل مدیریت کامل برای کسب و کار خودتون دریافت کنید و منو های دیجیتال با قابلیت دسترسی سریع برای مشتریان کافه و رستوران و یا هتل ایجاد کنید. رزروهای آنلاین و یا انتقادات پیشنهادات را آنلاین دریافت کنید.
                         </p>
-                        <Link href="/blogs/What_is_a_digital_menu">
-                            <a className='text-blue-400'>منو دیجیتال چیست ؟‌</a>
+                        <Link href="/menu-digital">
+                            <a className='text-blue-400'>منو دیجیتال</a>
                         </Link>
                     </div>
                     <div className="mb-4 md:w-1/6">

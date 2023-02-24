@@ -17,6 +17,7 @@ function QrCode() {
     const [bgColor, setBgColor] = useState("ffffff");
     const [qrCode, setQrCode] = useState("");
 
+
     // Changing the URL only when the user
     // changes the input
     // useEffect(() => {
@@ -31,6 +32,7 @@ function QrCode() {
         setQrCode
             (`http://api.qrserver.com/v1/create-qr-code/?data=${dataLink}&size=${size}x${size}&bgcolor=${bgColor}`);
     }
+
     return (
         <LayoutPanel>
             {

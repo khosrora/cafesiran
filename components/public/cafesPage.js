@@ -17,6 +17,7 @@ const CafesPage = ({ provinceId, province }) => {
     const cafe = global.cafesList;
     const load = global.load;
 
+
     const [city, setCity] = useState(false)
 
     const [citiesData, setCitiesData] = useState(null)
@@ -30,7 +31,7 @@ const CafesPage = ({ provinceId, province }) => {
 
     return (
         <>
-            <div className="px-8 mb-36 max-w-[1800px] lg:flex lg:justify-between lg:items-start m-auto">
+            <div className="px-8 mb-36 lg:flex lg:justify-between lg:items-start m-auto">
                 <div className="lg:w-3/12">
                     <div className="text-xs mb-4">
                         <span className="ml-2">خانه</span>
@@ -88,15 +89,20 @@ const CafesPage = ({ provinceId, province }) => {
                 </div>
                 <div className="flex flex-col mt-12 md:mr-2 lg:w-9/12 lg:mt-0 dark:text-zinc-200">
                     {
-                        cafe.length === 0 ? null :
-                            <div className="flex justify-between items-center text-zinc-200">
-                                <Link href="/cafesMap">
-                                    <a className='bg-[#FF7129] p-2 px-4 text-center rounded-md flex justify-center items-center text-xs'>
-                                        <MapIcon className='w-4 h-4 ml-2' />
-                                        <p>مشاهده روی نقشه</p>
-                                    </a>
-                                </Link>
+                        cafe === null ?
+                            <div className="bg-slate-200 rounded-md text-xs text-center p-2 py-4 dark:bg-zinc-900 w-full">
+                                <p>متاسفانه هنوز مجموعه ای در این شهر یا استان ثبت نشده است</p>
                             </div>
+                            :
+                            cafe.length === 0 ? null :
+                                <div className="flex justify-between items-center text-white">
+                                    <Link href="/cafesMap">
+                                        <a className='bg-[#FF7129] p-2 px-4 text-center rounded-md flex justify-center items-center text-xs'>
+                                            <MapIcon className='w-4 h-4 ml-2' />
+                                            <p>مشاهده روی نقشه</p>
+                                        </a>
+                                    </Link>
+                                </div>
                     }
                     {
                         load ?
@@ -104,16 +110,21 @@ const CafesPage = ({ provinceId, province }) => {
                                 <SImagesGallery />
                             </div>
                             :
-                            cafe.length === 0 ?
+                            cafe === null ?
                                 <div className="bg-slate-200 rounded-md text-xs text-center p-2 py-4 dark:bg-zinc-900 w-full">
                                     <p>متاسفانه هنوز مجموعه ای در این شهر یا استان ثبت نشده است</p>
                                 </div>
                                 :
-                                <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
-                                    {
-                                        cafe.map((i, index) => <CardCafes key={index} cafe={i} />)
-                                    }
-                                </div>
+                                cafe.length === 0 ?
+                                    <div className="bg-slate-200 rounded-md text-xs text-center p-2 py-4 dark:bg-zinc-900 w-full">
+                                        <p>متاسفانه هنوز مجموعه ای در این شهر یا استان ثبت نشده است</p>
+                                    </div>
+                                    :
+                                    <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
+                                        {
+                                            cafe.map((i, index) => <CardCafes key={index} cafe={i} />)
+                                        }
+                                    </div>
                     }
                 </div>
             </div>

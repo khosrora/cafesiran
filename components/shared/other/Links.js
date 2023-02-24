@@ -9,7 +9,7 @@ const Links = () => {
             <div className="hidden md:flex justify-start items-center gap-x-4 text-xs mt-2 text-slate-400 dark:text-white">
                 <Link href="/aboutUs"><a href="">درباره ما</a></Link>
                 <Link href="/contactUs"><a href="">تماس با ما</a></Link>
-                <Link href="/"><a href="">بلاگ کافه ایران</a></Link>
+                <Link href="/blogs"><a href="">بلاگ کافه ایران</a></Link>
             </div>
             <div className="hidden md:flex justify-start gap-x-2 items-center mt-2 ">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

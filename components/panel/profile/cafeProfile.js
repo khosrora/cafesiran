@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { changeIsOpenAction } from '../../../redux/cafe/actions';
-import { UsersIcon, ChatAltIcon, MapIcon, ShoppingCartIcon, CalendarIcon } from '@heroicons/react/outline';
+import { UsersIcon, ChatAltIcon, MapIcon, ShoppingCartIcon, CalendarIcon, UserGroupIcon } from '@heroicons/react/outline';
 import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
@@ -37,27 +37,37 @@ const CafeProfile = ({ cafe, dispatch }) => {
                     </div>
                 </label>
             </div>
-            <div className="mt-2">
-                <p>اطلاعات مجموعه :</p>
-            </div>
-            <div className="mt-2 w-full bg-zinc-100 rounded-md  py-4 px-4 dark:bg-zinc-800">
-                <div className="grid grid-cols-2 mt-2 gap-y-4 text-xs lg:text-sm">
-                    <p> کد مجموعه :‌ <span>{cafe.code}</span> </p>
-                    <Link href={`https://cafesiran.ir/link/${cafe.id}`}>
-                        <a>
-                            لینک کوتاه مجموعه
-                        </a>
-                    </Link>
-                    <div className="flex gap-x-2">
-                        <p> اعتبار پنل تا تاریخ : </p>
-                        <MomentDate time={cafe.charge_expired_date} />
+            <div className="">
+                <div className="mt-2">
+                    <p>اطلاعات مجموعه :</p>
+                </div>
+                <div className="mt-2 w-full bg-zinc-100 rounded-md  py-4 px-4 dark:bg-zinc-800">
+                    <div className="grid grid-cols-2 mt-2 gap-y-4 text-xs lg:text-sm">
+                        <p> کد مجموعه :‌ <span>{cafe.code}</span> </p>
+                        <Link href={`https://cafesiran.ir/link/${cafe.id}`}>
+                            <a className='text-blue-400'>
+                                لینک کوتاه مجموعه
+                            </a>
+                        </Link>
+                        <div className="flex gap-x-2">
+                            <p> اعتبار پنل تا تاریخ : </p>
+                            <MomentDate time={cafe.charge_expired_date} />
+                        </div>
                     </div>
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mt-4">
+                {/* <Link href="/dashboard/events">
+                    <div className="relative overflow-hidden flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
+                        <div className="absolute -top-1 right-0 bg-yellow-400 p-2">
+                            <span>جدید</span>
+                        </div>
+                        <UserGroupIcon className='w-10 h-10' />
+                        <p>مشتریان ویژه</p>
+                    </div>
+                </Link> */}
                 <Link href="/dashboard/events">
-                    <div className="relative flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
-                        <span className='absolute top-0 right-0 p-2 bg-amber-400 text-white'>جدید</span>
+                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <CalendarIcon className='w-10 h-10' />
                         <p>ایجاد رویداد</p>
                     </div>
