@@ -17,7 +17,8 @@ export const CAFEFETURESTYPE = {
     GET_NEXT_FE: "GET_NEXT_FE",
     ADD_EVENT: "ADD_EVENT",
     GET_EVENNT: "GET_EVENNT",
-    DELETE_EVENT: "DELETE_EVENT"
+    DELETE_EVENT: "DELETE_EVENT",
+    GET_USER_LOYALS: "GET_USER_LOYALS"
 }
 
 export const getListPrint = (id) => async dispatch => {
@@ -173,7 +174,7 @@ export const getEvents = (page) => async dispatch => {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN");
         const res = await getDataAPI(`cafe/events/?page=${page}`, token);
-        
+
         if (res.status === 200) {
             dispatch({ type: CAFEFETURESTYPE.GET_NEXT_FE, payload: { data: res.data.links.next } });
             dispatch({ type: CAFEFETURESTYPE.GET_EVENNT, payload: { events: res.data.results } });
@@ -197,7 +198,6 @@ export const addEvent = (data) => async dispatch => {
         }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        console.log(error);
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }
@@ -216,7 +216,21 @@ export const deleteEvent = (id) => async dispatch => {
         }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {
-        console.log(error);
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const getUserLoyals = (number) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI(`queries/loyal_customers/${number}`, token)
+        if (res.status === 200) {
+            dispatch({ type: CAFEFETURESTYPE.GET_USER_LOYALS, payload: { data: res.data } });
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    } catch (error) {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     }

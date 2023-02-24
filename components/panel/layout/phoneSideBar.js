@@ -149,7 +149,7 @@ const PhoneSideBar = ({ setMenu }) => {
                                             <Link href="/dashboard/plans">
                                                 <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/plans" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                                                     <ChartBarIcon className="w-6 h-6" />
-                                                    <p>تعرفه ها</p>
+                                                    <p>خرید اعتبار</p>
                                                 </a>
                                             </Link>
                                         </li>

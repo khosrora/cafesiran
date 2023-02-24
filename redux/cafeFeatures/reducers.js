@@ -11,7 +11,8 @@ const initialStore = {
     comments: [],
     vipUsers: [],
     events: [],
-    next: null
+    next: null,
+    userLoyals: []
 };
 
 
@@ -83,6 +84,11 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 events: DeleteData(state.events, action.payload.id)
+            }
+        case CAFEFETURESTYPE.GET_USER_LOYALS:
+            return {
+                ...state,
+                userLoyals: action.payload.data
             }
         default:
             return state;

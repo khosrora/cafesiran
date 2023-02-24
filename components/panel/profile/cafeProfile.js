@@ -57,25 +57,19 @@ const CafeProfile = ({ cafe, dispatch }) => {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mt-4">
-                {/* <Link href="/dashboard/events">
+                <Link href="/dashboard/loyal-users">
                     <div className="relative overflow-hidden flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <div className="absolute -top-1 right-0 bg-yellow-400 p-2">
                             <span>جدید</span>
                         </div>
                         <UserGroupIcon className='w-10 h-10' />
-                        <p>مشتریان ویژه</p>
+                        <p>مشتریان وفادار</p>
                     </div>
-                </Link> */}
+                </Link>
                 <Link href="/dashboard/events">
                     <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <CalendarIcon className='w-10 h-10' />
                         <p>ایجاد رویداد</p>
-                    </div>
-                </Link>
-                <Link href="/dashboard/map">
-                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
-                        <MapIcon className='w-10 h-10' />
-                        <p>آدرس مجموعه</p>
                     </div>
                 </Link>
                 <Link href="/dashboard/myOrders">
@@ -88,12 +82,6 @@ const CafeProfile = ({ cafe, dispatch }) => {
                     <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <UsersIcon className='w-10 h-10' />
                         <p>کاربران عضو</p>
-                    </div>
-                </Link>
-                <Link href="/dashboard/suggestion">
-                    <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
-                        <ChatAltIcon className='w-10 h-10' />
-                        <p>پیشنهادات</p>
                     </div>
                 </Link>
             </div>

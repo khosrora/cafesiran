@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
+import Alert from '../../components/shared/other/alert';
 
 import LayoutPanel from "../../components/panel/layout/layoutPanel";
 import ReceptorTable from "../../components/panel/receptorTable";
@@ -24,6 +25,7 @@ const Receptor = () => {
     return (
         <LayoutPanel>
             <h1>سالن داران</h1>
+            <Alert title="هشدار" message="با اضافه کردن سالن دار  اجازه دسترسی به سفارشات مجموعه را به او می دهید." />
             <div className="grid grid-cols-1 gap-2 mt-4 md:grid-cols-2 lg:grid-cols-3">
                 <Formik
                     initialValues={{
