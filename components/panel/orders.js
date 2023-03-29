@@ -88,7 +88,7 @@ const Orders = () => {
                     </tbody>
                 </table>
             </div>
-            <Paginate next={data.next} page={page} setPage={setPage} count={data.count} />
+            <Paginate next={data.links.next} page={page} setPage={setPage} count={data.count} />
         </div>
     );
 }

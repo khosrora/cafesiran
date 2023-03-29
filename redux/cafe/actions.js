@@ -162,7 +162,7 @@ export const getGalleriesCafe = (page) => async dispatch => {
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/galleries/?page=${page}`, token);
         if (res.status === 200) {
-            dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } })
+            dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.links.next } })
             dispatch({ type: CAFEACTIONSYPES.GET_GALLERY, payload: { data: res.data.results } });
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
@@ -225,7 +225,7 @@ export const getReserveCafe = (page) => async dispatch => {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/reservations/?page=${page}`, token);
-        dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
+        dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.links.next } });
         dispatch({ type: CAFEACTIONSYPES.GET_CAFES_RESERVE, payload: { data: res.data.results } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {

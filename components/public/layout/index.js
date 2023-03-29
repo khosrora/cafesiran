@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
     return (
         <>
             <Header />
-            <div className="max-w-7xl m-auto">
+            <div className="">
                 {children}
             </div>
             <Footer />

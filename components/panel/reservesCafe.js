@@ -20,8 +20,8 @@ const ReservesCafe = ({ setReserveForm }) => {
     const connection = utilities.connection;
 
     useEffect(() => {
-       if(connection) dispatch(getReserveCafe(page))
-    }, [page , connection])
+        if (connection) dispatch(getReserveCafe(page))
+    }, [page, connection])
 
     if (load) return <Stable />
     return (

@@ -3,6 +3,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
 
 
 const Paginate = ({ next, page, setPage }) => {
+
     return (
         <div className="p-2 w-full flex justify-end items-center">
             {

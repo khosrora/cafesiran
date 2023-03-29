@@ -30,7 +30,7 @@ const CafesPage = ({ provinceId, province }) => {
     }, [provinceId])
 
     return (
-        <>
+        <div className='max-w-7xl m-auto'>
             <div className="px-8 mb-36 lg:flex lg:justify-between lg:items-start m-auto">
                 <div className="lg:w-3/12">
                     <div className="text-xs mb-4">
@@ -120,7 +120,7 @@ const CafesPage = ({ provinceId, province }) => {
                                         <p>متاسفانه هنوز مجموعه ای در این شهر یا استان ثبت نشده است</p>
                                     </div>
                                     :
-                                    <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-6 md:mt-4">
+                                    <div className="grid grid-cols-1 mt-4 gap-y-4 md:grid-cols-2 md:gap-6 md:mt-4">
                                         {
                                             cafe.map((i, index) => <CardCafes key={index} cafe={i} />)
                                         }
@@ -131,7 +131,7 @@ const CafesPage = ({ provinceId, province }) => {
             {
                 city ? <Citymenu setCity={setCity} citiesData={citiesData} province={province} /> : null
             }
-        </>
+        </div>
     );
 }
 
