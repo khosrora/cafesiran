@@ -73,7 +73,7 @@ export const deleteReceptor = (id) => async dispatch => {
         const res = await deleteDataAPI(`cafe/bartender/${id}`, token)
         if (res.status === 204) {
             dispatch({ type: CAFEFETURESTYPE.DELETE_RECEPTOR, payload: { id } })
-            successMessage("سالن دار با حذف شد")
+            successMessage("سالن دار با موفقیت حذف شد")
         }
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
     } catch (error) {

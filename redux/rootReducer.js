@@ -10,6 +10,7 @@ import cafeReducer from './cafe/reducers';
 import categoriesReducer from './category/reducers';
 import cartReducer from './cart/reducers';
 import cafeFeReducer from './cafeFeatures/reducers';
+import storeReducer from './store/reducers';
 
 
 
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
     categoryDetails: categoriesReducer,
     cartDetails: cartReducer,
     cafeFaetures: cafeFeReducer,
+    storeCafe: storeReducer
 });
 
 export default rootReducer;
