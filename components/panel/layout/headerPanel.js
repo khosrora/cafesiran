@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { useDispatch, useSelector } from 'react-redux';
-import { LogoutIcon } from '@heroicons/react/outline'
+import { LogoutIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import { logOutUser } from "../../../redux/auth/actions";
 import { useRouter } from "next/router";
 
 
 const HeaderPanel = ({ setMenu }) => {
 
-    const { userDetails } = useSelector(state => state);
+    const { userDetails, storeCafe } = useSelector(state => state);
+    const basket = storeCafe.basket;
     const user = userDetails.user;
     const dispatch = useDispatch();
     const router = useRouter()
@@ -35,6 +36,19 @@ const HeaderPanel = ({ setMenu }) => {
                                         <button className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">ویرایش مجموعه</button>
                                     </div>
                                 </Link>
+                        }
+                        {
+                            basket.length > 0 ?
+                                <Link href="/dashboard/store/basket">
+                                    <div className="bg-[#FF7129] p-2 flex justify-center items-center rounded-full cursor-pointer ml-2 relative">
+                                        <ShoppingCartIcon className="h-6 w-6 text-slate-500 dark:text-white" />
+                                        <div className="absolute p-1 -top-3 w-6 bg-red-600 rounded-full flex justify-center items-center">
+                                            <p className="text-white text-xs">{basket.length}</p>
+                                        </div>
+                                    </div>
+                                </Link>
+                                :
+                                null
                         }
                         <div className="bg-slate-200 p-2 flex justify-center items-center rounded-full cursor-pointer dark:bg-zinc-700">
                             <LogoutIcon className="h-6 w-6 text-slate-500 dark:text-white" onClick={() => {

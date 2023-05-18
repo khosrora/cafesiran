@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { useDispatch } from 'react-redux';
 import { useRouter } from "next/router";
-import { HomeIcon, TemplateIcon, UserGroupIcon, ShoppingCartIcon, ChartSquareBarIcon, PhotographIcon, UserCircleIcon, CakeIcon, ClipboardListIcon, ChatAltIcon, AcademicCapIcon, MapIcon, ChartBarIcon } from '@heroicons/react/outline'
 import { logOutUser } from "../../../redux/auth/actions";
 import { useSelector } from 'react-redux';
 import { StateType } from "../../shared/utilities/constance/type";
+import CafeMobileRoutes from "./RoutesSideBar/Cafe.Mobile.Routes";
+import AllMobileRoutes from "./RoutesSideBar/All.Mobile.Routes";
 
 
 
@@ -14,7 +15,6 @@ const PhoneSideBar = ({ setMenu }) => {
     const { userDetails } = useSelector(state => state);
     const user = userDetails.user;
     const dispatch = useDispatch();
-    const { asPath } = useRouter();
     const router = useRouter();
 
     return (
@@ -30,139 +30,12 @@ const PhoneSideBar = ({ setMenu }) => {
                     </div>
                     <div className="my-8 w-full">
                         <ul className="flex flex-col gap-y-4 my-4">
-                            <li>
-                                <Link href="/">
-                                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                        <HomeIcon className="w-6 h-6" />
-                                        <p>خانه</p>
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/dashboard">
-                                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                        <UserCircleIcon className="w-6 h-6" />
-                                        <p>پروفایل</p>
-                                    </a>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link href="/dashboard/myOrders">
-                                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/myOrders" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                        <ShoppingCartIcon className="w-6 h-6" />
-                                        <p>سفارشات </p>
-                                    </a>
-                                </Link>
-                            </li>
-                            {/* <li>
-                                <Link href="/dashboard/myFavoriteCafe">
-                                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/myFavoriteCafe" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                        <HeartIcon className="w-6 h-6" />
-                                        <p>کافه های مورد علاقه</p>
-                                    </a>
-                                </Link>
-                            </li> */}
-                            <li>
-                                <Link href="/dashboard/reserved">
-                                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/reserved" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                        <ClipboardListIcon className="w-6 h-6" />
-                                        <p>رزرو شده ها</p>
-                                    </a>
-                                </Link>
-                            </li>
+                            <AllMobileRoutes />
                             {
                                 user?.cafe?.state === StateType.Confirmed ?
-                                    <>                   
-                                        <li>
-                                            <Link href="/dashboard/comments">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <UserGroupIcon className="w-6 h-6" />
-                                                    <p>دیدگاه ها</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/receptor">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/receptor" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <UserGroupIcon className="w-6 h-6" />
-                                                    <p>سالن داران</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/createOrder">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/createOrder" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <CakeIcon className="w-6 h-6" />
-                                                    <p>ساخت آیتم منو</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/allItems">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/allItems" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <ChartSquareBarIcon className="w-6 h-6" />
-                                                    <p>آیتم های منو</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/qrCode">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/qrCode" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <TemplateIcon className="w-6 h-6" />
-                                                    <p>ساخت qr کد</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        {/* <li>
-                                            <Link href="/dashboard/events">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/events" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <TemplateIcon className="w-6 h-6" />
-                                                    <p>رویداد ها</p>
-                                                </a>
-                                            </Link>
-                                        </li> */}
-                                        {/* <li>
-                                            <Link href="/dashboard/createBlog">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/createBlog" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <PencilAltIcon className="w-6 h-6" />
-                                                    <p>ایجاد بلاگ</p>
-                                                </a>
-                                            </Link>
-                                        </li> */}
-                                        <li>
-                                            <Link href="/dashboard/galleryCafe">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/galleryCafe" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <PhotographIcon className="h-6 w-6" />
-                                                    <p>گالری</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/map">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/map" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <MapIcon className="h-6 w-6" />
-                                                    <p>ثبت موقعیت</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link href="/dashboard/plans">
-                                                <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/plans" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                                    <ChartBarIcon className="w-6 h-6" />
-                                                    <p>خرید اعتبار</p>
-                                                </a>
-                                            </Link>
-                                        </li>
-                                    </> : null
+                                    <CafeMobileRoutes />
+                                    : null
                             }
-                            {/* <li>
-                                <Link href="/dashboard/courses">
-                                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/courses" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                                        <AcademicCapIcon className="w-6 h-6" />
-                                        <p>راهنما</p>
-                                    </a>
-                                </Link>
-                            </li> */}
                         </ul>
                         {
                             user?.cafe === null ?
