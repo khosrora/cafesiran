@@ -63,3 +63,9 @@ export const minusItemFunc = (data, id, num) => {
     })
     return data
 }
+
+
+export const checkItemIn = (list, itemId) => {
+    const filter = list.some(item => item.id === itemId);
+    return filter;
+}
