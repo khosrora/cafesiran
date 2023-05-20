@@ -23,7 +23,6 @@ export const EditDataComment = (data, id) => {
     const newData = data.map(item =>
         (item.id === id ? item = { ...item, response: true } : { ...item })
     )
-    console.log(newData);
     return newData;
 }
 
@@ -42,7 +41,7 @@ export const EditDataReserve = (data, id, typeState) => {
 }
 
 export const DeleteData = (data, id) => {
-    const newData = data.filter(item => item.id !== id)
+    const newData = data.filter(item => item.id !== id);
     return newData;
 }
 

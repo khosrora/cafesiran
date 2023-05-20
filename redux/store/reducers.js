@@ -1,3 +1,4 @@
+import { DeleteData, minusItemFunc, plusItemFunc } from "../../utils/functions";
 import { STOREACTIONTYPE } from "./actions";
 
 
@@ -26,6 +27,21 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 basket: [...state.basket, action.payload.product]
+            }
+        case STOREACTIONTYPE.PLUS_ITEM:
+            return {
+                ...state,
+                basket: plusItemFunc(state.basket, action.payload.id, action.payload.num)
+            }
+        case STOREACTIONTYPE.MINUS_ITEM:
+            return {
+                ...state,
+                basket: minusItemFunc(state.basket, action.payload.id, action.payload.num)
+            }
+        case STOREACTIONTYPE.DELETE_ITEM_CART:
+            return {
+                ...state,
+                basket: DeleteData(state.basket, action.payload.id)
             }
         default:
             return state;

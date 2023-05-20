@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { changeIsOpenAction } from '../../../redux/cafe/actions';
-import { UsersIcon, ChatAltIcon, MapIcon, ShoppingCartIcon, CalendarIcon, UserGroupIcon } from '@heroicons/react/outline';
+import { UsersIcon, ShoppingCartIcon, CalendarIcon, OfficeBuildingIcon } from '@heroicons/react/outline';
 import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
@@ -57,19 +57,19 @@ const CafeProfile = ({ cafe, dispatch }) => {
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 mt-4">
-                <Link href="/dashboard/loyal-users">
+                <Link href="/dashboard/store">
                     <div className="relative overflow-hidden flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
-                        <div className="absolute -top-1 right-0 bg-yellow-400 p-2">
+                        <div className="absolute -top-1 right-0 bg-yellow-500 p-2">
                             <span>جدید</span>
                         </div>
-                        <UserGroupIcon className='w-10 h-10' />
-                        <p>مشتریان وفادار</p>
+                        <OfficeBuildingIcon className='w-10 h-10' />
+                        <p>فروشگاه</p>
                     </div>
                 </Link>
-                <Link href="/dashboard/events">
+                <Link href="/dashboard/loyal-users">
                     <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <CalendarIcon className='w-10 h-10' />
-                        <p>ایجاد رویداد</p>
+                        <p>مشتریان وفادار</p>
                     </div>
                 </Link>
                 <Link href="/dashboard/myOrders">

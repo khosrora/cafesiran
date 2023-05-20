@@ -28,7 +28,7 @@ const StoreIndex = () => {
         const isInBasket = checkItemIn(basket, product.id)
         if (isInBasket) return errorMessage('محصول در سبد خرید موجود است');
         else {
-            product.count = 0;
+            product.count = 1;
             dispatch(AddProductToBasket(product));
             successMessage("به سبد خرید اضافه شد")
         }

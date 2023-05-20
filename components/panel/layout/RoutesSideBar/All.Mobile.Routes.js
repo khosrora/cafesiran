@@ -24,7 +24,7 @@ const AllMobileRoutes = () => {
                 <Link href="/dashboard">
                     <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                         <UserCircleIcon className="w-6 h-6" />
-                        <p>پروفایل</p>
+                        <p>داشبورد</p>
                     </a>
                 </Link>
             </li>

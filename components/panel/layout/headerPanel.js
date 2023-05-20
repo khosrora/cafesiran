@@ -41,7 +41,7 @@ const HeaderPanel = ({ setMenu }) => {
                             basket.length > 0 ?
                                 <Link href="/dashboard/store/basket">
                                     <div className="bg-[#FF7129] p-2 flex justify-center items-center rounded-full cursor-pointer ml-2 relative">
-                                        <ShoppingCartIcon className="h-6 w-6 text-slate-500 dark:text-white" />
+                                        <ShoppingCartIcon className="h-6 w-6 text-white" />
                                         <div className="absolute p-1 -top-3 w-6 bg-red-600 rounded-full flex justify-center items-center">
                                             <p className="text-white text-xs">{basket.length}</p>
                                         </div>

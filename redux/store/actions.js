@@ -4,7 +4,10 @@ import { errorMessage } from "../../utils/toast";
 export const STOREACTIONTYPE = {
     LOAD: "LOAD",
     PRODUCTS: "PRODUCTS",
-    ADD_BSKET: "ADD_BSKET"
+    ADD_BSKET: "ADD_BSKET",
+    PLUS_ITEM: "PLUS_ITEM",
+    MINUS_ITEM: "MINUS_ITEM",
+    DELETE_ITEM_CART: "DELETE_ITEM_CART"
 }
 
 
@@ -31,6 +34,40 @@ export const AddProductToBasket = (product) => async dispatch => {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     } catch (error) {
         errorMessage("لطفا دوباره امتحان کنید")
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const plusCountItemStore = (id, num) => async dispatch => {
+    try {
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: STOREACTIONTYPE.PLUS_ITEM, payload: { id, num } });
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const minusCountItemStore = (id, num) => async dispatch => {
+    try {
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: STOREACTIONTYPE.MINUS_ITEM, payload: { id, num } });
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const deleteItemCartStore = (id) => async dispatch => {
+    try {
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
+        dispatch({ type: STOREACTIONTYPE.DELETE_ITEM_CART, payload: { id } });
+        errorMessage("آیتم از سبد سفارش حذف شد");
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     }
 }
