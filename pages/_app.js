@@ -32,7 +32,7 @@ function MyApp({ Component, pageProps }) {
              gtag('config', 'G-8RK39ZCLG9');
         `}
       </Script>
-      <ThemeProvider enableSystem={true} attribute="class">
+      <ThemeProvider enableSystem={false} attribute="class" defaultTheme='dark'>
         <NextNProgress color="#FF7129" />
         <Component {...pageProps} />
         <Toaster
