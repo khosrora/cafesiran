@@ -9,7 +9,7 @@ const MenuDigital = () => {
     return (
         <>
             <Head>
-                <title>کافه ایران | menu Digital | منو دیجیتال</title>
+                <title>کافه ایران | menu Digital | منودیجیتال</title>
                 <meta property="url" content="cafesiran.ir" />
                 <meta property="og:type" content="website" />
                 <meta property="og:locale" content="fa_IR" />
