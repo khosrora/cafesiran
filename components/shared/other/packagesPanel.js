@@ -11,7 +11,6 @@ const PackagesPanel = ({ data }) => {
 
     const token = Cookies.get("CafesIran__TOKEN");
     const { asPath } = useRouter();
-    console.log(asPath);
 
     const handlePayment = async (id) => {
         try {

@@ -6,20 +6,18 @@ import { deleteItemCartStore, minusCountItemStore, plusCountItemStore } from "..
 
 const CardPaymentBasket = ({ item, setCallBack, callBack }) => {
 
-    let numCount = 1;
     const dispatch = useDispatch()
 
     const handlePlus = (id, num) => {
         dispatch(plusCountItemStore(id, num))
         setCallBack(!callBack)
     }
-    const handleMinus = (id, num) => {
-        dispatch(minusCountItemStore(id, num))
+    const handleMinus = (id, num , min) => {
+        dispatch(minusCountItemStore(id, num , min))
         setCallBack(!callBack)
     }
-
     return (
-        <div className="flex justify-start gap-x-2 p-2 rounded-xl shadow dark:bg-zinc-800">
+        <div className="flex justify-start gap-x-2 p-2 rounded-xl shadow h-max dark:bg-zinc-800">
             <div className="w-1/3">
                 <img src={item.image_url} alt={item.title} className="h-28 w-full rounded-xl object-cover lg:h-44" />
             </div>
@@ -28,13 +26,13 @@ const CardPaymentBasket = ({ item, setCallBack, callBack }) => {
                     <p className="text-xs"> {item.title} </p>
                     <div className="flex justify-start items-center gap-x-4">
                         <div
-                            onClick={() => handlePlus(item.id, numCount)}
+                            onClick={() => handlePlus(item.id, item.adding_count)}
                             className="bg-[#FF7129] rounded-xl p-2 flex justify-center items-center cursor-pointer">
                             <PlusIcon className="w-4 h-4 text-white" />
                         </div>
                         <p> {item.count} </p>
                         <div
-                            onClick={() => handleMinus(item.id, numCount)}
+                            onClick={() => handleMinus(item.id, item.adding_count, item.minimum_choice)}
                             className="border rounded-xl p-2 flex justify-center items-center cursor-pointer">
                             <MinusIcon className="w-4 h-4 text-[#AAAAAA]" />
                         </div>

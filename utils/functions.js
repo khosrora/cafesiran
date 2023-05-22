@@ -54,10 +54,10 @@ export const plusItemFunc = (data, id, num) => {
     return data
 }
 
-export const minusItemFunc = (data, id, num) => {
+export const minusItemFunc = (data, id, num , min = 1) => {
     data.forEach(item => {
         if (item.id === id) {
-            item.count === 1 ? item.count = num : item.count -= num
+            item.count === min ? item.count = num : item.count -= num
         }
     })
     return data

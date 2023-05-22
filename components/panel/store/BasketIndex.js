@@ -4,13 +4,10 @@ import { useSelector } from "react-redux";
 import CardPaymentBasket from "../../shared/cards/CardPaymentBasket";
 
 
-const BasketIndex = ({ info, handleGetInfoModal, handlePayment }) => {
+const BasketIndex = ({ info, handleGetInfoModal, handlePayment, total, setTotal , postPrice }) => {
 
-    let postPrice = 20000
-
+    
     const [callBack, setCallBack] = useState(false);
-    const [total, setTotal] = useState();
-
 
     const router = useRouter();
     const { storeCafe } = useSelector(state => state);
@@ -34,11 +31,33 @@ const BasketIndex = ({ info, handleGetInfoModal, handlePayment }) => {
                     <div className="grid grid-cols-1 gap-4 lg:col-span-2">
                         {
                             basket.map(item =>
-                                <CardPaymentBasket item={item} setCallBack={setCallBack} callBack={callBack} />
+                                <CardPaymentBasket key={item.id} item={item} setCallBack={setCallBack} callBack={callBack} />
                             )
                         }
                     </div>
                     <div className="p-2 rounded-xl shadow dark:bg-zinc-800">
+                        {
+                            info &&
+                            <div className="">
+                                <div className="flex justify-between items-center my-4">
+                                    <p className="text-[#666666] text-[12px]">نام و نام خانوادگی :</p>
+                                    <p className="text-[#666666] text-[12px]"><span className="font-bold text-black text-[14px] dark:text-white" >{info.fullName} </span></p>
+                                </div>
+                                <div className="flex justify-between items-center my-4">
+                                    <p className="text-[#666666] text-[12px]">شماره تماس :</p>
+                                    <p className="text-[#666666] text-[12px]"><span className="font-bold text-black text-[14px] dark:text-white" >{info.phone} </span></p>
+                                </div>
+                                <div className="flex justify-between items-center my-4">
+                                    <p className="text-[#666666] text-[12px]">کد پستی :</p>
+                                    <p className="text-[#666666] text-[12px]"><span className="font-bold text-black text-[14px] dark:text-white" >{info.postal_code} </span></p>
+                                </div>
+                                <div className="flex justify-between items-center my-4">
+                                    <p className="text-[#666666] text-[12px]">آدرس :</p>
+                                    <p className="text-[#666666] text-[12px]"><span className="font-bold text-black text-[14px] dark:text-white" >{info.address} </span></p>
+                                </div>
+                                <hr />
+                            </div>
+                        }
                         <div className="flex justify-between items-center my-4">
                             <p className="text-[#666666] text-[12px]">جمع هزینه :</p>
                             <p className="text-[#666666] text-[12px]"><span className="font-bold text-black text-[14px] dark:text-white" >{new Intl.NumberFormat().format(total)}</span>  تومان</p>
@@ -56,13 +75,13 @@ const BasketIndex = ({ info, handleGetInfoModal, handlePayment }) => {
                             info === null ?
                                 <button
                                     onClick={handleGetInfoModal}
-                                    className="bg-[#FF7129] text-white py-3 w-full rounded-md">
-                                    تایید و ادامه سفارش
+                                    className="bg-[#FF7129] text-white py-2 w-full rounded-md">
+                                    ثبت اطلاعات سفارش
                                 </button>
                                 :
                                 <button
                                     onClick={handlePayment}
-                                    className="bg-[#FF7129] text-white py-3 w-full rounded-md">
+                                    className="bg-[#FF7129] text-white py-2 w-full rounded-md">
                                     درگاه پرداخت
                                 </button>
 

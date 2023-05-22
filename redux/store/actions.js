@@ -28,9 +28,9 @@ export const getProductsStore = () => async dispatch => {
 export const AddProductToBasket = (product) => async dispatch => {
     try {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
-
+        delete product.category;
+        product.product_id = product.id;
         dispatch({ type: STOREACTIONTYPE.ADD_BSKET, payload: { product } });
-
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     } catch (error) {
         errorMessage("لطفا دوباره امتحان کنید")
@@ -49,10 +49,10 @@ export const plusCountItemStore = (id, num) => async dispatch => {
     }
 }
 
-export const minusCountItemStore = (id, num) => async dispatch => {
+export const minusCountItemStore = (id, num , min) => async dispatch => {
     try {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
-        dispatch({ type: STOREACTIONTYPE.MINUS_ITEM, payload: { id, num } });
+        dispatch({ type: STOREACTIONTYPE.MINUS_ITEM, payload: { id, num , min } });
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
@@ -71,3 +71,4 @@ export const deleteItemCartStore = (id) => async dispatch => {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     }
 }
+

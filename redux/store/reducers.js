@@ -36,7 +36,7 @@ export default function reducer(state = initialStore, action) {
         case STOREACTIONTYPE.MINUS_ITEM:
             return {
                 ...state,
-                basket: minusItemFunc(state.basket, action.payload.id, action.payload.num)
+                basket: minusItemFunc(state.basket, action.payload.id, action.payload.num, action.payload.min)
             }
         case STOREACTIONTYPE.DELETE_ITEM_CART:
             return {

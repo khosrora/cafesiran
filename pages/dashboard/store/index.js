@@ -28,7 +28,7 @@ const StoreIndex = () => {
         const isInBasket = checkItemIn(basket, product.id)
         if (isInBasket) return errorMessage('محصول در سبد خرید موجود است');
         else {
-            product.count = 1;
+            product.count = product.minimum_choice;
             dispatch(AddProductToBasket(product));
             successMessage("به سبد خرید اضافه شد")
         }
@@ -62,7 +62,7 @@ const StoreIndex = () => {
                                     :
                                     <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
                                         {
-                                            products.map(item => <CardStore product={item} setDescProduct={setDescProduct} AddToBasket={AddToBasket} />)
+                                            products.map(item => <CardStore key={item.id} product={item} setDescProduct={setDescProduct} AddToBasket={AddToBasket} />)
                                         }
                                     </div>
                             }
