@@ -20,13 +20,13 @@ input:checked~.dot {
         direction: rtl;
     }
 
-    ::-webkit-scrollbar {
-        height: 1px;
+    /* ::-webkit-scrollbar { */
+        /* height: 1px; */
         /* height of horizontal scrollbar ← You're missing this */
-        width: 1px;
+        /* width: 1px; */
         /* width of vertical scrollbar */
         /* border: 1px solid #d5d5d5; */
-    }
+    /* } */
 
     @font-face {
         font-family: vazir;

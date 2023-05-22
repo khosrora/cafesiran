@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useSelector } from "react-redux"
 import LayoutPanel from '../../components/panel/layout/layoutPanel';
 import Sform from '../../components/skillton/Sform';
+import { errorMessage } from '../../utils/toast';
 
 
 
@@ -25,12 +26,16 @@ function QrCode() {
     //         (`http://api.qrserver.com/v1/create-qr-code/?data=${word}&size=${size}x${size}&bgcolor=${bgColor}`);
     // }, [word, size, bgColor]);
 
-    function handleClick(e) {
-        e.preventDefault();
-        setWord(temp);
-        let dataLink = `https://cafesiran.ir/cafes/${cafeId}`
-        setQrCode
-            (`http://api.qrserver.com/v1/create-qr-code/?data=${dataLink}&size=${size}x${size}&bgcolor=${bgColor}`);
+    async function handleClick(e) {
+        try {
+            e.preventDefault();
+            setWord(temp);
+            let dataLink = `https://cafesiran.ir/cafes/${cafeId}`;
+            setQrCode(`http://api.qrserver.com/v1/create-qr-code/?data=${dataLink}&size=${size}x${size}&bgcolor=${bgColor}`);
+        } catch (error) {
+            errorMessage('لطفا دوباره امتحان کنید');
+            setQrCode("");
+        }
     }
 
     return (
@@ -62,7 +67,7 @@ function QrCode() {
                                         qrCode === "" ?
                                             <div className="w-full">
                                                 <button className="bg-zinc-900 w-full py-4 text-white rounded-md my-2 dark:bg-zinc-800"
-                                                    onClick={(e) => handleClick(e)}>
+                                                    onClick={(e) => { handleClick(e) }}>
                                                     ساخت QR CODE
                                                 </button>
                                             </div> : null

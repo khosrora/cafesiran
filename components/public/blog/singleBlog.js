@@ -33,7 +33,7 @@ const SingleBlog = ({ blog, latestBlog }) => {
                             {blog.short_desc}
                         </p>
                     </div>
-                    <div className="leading-8 text-sm text-justify" dangerouslySetInnerHTML={{ __html: blog.desc }}>
+                    <div className="leading-8 text-sm text-justify dark:bg-zinc-800 p-2 rounded" dangerouslySetInnerHTML={{ __html: blog.desc }}>
                     </div>
                     <div className="border p-2 w-full rounded flex justify-start items-start text-xs gap-x-4">
                         {
@@ -53,7 +53,7 @@ const SingleBlog = ({ blog, latestBlog }) => {
                             {
                                 latestBlog.map((i , index) =>
                                     <Link key={index} href={`/blogs/${i.slug}`}>
-                                        <a title={i.title} className="text-blue-600 flex justify-start items-center cursor-pointer">
+                                        <a title={i.title} className="text-blue-400 flex justify-start items-center cursor-pointer">
                                             <ChevronLeftIcon className="w-2 h-2" />
                                             <p className="block p-2"> {i.title} </p>
                                         </a>
@@ -68,7 +68,7 @@ const SingleBlog = ({ blog, latestBlog }) => {
                         </div>
                         <div className="">
                             <Link href="/">
-                                <a title="منو دیجیتال ارزان" className="text-blue-600 flex justify-start items-center cursor-pointer">
+                                <a title="منو دیجیتال ارزان" className="text-blue-400 flex justify-start items-center cursor-pointer">
                                     <ChevronLeftIcon className="w-2 h-2" />
                                     <p className="block p-2">منو دیجیتال رستوران و کافی شاپ</p>
                                 </a>
@@ -76,17 +76,17 @@ const SingleBlog = ({ blog, latestBlog }) => {
                         </div>
                         <div className="">
                             <Link href="/features">
-                                <a title="ویژگی های منو دیجیتال" className="text-blue-600 flex justify-start items-center cursor-pointer">
+                                <a title="ویژگی های منو دیجیتال" className="text-blue-400 flex justify-start items-center cursor-pointer">
                                     <ChevronLeftIcon className="w-2 h-2" />
-                                    <p className="text-blue-600 block p-2"> ساخت منو با qr code </p>
+                                    <p className="text-blue-400 block p-2"> ساخت منو با qr code </p>
                                 </a>
                             </Link>
                         </div>
                         <div className="">
                             <Link href="/liveRegister">
-                                <a title="ساخت منو دیجیتال" className="text-blue-600 flex justify-start items-center cursor-pointer">
+                                <a title="ساخت منو دیجیتال" className="text-blue-400 flex justify-start items-center cursor-pointer">
                                     <ChevronLeftIcon className="w-2 h-2" />
-                                    <p className="text-blue-600 block p-2"> ایجاد سریع منو </p>
+                                    <p className="text-blue-400 block p-2"> ایجاد سریع منو </p>
                                 </a>
                             </Link>
                         </div>

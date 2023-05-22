@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Script from "next/script";
 import SingleBlog from "../../../components/public/blog/singleBlog";
 import Layout from "../../../components/public/layout";
 import { API } from "../../../utils/baseApi";
@@ -12,7 +11,6 @@ const IndexBlog = (props) => {
     const latestBlog = props.latestBlog;
     return (
         <>
-            <Script rel="preload" src="/js/yektanet.js" strategy="afterInteractive" />
             <Head>
                 <title>{blog.title} | منو دیجیتال کافه ایران</title>
                 <meta name="robots" content="index, follow" />
