@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useLayoutEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -9,7 +9,7 @@ import { editRequestForCafe, getDetailsCafe } from '../../../redux/cafe/actions'
 import { StateType } from '../../shared/utilities/constance/type';
 import Alert from '../../shared/other/alert';
 import Sform from '../../skillton/Sform';
-import { ArrowRightIcon, UploadIcon, CheckIcon } from '@heroicons/react/outline';
+import { UploadIcon, CheckIcon } from '@heroicons/react/outline';
 
 
 const SignupSchema = Yup.object().shape({
@@ -35,10 +35,12 @@ const EditRequestCafe = ({ setGallery, imageUrl }) => {
     const cafe = cafeDetails?.cafe;
 
     useEffect(() => {
-        if (user) dispatch(getDetailsCafe(user?.cafe?.id))
+        if (user) dispatch(getDetailsCafe(user?.cafe?.id));
     }, [user]);
+
     if (cafe.length === 0) return <Sform />
     if (cafe.state === StateType.Pending) return <Alert title={"پیام"} message={"بعد از تایید یا رد درخواست ثبت میتوانید اطلاعات مجموعه را ویرایش کنید"} />
+
     return (
         <>
             <h1 className="text-xl mt-4 w-3/4 lg:m-auto dark:text-white">فرم ویرایش  مجموعه</h1>
@@ -50,8 +52,8 @@ const EditRequestCafe = ({ setGallery, imageUrl }) => {
                     street: cafe.street,
                     desc: cafe.desc,
                     type: cafe.type,
-                    province: '',
-                    city: '',
+                    province: cafe.province.id,
+                    city: cafe.city.id,
                     slug: '',
                     image_url: cafe.image_url,
                     instagram_id: cafe.instagram_id,
@@ -147,7 +149,7 @@ const EditRequestCafe = ({ setGallery, imageUrl }) => {
                                 }} id="state" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
                                     <option selected>استان خود را انتخاب کنید</option>
                                     {
-                                        province.map(i => <option key={i.pk} value={i.pk} >{i.fields.name}</option>)
+                                        province.map(i => <option key={i.pk} value={i.pk} selected={values.province === i.pk ? true : false}>{i.fields.name}</option>)
                                     }
                                 </select>
                                 {errors.province && touched.province ? (<span className='text-red-600'>{errors.province}</span>) : null}
@@ -157,7 +159,7 @@ const EditRequestCafe = ({ setGallery, imageUrl }) => {
                                 <Field name="city" as="select" id="city" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:bg-zinc-700 dark:border-none">
                                     <option selected>شهر خود را انتخاب کنید</option>
                                     {
-                                        cities.map(i => <option key={i.pk} value={i.pk}>{i.fields.name}</option>)
+                                        cities.map(i => <option key={i.pk} value={i.pk} selected={values.city === i.pk ? true : false}>{i.fields.name}</option>)
                                     }
                                 </Field>
                                 {errors.city && touched.city ? (<span className='text-red-600'>{errors.city}</span>) : null}

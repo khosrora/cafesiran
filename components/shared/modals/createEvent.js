@@ -11,6 +11,7 @@ import TimePicker from "react-multi-date-picker/plugins/time_picker";
 import persian from "react-date-object/calendars/persian"
 import persian_fa from "react-date-object/locales/persian_fa"
 import "react-multi-date-picker/styles/layouts/mobile.css"
+import { errorMessage } from "../../../utils/toast";
 
 
 const addEventValidation = Yup.object().shape({
@@ -42,6 +43,10 @@ const CreateEvent = ({ setCreateForm }) => {
                         }}
                         validationSchema={addEventValidation}
                         onSubmit={values => {
+                            if (!startDate || !time) {
+                                errorMessage('ثبت تاریخ و زمان رویداد ضروری است')
+                                return
+                            }
                             values.date = startDate.toDate().toLocaleDateString('en-CA').replace("/", "-");
                             values.status = true;
                             values.time = `${time.toDate().getHours()}:${time.toDate().getMinutes()}`

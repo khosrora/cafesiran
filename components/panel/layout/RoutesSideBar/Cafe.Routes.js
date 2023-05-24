@@ -28,6 +28,14 @@ const CafeRoutes = () => {
                 </Link>
             </li>
             <li>
+                <Link href="/dashboard/galleryCafe">
+                    <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/galleryCafe" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                        <PhotographIcon className="h-6 w-6" />
+                        <p>گالری</p>
+                    </a>
+                </Link>
+            </li>
+            <li>
                 <Link href="/dashboard/qrCode">
                     <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/qrCode" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                         <TemplateIcon className="h-6 w-6" />
@@ -44,14 +52,6 @@ const CafeRoutes = () => {
                 </Link>
             </li>
             <li>
-                <Link href="/dashboard/galleryCafe">
-                    <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/galleryCafe" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                        <PhotographIcon className="h-6 w-6" />
-                        <p>گالری</p>
-                    </a>
-                </Link>
-            </li>
-            <li>
                 <Link href="/dashboard/map">
                     <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/map" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                         <MapIcon className="h-6 w-6" />
@@ -61,7 +61,7 @@ const CafeRoutes = () => {
             </li>
             <li>
                 <Link href="/dashboard/store">
-                    <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/comments" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                    <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/store" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                         <OfficeBuildingIcon className="h-6 w-6" />
                         <p>فروشگاه</p>
                     </a>

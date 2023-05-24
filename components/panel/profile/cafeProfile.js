@@ -81,7 +81,7 @@ const CafeProfile = ({ cafe, dispatch }) => {
                 <Link href="/dashboard/vipUsers">
                     <div className="flex flex-col gap-y-4 justify-start items-center border rounded-md p-14 cursor-pointer">
                         <UsersIcon className='w-10 h-10' />
-                        <p>کاربران عضو</p>
+                        <p>کاربران عضو شده</p>
                     </div>
                 </Link>
             </div>

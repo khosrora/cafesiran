@@ -6,6 +6,7 @@ import { getCategories } from '../../redux/category/actions';
 import { createItemMenu } from '../../redux/cafe/actions';
 import { CheckIcon, UploadIcon } from '@heroicons/react/outline';
 import { errorMessage } from '../../utils/toast';
+import Alert from '../shared/other/alert';
 
 
 const createItemMenuSchema = Yup.object().shape({
@@ -16,7 +17,7 @@ const createItemMenuSchema = Yup.object().shape({
 });
 
 
-const CreateItemCafe = ({ setGallery , imageUrl  }) => {
+const CreateItemCafe = ({ setGallery, imageUrl }) => {
 
 
     const dispatch = useDispatch();
@@ -28,11 +29,11 @@ const CreateItemCafe = ({ setGallery , imageUrl  }) => {
     useEffect(() => {
         if (connection) dispatch(getCategories());
     }, [connection])
-    
+
 
     return (
-        <>
-            <h1 className="text-xs lg:text-xl mt-4 w-3/4 lg:m-auto dark:text-white">فرم ایجاد آیتم</h1>
+        <>           
+            <h1 className="text-xs lg:text-xl w-3/4 lg:m-auto dark:text-white">فرم ایجاد آیتم</h1>
             <Formik
                 initialValues={{
                     title: '',
@@ -45,7 +46,7 @@ const CreateItemCafe = ({ setGallery , imageUrl  }) => {
                 validationSchema={createItemMenuSchema}
                 onSubmit={(values, { resetForm }) => {
                     values.image_url = imageUrl;
-                    if(values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
+                    if (values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
                     dispatch(createItemMenu(values));
                     resetForm();
                 }}
@@ -69,16 +70,16 @@ const CreateItemCafe = ({ setGallery , imageUrl  }) => {
                                 <label className="" htmlFor="mobile">آدرس تصویر</label>
                                 <div onClick={() => setGallery(true)} className="flex items-center gap-x-2 w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">
                                     {
-                                        imageUrl === null ? 
-                                        <UploadIcon className='w-6 h-6' />
-                                        :
-                                        <CheckIcon className='w-6 h-6 text-green-600' />
+                                        imageUrl === null ?
+                                            <UploadIcon className='w-6 h-6' />
+                                            :
+                                            <CheckIcon className='w-6 h-6 text-green-600' />
                                     }
                                     {
-                                        imageUrl === null ? 
-                                        <span>انتخاب عکس</span>
-                                        :
-                                        <span>عکس انتخاب شد</span>
+                                        imageUrl === null ?
+                                            <span>انتخاب عکس</span>
+                                            :
+                                            <span>عکس انتخاب شد</span>
                                     }
                                 </div>
                             </div>
