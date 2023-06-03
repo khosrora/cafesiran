@@ -86,6 +86,10 @@ const PackagesPanel = ({ data }) => {
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
+                    <p>دارای فروشگاه ملزومات مجموعه های غذایی</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
                     <p>قابلیت ایجاد بلاگ مخصوص به خود مجموعه (به زودی)</p>
                 </li>
             </ul>

@@ -7,7 +7,8 @@ const initialStore = {
     load: false,
     loadMore: false,
     products: [],
-    basket: []
+    basket: [],
+    next: null
 };
 
 
@@ -42,6 +43,11 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 basket: DeleteData(state.basket, action.payload.id)
+            }
+        case STOREACTIONTYPE.NEXT_STORE:
+            return {
+                ...state,
+                next : action.payload.data
             }
         default:
             return state;

@@ -9,20 +9,23 @@ import DescProductModal from "../../../components/shared/modals/descProductModal
 import { errorMessage, successMessage } from "../../../utils/toast";
 import { checkItemIn } from "../../../utils/functions";
 import SCartItem from "../../../components/skillton/SCartItem";
+import Paginate from "../../../components/shared/other/paginate";
 
 
 const StoreIndex = () => {
 
+    const [page, setPage] = useState(1)
     const [descProduct, setDescProduct] = useState(false)
     const { storeCafe } = useSelector(state => state);
     const load = storeCafe.load;
+    const next = storeCafe.next;
     const products = storeCafe.products;
     const basket = storeCafe.basket;
 
     const dispatch = useDispatch();
     useEffect(() => {
-        dispatch(getProductsStore())
-    }, [])
+        dispatch(getProductsStore(page))
+    }, [page])
 
     const AddToBasket = product => {
         const isInBasket = checkItemIn(basket, product.id)
@@ -60,11 +63,14 @@ const StoreIndex = () => {
                                         title=""
                                     />
                                     :
-                                    <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
-                                        {
-                                            products.map(item => <CardStore key={item.id} product={item} setDescProduct={setDescProduct} AddToBasket={AddToBasket} />)
-                                        }
-                                    </div>
+                                    <>
+                                        <div className="grid grid-cols-2 gap-1 md:grid-cols-3">
+                                            {
+                                                products.map(item => <CardStore key={item.id} product={item} setDescProduct={setDescProduct} AddToBasket={AddToBasket} />)
+                                            }
+                                        </div>
+                                        <Paginate next={next} page={page} setPage={setPage} />
+                                    </>
                             }
                         </>
                 }

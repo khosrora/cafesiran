@@ -143,7 +143,7 @@ const GetOtp = () => {
                                     )}
                                 </Formik>
                                 <span className="text-xs text-zinc-500 dark:text-white">
-                                    ثبت نام در کافه ایران به منزبه موافقت با <span className="text-sky-400">قوانین</span> است
+                                    ثبت نام در کافه ایران به منزله موافقت با <span className="text-sky-400">قوانین</span> است
                                 </span>
                             </>
                     }

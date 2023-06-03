@@ -7,15 +7,17 @@ export const STOREACTIONTYPE = {
     ADD_BSKET: "ADD_BSKET",
     PLUS_ITEM: "PLUS_ITEM",
     MINUS_ITEM: "MINUS_ITEM",
-    DELETE_ITEM_CART: "DELETE_ITEM_CART"
+    DELETE_ITEM_CART: "DELETE_ITEM_CART",
+    NEXT_STORE: "NEXT_STORE"
 }
 
 
-export const getProductsStore = () => async dispatch => {
+export const getProductsStore = (page) => async dispatch => {
     try {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
-        const res = await getDataAPI(`store/products/`)
+        const res = await getDataAPI(`store/products/?page=${page}`)
         if (res.status === 200) {
+            dispatch({ type: STOREACTIONTYPE.NEXT_STORE, payload: { data: res.data.links.next } })
             dispatch({ type: STOREACTIONTYPE.PRODUCTS, payload: { data: res.data.results } })
         }
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
@@ -49,10 +51,10 @@ export const plusCountItemStore = (id, num) => async dispatch => {
     }
 }
 
-export const minusCountItemStore = (id, num , min) => async dispatch => {
+export const minusCountItemStore = (id, num, min) => async dispatch => {
     try {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
-        dispatch({ type: STOREACTIONTYPE.MINUS_ITEM, payload: { id, num , min } });
+        dispatch({ type: STOREACTIONTYPE.MINUS_ITEM, payload: { id, num, min } });
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
