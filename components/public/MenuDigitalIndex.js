@@ -22,15 +22,15 @@ const MenuDigitalIndex = () => {
                         </h1>
                         <div className="mt-8 text-[12px] flex flex-col justify-start items-start gap-y-4 lg:text-sm">
                             <div className="flex justify-start items-center">
-                                <span className="">
+                                <h2 className="">
                                     یک پنل مدیریت کامل برای کسب و کار خودتون دریافت کنید و منو های دیجیتال با قابلیت دسترسی سریع برای مشتریان کافه و رستوران و یا هتل ایجاد کنید. رزروهای آنلاین و یا انتقادات پیشنهادات را آنلاین دریافت کنید.
-                                </span>
+                                </h2>
                             </div>
                         </div>
                         <div className="mt-4 lg:mt-6">
                             <Link href="/liveRegister">
                                 <a
-                                    title="ثبت سریع مجموعه"
+                                    alt="ثبت سریع مجموعه"
                                     target="_blank"
                                     className="inline-block rounded-md w-full bg-[#FF7129] text-white text-sm p-4 cursor-pointer md:inline">منو
                                     دیجیتال خود را رایگان بسازید
@@ -38,7 +38,7 @@ const MenuDigitalIndex = () => {
                             </Link>
                             <Link href="/cafes/2">
                                 <a
-                                    title="نمونه منو"
+                                    alt="نمونه منو"
                                     target="_blank"
                                     className="rounded-md inline-block w-full border border-1 text-sm border-gray-700  mt-4 lg:mt-0 lg:mr-4 p-4 cursor-pointer dark:bg-zinc-700 md:inline">
                                     مشاهده نمونه منو دیجیتال
@@ -73,8 +73,10 @@ const MenuDigitalIndex = () => {
                 <div className="grid sm:grid-cols-2 mb-12">
                     <div className="sm:order-last">
                         <img
-                            title="به روزرسانی سریع با منو دیجیتال"
-                            src="/images/features/menuDigital-address.webp"
+                            width="500"
+                            height="500"
+                        title="به روزرسانی سریع با منو دیجیتال"
+                        src="/images/features/menuDigital-address.webp"
                             className="w-9/12 mx-auto" />
                     </div>
                     <div className="self-center px-4 sm:mr-4 md:mr-8 mt-4 sm:mt-0">
