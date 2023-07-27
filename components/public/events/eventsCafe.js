@@ -45,7 +45,7 @@ const EventsCafeCm = ({ data, load, loadMore, loadMoreData, showBtnLoadMore, caf
                                     </div>
                                     <div className="">
                                         <ShareIcon className='w-4 h-4' onClick={() => {
-                                            const routerCopy = `https://cafesiran.ir/cafes/events/${2}?cafeName=${cafeName}`
+                                            const routerCopy = `https://cafesiran.ir/cafes/events/${cafeId}?cafeName=${cafeName}`
                                             { navigator.clipboard.writeText(routerCopy) }
                                             successMessage("لینک با موفقیت کپی شد")
                                         }} />

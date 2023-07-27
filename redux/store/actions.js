@@ -1,3 +1,4 @@
+import Cookies from "js-cookie";
 import { getDataAPI } from "../../utils/fetchData";
 import { errorMessage } from "../../utils/toast";
 
@@ -8,7 +9,8 @@ export const STOREACTIONTYPE = {
     PLUS_ITEM: "PLUS_ITEM",
     MINUS_ITEM: "MINUS_ITEM",
     DELETE_ITEM_CART: "DELETE_ITEM_CART",
-    NEXT_STORE: "NEXT_STORE"
+    NEXT_STORE: "NEXT_STORE",
+    GET_PAYMENTS: "GET_PAYMENTS"
 }
 
 
@@ -67,6 +69,19 @@ export const deleteItemCartStore = (id) => async dispatch => {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
         dispatch({ type: STOREACTIONTYPE.DELETE_ITEM_CART, payload: { id } });
         errorMessage("آیتم از سبد سفارش حذف شد");
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const getPaymentsCafe = (page) => async dispatch => {
+    try {
+        dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI("payment/cafes/", token)
+        console.log(res.data);
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")

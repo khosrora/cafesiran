@@ -10,6 +10,7 @@ import { errorMessage, successMessage } from "../../../utils/toast";
 import { checkItemIn } from "../../../utils/functions";
 import SCartItem from "../../../components/skillton/SCartItem";
 import Paginate from "../../../components/shared/other/paginate";
+import Link from "next/link";
 
 
 const StoreIndex = () => {
@@ -41,6 +42,11 @@ const StoreIndex = () => {
     return (
         <>
             <LayoutPanel>
+                <div className="bg-slate-100 text-left my-4 p-2 rounded dark:bg-zinc-800 ">
+                    <Link href="/dashboard/store/list">
+                        <a className="text-xs text-blue-400">لیست سفارشات قبلی</a>
+                    </Link>
+                </div>
                 {
 
                     load ?
