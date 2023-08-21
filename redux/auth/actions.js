@@ -29,6 +29,7 @@ export const getOtp = phone => async dispatch => {
         }
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
+        console.log(err);
         errorMessage("لطفا دوباره امتحان کنید")
         dispatch({ type: AUTHTACTIONSYPES.GET_OTP, payload: { data: false } })
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });

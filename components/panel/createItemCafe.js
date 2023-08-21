@@ -45,8 +45,8 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
                 }}
                 validationSchema={createItemMenuSchema}
                 onSubmit={(values, { resetForm }) => {
-                    values.image_url = imageUrl;
-                    if (values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
+                    // values.image_url = imageUrl;
+                    // if (values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
                     dispatch(createItemMenu(values));
                     resetForm();
                 }}

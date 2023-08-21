@@ -2,12 +2,13 @@ import Image from 'next/image'
 
 const MyImage = ({ img, size, alt }) => {
 
-
-    const srcImage = img;
+    console.log(!!img);
+    const srcImage = !!img ? img : '/images/placeholder2.jpeg';
 
     const imgCard = () => {
         return srcImage;
     }
+
 
     return (
         <Image
