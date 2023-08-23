@@ -80,8 +80,8 @@ export const getAllItemCafe = (page) => async dispatch => {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI(`cafe/menuitems/?page=${page}`, token);
-        
         dispatch({ type: CAFEACTIONSYPES.ITEMS_MENU, payload: { data: res.data.results } })
+        dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.links.next } })
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });

@@ -89,7 +89,6 @@ export const requestVip = (data) => async dispatch => {
         }
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        console.log(err);
         errorMessage(err.response.data.message)
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     }
@@ -105,7 +104,6 @@ export const getMyFavCafes = () => async dispatch => {
         }
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        console.log(err);
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     }
 }

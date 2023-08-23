@@ -209,7 +209,6 @@ export const deleteEvent = (id) => async dispatch => {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await deleteDataAPI(`cafe/events/${id}`, token)
-        console.log(res);
         if (res.status === 204) {
             errorMessage("رویداد با موفقیت حذف شد")
             dispatch({ type: CAFEFETURESTYPE.DELETE_EVENT, payload: { id } });

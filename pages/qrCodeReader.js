@@ -11,9 +11,7 @@ const QrCodeReader = () => {
     const [selected, setSelected] = useState("environment");
 
     const handleScan = data => {
-        console.log(data);
         if (data) {
-            console.log(data);
             router.push(`${data}`)
         }
     }

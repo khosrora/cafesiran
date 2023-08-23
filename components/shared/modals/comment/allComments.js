@@ -4,7 +4,6 @@ import MomentComment from "../../utilities/momentComment";
 
 
 const AllComments = ({ comments, load }) => {
-    console.log(comments);
     return (
         <>
             {

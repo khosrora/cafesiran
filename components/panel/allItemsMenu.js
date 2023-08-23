@@ -11,15 +11,16 @@ const AllItemsMenu = () => {
 
     const [page, setPage] = useState(1);
     const dispatch = useDispatch();
-    const { cafeDetails , utilities } = useSelector(state => state);
+    const { cafeDetails, utilities } = useSelector(state => state);
+    const { user } = useSelector(state => state.userDetails);
     const items = cafeDetails.items;
     const load = cafeDetails.load;
     const next = cafeDetails.next;
     const connection = utilities.connection;
 
     useEffect(() => {
-        if(connection) dispatch(getAllItemCafe(page))
-    }, [page , connection]);
+        if (connection) dispatch(getAllItemCafe(page))
+    }, [page, connection]);
 
     const handleActiveItem = (e, id, data) => {
         e.preventDefault();
@@ -77,6 +78,14 @@ const AllItemsMenu = () => {
                 </table>
             </div>
             <Paginate next={next} page={page} setPage={setPage} />
+
+            {
+                user?.cafe?.id ?
+                    <div className="w-full lg:w-2/4 h-[1000px]">
+                        <iframe className="w-full h-full" src={`https://cafesiran.ir/cafes/${user.cafe.id}`} title="W3Schools Free Online Web Tutorials">
+                        </iframe>
+                    </div> : null
+            }
         </div>
     );
 }

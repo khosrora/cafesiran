@@ -40,7 +40,7 @@ const CardItem = ({ item, setMenu, checkItemInCart, orderCount, handleCommentMod
                                 </div>
                                 <div className="" onClick={() => setMenu({
                                     title: item.title,
-                                    image: item.image_url,
+                                    image: item.image_url ? item.image_url : '/images/placeholder2.jpeg',
                                     desc: item.desc
                                 })}>
                                     <DotsVerticalIcon className="h-4 w-4 cursor-pointer md:w-6 md:h-6" />

@@ -50,7 +50,6 @@ const VipModal = ({ customerClubModal, SetCustomerClubModal }) => {
                             if (!date) return errorMessage("لطفا تاریخ تولد را مشخص کنید");
                             values.birthdate = date?.toDate().toLocaleDateString('zh-Hans-CN').replaceAll("/", "-");
                             values.cafe = customerClubModal;
-                            console.log(values);
                             dispatch(requestVip(values))
                         }}
                     >

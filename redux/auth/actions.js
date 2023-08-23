@@ -29,7 +29,6 @@ export const getOtp = phone => async dispatch => {
         }
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        console.log(err);
         errorMessage("لطفا دوباره امتحان کنید")
         dispatch({ type: AUTHTACTIONSYPES.GET_OTP, payload: { data: false } })
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
@@ -84,7 +83,6 @@ export const logOutUser = () => async dispatch => {
         }
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     } catch (error) {
-        console.log(error);
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     }

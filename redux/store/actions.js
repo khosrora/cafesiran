@@ -81,7 +81,6 @@ export const getPaymentsCafe = (page) => async dispatch => {
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await getDataAPI("payment/cafes/", token)
-        console.log(res.data);
         dispatch({ type: STOREACTIONTYPE.LOAD, payload: { load: false } });
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")

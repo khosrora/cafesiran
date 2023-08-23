@@ -10,7 +10,7 @@ const CreateOrder = () => {
 
     const [imageUrl, setImageUrl] = useState(null)
     const [gallery, setGallery] = useState(false)
-    
+
     return (
         <>
             <LayoutPanel>
@@ -19,7 +19,7 @@ const CreateOrder = () => {
             {
                 gallery ?
                     <div className="fixed top-0 w-full h-screen flex justify-center items-center  z-40 p-2">
-                        <GalleryModal setGallery={setGallery} setImageUrl={setImageUrl}/>
+                        <GalleryModal setGallery={setGallery} setImageUrl={setImageUrl} />
                     </div>
                     : null
             }

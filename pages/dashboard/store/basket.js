@@ -45,7 +45,6 @@ const Basket = () => {
         errorMessage('لطفا دوباره امتحان کنید');
       }
     } catch (error) {
-      console.log(error);
       errorMessage('لطفا دوباره امتحان کنید')
     }
   }

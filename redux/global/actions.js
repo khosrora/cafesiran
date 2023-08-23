@@ -180,7 +180,6 @@ export const getEventsCafe = (id) => async dispatch => {
         const res = await getDataAPI(`cafe/cafe_events/${id}/`);
         if (res.status === 200) {
             dispatch({ type: globalActionsType.GET_EVENTS, payload: { data: Object.keys(res.data).length === 0 ? [] : res.data.events } });
-            console.log(res.data.events.length);
             if (res.data.events.length < 6) dispatch({ type: globalActionsType.is_SHOW_LOAD_MORE, payload: { data: false } });
         }
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
