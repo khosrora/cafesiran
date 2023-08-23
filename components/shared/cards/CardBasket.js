@@ -11,7 +11,7 @@ const CardBasket = ({ item, setCallback, callback }) => {
     return (
         <div className="flex justify-between items-center p-2 bg-slate-50 rounded-md  dark:bg-zinc-800 dark:text-white">
             <div className="w-1/3 p-1 rounded-md bg-slate-100 h-auto dark:bg-slate-700 aspect-w-16 aspect-h-9 lg:aspect-none md:p-0 ">
-                <MyImage img={item.image_url} alt="عکس کافه" />
+                <MyImage img={item.image_url ? item.image_url : '/images/placeholder2.jpeg'} alt="عکس کافه" />
             </div>
             <div className="w-2/3 h-full mr-2 flex flex-col justify-around">
                 <div className="flex justify-between items-center">

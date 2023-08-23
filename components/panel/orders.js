@@ -13,7 +13,7 @@ const Orders = () => {
 
     const [page, setPage] = useState(1)
 
-    const { data, error } = useSWR(`${API}cafe/order/?page=${page}`, fetcher);
+    const { data, error } = useSWR(`${API}cafe/order/?page=${page}`, fetcher );
 
     if (error) return <NoConnection />
     if (!data) return <Stable />

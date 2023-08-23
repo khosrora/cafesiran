@@ -55,7 +55,7 @@ const EditMenuItem = ({ setGallery, imageUrl }) => {
                 }}
                 validationSchema={createItemMenuSchema}
                 onSubmit={(values) => {
-                    // values.image_url = imageUrl;
+                    values.image_url = imageUrl;
                     // if (values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
                     dispatch(editItemMenu(id, values))
                 }}
