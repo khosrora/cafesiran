@@ -1,21 +1,34 @@
 import Link from 'next/link';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { changeIsOpenAction } from '../../../redux/cafe/actions';
+import { changeIsOpenAction, editTaxCafe } from '../../../redux/cafe/actions';
 import { UsersIcon, ShoppingCartIcon, CalendarIcon, OfficeBuildingIcon } from '@heroicons/react/outline';
 import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
 
     const [open, setOpen] = useState()
+    const [tax, setTaxe] = useState(cafe.tax)
+    const [edit, setEdit] = useState(false)
 
     useEffect(() => {
         setOpen(cafe?.is_open)
     }, [cafe?.is_open])
+    useEffect(() => {
+        if (tax == cafe.tax) {
+            setEdit(false)
+        } else {
+            setEdit(true)
+        }
+    }, [tax])
 
     const handleChangeIsOpen = () => {
         dispatch(changeIsOpenAction(!open, cafe.id))
         setOpen(!open)
+    }
+
+    const changeTaxCafe = (tax) => {
+        dispatch(editTaxCafe(cafe.id, { tax }))
     }
 
     return (
@@ -37,6 +50,23 @@ const CafeProfile = ({ cafe, dispatch }) => {
                     </div>
                 </label>
             </div>
+            <div className="w-full bg-zinc-100 flex flex-col justify-start items-start rounded-md py-4 px-4 mt-2 dark:bg-zinc-800">
+                <div className="">
+                    <p className='text-[10px] font-bold lg:text-sm dark:text-zinc-200'> در حال حاضر مبلغ ارزش افزوده روی هر سفارش {cafe.tax} % محسابه میشود. در صورت نیاز عدد مورد نظر را وارد کنید و بر روی دکمه تغییر کلیک کنید.</p>
+                </div>
+                <div className="w-full bg-zinc-100 flex flex-col justify-between items-start gap-y-4 rounded-md py-4 mt-2 lg:flex-row lg:justify-start lg:items-center lg:gap-x-4 lg:gap-y-0 dark:bg-zinc-800">
+                    <div className="">
+                        <p className='text-[10px] font-bold lg:text-sm dark:text-zinc-200'>عدد درصد مبلغ ارزش افزوده هر سفارش :‌</p>
+                    </div>
+                    <div className="flex gap-x-2">
+                        %<input max={40} value={tax} type="number" className='w-12' onChange={e => setTaxe(e.target.value)} />
+                        {
+                            !edit ? null :
+                                <button onClick={() => changeTaxCafe(tax)} className="bg-[#FF7129] text-xs p-2 rounded-md text-white">تغییر ارزش افزوده</button>
+                        }
+                    </div>
+                </div>
+            </div>
             <div className="">
                 <div className="mt-2">
                     <p>اطلاعات مجموعه :</p>
@@ -53,6 +83,11 @@ const CafeProfile = ({ cafe, dispatch }) => {
                             <p> اعتبار پنل تا تاریخ : </p>
                             <MomentDate time={cafe.charge_expired_date} />
                         </div>
+                        <Link href={`https://cafesiran.ir/cafes/${cafe.id}`}>
+                            <a className='text-blue-400'>
+                                مشاهده منو
+                            </a>
+                        </Link>
                     </div>
                 </div>
             </div>

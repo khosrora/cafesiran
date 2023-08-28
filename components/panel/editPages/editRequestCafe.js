@@ -178,7 +178,7 @@ const EditRequestCafe = ({ setGallery, imageUrl }) => {
                             </div>
                         </div>
                         <div className="flex justify-between items-center">
-                            <button type="submit" className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">
+                            <button disabled={load} type="submit" className="bg-[#FF7129] w-48 px-4 py-2 rounded-md text-white">
                                 {
                                     load ? "لطفا منتظر بمانید" : "ویرایش اطلاعات"
                                 }

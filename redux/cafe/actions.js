@@ -340,6 +340,25 @@ export const changeIsOpenAction = (bool, id) => async dispatch => {
     }
 }
 
+
+
+export const editTaxCafe = (id, data) => async dispatch => {
+    try {
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await patchDataAPI(`cafe/cafes/${id}/`, data, token);
+        if (res.status === 200) {
+            successMessage("مبلغ ارزش افزوده ویرایش شد");
+            dispatch({ type: CAFEACTIONSYPES.EDIT_CAFE, payload: { data: res.data } });
+        }
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+
 export const getPlans = () => async dispatch => {
     try {
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });

@@ -17,10 +17,13 @@ const Basket = ({ items }) => {
     const [modal, setModal] = useState(false);
     const [desc, setDesc] = useState('');
     const [numberTable, setNumberTable] = useState(0);
-    const { userDetails, cartDetails, auth } = useSelector(state => state);
+    const { userDetails, cartDetails, auth, global } = useSelector(state => state);
     const load = userDetails.load;
     const order = cartDetails.orderList;
     const login = auth.login;
+    const tax = global?.cafe?.tax;
+
+
 
 
     useEffect(() => {
@@ -28,7 +31,12 @@ const Basket = ({ items }) => {
             const total = order.reduce((prev, item) => {
                 return prev + (item.price * item.count)
             }, 0)
-            setTotal(total);
+            if (tax == 0) {
+                setTotal(total);
+            } else {
+                let taxTotal = (total * tax) / 100
+                setTotal(total + taxTotal);
+            }
         }
         getTotal()
     }, [callback])
@@ -37,7 +45,7 @@ const Basket = ({ items }) => {
     const handleConfirmBasket = (totalPrice, order) => {
         const checkedCafe = items.filter(item => item.cafe_id !== order[0].cafe_id);
         if (checkedCafe.length >= 1) return errorMessage("شما مجاز به سفارش همزمان از چند کافه نیستید");
-        if (!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید");
+        if (!login) return errorMessage("ابتدا وارد وب سایت شوید");
         let data = {
             items: order,
             total_price: totalPrice.toString(),
@@ -63,11 +71,12 @@ const Basket = ({ items }) => {
                 }
                 {
                     modal === false ?
-                        <div className="bg-zinc-100 p-2 lg:border lg:p-8 rounded-md dark:border-slate-700 dark:bg-zinc-800 dark:text-white">
+                        <div className="bg-zinc-100 p-2 lg:border lg:p-8 rounded-md space-y-4 dark:border-slate-700 dark:bg-zinc-800 dark:text-white">
                             <div className="flex justify-between items-center">
                                 <p>جمع کل :‌</p>
                                 <p>{new Intl.NumberFormat().format(total)} تومان</p>
                             </div>
+                            <p className='text-xs'>مبلغ کل با احتساب {tax} % ارزش افزوده محاسبه می شود</p>
                             <div className="mt-4">
                                 <button className="bg-[#FF7129] py-2 w-full text-white rounded-md" onClick={() => setModal(true)}>ثبت سفارش</button>
                             </div>
