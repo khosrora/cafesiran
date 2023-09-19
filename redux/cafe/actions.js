@@ -91,6 +91,7 @@ export const getAllItemCafe = (page) => async dispatch => {
 
 export const getOneItemMenu = (id) => async dispatch => {
     try {
+        dispatch({ type: CAFEACTIONSYPES.ITEM_MENU, payload: { data: null } })
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: true } });
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
         const token = Cookies.get("CafesIran__TOKEN")

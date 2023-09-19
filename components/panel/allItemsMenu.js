@@ -32,6 +32,7 @@ const AllItemsMenu = () => {
     }
 
     if (load) return <Stable />
+    console.log(items);
     return (
         <div>
             <h1 className="text-xl mt-4  dark:text-white">آیتم های ثبت شده کافه</h1>
