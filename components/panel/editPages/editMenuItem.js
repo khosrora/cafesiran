@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { editItemMenu, getOneItemMenu } from '../../../redux/cafe/actions';
 import { getCategories } from '../../../redux/category/actions';
 import Sform from '../../skillton/Sform';
@@ -21,6 +21,9 @@ const createItemMenuSchema = Yup.object().shape({
 
 
 const EditMenuItem = ({ setGallery, imageUrl }) => {
+
+    const [callBack, setCallBack] = useState(false)
+
     const router = useRouter();
     const id = router.query.id;
     const dispatch = useDispatch();
@@ -30,9 +33,11 @@ const EditMenuItem = ({ setGallery, imageUrl }) => {
     const load = categoryDetails.load;
 
     useEffect(() => {
-        if(id) dispatch(getOneItemMenu(id));
-        dispatch(getCategories());
-    }, [id, dispatch]);
+        if (id) {
+            dispatch(getOneItemMenu(id))
+            dispatch(getCategories());
+        };
+    }, [id, dispatch, callBack]);
 
     if (!item) return <Sform />
     return (
@@ -56,10 +61,15 @@ const EditMenuItem = ({ setGallery, imageUrl }) => {
                             category: item.category.id
                         }}
                         validationSchema={createItemMenuSchema}
-                        onSubmit={(values) => {
+                        onSubmit={(values , { resetForm }) => {
+                            console.log(imageUrl);
                             values.image_url = imageUrl;
+                            console.log(values);
                             // if (values.image_url === null) return errorMessage("لطفا عکس آیتم منو را انتخاب کنید")
                             dispatch(editItemMenu(id, values))
+                            setCallBack(!callBack)
+                            resetForm();
+                            router.back();
                         }}
                     >
                         {({ errors, touched, values }) => (
@@ -81,13 +91,13 @@ const EditMenuItem = ({ setGallery, imageUrl }) => {
                                         <label className="" htmlFor="mobile">آدرس تصویر</label>
                                         <div onClick={() => setGallery(true)} className="flex items-center gap-x-2 w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">
                                             {
-                                                imageUrl === null ?
+                                                imageUrl === null   ?
                                                     <UploadIcon className='w-6 h-6' />
                                                     :
                                                     <CheckIcon className='w-6 h-6 text-green-600' />
                                             }
                                             {
-                                                imageUrl === null ?
+                                                imageUrl === null  ?
                                                     <span>انتخاب عکس</span>
                                                     :
                                                     <span>عکس انتخاب شد</span>

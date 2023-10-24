@@ -10,14 +10,16 @@ import Paginate from '../other/paginate';
 
 const GalleryModal = ({ setGallery, setImageUrl }) => {
 
+    
     const [page, setPage] = useState(1)
     const { cafeDetails, utilities } = useSelector(state => state);
     const dispatch = useDispatch();
-
+    
     const galleries = cafeDetails.gallery;
     const next = cafeDetails.next;
     const load = cafeDetails.load;
     const connection = utilities.connection;
+    const item = cafeDetails.item;
 
     useEffect(() => {
         if (connection) dispatch(getGalleriesCafe(page))
