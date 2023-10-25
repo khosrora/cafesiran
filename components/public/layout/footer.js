@@ -47,7 +47,7 @@ const Footer = () => {
                         <ul className=' mt-2'>
                             <li className='flex justify-start items-center mt-2'>
                                 <PhoneIcon className="h-6 w-6" />
-                                <span className='mr-4'>0933239823</span>
+                                <span className='mr-4'>09332839823</span>
                             </li>
                             <li className='flex justify-start items-center mt-2'>
                                 <MailIcon className="h-6 w-6" />
