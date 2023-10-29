@@ -43,7 +43,7 @@ const EditMenuItem = ({ setGallery, imageUrl }) => {
     return (
         <>
             <div className="flex justify-start items-center mt-4">
-                <Link href="/dashboard/allItems">
+                <Link href="/dashboard/allItems?page=1">
                     <div className="border rounded-full flex justify-center items-center p-1 ml-2 cursor-pointer">
                         <ArrowRightIcon className='w-4 h-4' />
                     </div>

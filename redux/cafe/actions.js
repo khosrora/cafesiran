@@ -84,6 +84,7 @@ export const getAllItemCafe = (page) => async dispatch => {
         dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.links.next } })
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
+        console.log(err);
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     }
@@ -145,8 +146,9 @@ export const deleteMenuItems = (id) => async dispatch => {
         const token = Cookies.get("CafesIran__TOKEN")
         const res = await deleteDataAPI(`cafe/menuitems/${id}/`, token);
         if (res.status === 204) {
-            dispatch({ type: CAFEACTIONSYPES.DELETE_ITEM_MENU, payload: { data: id } });
-            errorMessage("آیتم منو با موفقیت حذف شد");
+            // dispatch({ type: CAFEACTIONSYPES.DELETE_ITEM_MENU, payload: { data: id } });
+            // errorMessage("آیتم منو با موفقیت حذف شد");
+            location.reload();
         }
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {

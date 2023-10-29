@@ -4,12 +4,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { PencilAltIcon, TrashIcon } from '@heroicons/react/outline';
 import { deleteMenuItems, getAllItemCafe, isActiveItem } from "../../redux/cafe/actions";
 import Stable from "../skillton/Stable";
-import Paginate from "../shared/other/paginate";
+import PaginateQuery from "../shared/other/paginateQuery";
+import { useRouter } from "next/router";
 
 
 const AllItemsMenu = () => {
+    const router = useRouter()
+    const { page } = router.query;
 
-    const [page, setPage] = useState(1);
+    const [pageNum, setPageNum] = useState(1);
     const dispatch = useDispatch();
     const { cafeDetails, utilities } = useSelector(state => state);
     const { user } = useSelector(state => state.userDetails);
@@ -19,7 +22,7 @@ const AllItemsMenu = () => {
     const connection = utilities.connection;
 
     useEffect(() => {
-        if (connection) dispatch(getAllItemCafe(page))
+        if (connection && !!page) dispatch(getAllItemCafe(page))
     }, [page, connection]);
 
     const handleActiveItem = (e, id, data) => {
@@ -32,7 +35,7 @@ const AllItemsMenu = () => {
     }
 
     if (load) return <Stable />
-    console.log(items);
+
     return (
         <div>
             <h1 className="text-xl mt-4  dark:text-white">آیتم های ثبت شده کافه</h1>
@@ -78,8 +81,7 @@ const AllItemsMenu = () => {
                     </tbody>
                 </table>
             </div>
-            <Paginate next={next} page={page} setPage={setPage} />
-
+            <PaginateQuery next={next} page={page} router={router} />
             {
                 user?.cafe?.id ?
                     <div className="w-full lg:w-2/4 h-[1000px]">
