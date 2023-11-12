@@ -11,6 +11,7 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "axios": "^0.27.2",
+    "daisyui": "^3.9.4",
     "formik": "^2.2.9",
     "jalali-moment": "^3.3.11",
     "js-cookie": "^3.0.1",
