@@ -13,7 +13,8 @@ const createItemMenuSchema = Yup.object().shape({
     title: Yup.string().min(2, 'نام آیتم منو بیش از حد کوتاه است').max(50, 'نام آیتم منو بیش از حد بزرگ است').required('وارد کردن نام آیتم منو الزامی است'),
     price: Yup.number().typeError("قیمت باید به صورت عددی وارد شود").required('وارد کردن قیمت آیتم منو الزامی است'),
     desc: Yup.string().min(20, 'توضیحات آیتم منو بیش از حد کوتاه است').max(1000, 'توضیحات آیتم منو بیش از حد بزرگ است').required('وارد کردن توضیحات آیتم منو الزامی است'),
-    category: Yup.string().required("انتخاب دسته بندی الزامی است")
+    category: Yup.string().required("انتخاب دسته بندی الزامی است"),
+    sort_index: Yup.string().required("انتخاب اولویت نمایش الزامی است"),
 });
 
 
@@ -32,7 +33,7 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
 
 
     return (
-        <>           
+        <>
             <h1 className="text-xs lg:text-xl w-3/4 lg:m-auto dark:text-white">فرم ایجاد آیتم</h1>
             <Formik
                 initialValues={{
@@ -41,7 +42,8 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
                     price: '',
                     desc: '',
                     is_active: true,
-                    category: ''
+                    category: '',
+                    sort_index: 1
                 }}
                 validationSchema={createItemMenuSchema}
                 onSubmit={(values, { resetForm }) => {
@@ -93,6 +95,23 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
                                     }
                                 </Field>
                                 {errors.category && touched.category ? (<span className='text-red-600'>{errors.category}</span>) : null}
+                            </div>
+                            <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
+                                <label htmlFor="type">اولویت نمایش</label>
+                                <Field name="sort_index" as="select" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">
+                                    <option value={1}>اولویت نمایش آیتم</option>
+                                    <option value={1}>اول</option>
+                                    <option value={2}>دوم</option>
+                                    <option value={3}>سوم</option>
+                                    <option value={4}>چهارم</option>
+                                    <option value={5}>پنجم</option>
+                                    <option value={6}>ششم</option>
+                                    <option value={7}>هفتم</option>
+                                    <option value={8}>هشتم</option>
+                                    <option value={9}>نهم</option>
+                                    <option value={10}>دهم</option>
+                                </Field>
+                                {errors.sort_index && touched.sort_index ? (<span className='text-red-600'>{errors.sort_index}</span>) : null}
                             </div>
                         </div>
 

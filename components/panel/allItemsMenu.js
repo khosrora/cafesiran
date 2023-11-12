@@ -84,10 +84,16 @@ const AllItemsMenu = () => {
             <PaginateQuery next={next} page={page} router={router} />
             {
                 user?.cafe?.id ?
-                    <div className="w-full lg:w-2/4 h-[1000px]">
-                        <iframe className="w-full h-full" src={`https://cafesiran.ir/cafes/${user.cafe.id}`} title="W3Schools Free Online Web Tutorials">
-                        </iframe>
-                    </div> : null
+                    <div className="mockup-phone">
+                        <div className="camera"></div>
+                        <div className="display">
+                            <div className="artboard artboard-demo phone-1">
+                                <iframe className="w-full h-full" src={`https://cafesiran.ir/cafes/${user.cafe.id}`} title="W3Schools Free Online Web Tutorials">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    : null
             }
         </div>
     );
