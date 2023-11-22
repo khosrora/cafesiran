@@ -63,6 +63,7 @@ export const CheckOtp = data => async dispatch => {
         }
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
+        console.log(err);
         errorMessage(err.response.data.non_field_errors)
         dispatch({ type: AUTHTACTIONSYPES.LOAD, payload: { load: false } });
     }

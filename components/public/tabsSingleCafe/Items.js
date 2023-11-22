@@ -55,7 +55,7 @@ const Items = ({ items, categories }) => {
             {
                 menuItems[0] !== null ?
                     <>
-                        <div className="mt-8 overflow-x-auto">
+                        <div className="mt-8 overflow-x-scroll">
                             <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
                                 <div className="flex justify-between items-center cursor-pointer" onClick={() => handleItemMenu(0)}>
                                     <div className={`${categoriesBg === 0 ? "bg-[#FF7129] text-white" : "bg-zinc-100 dark:bg-zinc-800"}  flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1  dark:text-zinc-200`}>

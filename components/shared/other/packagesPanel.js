@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from '@heroicons/react/outline';
+import { CheckCircleIcon, StarIcon } from '@heroicons/react/outline';
 import { postDataAPI } from '../../../utils/fetchData';
 import ImagesPanels from './imagesPanels';
 import Cookies from 'js-cookie';
@@ -29,8 +29,32 @@ const PackagesPanel = ({ data }) => {
             </div>
             <ul className="mt-4 text-zinc-600 text-sm flex flex-col gap-y-4 dark:text-zinc-200">
                 <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
                     <p> دارای قابلیت ثبت سفارش توسط مشتریان</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
+                    <p> نمایش اطلاعات مشتریان وفادار</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
+                    <p className="">امکان ایجاد qr code مختص به هر میز</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
+                    <p>امکان گزارش گیری از سفارشات ثبت شده</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
+                    <p>دریافت اطلاعات سفارشات (بیشترین و پر فروش ترین)</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
+                    <p>دارای اپلیکیشن ( pwa )</p>
+                </li>
+                <li className="flex justify-start items-center">
+                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
+                    <p className="">امکان ایجاد qr code مختص مجموعه (بی نهایت)</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
@@ -38,15 +62,7 @@ const PackagesPanel = ({ data }) => {
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
-                    <p> نمایش اطلاعات مشتریان وفادار</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
                     <p>مشاهده اطلاعات مجموعه روی نقشه</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
-                    <p className="">امکان ایجاد qr code مخصوص مجموعه (بی نهایت)</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
@@ -62,23 +78,11 @@ const PackagesPanel = ({ data }) => {
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
-                    <p>امکان گزارش گیری از سفارشات ثبت شده</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
-                    <p>دارای اپلیکیشن ( pwa )</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
                     <p>برگزاری رویداد</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
                     <p>باشگاه مشتریان</p>
-                </li>
-                <li className="flex justify-start items-center">
-                    <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
-                    <p>دریافت اطلاعات سفارشات (بیشترین و پر فروش ترین)</p>
                 </li>
                 <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />

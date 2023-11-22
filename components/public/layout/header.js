@@ -17,7 +17,8 @@ const Header = () => {
     const dispatch = useDispatch();
     const [mounted, setMounted] = useState(false);
     const [sidebar, setSidebar] = useState(false);
-    const { asPath } = useRouter();
+    const { asPath, query } = useRouter();
+    const tabale = query.table;
 
     const nameCafe = global?.cafe?.persian_title;
 
@@ -88,7 +89,7 @@ const Header = () => {
                                 login ?
                                     order.length === 0 ? "" :
                                         <li className='mr-8 relative'>
-                                            <Link href="/cafes/payment"><a title="سبد سفارش" className={`${asPath === "/cafes/payment" ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></Link>
+                                            <Link href={`/cafes/payment?tabale=${tabale}`}><a title="سبد سفارش" className={`${asPath === `/cafes/payment?tabale=${tabale}` ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></Link>
                                             <div className="absolute flex justify-center items-center top-0 -left-4 text-red-600 rounded-full text-xs">{order.length}</div>
                                         </li>
                                     : null

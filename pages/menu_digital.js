@@ -9,7 +9,7 @@ const MenuDigital = () => {
     return (
         <>
             <Head>
-                <title>منو دیجیتال |‌ منو دیجیتال کافه ایران</title>
+                <title>منو دیجیتال | منو دیجیتال کافه ایران</title>
                 <meta property="url" content="cafesiran.ir" />
                 <meta property="og:type" content="website" />
                 <meta property="og:locale" content="fa_IR" />
@@ -25,3 +25,7 @@ const MenuDigital = () => {
 }
 
 export default MenuDigital;
+
+export async function getServerSideProps() {
+
+} 

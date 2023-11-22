@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TemplateIcon, UserGroupIcon, ChartSquareBarIcon, PhotographIcon, CakeIcon, MapIcon, ChartBarIcon, OfficeBuildingIcon } from '@heroicons/react/outline'
+import { TemplateIcon, UserGroupIcon, ChartSquareBarIcon, PhotographIcon, CakeIcon, MapIcon, ChartBarIcon, OfficeBuildingIcon, ArrowsExpandIcon } from '@heroicons/react/outline'
 import { useRouter } from "next/router";
 
 
@@ -20,18 +20,26 @@ const CafeMobileRoutes = () => {
                 </Link>
             </li>
             <li>
-                <Link href="/dashboard/galleryCafe">
-                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/galleryCafe" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
-                        <PhotographIcon className="h-6 w-6" />
-                        <p>گالری</p>
-                    </a>
-                </Link>
-            </li>
-            <li>
                 <Link href="/dashboard/allItems?page=1">
                     <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/allItems?page=1" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                         <ChartSquareBarIcon className="w-6 h-6" />
                         <p>آیتم های منو</p>
+                    </a>
+                </Link>
+            </li>
+            <li>
+                <Link href="/dashboard/createTabale?page=1">
+                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/createTabale" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                        <ArrowsExpandIcon className="w-6 h-6" />
+                        <p>ایجاد میز مجموعه</p>
+                    </a>
+                </Link>
+            </li>
+            <li>
+                <Link href="/dashboard/galleryCafe">
+                    <a className={`flex justify-start items-center gap-x-4 py-4 px-2 rounded-md bg-zinc-100 dark:bg-zinc-800 ${asPath === "/dashboard/galleryCafe" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                        <PhotographIcon className="h-6 w-6" />
+                        <p>گالری</p>
                     </a>
                 </Link>
             </li>

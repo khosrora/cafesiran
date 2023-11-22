@@ -1,5 +1,4 @@
 import Head from 'next/head';
-import Link from 'next/link';
 import Layout from "../components/public/layout";
 import Alert from '../components/shared/other/alert';
 import PackagesPanel from '../components/shared/other/packagesPanel';
@@ -9,7 +8,6 @@ import { getDataAPI } from '../utils/fetchData';
 
 
 const Packages = ({ data }) => {
-
     return (
         <>
             <Head>

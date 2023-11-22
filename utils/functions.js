@@ -54,7 +54,7 @@ export const plusItemFunc = (data, id, num) => {
     return data
 }
 
-export const minusItemFunc = (data, id, num , min = 1) => {
+export const minusItemFunc = (data, id, num, min = 1) => {
     data.forEach(item => {
         if (item.id === id) {
             item.count === min ? item.count = num : item.count -= num
@@ -67,4 +67,9 @@ export const minusItemFunc = (data, id, num , min = 1) => {
 export const checkItemIn = (list, itemId) => {
     const filter = list.some(item => item.id === itemId);
     return filter;
+}
+
+export const deleteLastIndex = (list) => {
+    list.shift()
+    return list;
 }

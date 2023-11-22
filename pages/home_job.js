@@ -20,3 +20,12 @@ const HomeJob = () => {
 }
 
 export default HomeJob;
+
+export async function getServerSideProps() {
+    const res = await getDataAPI(`plan/plans/`, null);
+    return {
+        props: {
+            data: res.data
+        }
+    }
+} 

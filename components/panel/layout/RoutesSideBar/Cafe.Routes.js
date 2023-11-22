@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { TemplateIcon, ChartBarIcon, ChartSquareBarIcon, PhotographIcon, CakeIcon, MapIcon, UserGroupIcon, ChatAlt2Icon, OfficeBuildingIcon } from '@heroicons/react/outline'
+import { TemplateIcon, ChartBarIcon, ChartSquareBarIcon, PhotographIcon, CakeIcon, MapIcon, UserGroupIcon, ChatAlt2Icon, OfficeBuildingIcon, ArrowsExpandIcon } from '@heroicons/react/outline'
 import { useRouter } from "next/router";
 
 
@@ -24,6 +24,14 @@ const CafeRoutes = () => {
                     <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/allItems?page=1" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
                         <ChartSquareBarIcon className="h-6 w-6" />
                         <p>آیتم های منو</p>
+                    </a>
+                </Link>
+            </li>
+            <li>
+                <Link href="/dashboard/createTabale?page=1">
+                    <a className={`flex justify-start items-center gap-x-4 py-2 px-2 rounded-md bg-zinc-50 dark:bg-zinc-800 ${asPath === "/dashboard/createTabale" ? 'text-[#FF7129]' : 'text-zinc-900 dark:text-white'}`}>
+                        <ArrowsExpandIcon className="h-6 w-6" />
+                        <p>ایجاد میز مجموعه</p>
                     </a>
                 </Link>
             </li>

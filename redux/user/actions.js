@@ -58,7 +58,7 @@ export const addOrder = (data) => async dispatch => {
         }
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     } catch (err) {
-        errorMessage("متاسفانه مشکلی از سمت سرور پیش آمده است")
+        errorMessage(err.response.data.message)
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: false } });
     }
 }

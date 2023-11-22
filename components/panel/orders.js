@@ -14,6 +14,7 @@ const Orders = () => {
     const [page, setPage] = useState(1)
 
     const { data, error } = useSWR(`${API}cafe/order/?page=${page}`, fetcher );
+    console.log(data);
 
     if (error) return <NoConnection />
     if (!data) return <Stable />
@@ -35,7 +36,7 @@ const Orders = () => {
                     <thead className="text-xs lg:text-sm ">
                         <tr>
                             <th scope="col" className="hidden lg:flex py-3 px-6">
-                                نام کافه
+                                شماره میز
                             </th>
                             <th scope="col" className="py-3 px-6">
                                 وضعیت
@@ -56,7 +57,7 @@ const Orders = () => {
                             data.results.map((i, index) =>
                                 <tr key={index} className=" odd:bg-white bg-zinc-100 text-xs lg:text-sm dark:odd:bg-zinc-800 dark:bg-zinc-900">
                                     <td className="hidden lg:flex py-4 px-6">
-                                        {i.cafe.persian_title}
+                                        {i.num_of_table}
                                     </td>
                                     <td className="py-4 px-6">
                                         {

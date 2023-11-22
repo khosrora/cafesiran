@@ -1,4 +1,4 @@
-import { DeleteData, EditDataReceptor } from "../../utils/functions";
+import { DeleteData, EditDataReceptor, deleteLastIndex } from "../../utils/functions";
 import { CAFEFETURESTYPE } from "./actions";
 
 
@@ -12,7 +12,8 @@ const initialStore = {
     vipUsers: [],
     events: [],
     next: null,
-    userLoyals: []
+    userLoyals: [],
+    tables: []
 };
 
 
@@ -89,6 +90,22 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 userLoyals: action.payload.data
+            }
+        case CAFEFETURESTYPE.GET_TABALES:
+            return {
+                ...state,
+                tables: action.payload.data
+            }
+        case CAFEFETURESTYPE.CREATE_TABALE:
+            return {
+                ...state,
+                tables: [action.payload.data, ...state.tables]
+            }
+        case CAFEFETURESTYPE.DELETE_TABALE:
+            console.log(action);
+            return {
+                ...state,
+                tables: deleteLastIndex(state.tables)
             }
         default:
             return state;
