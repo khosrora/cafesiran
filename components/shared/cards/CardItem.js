@@ -49,7 +49,7 @@ const CardItem = ({ item, setMenu, checkItemInCart, orderCount, handleCommentMod
                             : null
                     }
                 </div>
-                <p className="text-xs mt-2 text-slate-500 dark:text-zinc-200">
+                <p className="text-[10px] font-light mt-2 text-slate-500 dark:text-zinc-200">
                     {item.desc.length > 60 ?
                         `${item.desc.substring(0, 60)}...` : item.desc
                     }

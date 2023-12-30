@@ -6,6 +6,7 @@ import { errorMessage } from '../../../utils/toast';
 import CardItem from "../../shared/cards/CardItem";
 import CommentCmModal from '../../shared/modals/comment/CommentCmModal';
 import SCartItem from '../../skillton/SCartItem';
+import CategoriesList from './CategoriesList';
 
 const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
 
@@ -55,14 +56,8 @@ const Items = ({ items, categories }) => {
             {
                 menuItems[0] !== null ?
                     <>
-                        <div className="mt-8 overflow-x-scroll">
+                        <div className="mt-8">
                             <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
-                                <div className="flex justify-between items-center cursor-pointer" onClick={() => handleItemMenu(0)}>
-                                    <div className={`${categoriesBg === 0 ? "bg-[#FF7129] text-white" : "bg-zinc-100 dark:bg-zinc-800"}  flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1  dark:text-zinc-200`}>
-                                        <img className="w-12 h-12" src='/images/perspective_matte.png' alt="همه" />
-                                        <span className="text-xs mt-2">همه</span>
-                                    </div>
-                                </div>
                                 {
                                     loadCategories ?
                                         [1, 2, 3, 4, 5, 6].map(i =>
@@ -74,14 +69,11 @@ const Items = ({ items, categories }) => {
                                             </div>
                                         )
                                         :
-                                        categories.map(i =>
-                                            <div key={i.id} className="flex justify-between items-center cursor-pointer" onClick={() => handleItemMenu(i.id)}>
-                                                <div className={`${i.id === categoriesBg ? "bg-[#FF7129] text-white" : "bg-zinc-100 dark:bg-zinc-800"}  flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1  dark:text-zinc-200`}>
-                                                    <img className="w-12 h-12" src={i.image} alt={i.title} />
-                                                    <span className="text-xs mt-2">{i.title}</span>
-                                                </div>
-                                            </div>
-                                        )
+                                        <CategoriesList
+                                            categories={categories}
+                                            categoriesBg={categoriesBg}
+                                            handleItemMenu={handleItemMenu}
+                                        />
                                 }
                             </div>
                         </div>
