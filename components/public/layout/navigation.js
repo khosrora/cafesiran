@@ -13,6 +13,7 @@ const Navigation = () => {
     const load = auth.load;
     const order = cartDetails.orderList;
     const login = auth.login;
+    const tabale = query.table;
 
 
     return (
@@ -45,7 +46,7 @@ const Navigation = () => {
             {
                 login ?
                     order.length === 0 ? "" :
-                        <Link href='/cafes/payment'>
+                        <Link href={`/cafes/payment?tabale=${tabale}`}>
                             <div className="relative flex flex-col justify-center items-center w-1/4 cursor-pointer">
                                 <div className="absolute -top-2 text-red-600 rounded-full text-xs">{order.length}</div>
                                 <ShoppingCartIcon className="h-4 w-4 dark:text-white" />

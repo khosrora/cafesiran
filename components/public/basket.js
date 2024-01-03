@@ -25,8 +25,7 @@ const Basket = ({ items }) => {
 
 
     const router = useRouter();
-    const table = router.query.tabale;
-    console.log();
+    let table = router.query.tabale;
 
     useEffect(() => {
         const getTotal = () => {
@@ -45,10 +44,9 @@ const Basket = ({ items }) => {
 
     useEffect(() => {
         if (!!table) setNumberTable(table)
-    }, [])
+    }, [table])
 
     const handleConfirmBasket = (totalPrice, order) => {
-        console.log(numberTable);
         const checkedCafe = items.filter(item => item.cafe_id !== order[0].cafe_id);
         if (checkedCafe.length >= 1) return errorMessage("شما مجاز به سفارش همزمان از چند کافه نیستید");
         if (!login) return errorMessage("ابتدا وارد وب سایت شوید");
@@ -59,7 +57,7 @@ const Basket = ({ items }) => {
             cafe: order[0].cafe_id,
             num_of_table: numberTable === 'undefined' ? Number('0') : Number(numberTable)
         }
-    
+
         dispatch(addOrder(data))
     }
 

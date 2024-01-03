@@ -60,7 +60,7 @@ const Items = ({ items, categories }) => {
                             <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
                                 {
                                     loadCategories ?
-                                        [1, 2, 3, 4, 5, 6].map(i =>
+                                        [1, 2].map(i =>
                                             <div key={i} className="flex justify-between items-center cursor-pointer bg-zinc-100 animate-pulse mr-2 rounded-sm dark:bg-zinc-900">
                                                 <div className="flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1">
                                                     <div className="bg-zinc-200 p-8 rounded-md dark:bg-zinc-800"></div>
@@ -90,7 +90,9 @@ const Items = ({ items, categories }) => {
                                 :
                                 <div className="grid gap-y-5 gap-x-2 my-5 md:grid-cols-2 max-w-7xl m-auto">
                                     {
-                                        loadItem ? <SCartItem /> :
+                                        loadItem ?
+                                            <SCartItem />
+                                            :
                                             menuItems.map(item => <CardItem key={item.id} item={item} setMenu={setMenu} checkItemInCart={checkItemInCart} handleCommentModal={handleCommentModal} />)
                                     }
                                 </div>
