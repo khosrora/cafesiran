@@ -4,29 +4,30 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 function CategoriesList({ categories, categoriesBg, handleItemMenu }) {
+
     return (
         <Swiper
             spaceBetween={50}
             breakpoints={{
                 0: {
                     slidesPerView: 3,
-                    spaceBetween : 1
+                    spaceBetween: 1
                 },
                 470: {
                     slidesPerView: 3,
-                    spaceBetween : 1
+                    spaceBetween: 1
                 },
                 700: {
                     slidesPerView: 4,
-                    spaceBetween : 1
+                    spaceBetween: 1
                 },
                 1000: {
                     slidesPerView: 5,
-                    spaceBetween : 1
+                    spaceBetween: 1
                 },
                 1200: {
                     slidesPerView: 8,
-                    spaceBetween : 1
+                    spaceBetween: 1
                 }
             }}
         >

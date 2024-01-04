@@ -13,7 +13,7 @@ const CardItem = ({ item, setMenu, checkItemInCart, orderCount, handleCommentMod
     const dispatch = useDispatch();
 
     const handleAddToCart = (cartItem) => {
-        if (!login) return errorMessage("لطفا ابتدا وارد وب سایت شوید")
+        if (!login) return errorMessage("برای ثبت سفارش وارد وب سایت شوید")
         const checked = checkItemInCart(cartItem.id);
         if (checked) return errorMessage("این آیتم قبلا در سبد سفارش ثبت شده است")
         cartItem.menu_item_id = cartItem.id;

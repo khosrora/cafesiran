@@ -8,7 +8,8 @@ import CommentCmModal from '../../shared/modals/comment/CommentCmModal';
 import SCartItem from '../../skillton/SCartItem';
 import CategoriesList from './CategoriesList';
 
-const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"))
+const CafeItem = dynamic(() => import("../../shared/modals/cafeItem"));
+
 
 
 
@@ -93,7 +94,16 @@ const Items = ({ items, categories }) => {
                                         loadItem ?
                                             <SCartItem />
                                             :
-                                            menuItems.map(item => <CardItem key={item.id} item={item} setMenu={setMenu} checkItemInCart={checkItemInCart} handleCommentModal={handleCommentModal} />)
+                                            menuItems.map(item =>
+                                                <CardItem
+                                                    key={item.id}
+                                                    item={item}
+                                                    setMenu={setMenu}
+                                                    checkItemInCart={checkItemInCart}
+                                                    handleCommentModal={handleCommentModal}
+                                                    setCategoriesBg={setCategoriesBg}
+                                                    categoriesBg={categoriesBg}
+                                                />)
                                     }
                                 </div>
                         }
