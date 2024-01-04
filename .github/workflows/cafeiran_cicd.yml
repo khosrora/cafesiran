@@ -1,4 +1,4 @@
-name: Cafe Iran Back CI-CD
+name: Cafe Iran Front CI-CD
 
 on:
   push:
