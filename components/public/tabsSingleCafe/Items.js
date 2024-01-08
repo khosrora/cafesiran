@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getAllComments, openModalComment } from '../../../redux/cafeFeatures/actions';
 import { errorMessage } from '../../../utils/toast';
@@ -21,6 +21,9 @@ const Items = ({ items, categories }) => {
     const [menu, setMenu] = useState(false);
     const [categoriesBg, setCategoriesBg] = useState(0);
 
+    useEffect(() => {
+        setMenuItems(items)
+    }, [items])
 
     const { auth, cartDetails, global, cafeFaetures } = useSelector(state => state);
     const order = cartDetails.orderList;
@@ -50,7 +53,6 @@ const Items = ({ items, categories }) => {
         dispatch(openModalComment(id))
         dispatch(getAllComments(id))
     }
-
 
     return (
         <>

@@ -28,21 +28,20 @@ const SingleCafe = ({ items, categories, cafeId }) => {
         setTabs(tab)
     }
 
-
-    function MenuItem({ tabs }) {
-        switch (tabs) {
-            case "Items":
-                return <Items categories={categories} items={items} />;
-            case "Reserve":
-                return <Reserve cafeId={cafeId} />;
-            case "About":
-                return <AboutCafe cafeId={cafeId} customerClubModal={customerClubModal} SetCustomerClubModal={SetCustomerClubModal} />;
-            case "Suggest":
-                return <Suggest cafeId={cafeId} />;
-            default:
-                return null;
-        }
-    }
+    // function MenuItem({ tabs }) {
+    //     switch (tabs) {
+    //         case "Items":
+    //             return <Items categories={categories} items={items} />;
+    //         case "Reserve":
+    //             return <Reserve cafeId={cafeId} />;
+    //         case "About":
+    //             return <AboutCafe cafeId={cafeId} customerClubModal={customerClubModal} SetCustomerClubModal={SetCustomerClubModal} />;
+    //         case "Suggest":
+    //             return <Suggest cafeId={cafeId} />;
+    //         default:
+    //             return null;
+    //     }
+    // }
 
     return (
         <>
@@ -58,7 +57,20 @@ const SingleCafe = ({ items, categories, cafeId }) => {
                 </div>
                 {
                     connection ?
-                        <MenuItem tabs={tabs} />
+                        // <MenuItem tabs={tabs} />
+                        <>
+                            {
+                                tabs === 'About' ?
+                                    <AboutCafe cafeId={cafeId} customerClubModal={customerClubModal} SetCustomerClubModal={SetCustomerClubModal} />
+                                    :
+                                    tabs === 'Suggest' ?
+                                        <Suggest cafeId={cafeId} />
+                                        :
+                                        tabs === 'Items' ?
+                                            <Items categories={categories} items={items} /> :
+                                            <Reserve cafeId={cafeId} />
+                            }
+                        </>
                         :
                         <NoConnection />
                 }
