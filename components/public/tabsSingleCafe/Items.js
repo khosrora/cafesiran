@@ -57,26 +57,28 @@ const Items = ({ items, categories }) => {
             {
                 menuItems[0] !== null ?
                     <>
-                        <div className="mt-8">
-                            <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
-                                {
-                                    loadCategories ?
-                                        [1, 2].map(i =>
-                                            <div key={i} className="flex justify-between items-center cursor-pointer bg-zinc-100 animate-pulse mr-2 rounded-sm dark:bg-zinc-900">
-                                                <div className="flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1">
-                                                    <div className="bg-zinc-200 p-8 rounded-md dark:bg-zinc-800"></div>
-                                                    <span className="text-xs mt-2 bg-zinc-200 p-2 rounded-md w-full dark:bg-zinc-800"></span>
+                        <div className="mt-8 max-w-[1200px] m-auto">
+                            {
+                                loadCategories ?
+                                    <div className="flex flex-shrink-0 justify-between items-center md:justify-center">
+                                        {
+                                            [1, 2, 3].map(i =>
+                                                <div key={i} className="flex justify-between items-center cursor-pointer bg-zinc-100 animate-pulse mr-2 rounded-sm dark:bg-zinc-900">
+                                                    <div className="flex flex-col justify-center items-center p-4 rounded-md w-28 mr-1">
+                                                        <div className="bg-zinc-200 p-8 rounded-md dark:bg-zinc-800"></div>
+                                                        <span className="text-xs mt-2 bg-zinc-200 p-2 rounded-md w-full dark:bg-zinc-800"></span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        )
-                                        :
-                                        <CategoriesList
-                                            categories={categories}
-                                            categoriesBg={categoriesBg}
-                                            handleItemMenu={handleItemMenu}
-                                        />
-                                }
-                            </div>
+                                            )
+                                        }
+                                    </div>
+                                    :
+                                    <CategoriesList
+                                        categories={categories}
+                                        categoriesBg={categoriesBg}
+                                        handleItemMenu={handleItemMenu}
+                                    />
+                            }
                         </div>
                         {
                             menuItems.length === 0 ?

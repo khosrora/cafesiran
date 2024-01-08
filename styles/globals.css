@@ -104,19 +104,19 @@ input:checked~.dot {
         src: url('/fonts/estedad/ttf/Estedad-Regular.ttf');
     }
 
-    @font-face {
+    /* @font-face {
         font-family: estedad;
         font-style: normal;
         font-weight: 300;
         src: url('/fonts/estedad/ttf/Estedad-Medium.ttf');
-    }
+    } */
 
-    @font-face {
+    /* @font-face {
         font-family: estedad;
         font-style: normal;
         font-weight: 400;
         src: url('/fonts/estedad/ttf/Estedad-SemiBold.ttf');
-    }
+    } */
 
     /* @font-face {
         font-family: estedad;

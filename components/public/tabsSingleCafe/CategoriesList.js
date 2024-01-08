@@ -28,6 +28,10 @@ function CategoriesList({ categories, categoriesBg, handleItemMenu }) {
                 1200: {
                     slidesPerView: 8,
                     spaceBetween: 1
+                },
+                1800: {
+                    slidesPerView: 9,
+                    spaceBetween: 1
                 }
             }}
         >

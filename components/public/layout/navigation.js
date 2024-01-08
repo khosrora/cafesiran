@@ -17,65 +17,67 @@ const Navigation = () => {
 
 
     return (
-        <div className="fixed bottom-0 w-full flex flex-row-reverse justify-around items-center py-3 bg-gray-50 border-t-2 md:hidden dark:bg-zinc-800 dark:border-black">
-            {
-                load ?
-                    <div className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
-                        <UserIcon className="h-4 w-4 dark:text-white" />
-                        <p className="text-xs mt-1">منتظر بمانید</p>
-                    </div> :
-                    login ?
-                        <Link href="/dashboard">
-                            <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/dashboard" ? "text-orange-600" : null}`} >
-                                <UserIcon className={`h-4 w-4 ${asPath === "/dashboard" ? "text-orange-600" : "dark:text-white"}`} />
-                                <p className="text-xs mt-1">پنل کاربری</p>
-                            </div>
-                        </Link>
-                        :
-                        <div onClick={() => dispatch(show_Modal_Login(true))} className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
+        <div className="fixed bottom-0 w-full pb-2 px-2  md:hidden">
+            <div className="bg-white shadow-2xl rounded-md py-3 w-full flex flex-row-reverse justify-between items-center dark:bg-zinc-800">
+                {
+                    load ?
+                        <div className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
                             <UserIcon className="h-4 w-4 dark:text-white" />
-                            <p className="text-xs mt-1">ورود</p>
-                        </div>
-            }
-            {/* <Link href='/blogs'>
+                            <p className="text-[10px] mt-1">منتظر بمانید</p>
+                        </div> :
+                        login ?
+                            <Link href="/dashboard">
+                                <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/dashboard" ? "text-orange-600" : null}`} >
+                                    <UserIcon className={`h-4 w-4 ${asPath === "/dashboard" ? "text-orange-600" : "dark:text-white"}`} />
+                                    <p className="text-[10px] mt-1">پنل کاربری</p>
+                                </div>
+                            </Link>
+                            :
+                            <div onClick={() => dispatch(show_Modal_Login(true))} className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
+                                <UserIcon className="h-4 w-4 dark:text-white" />
+                                <p className="text-[10px] mt-1">ورود</p>
+                            </div>
+                }
+                {/* <Link href='/blogs'>
                 <div className="flex flex-col justify-center items-center w-1/4 cursor-pointer">
                     <PencilIcon className="h-4 w-4 dark:text-white" />
                     <p className="text-xs mt-1">بلاگ ها</p>
                 </div>
             </Link> */}
-            {
-                login ?
-                    order.length === 0 ? "" :
-                        <Link href={`/cafes/payment?tabale=${tabale}`}>
-                            <div className="relative flex flex-col justify-center items-center w-1/4 cursor-pointer">
-                                <div className="absolute -top-2 text-red-600 rounded-full text-xs">{order.length}</div>
-                                <ShoppingCartIcon className="h-4 w-4 dark:text-white" />
-                                <p className="text-xs mt-1">سبد سفارش</p>
+                {
+                    login ?
+                        order.length === 0 ? "" :
+                            <Link href={`/cafes/payment?tabale=${tabale}`}>
+                                <div className="relative flex flex-col justify-center items-center w-1/4 cursor-pointer">
+                                    <div className="absolute -top-2 text-red-600 rounded-full text-xs">{order.length}</div>
+                                    <ShoppingCartIcon className="h-4 w-4 dark:text-white" />
+                                    <p className="text-[10px] mt-1">سبد سفارش</p>
+                                </div>
+                            </Link> : null
+                }
+                {
+                    asPath.includes("/cafes/") ?
+                        <Link href={`/cafes/events/${cafeId}`}>
+                            <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
+                                <UserGroupIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
+                                <p className="text-[10px] mt-1">رویداد ها</p>
                             </div>
-                        </Link> : null
-            }
-            {
-                asPath.includes("/cafes/") ?
-                    <Link href={`/cafes/events/${cafeId}`}>
-                        <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
-                            <UserGroupIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
-                            <p className="text-xs mt-1">رویداد ها</p>
-                        </div>
-                    </Link>
-                    :
-                    <Link href='/features'>
-                        <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
-                            <PencilIcon className={`h-4 w-4 ${asPath === "/features" ? "text-orange-600" : "dark:text-white"}`} />
-                            <p className="text-xs mt-1">ویژگی ها</p>
-                        </div>
-                    </Link>
-            }
-            <Link href='/'>
-                <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
-                    <HomeIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
-                    <p className="text-xs mt-1">خانه</p>
-                </div>
-            </Link>
+                        </Link>
+                        :
+                        <Link href='/features'>
+                            <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/features" ? "text-orange-600" : null}`}>
+                                <PencilIcon className={`h-4 w-4 ${asPath === "/features" ? "text-orange-600" : "dark:text-white"}`} />
+                                <p className="text-[10px] mt-1">ویژگی ها</p>
+                            </div>
+                        </Link>
+                }
+                <Link href='/'>
+                    <div className={`flex flex-col justify-center items-center w-1/4 cursor-pointer ${asPath === "/" ? "text-orange-600" : null}`}>
+                        <HomeIcon className={`h-4 w-4 ${asPath === "/" ? "text-orange-600" : "dark:text-white"}`} />
+                        <p className="text-[10px] mt-1">خانه</p>
+                    </div>
+                </Link>
+            </div>
         </div>
     );
 }
