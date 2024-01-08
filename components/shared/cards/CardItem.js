@@ -29,7 +29,7 @@ const CardItem = ({ item, setMenu, checkItemInCart, orderCount, handleCommentMod
             </div>
             <div className="w-2/3 h-full mr-2 flex flex-col justify-around">
                 <div className="flex justify-between items-center">
-                    <p className="text-xs font-bold lg:text-lg">{item.title}</p>
+                    <p className="text-xs lg:text-lg">{item.title}</p>
                     {
                         setMenu !== "" ?
                             <div className="flex justify-center items-center gap-x-4">

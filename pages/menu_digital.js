@@ -25,7 +25,3 @@ const MenuDigital = () => {
 }
 
 export default MenuDigital;
-
-export async function getServerSideProps() {
-
-} 

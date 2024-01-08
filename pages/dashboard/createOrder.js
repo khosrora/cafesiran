@@ -1,20 +1,27 @@
-import { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 import CreateItemCafe from "../../components/panel/createItemCafe";
 import LayoutPanel from "../../components/panel/layout/layoutPanel";
 import GalleryModal from "../../components/shared/modals/galleryModal";
-
-
-
+import CategoriesCafe from './CategoriesCafe';
 
 const CreateOrder = () => {
 
     const [imageUrl, setImageUrl] = useState(null)
     const [gallery, setGallery] = useState(false)
 
+    const router = useRouter();
+    const { cateId, title } = router.query;
+
     return (
         <>
             <LayoutPanel>
-                <CreateItemCafe setGallery={setGallery} imageUrl={imageUrl} />
+                {
+                    !cateId ?
+                        <CategoriesCafe />
+                        :
+                        <CreateItemCafe title={title} cateId={cateId} setGallery={setGallery} imageUrl={imageUrl} />
+                }
             </LayoutPanel>
             {
                 gallery ?

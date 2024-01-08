@@ -33,11 +33,11 @@ export const getMenuList = id => async dispatch => {
         dispatch({ type: globalActionsType.LOAD_GLOBAL, payload: { load: false } });
     }
 }
-export const categoryList = () => async dispatch => {
+export const categoryList = id => async dispatch => {
     try {
         dispatch({ type: globalActionsType.LOAD_CATEGORIES, payload: { load: true } });
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
-        const res = await getDataAPI(`cafe/category_list`);
+        const res = await getDataAPI(`cafe/cafe_category/${id}`);
         dispatch({ type: globalActionsType.GET_CATEGORIES, payload: { data: res.data } });
         dispatch({ type: globalActionsType.LOAD_CATEGORIES, payload: { load: false } });
     } catch (err) {

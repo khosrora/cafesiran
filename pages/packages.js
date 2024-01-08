@@ -19,8 +19,7 @@ const Packages = ({ data }) => {
                     <Alert
                         message="بعد از ثبت و تایید مجموعه پنل برای یک ماه به صورت رایگان فعال خواهد شد"
                     />
-                    <div className="grid grid-cols-1 px-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 my-2 ">
-                        {/* <div className="px-4 gap-y-4 w-full md:w-3/4 lg:w-2/4 mb-2 m-auto"> */}
+                    <div className="grid grid-cols-1 px-4 gap-y-4 md:grid-cols-2 lg:grid-cols-3 md:gap-x-4 my-2">
                         {
                             data &&
                             data.map((i, index) => <PackagesPanel data={i} key={index} />)

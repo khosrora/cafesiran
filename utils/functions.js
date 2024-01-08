@@ -40,6 +40,13 @@ export const EditDataReserve = (data, id, typeState) => {
     return newData;
 }
 
+
+export const EditDataCategories = (data, id, item) => {
+    var newData = data.findIndex(x => x.id == id);
+    data[newData] = item;
+    return data;
+}
+
 export const DeleteData = (data, id) => {
     const newData = data.filter(item => item.id !== id);
     return newData;

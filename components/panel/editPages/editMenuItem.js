@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { useEffect, useState } from 'react';
 import { editItemMenu, getOneItemMenu } from '../../../redux/cafe/actions';
-import { getCategories } from '../../../redux/category/actions';
+import { getCategoriesCafe } from '../../../redux/category/actions';
 import Sform from '../../skillton/Sform';
 import Link from 'next/link';
 import { ArrowRightIcon, UploadIcon, CheckIcon } from '@heroicons/react/outline';
@@ -29,14 +29,15 @@ const EditMenuItem = ({ setGallery, imageUrl }) => {
     const id = router.query.id;
     const dispatch = useDispatch();
     const { categoryDetails, cafeDetails } = useSelector(state => state);
-    const categories = categoryDetails.categories;
     const item = cafeDetails.item;
-    const load = categoryDetails.load;
+
+    const categories = categoryDetails.categoriesCafe;
+    const load = categoryDetails.laodCafe;
 
     useEffect(() => {
         if (id) {
             dispatch(getOneItemMenu(id))
-            dispatch(getCategories());
+            dispatch(getCategoriesCafe());
         };
     }, [id, dispatch, callBack]);
 

@@ -1,4 +1,5 @@
-import { CheckCircleIcon, StarIcon } from '@heroicons/react/outline';
+import { useState } from 'react'
+import { CheckCircleIcon, StarIcon, ChevronDoubleDownIcon } from '@heroicons/react/outline';
 import { postDataAPI } from '../../../utils/fetchData';
 import ImagesPanels from './imagesPanels';
 import Cookies from 'js-cookie';
@@ -9,6 +10,7 @@ import Link from 'next/link';
 
 const PackagesPanel = ({ data }) => {
 
+    const [seeMore, setSeeMore] = useState(false)
     const token = Cookies.get("CafesIran__TOKEN");
     const { asPath } = useRouter();
 
@@ -22,7 +24,7 @@ const PackagesPanel = ({ data }) => {
     }
 
     return (
-        <div className="bg-zinc-100 rounded p-4 w-full dark:bg-zinc-800">
+        <div className="bg-zinc-100 shadow-md rounded-md p-4 w-full dark:bg-zinc-800">
             <div className="m-auto flex flex-col justify-center items-center gap-y-4">
                 <h1 className="font-black">{data.title}</h1>
                 <ImagesPanels data={data} />
@@ -116,7 +118,7 @@ const PackagesPanel = ({ data }) => {
                     <span className="dark:text-zinc-200">تومان</span>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

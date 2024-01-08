@@ -15,7 +15,7 @@ const CafeId = (props) => {
     const connection = utilities.connection;
 
     useEffect(() => {
-        if (connection) dispatch(categoryList());
+        if (connection) dispatch(categoryList(cafeId));
     }, [connection])
 
     useEffect(() => {

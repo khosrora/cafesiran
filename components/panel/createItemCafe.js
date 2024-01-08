@@ -5,8 +5,9 @@ import * as Yup from 'yup';
 import { getCategories } from '../../redux/category/actions';
 import { createItemMenu } from '../../redux/cafe/actions';
 import { CheckIcon, UploadIcon } from '@heroicons/react/outline';
-import { errorMessage } from '../../utils/toast';
 import Alert from '../shared/other/alert';
+
+
 
 
 const createItemMenuSchema = Yup.object().shape({
@@ -18,7 +19,7 @@ const createItemMenuSchema = Yup.object().shape({
 });
 
 
-const CreateItemCafe = ({ setGallery, imageUrl }) => {
+const CreateItemCafe = ({ title, cateId, setGallery, imageUrl }) => {
 
 
     const dispatch = useDispatch();
@@ -35,6 +36,11 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
     return (
         <>
             <h1 className="text-xs lg:text-xl w-3/4 lg:m-auto dark:text-white">فرم ایجاد آیتم</h1>
+            <div className="w-3/4 m-auto my-4">
+                <Alert
+                    message={`این آیتم در زیر مجموعه دسته بندی ${title} ثبت می شود`}
+                />
+            </div>
             <Formik
                 initialValues={{
                     title: '',
@@ -42,7 +48,7 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
                     price: '',
                     desc: '',
                     is_active: true,
-                    category: '',
+                    category: cateId,
                     sort_index: 1
                 }}
                 validationSchema={createItemMenuSchema}
@@ -86,7 +92,7 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
                                 </div>
                             </div>
 
-                            <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
+                            {/* <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
                                 <label htmlFor="type">دسته بندی</label>
                                 <Field name="category" as="select" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">
                                     <option>دسته بندی آیتم</option>
@@ -95,7 +101,7 @@ const CreateItemCafe = ({ setGallery, imageUrl }) => {
                                     }
                                 </Field>
                                 {errors.category && touched.category ? (<span className='text-red-600'>{errors.category}</span>) : null}
-                            </div>
+                            </div> */}
                             <div className="flex flex-col justify-start items-start gap-y-2 lg:w-3/6 lg:mr-4">
                                 <label htmlFor="type">اولویت نمایش</label>
                                 <Field name="sort_index" as="select" className="w-full p-2 rounded-md border bg-white focus:outline-none text-slate-400 dark:border-none dark:bg-zinc-700">

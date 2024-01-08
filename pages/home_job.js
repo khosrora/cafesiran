@@ -1,6 +1,7 @@
 import Head from "next/head";
 import HomeJobIndex from "../components/public/HomeJobIndex";
 import Layout from "../components/public/layout";
+import { getDataAPI } from "../utils/fetchData";
 
 
 

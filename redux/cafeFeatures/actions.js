@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { deleteDataAPI, getDataAPI, patchDataAPI, postDataAPI } from "../../utils/fetchData";
+import { deleteDataAPI, getDataAPI, patchDataAPI, postDataAPI, putDataAPI } from "../../utils/fetchData";
 import { errorMessage, successMessage } from "../../utils/toast";
 import { UTILITIES } from './../utilities/actions';
 
@@ -21,7 +21,12 @@ export const CAFEFETURESTYPE = {
     GET_USER_LOYALS: "GET_USER_LOYALS",
     GET_TABALES: "GET_TABALES",
     CREATE_TABALE: "CREATE_TABALE",
-    DELETE_TABALE: "DELETE_TABALE"
+    DELETE_TABALE: "DELETE_TABALE",
+    GET_CATEGORY: "GET_CATEGORY",
+    LOAD_GET_CATEGORY: "LOAD_GET_CATEGORY",
+    ADD_CATEGORY: "ADD_CATEGORY",
+    EDIT_CATEGORY: "EDIT_CATEGORY",
+    LOAD_ADD_CATEGORY: "LOAD_ADD_CATEGORY"
 }
 
 export const getListPrint = (id) => async dispatch => {
@@ -285,5 +290,55 @@ export const deleteTabale = () => async dispatch => {
         dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
         dispatch({ type: CAFEFETURESTYPE.GET_VIP_USERS, payload: { data: [] } });
         dispatch({ type: CAFEFETURESTYPE.LOAD, payload: { load: false } });
+    }
+}
+
+export const getCategories = () => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD_GET_CATEGORY, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await getDataAPI(`cafe/categories/`, token)
+        if (res.status === 200) {
+            dispatch({ type: CAFEFETURESTYPE.GET_CATEGORY, payload: { data: res.data } });
+        }
+        dispatch({ type: CAFEFETURESTYPE.LOAD_GET_CATEGORY, payload: { load: false } });
+    } catch (error) {
+        console.log(error);
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD_GET_CATEGORY, payload: { load: false } });
+    }
+}
+
+
+export const addCategories = (payload) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD_ADD_CATEGORY, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await postDataAPI(`cafe/categories/`, payload, token)
+        successMessage("دسته بندی با موفقیت ایجاد شد")
+        dispatch({ type: CAFEFETURESTYPE.ADD_CATEGORY, payload: { cate: res.data } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD_ADD_CATEGORY, payload: { load: false } });
+    } catch (error) {
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.ADD_CATEGORY, payload: { cate: [] } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD_ADD_CATEGORY, payload: { load: false } });
+    }
+}
+
+export const editCategories = (payload) => async dispatch => {
+    try {
+        dispatch({ type: CAFEFETURESTYPE.LOAD_ADD_CATEGORY, payload: { load: true } });
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: true } });
+        const token = Cookies.get("CafesIran__TOKEN")
+        const res = await patchDataAPI(`cafe/categories/${payload.id}`, payload.values, token);
+        successMessage("دسته بندی با موفقیت ویرایش شد")
+        dispatch({ type: CAFEFETURESTYPE.EDIT_CATEGORY, payload: { data: res.data, id: payload.id } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD_ADD_CATEGORY, payload: { load: false } });
+    } catch (error) {
+        dispatch({ type: UTILITIES.NET_CONNECTION, payload: { data: false } });
+        dispatch({ type: CAFEFETURESTYPE.ADD_CATEGORY, payload: { cate: [] } });
+        dispatch({ type: CAFEFETURESTYPE.LOAD_ADD_CATEGORY, payload: { load: false } });
     }
 }
