@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import MyImage from "../utilities/imageCardItem";
 import { DotsVerticalIcon, PlusIcon } from '@heroicons/react/outline'
 import { addToCart } from './../../../redux/cart/actions';
@@ -8,12 +8,12 @@ import { errorMessage } from '../../../utils/toast';
 
 const CardItem = ({ item, setMenu, checkItemInCart, orderCount, handleCommentModal }) => {
 
-    const { auth } = useSelector(state => state);
-    const login = auth.login;
+    // const { auth } = useSelector(state => state);
+    // const login = auth.login;
     const dispatch = useDispatch();
 
     const handleAddToCart = (cartItem) => {
-        if (!login) return errorMessage("برای ثبت سفارش وارد وب سایت شوید")
+        // if (!login) return errorMessage("برای ثبت سفارش وارد وب سایت شوید")
         const checked = checkItemInCart(cartItem.id);
         if (checked) return errorMessage("این آیتم قبلا در سبد سفارش ثبت شده است")
         cartItem.menu_item_id = cartItem.id;

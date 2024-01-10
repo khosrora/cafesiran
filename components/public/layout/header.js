@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 import { LightBulbIcon, MoonIcon, UserIcon, MenuAlt3Icon } from '@heroicons/react/outline'
 import { show_Modal_Login } from "../../../redux/auth/actions";
 import SideBarPhone from "./sideBarPhone";
+import { toast } from "react-hot-toast";
 
 const Header = () => {
 
@@ -18,6 +19,7 @@ const Header = () => {
     const [mounted, setMounted] = useState(false);
     const [sidebar, setSidebar] = useState(false);
     const { asPath, query } = useRouter();
+    const router = useRouter();
     const tabale = query.table;
 
     const nameCafe = global?.cafe?.persian_title;
@@ -48,6 +50,14 @@ const Header = () => {
             )
         }
     };
+
+    const goToBasket = () => {
+        if (order.length === 0) {
+            toast.error('حداقل یک آیتم انتخاب کنید')
+        } else {
+            router.push(`/cafes/payment?tabale=${tabale}`)
+        }
+    }
 
     return (
         <nav className="max-w-[1800px] p-2 m-auto">
@@ -84,16 +94,10 @@ const Header = () => {
                                         </li>
                                     </>
                             }
-
-                            {
-                                login ?
-                                    order.length === 0 ? "" :
-                                        <li className='mr-8 relative'>
-                                            <Link href={`/cafes/payment?tabale=${tabale}`}><a title="سبد سفارش" className={`${asPath === `/cafes/payment?tabale=${tabale}` ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></Link>
-                                            <div className="absolute flex justify-center items-center top-0 -left-4 text-red-600 rounded-full text-xs">{order.length}</div>
-                                        </li>
-                                    : null
-                            }
+                            <li onClick={() => goToBasket()} className='mr-8 relative cursor-pointer'>
+                                <p><a title="سبد سفارش" className={`${asPath === `/cafes/payment?tabale=${tabale}` ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></p>
+                                <div className="absolute flex justify-center items-center top-0 -left-4 text-red-600 rounded-full text-xs">{order.length}</div>
+                            </li>
                         </div>
                         <li className="mr-8">
                             {renderThemeChanger()}

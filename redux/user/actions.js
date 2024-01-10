@@ -51,7 +51,7 @@ export const addOrder = (data) => async dispatch => {
     try {
         dispatch({ type: USERACTIONSYPES.LOAD, payload: { load: true } });
         const token = Cookies.get("CafesIran__TOKEN")
-        const res = await postDataAPI("cafe/order/", data, token);
+        const res = await postDataAPI("cafe/order_place/", data, token);
         if (res.status === 201) {
             successMessage("سفارش شما ثبت شد.")
             dispatch({ type: CARTActionsType.CLEAR, payload: { data: [] } });

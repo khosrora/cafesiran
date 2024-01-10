@@ -5,6 +5,7 @@ import CardBasket from "../shared/cards/CardBasket";
 import Links from "../shared/other/Links";
 import { errorMessage } from '../../utils/toast';
 import { addOrder } from '../../redux/user/actions';
+import { toast } from 'react-hot-toast';
 
 
 
@@ -17,6 +18,7 @@ const Basket = ({ items }) => {
     const [modal, setModal] = useState(false);
     const [desc, setDesc] = useState('');
     const [numberTable, setNumberTable] = useState(0);
+    const [phone, setPhone] = useState(null);
     const { userDetails, cartDetails, auth, global } = useSelector(state => state);
     const load = userDetails.load;
     const order = cartDetails.orderList;
@@ -49,15 +51,15 @@ const Basket = ({ items }) => {
     const handleConfirmBasket = (totalPrice, order) => {
         const checkedCafe = items.filter(item => item.cafe_id !== order[0].cafe_id);
         if (checkedCafe.length >= 1) return errorMessage("شما مجاز به سفارش همزمان از چند کافه نیستید");
-        if (!login) return errorMessage("ابتدا وارد وب سایت شوید");
+        // if (!login) return errorMessage("ابتدا وارد وب سایت شوید");
         let data = {
             items: order,
             total_price: totalPrice.toString(),
             desc,
             cafe: order[0].cafe_id,
-            num_of_table: numberTable === 'undefined' ? Number('0') : Number(numberTable)
+            num_of_table: numberTable === 'undefined' ? Number('0') : Number(numberTable),
+            phone: phone
         }
-
         dispatch(addOrder(data))
     }
 
@@ -66,7 +68,10 @@ const Basket = ({ items }) => {
             <div className="py-2 flex flex-col w-full lg:w-1/4 lg:mr-2">
                 {
                     modal ?
-                        <div className=" mb-2 cursor-pointer" onClick={() => setModal(false)}>
+                        <div className=" mb-2 cursor-pointer" onClick={() => {
+                            setPhone(null)
+                            setModal(false)
+                        }}>
                             <p className='text-xs'>بازگشت به ثبت سفارش</p>
                         </div>
                         :
@@ -81,9 +86,24 @@ const Basket = ({ items }) => {
                                 <p>جمع کل :‌</p>
                                 <p>{new Intl.NumberFormat().format(total)} تومان</p>
                             </div>
+                            <div className="flex flex-col justify-start items-start gap-y-2">
+                                <label className="" htmlFor="per-name">شماره موبایل</label>
+                                <input onChange={(e) => setPhone(e.target.value)} name="phone" className="w-full p-2 rounded-md border focus:outline-none dark:bg-zinc-700 dark:border-none" id="per-name" type="text" placeholder="شماره موبایل خود را وارد کنید" />
+                                {/* {errors.instagram_id && touched.instagram_id ? (<span className='text-red-600'>{errors.instagram_id}</span>) : null} */}
+                            </div>
                             <p className='text-[8px]'>مبلغ کل با احتساب {tax} % ارزش افزوده محاسبه می شود</p>
                             <div className="mt-4">
-                                <button className="bg-[#FF7129] py-2 w-full text-white rounded-md" onClick={() => setModal(true)}>ثبت سفارش</button>
+                                <button className="bg-[#FF7129] py-2 w-full text-white rounded-md" onClick={() => {
+                                    if (!phone) {
+                                        return errorMessage('شماره تماس خود را وارد کنید')
+                                    } else {
+                                        var pattern = /^09([0-9][0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}/
+                                        if (phone.length > 11) return errorMessage('شماره تماس وارد شده معتبر نمی باشد')
+                                        if (!pattern.test(phone)) return errorMessage('شماره تماس وارد شده معتبر نمی باشد')
+
+                                    }
+                                    setModal(true)
+                                }}>ثبت سفارش</button>
                             </div>
                         </div>
                         :
