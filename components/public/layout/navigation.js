@@ -17,6 +17,8 @@ const Navigation = () => {
     const login = auth.login;
     const tabale = query.table;
 
+    console.log(router.route);
+
     const goToBasket = () => {
         if (order.length === 0) {
             toast.error('حداقل یک آیتم انتخاب کنید')
@@ -54,11 +56,14 @@ const Navigation = () => {
                 </div>
             </Link> */}
 
+                {
+                    router.route === '/cafes/[cafeId]' &&
                     <div onClick={() => goToBasket()} className="relative flex flex-col justify-center items-center w-1/4 cursor-pointer">
                         <div className="absolute -top-2 text-red-600 rounded-full text-xs">{order.length}</div>
                         <ShoppingCartIcon className="h-4 w-4 dark:text-white" />
                         <p className="text-[10px] mt-1">سبد سفارش</p>
                     </div>
+                }
 
                 {
                     asPath.includes("/cafes/") ?

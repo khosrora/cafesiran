@@ -33,22 +33,45 @@ const Home = ({ data }) => {
             <img
               width="500"
               height="500"
-              title="منو سفارشی"
-              src="/images/features/itemsMenu.webp"
+              title="با منو دیجیتال کافه ایران با مشتریان خود در تعامل باشید"
+              src="/images/features/menuDigitalEvents.webp"
               className="w-9/12 mx-auto" />
           </div>
-          <div className="self-center px-4 sm:mr-4 md:mr-8 mt-4 sm:mt-0">
+          <div className="self-center px-4 sm:ml-4 md:ml-8 mt-4 sm:mt-0">
             <h3 className="font-bold text-lg lg:text-2xl">
-              منو خود را سفارشی بسازید
+              با منو دیجیتال کافه ایران با مشتریان خود در تعامل باشید
             </h3>
-            <p className="text-sm lg:text-base mt-4 leading-9 ml-8">
-              مطابق با سلیقه خود نحوه نمایش منو دیجیتال را برای مشتریان خود طراحی
-              کنید و مجموعه خود را به مشتریان معرفی کنید , همچنین محصولات خود را
-              در دسته بندی های مرتبط سازمان دهی کنید
-              .
+            <p className="text-sm lg:text-base mt-4 leading-9">
+              شما صاحبان مجموعه میتوانید به راحتی رویداد های کافه و یا رستوران خود را به اطلاع مشتریان برسانید.
+              نظرات آنها را در مورد مجموعه یا هر ایتم منو به صورت جدا دریافت کنید و همچنین پاسخ دهید.
             </p>
           </div>
         </div>
+        <section className="mx-auto sm:max-w-7xl px-4 lg:px-6 xl:px-2 my-20 lg:my-32">
+          <div>
+            <h3 className="font-bold text-center mx-auto mb-12 text-2xl">مزایا منو دیجیتال کافه ایران</h3>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <span className="bg-[#2E2F2A] rounded-md text-white text-sm text-center block py-5 dark:bg-zinc-700">
+                ارزان ترین منو دیجیتال
+              </span>
+              <span className="bg-[#f8f8f8] rounded-md text-sm text-center block py-5 dark:bg-zinc-800">
+                قابلیت تغییر منو در هر زمان
+              </span>
+              <span className="bg-[#2E2F2A] rounded-md text-white text-sm text-center block py-5 dark:bg-zinc-700">
+                دریافت آخرین آمار و گزارشات
+              </span>
+              <span className="bg-[#f8f8f8] rounded-md text-sm text-center block py-5 dark:bg-zinc-800">
+                ثبت سفارش سریع و بدون دردسر
+              </span>
+              <span className="bg-[#2E2F2A] rounded-md text-white text-sm text-center block py-5 dark:bg-zinc-700">
+                تجربه کاربری پویا
+              </span>
+              <span className="bg-[#f8f8f8] rounded-md text-sm text-center block py-5 dark:bg-zinc-800">
+                دریافت پنل مدیریت به محض ثبت نام
+              </span>
+            </div>
+          </div>
+        </section>
       </Layout>
     </>
   );

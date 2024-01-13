@@ -94,10 +94,13 @@ const Header = () => {
                                         </li>
                                     </>
                             }
-                            <li onClick={() => goToBasket()} className='mr-8 relative cursor-pointer'>
-                                <p><a title="سبد سفارش" className={`${asPath === `/cafes/payment?tabale=${tabale}` ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></p>
-                                <div className="absolute flex justify-center items-center top-0 -left-4 text-red-600 rounded-full text-xs">{order.length}</div>
-                            </li>
+                            {
+                                router.route === '/cafes/[cafeId]' &&
+                                <li onClick={() => goToBasket()} className='mr-8 relative cursor-pointer'>
+                                    <p><a title="سبد سفارش" className={`${asPath === `/cafes/payment?tabale=${tabale}` ? 'text-[#FF7129]' : null}`}>سبد سفارش</a></p>
+                                    <div className="absolute flex justify-center items-center top-0 -left-4 text-red-600 rounded-full text-xs">{order.length}</div>
+                                </li>
+                            }
                         </div>
                         <li className="mr-8">
                             {renderThemeChanger()}
