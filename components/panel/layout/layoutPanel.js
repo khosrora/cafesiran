@@ -9,9 +9,6 @@ import SideBarPanel from "./sideBarPanel";
 import Cookies from 'js-cookie';
 import NoConnection from '../../shared/utilities/noConnection';
 
-
-
-
 const LayoutPanel = ({ children }) => {
 
     const { utilities } = useSelector(state => state);
@@ -20,6 +17,7 @@ const LayoutPanel = ({ children }) => {
     const router = useRouter()
 
     useEffect(() => {
+
         if (!token) router.push("/")
     }, [])
 

@@ -6,11 +6,12 @@ import { UsersIcon, ShoppingCartIcon, CalendarIcon, OfficeBuildingIcon } from '@
 import MomentDate from '../../shared/utilities/moment';
 
 const CafeProfile = ({ cafe, dispatch }) => {
-
+    
+    
     const [open, setOpen] = useState()
     const [tax, setTaxe] = useState(cafe.tax)
     const [edit, setEdit] = useState(false)
-
+    
     useEffect(() => {
         setOpen(cafe?.is_open)
     }, [cafe?.is_open])

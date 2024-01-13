@@ -80,3 +80,11 @@ export const deleteLastIndex = (list) => {
     list.shift()
     return list;
 }
+
+export const addData = (state, payload) => {
+    const data = {
+        links: { ...state.links },
+        results: [payload, ...state.results]
+    };
+    return data;
+}

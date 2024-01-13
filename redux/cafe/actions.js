@@ -28,7 +28,10 @@ export const CAFEACTIONSYPES = {
     GET_PLANS: "GET_PLANS",
     GET_NEXT: "GET_NEXT",
     DELETE_SUGGEST: "DELETE_SUGGEST",
-    GET_SEARCH_DATA: "GET_SEARCH_DATA"
+    GET_SEARCH_DATA: "GET_SEARCH_DATA",
+    GET_CAFE_ORDERS: "GET_CAFE_ORDERS",
+    LOAD_GET_ORDERS: "LOAD_GET_ORDERS",
+    ADD_WS_ORDERS: "ADD_WS_ORDERS",
 }
 
 
@@ -438,5 +441,30 @@ export const deleteComment = (id) => async dispatch => {
     } catch (err) {
         errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
         dispatch({ type: CAFEACTIONSYPES.LOAD, payload: { load: false } });
+    }
+}
+
+export const getOrdersCafe = (page) => async dispatch => {
+    try {
+        dispatch({ type: CAFEACTIONSYPES.LOAD_GET_ORDERS, payload: { load: true } });
+        const token = Cookies.get("CafesIran__TOKEN");
+        const res = await getDataAPI(`cafe/order/?page=${page}`, token);
+
+        if (res.status === 200) {
+            dispatch({ type: CAFEACTIONSYPES.GET_CAFE_ORDERS, payload: { data: res.data } });
+            dispatch({ type: CAFEACTIONSYPES.GET_NEXT, payload: { data: res.data.next } });
+        }
+        dispatch({ type: CAFEACTIONSYPES.LOAD_GET_ORDERS, payload: { load: false } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
+        dispatch({ type: CAFEACTIONSYPES.LOAD_GET_ORDERS, payload: { load: false } });
+    }
+}
+
+export const addWsOrder = (data) => async dispatch => {
+    try {
+        dispatch({ type: CAFEACTIONSYPES.ADD_WS_ORDERS, payload: { data } });
+    } catch (err) {
+        errorMessage("متاسفانه مشکلی از سمت سرور رخ داده است")
     }
 }

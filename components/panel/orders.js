@@ -1,24 +1,47 @@
-import { useState } from 'react';
-import useSWR from 'swr'
+import { useState, useEffect } from 'react';
+
 import Link from "next/link";
-import { fetcher } from "../../redux/swr";
-import { API } from "../../utils/baseApi";
+
+
 import { CheckIcon, ClockIcon, ExclamationIcon } from '@heroicons/react/outline';
 import Stable from './../skillton/Stable';
 import MomentDate from '../shared/utilities/moment';
 import Paginate from '../shared/other/paginate';
-import NoConnection from '../shared/utilities/noConnection';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { addWsOrder, getOrdersCafe } from '../../redux/cafe/actions';
+
+
 
 const Orders = () => {
 
+    const dispatch = useDispatch();
+
     const [page, setPage] = useState(1)
 
-    const { data, error } = useSWR(`${API}cafe/order/?page=${page}`, fetcher );
-    console.log(data);
+    useEffect(() => {
+        dispatch(getOrdersCafe(page))
+    }, [page])
 
-    if (error) return <NoConnection />
-    if (!data) return <Stable />
-    if (data.count === 0) {
+    useEffect(() => {
+        const socket = new WebSocket('wss://api.cafesiran.ir/ws/order/2/')
+        socket.onmessage = (message) => {
+            const payload = JSON.parse(message.data)
+            dispatch(addWsOrder(payload))
+            // dispatch(getOrdersCafe(page))
+        }
+    }, [])
+    const { cafeDetails } = useSelector(state => state)
+
+    const next = cafeDetails.next;
+    const orders = cafeDetails.ordersCafe.results;
+    const load = cafeDetails.loadOrdersCafe;
+
+
+    // if (error) return <NoConnection />
+    if (load) return <Stable />
+
+    if (orders.length === 0) {
         return <div className="w-full text-center my-36">
             <p>در حال حاضر هیج سفارشی ثبت نشده است</p>
         </div>
@@ -54,7 +77,7 @@ const Orders = () => {
                     </thead>
                     <tbody>
                         {
-                            data.results.map((i, index) =>
+                            orders.map((i, index) =>
                                 <tr key={index} className=" odd:bg-white bg-zinc-100 text-xs lg:text-sm dark:odd:bg-zinc-800 dark:bg-zinc-900">
                                     <td className="hidden lg:flex py-4 px-6">
                                         {i.num_of_table}
@@ -89,7 +112,7 @@ const Orders = () => {
                     </tbody>
                 </table>
             </div>
-            <Paginate next={data.links.next} page={page} setPage={setPage} count={data.count} />
+            <Paginate next={next} page={page} setPage={setPage} count={orders.length} />
         </div>
     );
 }

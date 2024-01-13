@@ -1,4 +1,4 @@
-import { DeleteData, EditData, EditDataComment, EditDataReserve } from "../../utils/functions";
+import { addData, DeleteData, EditData, EditDataComment, EditDataReserve } from "../../utils/functions";
 import { CAFEACTIONSYPES } from "./actions";
 
 
@@ -16,7 +16,9 @@ const initialStore = {
     detailsOrder: null,
     plans: [],
     next: null,
-    searchData: {}
+    searchData: {},
+    ordersCafe: [],
+    loadOrdersCafe: true
 };
 
 
@@ -142,6 +144,21 @@ export default function reducer(state = initialStore, action) {
             return {
                 ...state,
                 comments: EditDataComment(state.comments, action.payload.id)
+            }
+        case CAFEACTIONSYPES.GET_CAFE_ORDERS:
+            return {
+                ...state,
+                ordersCafe: action.payload.data
+            }
+        case CAFEACTIONSYPES.LOAD_GET_ORDERS:
+            return {
+                ...state,
+                loadOrdersCafe: action.payload.load
+            }
+        case CAFEACTIONSYPES.ADD_WS_ORDERS:
+            return {
+                ...state,
+                ordersCafe: addData(state.ordersCafe, action.payload.data)
             }
         default:
             return state;
