@@ -8,35 +8,21 @@ import Stable from './../skillton/Stable';
 import MomentDate from '../shared/utilities/moment';
 import Paginate from '../shared/other/paginate';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { addWsOrder, getOrdersCafe } from '../../redux/cafe/actions';
+import { useDispatch } from 'react-redux';
+import { addWsOrder } from '../../redux/cafe/actions';
 
 
 
-const Orders = () => {
+const Orders = ({
+    cafeDetails,
+    page,
+    setPage
+}) => {
 
-    const dispatch = useDispatch();
-
-    const [page, setPage] = useState(1)
-
-    useEffect(() => {
-        dispatch(getOrdersCafe(page))
-    }, [page])
-
-    useEffect(() => {
-        const socket = new WebSocket('wss://api.cafesiran.ir/ws/order/2/')
-        socket.onmessage = (message) => {
-            const payload = JSON.parse(message.data)
-            dispatch(addWsOrder(payload))
-            // dispatch(getOrdersCafe(page))
-        }
-    }, [])
-    const { cafeDetails } = useSelector(state => state)
 
     const next = cafeDetails.next;
     const orders = cafeDetails.ordersCafe.results;
     const load = cafeDetails.loadOrdersCafe;
-
 
     // if (error) return <NoConnection />
     if (load) return <Stable />

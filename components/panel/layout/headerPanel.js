@@ -1,11 +1,11 @@
 import Link from "next/link";
 import { useDispatch, useSelector } from 'react-redux';
-import { LogoutIcon, ShoppingCartIcon } from '@heroicons/react/outline'
+import { BellIcon, LogoutIcon, ShoppingCartIcon } from '@heroicons/react/outline'
 import { logOutUser } from "../../../redux/auth/actions";
 import { useRouter } from "next/router";
 
 
-const HeaderPanel = ({ setMenu }) => {
+const HeaderPanel = ({ setMenu, alert }) => {
 
     const { userDetails, storeCafe } = useSelector(state => state);
     const basket = storeCafe.basket;
@@ -50,6 +50,28 @@ const HeaderPanel = ({ setMenu }) => {
                                 :
                                 null
                         }
+                        <div className="dropdown dropdown-right relative">
+                            <div className="absolute -top-2 bg-red-600 flex justify-center items-center w-6 h-6 text-xs rounded-full"><p>{alert.length}</p></div>
+                            <div tabIndex={0} role="button" className="m-1">
+                                <BellIcon className="h-6 w-6 text-slate-500 dark:text-white" />
+                            </div>
+                            <ul tabIndex={0} className="bg-zinc-100 dropdown-content z-[1] menu p-2 shadow rounded-box w-52 text-zinc-900 dark:bg-zinc-800 dark:text-zinc-200">
+                                {
+                                    alert.length === 0 ?
+                                        <li className=''>
+                                            <p className='text-right text-[10px] hover:text-red-700'>پیامی جهت نمایش وجود ندارد</p>
+                                        </li>
+                                        :
+                                        alert.map(i =>
+                                            <li key={i.id}>
+                                                <Link href={`/dashboard/order/${i.id}`}>
+                                                    <p className='text-right text-[10px] hover:text-red-700'> یک سفارش جدید برای میز {i.num_of_table} ثبت شد </p>
+                                                </Link>
+                                            </li>
+                                        )
+                                }
+                            </ul>
+                        </div>
                         <div className="bg-slate-200 p-2 flex justify-center items-center rounded-full cursor-pointer dark:bg-zinc-700">
                             <LogoutIcon className="h-6 w-6 text-slate-500 dark:text-white" onClick={() => {
                                 dispatch(logOutUser());
