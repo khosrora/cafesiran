@@ -20,7 +20,8 @@ const LayoutPanel = ({ children }) => {
 
     const dispatch = useDispatch();
 
-    const id = userDetails.user?.cafe.id;
+    const id = userDetails.user?.cafe?.id;
+    
     useEffect(() => {
         if (!!id) {
             const socket = new WebSocket(`wss://api.cafesiran.ir/ws/order/${id}/`)
