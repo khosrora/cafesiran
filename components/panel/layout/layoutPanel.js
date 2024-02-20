@@ -13,6 +13,8 @@ import { addWsOrder } from '../../../redux/cafe/actions';
 const LayoutPanel = ({ children }) => {
 
     const [alert, showAlert] = useState([]);
+    const [pager, setPager] = useState([]);
+
     const { utilities, userDetails } = useSelector(state => state);
     const connection = utilities.connection;
     const token = Cookies.get(CookieName);
@@ -25,6 +27,11 @@ const LayoutPanel = ({ children }) => {
     useEffect(() => {
         if (!!id) {
             const socket = new WebSocket(`wss://api.cafesiran.ir/ws/order/${id}/`)
+            const pagerSocket = new WebSocket(`wss://api.cafesiran.ir/ws/pager/${id}/`)
+            pagerSocket.onmessage = (message) => {
+                const payload = JSON.parse(message.data);
+                setPager(pager => [payload, ...pager])
+            }
             socket.onmessage = (message) => {
                 const payload = JSON.parse(message.data);
                 showAlert(alert => [payload, ...alert])
@@ -33,7 +40,6 @@ const LayoutPanel = ({ children }) => {
             }
         }
     }, [id])
-
 
     useEffect(() => {
         if (!token) router.push("/")
@@ -46,7 +52,7 @@ const LayoutPanel = ({ children }) => {
             <Head>
                 <title> داشبورد مدیریتی کافه ایران </title>
             </Head>
-            <HeaderPanel setMenu={setMenu} alert={alert} />
+            <HeaderPanel setMenu={setMenu} alert={alert} pager={pager} />
             <div className="grid grid-cols-5 gap-5 h-screen">
                 <SideBarPanel />
                 {
