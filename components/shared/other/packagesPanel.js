@@ -55,6 +55,10 @@ const PackagesPanel = ({ data }) => {
                     <p>دارای اپلیکیشن ( pwa )</p>
                 </li>
                 <li className="flex justify-start items-center">
+                    <StarIcon className="w-5 h-5 ml-2 text-yellow-500" />
+                    <p>فراخوانی سالن دار مجموعه</p>
+                </li>
+                <li className="flex justify-start items-center">
                     <CheckCircleIcon className="w-5 h-5 ml-2 text-green-600" />
                     <p className="">امکان ایجاد qr code مختص مجموعه (بی نهایت)</p>
                 </li>
