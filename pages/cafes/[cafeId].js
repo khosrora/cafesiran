@@ -4,6 +4,7 @@ import Head from 'next/head';
 import Layout from "../../components/public/layout";
 import SingleCafe from "../../components/public/SingleCafe";
 import { categoryList, getMenuList, getPublicDetailsCafe } from '../../redux/global/actions';
+import CallWaiter from '../../components/public/CallWaiter';
 
 const CafeId = (props) => {
 
@@ -35,6 +36,9 @@ const CafeId = (props) => {
             </Head>
             <Layout>
                 <SingleCafe items={items} categories={categories} cafeId={cafeId} />
+                <CallWaiter
+                    cafeId={cafeId}
+                />
             </Layout>
         </>
     );

@@ -17,8 +17,6 @@ const Navigation = () => {
     const login = auth.login;
     const tabale = query.table;
 
-    console.log(router.route);
-
     const goToBasket = () => {
         if (order.length === 0) {
             toast.error('حداقل یک آیتم انتخاب کنید')
