@@ -11,5 +11,4 @@ services:
 
 networks:
   app:
-    name: app
-    external: true
+    driver: bridge
