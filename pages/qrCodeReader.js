@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Layout from '../components/public/layout';
 import dynamic from 'next/dynamic';
-const QrReader = dynamic(() => import("react-qr-reader"), { ssr: false });
+const QrScanner = dynamic(() => import("@yudiel/react-qr-scanner").then(mod => ({ default: mod.QrScanner })), { ssr: false });
 
 
 const QrCodeReader = () => {
@@ -10,12 +10,12 @@ const QrCodeReader = () => {
     const router = useRouter();
     const [selected, setSelected] = useState("environment");
 
-    const handleScan = data => {
-        if (data) {
-            router.push(`${data}`)
+    const handleScan = (result) => {
+        if (result) {
+            router.push(`${result}`)
         }
     }
-    const handleError = err => {
+    const handleError = (err) => {
         console.error(err)
     }
 
@@ -24,11 +24,11 @@ const QrCodeReader = () => {
             <div className="px-4 my-16 m-auto">
                 <div className="relative w-full m-auto lg:w-1/6">
                     <div className="bg-zinc-50 shadow-sm px-4 rounded-md dark:bg-zinc-800">
-                        <QrReader
+                        <QrScanner
                             delay={300}
-                            facingMode={selected}
+                            constraints={{ facingMode: selected }}
                             onError={handleError}
-                            onScan={handleScan}
+                            onDecode={handleScan}
                         />
                     </div>
                 </div>
